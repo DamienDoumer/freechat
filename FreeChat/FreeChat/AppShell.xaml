@@ -4,7 +4,8 @@
        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        mc:Ignorable="d"
-       xmlns:local="clr-namespace:FreeChat.Views"
+       xmlns:pages="clr-namespace:FreeChat.Views.Pages"
+       xmlns:textRes="clr-namespace:FreeChat.Resources"
        Title="FreeChat"
        x:Class="FreeChat.AppShell">
 
@@ -31,42 +32,15 @@
 
     <!-- Your Pages -->
     <TabBar>
-        <Tab Title="Browse" Icon="tab_feed.png">
-            <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <Tab Title="{x:Static textRes:TextResources.Home}" Icon="tab_feed.png">
+            <ShellContent ContentTemplate="{DataTemplate pages:HomePage}" />
         </Tab>
-        <Tab Title="About" Icon="tab_about.png">
-            <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
+        <Tab Title="{x:Static textRes:TextResources.Chat}" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate pages:ConversationsPage}" />
+        </Tab>
+        <Tab Title="{x:Static textRes:TextResources.Profile}" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate pages:MyProfilePage}" />
         </Tab>
     </TabBar>
-
-    <!-- Optional Templates 
-    // These may be provided inline as below or as separate classes.
-
-    // This header appears at the top of the Flyout.
-    <Shell.FlyoutHeaderTemplate>
-        <DataTemplate>
-            <Grid>ContentHere</Grid>
-        </DataTemplate>
-    </Shell.FlyoutHeaderTemplate>
-
-    // ItemTemplate is for ShellItems as displayed in a Flyout
-    <Shell.ItemTemplate>
-        <DataTemplate>
-            <ContentView>
-                Bindable Properties: Title, Icon
-            </ContentView>
-        </DataTemplate>
-    </Shell.ItemTemplate>
-
-    // MenuItemTemplate is for MenuItems as displayed in a Flyout
-    <Shell.MenuItemTemplate>
-        <DataTemplate>
-            <ContentView>
-                Bindable Properties: Text, Icon
-            </ContentView>
-        </DataTemplate>
-    </Shell.MenuItemTemplate>
-
-    -->
 
 </Shell>
