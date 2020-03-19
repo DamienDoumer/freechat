@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace FreeChat.Views.Pages
+namespace FreeChat.Styles
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ProfilePage : ContentPage
+    public partial class Fonts : ResourceDictionary
     {
-        public ProfilePage()
+        public Fonts()
         {
             InitializeComponent();
         }

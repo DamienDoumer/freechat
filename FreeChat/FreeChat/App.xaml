@@ -7,5 +7,34 @@
              x:Class="FreeChat.App">
     <Application.Resources>
         
+        <ResourceDictionary Source="Styles/Fonts.xaml" />
+        <ResourceDictionary Source="Styles/Colors.xaml" />
+        <ResourceDictionary Source="Styles/ControlStyles.xaml" />
+        
+        <Style x:Key="BaseStyle"
+               TargetType="Element">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="{StaticResource PrimaryColor}" />
+            <Setter Property="Shell.ForegroundColor"
+                    Value="White" />
+            <Setter Property="Shell.NavBarHasShadow"
+                    Value="False" />
+            <Setter Property="Shell.TitleColor"
+                    Value="{StaticResource PrimaryTextColor}" />
+            <Setter Property="Shell.DisabledColor"
+                    Value="#B4FFFFFF" />
+            <Setter Property="Shell.UnselectedColor"
+                    Value="#95FFFFFF" />
+            <Setter Property="Shell.TabBarBackgroundColor"
+                    Value="#FFFFFF" />
+            <Setter Property="Shell.TabBarForegroundColor"
+                    Value="{StaticResource AccentColor}" />
+            <Setter Property="Shell.TabBarUnselectedColor"
+                    Value="{StaticResource SecondaryAccentColor}" />
+            <Setter Property="Shell.TabBarTitleColor"
+                    Value="{StaticResource AccentColor}" />
+        </Style>
+        <Style TargetType="TabBar"
+               BasedOn="{StaticResource BaseStyle}" />
     </Application.Resources>
 </Application>

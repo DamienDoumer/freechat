@@ -8,7 +8,7 @@
 
     <Color x:Key="AccentColor">#5A89FF</Color>
     <Color x:Key="SecondaryAccentColor">#BFD0FB</Color>
-    <Color x:Key="PrimaryColor">#FBFCFF</Color>
+    <Color x:Key="PrimaryColor">#F4F5F9</Color>
     <Color x:Key="PrimaryTextColor">#303C5E</Color>
     <Color x:Key="SecondaryTextColor">#979DAB</Color>
     

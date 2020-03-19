@@ -15,5 +15,10 @@ namespace Models
 			set { SetProperty(ref _lastMessage, value); }
 		}
 		public User Peer { get; set; }
+
+		public Conversation()
+		{
+			UserIds = new string[2];
+		}
 	}
 }

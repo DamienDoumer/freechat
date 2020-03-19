@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace FreeChat.Views.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MyProfilePage : ContentPage
+    public partial class SettingsPage : ContentPage
     {
-        public MyProfilePage()
+        public SettingsPage()
         {
             InitializeComponent();
         }

@@ -8,12 +8,12 @@ namespace FreeChat
 {
     public partial class App : Application
     {
-
         public App()
         {
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
+            AppLocator.Initialize();
             MainPage = new AppShell();
         }
 

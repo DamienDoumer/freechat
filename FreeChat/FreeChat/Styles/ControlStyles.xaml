@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FreeChat.Styles.ControlStyles">
+
+
+
+    <!--Labels-->
+    <Style x:Key="BaseLabelStyle"
+           TargetType="{x:Type Label}">
+        <Setter Property="FontSize"
+                Value="Body" />
+        <Setter Property="FontFamily"
+                Value="{StaticResource QuickSandLight}" />
+        <Setter Property="TextColor"
+                Value="{StaticResource PrimaryTextColor}" />
+        <Setter Property="LineBreakMode"
+                Value="WordWrap" />
+        <Setter Property="VerticalTextAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalTextAlignment"
+                Value="Start" />
+        <Setter Property="LineBreakMode"
+                Value="WordWrap" />
+    </Style>
+
+    <Style BasedOn="{StaticResource BaseLabelStyle}"
+           TargetType="{x:Type Label}" />
+
+
+</ResourceDictionary>

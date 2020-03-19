@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FreeChat.Styles.Fonts">
+
+
+    <x:String x:Key="FontAwesomeSearch">&#xf002;</x:String>
+
+    <!--Font Awesome-->
+    <OnPlatform x:Key="FontAwesome"
+                x:TypeArguments="x:String"
+                Android="Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free Solid"
+                iOS="Font Awesome 5 Free" />
+    <OnPlatform x:Key="FontAwesomeBrandsRegular"
+                x:TypeArguments="x:String"
+                Android="Font Awesome 5 Brands-Regular-400.otf#Font Awesome 5 Brands Regular"
+                iOS="Font Awesome 5 Brands" />
+
+    <!--Quick Sands-->
+    <OnPlatform x:Key="QuickSandBold"
+                x:TypeArguments="x:String"
+                Android="Quicksand-Bold.ttf#Quicksand"
+                iOS="Quicksand-Bold" />
+    
+    <OnPlatform x:Key="QuickSandLight"
+                x:TypeArguments="x:String"
+                Android="Quicksand-Light.ttf#Quicksand"
+                iOS="Quicksand-Light" />
+    
+    <OnPlatform x:Key="QuickSandRegular"
+                x:TypeArguments="x:String"
+                Android="Quicksand-Regular.ttf#Quicksand"
+                iOS="Quicksand-Regular" />
+
+
+    <Style x:Key="FontAwesomeLabel"
+           TargetType="{x:Type Label}">
+        <Setter Property="FontFamily"
+                Value="{StaticResource FontAwesome}" />
+    </Style>
+    <Style x:Key="FontAwesomeBrandLabel"
+           TargetType="{x:Type Label}">
+        <Setter Property="FontFamily"
+                Value="{StaticResource FontAwesomeBrandsRegular}" />
+    </Style>
+
+</ResourceDictionary>

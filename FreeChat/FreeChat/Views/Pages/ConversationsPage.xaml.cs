@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FreeChat.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace FreeChat.Views.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ConversationsPage : ContentPage
+    public partial class ConversationsPage : BasePage
     {
         public ConversationsPage()
         {
             InitializeComponent();
+            ViewModel = (IViewModel)BindingContext;
         }
     }
 }
