@@ -12,7 +12,8 @@
                 Title="{x:Static textRes:TextResources.Messages}"
                 x:Name="conversationsPage"
                 xmlns:effects="clr-namespace:FreeChat.Views.Effects"
-                BackgroundColor="#F4F5F9">
+                BackgroundColor="{StaticResource PrimaryColor}"
+                xmlns:customControls="clr-namespace:FreeChat.Views.CustomControls">
 
     <Shell.TitleView>
         <Grid Margin="0,10,0,0">
@@ -31,6 +32,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"/>
                 <RowDefinition />
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
@@ -64,8 +66,16 @@
                 </Grid>
             </pancakeView:PancakeView>
 
+            <customControls:ToggleButton HorizontalOptions="Center"
+                                         VerticalOptions="Center"
+                                         ToggleOptionTitle="Toggled"
+                                         Grid.Row="1"
+                                         NotToggledOptionTitle="NotToggled"/>
 
-            <pancakeView:PancakeView HeightRequest="30" Grid.Row="2"
+            <Label Grid.Row="2"
+                   Text="222222" />
+
+            <pancakeView:PancakeView HeightRequest="30" Grid.Row="3"
                                      HasShadow="True"
                                      Margin="0,0,0,-15"
                                      CornerRadius="50"

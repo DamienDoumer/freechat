@@ -7,6 +7,9 @@
              x:Class="FreeChat.Styles.ControlStyles">
 
 
+    <ResourceDictionary Source="Fonts.xaml" />
+    <ResourceDictionary Source="Colors.xaml" />
+
 
     <!--Labels-->
     <Style x:Key="BaseLabelStyle"
