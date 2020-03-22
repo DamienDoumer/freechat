@@ -28,7 +28,7 @@ namespace FreeChat.ViewModels
 
         public ICommand ConversationSelectedCommand { get; private set; }
         public ICommand FilterOptionChangedCommand { get; private set; }
-        
+
         public ConversationsViewModel(IDataStore<User> userDataStore, IConversationsDataStore convDataStore, 
             IMessageDataStore messageDataStore) 
             : base(userDataStore, convDataStore, messageDataStore)

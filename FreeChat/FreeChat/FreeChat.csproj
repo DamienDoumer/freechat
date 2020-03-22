@@ -6,9 +6,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\alfredo.jpg" />
+    <None Remove="Resources\Images\carelle.jpg" />
+    <None Remove="Resources\Images\john.jpg" />
+    <None Remove="Resources\Images\rea.jpg" />
+    <None Remove="Resources\Images\rebeca.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Images\alfredo.jpg" />
+    <EmbeddedResource Include="Resources\Images\carelle.jpg" />
+    <EmbeddedResource Include="Resources\Images\john.jpg" />
+    <EmbeddedResource Include="Resources\Images\rea.jpg" />
+    <EmbeddedResource Include="Resources\Images\rebeca.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Humanizer.Core" Version="2.7.9" />
     <PackageReference Include="ReactiveUI.Fody" Version="11.2.1" />
     <PackageReference Include="ReactiveUI.XamForms" Version="11.2.1" />
     <PackageReference Include="Splat" Version="9.3.11" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.5.0" />  
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.3.7" />

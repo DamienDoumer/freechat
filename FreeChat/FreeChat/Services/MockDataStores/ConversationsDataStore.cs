@@ -16,15 +16,15 @@ namespace FreeChat.Services.MockDataStores
             _conversations = new List<Conversation>();
             foreach (var user in users)
             {
+                int randomHours = new Random().Next(0, 24);
                 _conversations.Add(new Conversation
                 {
-                    CreationDate = DateTime.Now,
                     Id = Guid.NewGuid().ToString(),
                     LastMessage = new Message
                     {
                         Content = "Hello, how are you ?",
                         ISent = true,
-                        
+                        CreationDate = DateTime.UtcNow - TimeSpan.FromHours(randomHours)
                     },
                     Peer = user,
                     UserIds = new string[] { currentUser.Id, user.Id }

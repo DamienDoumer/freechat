@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:valueConverters="clr-namespace:FreeChat.Styles.ValueConverters"
              x:Class="FreeChat.App">
     <Application.Resources>
         
@@ -11,6 +12,11 @@
         <ResourceDictionary Source="Styles/Colors.xaml" />
         <ResourceDictionary Source="Styles/ControlStyles.xaml" />
         
+        <!--Value Converters-->
+        <valueConverters:DateHUmanizerConverter x:Key="DatehumanizerConverter"/>
+        <valueConverters:ImageResourceValueConverter x:Key="ImageResourceConverter" />
+
+
         <Style x:Key="BaseStyle"
                TargetType="Element">
             <Setter Property="Shell.BackgroundColor"

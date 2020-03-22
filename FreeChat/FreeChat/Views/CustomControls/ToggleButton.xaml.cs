@@ -40,31 +40,6 @@ namespace FreeChat.Views.CustomControls
         }
         #endregion
 
-
-        #region NotToggledCommand
-        public static readonly BindableProperty NotToggledCommandProperty = BindableProperty.Create(nameof(NotToggledCommand), typeof(ICommand), typeof(ToggleButton), propertyChanged: (obj, old, newV) =>
-        {
-            var me = obj as ToggleButton;
-            if (newV != null && !(newV is ICommand)) return;
-            var oldNotToggledCommand = (ICommand)old;
-            var newNotToggledCommand = (ICommand)newV;
-            me?.NotToggledCommandChanged(oldNotToggledCommand, newNotToggledCommand);
-        });
-
-        private void NotToggledCommandChanged(ICommand oldNotToggledCommand, ICommand newNotToggledCommand)
-        {
-
-        }
-
-        /// <summary>
-        /// A bindable property
-        /// </summary>
-        public ICommand NotToggledCommand
-        {
-            get => (ICommand)GetValue(NotToggledCommandProperty);
-            set => SetValue(NotToggledCommandProperty, value);
-        }
-        #endregion
         #region IsToggled
         public static readonly BindableProperty IsToggledProperty = BindableProperty.Create(nameof(IsToggled), typeof(bool), typeof(ToggleButton), propertyChanged: (obj, old, newV) =>
         {
@@ -153,11 +128,19 @@ namespace FreeChat.Views.CustomControls
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             IsToggled = true;
+            if ((bool)ToggleCommand?.CanExecute(IsToggled))
+            {
+                ToggleCommand.Execute(IsToggled);
+            }
         }
 
         private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
             IsToggled = false;
+            if ((bool)ToggleCommand?.CanExecute(IsToggled))
+            {
+                ToggleCommand.Execute(IsToggled);
+            }
         }
     }
 }

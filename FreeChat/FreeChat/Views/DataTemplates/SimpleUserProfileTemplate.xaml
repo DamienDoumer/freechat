@@ -4,10 +4,55 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:ffimageTransform="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:ffimageLoader="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:models="clr-namespace:Models;assembly=Models"
+             xmlns:markupExtensions="clr-namespace:FreeChat.Styles.MarkupExtensions"
              x:Class="FreeChat.Views.DataTemplates.SimpleUserProfileTemplate">
   <ContentView.Content>
-      <StackLayout>
-          <Label Text="Hello Xamarin.Forms!" />
-      </StackLayout>
+        <Grid d:HorizontalOptions="Center" d:VerticalOptions="Center"
+              Margin="0,15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <ffimageLoader:CachedImage Source="{Binding ProfilePic, Converter={StaticResource ImageResourceConverter}}"
+                                       Margin="10" BackgroundColor="Red"
+                                       d:Source="{markupExtensions:ImageResourceMarkupExtension FreeChat.Resources.Images.john.jpg}">
+                
+                <ffimageLoader:CachedImage.Transformations>
+                    <ffimageTransform:CircleTransformation />
+                </ffimageLoader:CachedImage.Transformations>
+            </ffimageLoader:CachedImage>
+
+            <StackLayout Grid.Column="1" Spacing="5">
+                <Label FontFamily="{StaticResource QuickSandBold}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding Peer.FirstName}" />
+                            <Span Text=" " />
+                            <Span Text="{Binding Peer.LastName}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Text="{Binding LastMessage.Content}" 
+                       TextColor="{StaticResource SecondaryTextColor}"
+                       FontFamily="{StaticResource QuickSandRegular}"/>
+            </StackLayout>
+
+            <Label Text="{Binding LastMessage.CreationDate, Converter={StaticResource DatehumanizerConverter}}" 
+                   Grid.Column="2"
+                   HorizontalTextAlignment="End"
+                   VerticalOptions="Center"
+                   FontSize="Caption"
+                   TextColor="{StaticResource SecondaryTextColor}"
+                   FontFamily="{StaticResource QuickSandRegular}"
+                   HorizontalOptions="Center"
+                   Margin="10"/>
+            
+
+        </Grid>
   </ContentView.Content>
 </ContentView>

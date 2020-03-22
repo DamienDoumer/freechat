@@ -15,16 +15,20 @@ namespace FreeChat.Services.MockDataStores
         {
             _users = new List<User>();
 
-            _users.Add(new User("Alfredo", "Stephano", "I like chatting online and making new friends on social media", "alfredo.png", 5, 230)
+            _users.Add(new User("Alfredo", "Stephano", "I like chatting online and making new friends on social media",
+                "alfredo.jpg", 5, 230)
             { Id = Guid.NewGuid().ToString(), IsOnline = true });
             _users.Add(new User("Carelle", "du Pont", "Chatting is sooooo fun and, you can come and talk to me if you are bored or in need of some random conversation."
-                , "carelle.png", 10, 1500)
+                , "carelle.jpg", 10, 1500)
             { Id = Guid.NewGuid().ToString() });
-            _users.Add(new User("Rebeca", "Wong", "I'm funny, I like playing baket ball and watching movies. I like talking here too. Lets have a talk", 
-                "rebeca.png", 15, 100)
+            _users.Add(new User("Rebeca", "Wong", "I'm funny, I like playing baket ball and watching movies. I like talking here too. Lets have a talk",
+                "rebeca.jpg", 15, 100)
             { Id = Guid.NewGuid().ToString() });
-            _users.Add(new User("Rea", "Mogolar", "Lets chat and have fun !!!", "rea.png", 5, 230)
-            { Id = Guid.NewGuid().ToString(), IsOnline = true });
+            _users.Add(new User("John", "Wong", "I'm funny, I like playing baket ball and watching movies. I like talking here too. Lets have a talk",
+                "john.jpg", 2, 10)
+            { Id = Guid.NewGuid().ToString() });
+            _users.Add(new User("Rea", "Mogolar", "Lets chat and have fun !!!", "rea.jpg", 5, 230)
+            { Id = Guid.NewGuid().ToString() });
         }
 
         public Task<bool> AddItemAsync(User item)

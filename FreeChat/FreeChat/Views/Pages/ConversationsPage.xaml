@@ -13,8 +13,10 @@
                 x:Name="conversationsPage"
                 xmlns:effects="clr-namespace:FreeChat.Views.Effects"
                 BackgroundColor="{StaticResource PrimaryColor}"
-                xmlns:customControls="clr-namespace:FreeChat.Views.CustomControls">
+                xmlns:customControls="clr-namespace:FreeChat.Views.CustomControls"
+                xmlns:dataTemplates="clr-namespace:FreeChat.Views.DataTemplates">
 
+    <!--BackgroundColor="{StaticResource PrimaryColor}"-->
     <Shell.TitleView>
         <Grid Margin="0,10,0,0">
             <Label Text="{Binding Title, Source={x:Reference conversationsPage}}"
@@ -31,55 +33,97 @@
         </CollectionView>-->
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto"/>
                 <RowDefinition />
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <pancakeView:PancakeView HeightRequest="60"
-                                     HasShadow="True"
-                                     Margin="10"
-                                     CornerRadius="20"
-                                     BackgroundColor="#F4F5F9">
-                <Grid Margin="20,10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
+
+            <Grid Grid.RowSpan="2"
+                  Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <pancakeView:PancakeView BackgroundGradientStartColor="LightGray"
+                                         BackgroundGradientEndColor="Transparent"
+                                         Margin="15,20,15,-10"
+                                         CornerRadius="30"
+                                         HeightRequest="60" />
+                <pancakeView:PancakeView HasShadow="False"
+                                         CornerRadius="20"
+                                         Margin="15,10,15,10"
+                                         HeightRequest="60"
+                                         BackgroundColor="White">
+                    <Grid Margin="20,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Entry Placeholder="Search"
+                               Text="{Binding SearchText}"
+                               VerticalOptions="Center"
+                               FontFamily="{StaticResource QuickSandBold}"
+                               FontAttributes="Bold">
+                            <Entry.Effects>
+                                <effects:BorderlessEntryEffect />
+                            </Entry.Effects>
+                        </Entry>
+                        <Label Style="{StaticResource FontAwesomeLabel}"
+                               Text="{StaticResource FontAwesomeSearch}"
+                               Grid.Column="1"
+                               FontSize="Large"
+                               TextColor="LightGray"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
+                    </Grid>
+                </pancakeView:PancakeView>
+
+                <customControls:ToggleButton HorizontalOptions="Start"
+                                             Margin="15,10,15,10"
+                                             VerticalOptions="Center"
+                                             ToggleOptionTitle="All"
+                                             Grid.Row="1"
+                                             ToggleCommand="{Binding FilterOptionChangedCommand}"
+                                             NotToggledOptionTitle="Online (28)" />
+
+
+                <CollectionView ItemsSource="{Binding Conversations}"
+                                Grid.Row="2"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <dataTemplates:SimpleUserProfileTemplate />
+                                <pancakeView:PancakeView BackgroundGradientStartColor="LightGray"
+                                                         BackgroundGradientEndColor="Transparent"
+                                                         HeightRequest="1"
+                                                         Grid.Row="1"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
                     
-                    <Entry Placeholder="Search"
-                           Text="{Binding SearchText}"
-                           VerticalOptions="Center"
-                           FontFamily="{StaticResource QuickSandBold}"
-                           FontAttributes="Bold">
-                        <Entry.Effects>
-                            <effects:BorderlessEntryEffect />
-                        </Entry.Effects>
-                    </Entry>
-                    <Label Style="{StaticResource FontAwesomeLabel}"
-                           Text="{StaticResource FontAwesomeSearch}"
-                           Grid.Column="1" FontSize="Large"
-                           TextColor="LightGray"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"/>
-                </Grid>
-            </pancakeView:PancakeView>
+                </CollectionView>
 
-            <customControls:ToggleButton HorizontalOptions="Center"
-                                         VerticalOptions="Center"
-                                         ToggleOptionTitle="Toggled"
-                                         Grid.Row="1"
-                                         NotToggledOptionTitle="NotToggled"/>
 
-            <Label Grid.Row="2"
-                   Text="222222" />
+            </Grid>
 
-            <pancakeView:PancakeView HeightRequest="30" Grid.Row="3"
+            
+            <pancakeView:PancakeView HeightRequest="30"
                                      HasShadow="True"
+                                     Grid.Row="1"
                                      Margin="0,0,0,-15"
                                      CornerRadius="50"
-                                     BackgroundColor="White"/>
+                                     BackgroundColor="White" />
         </Grid>
+ 
     </ContentPage.Content>
 </local:BasePage>
