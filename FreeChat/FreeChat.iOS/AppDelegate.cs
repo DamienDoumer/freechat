@@ -25,6 +25,7 @@ namespace FreeChat.iOS
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
             CachedImageRenderer.Init();
+            XamEffects.iOS.Effects.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

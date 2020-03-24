@@ -8,6 +8,9 @@
 
 
     <x:String x:Key="FontAwesomeSearch">&#xf002;</x:String>
+    <x:String x:Key="FontAwesomeHome">&#xf015;</x:String>
+    <x:String x:Key="FontAwesomeCog">&#xf013;</x:String>
+    <x:String x:Key="FontAwesomeComment">&#xf27a;</x:String>
 
     <!--Font Awesome-->
     <OnPlatform x:Key="FontAwesome"

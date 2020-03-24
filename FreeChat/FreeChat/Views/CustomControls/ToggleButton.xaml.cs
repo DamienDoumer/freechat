@@ -41,7 +41,7 @@ namespace FreeChat.Views.CustomControls
         #endregion
 
         #region IsToggled
-        public static readonly BindableProperty IsToggledProperty = BindableProperty.Create(nameof(IsToggled), typeof(bool), typeof(ToggleButton), propertyChanged: (obj, old, newV) =>
+        public static readonly BindableProperty IsToggledProperty = BindableProperty.Create(nameof(IsToggled), typeof(bool), typeof(ToggleButton), defaultValue: true, propertyChanged: (obj, old, newV) =>
         {
             var me = obj as ToggleButton;
             if (newV != null && !(newV is bool)) return;

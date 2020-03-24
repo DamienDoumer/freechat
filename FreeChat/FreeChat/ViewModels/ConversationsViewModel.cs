@@ -4,6 +4,7 @@ using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -42,9 +43,18 @@ namespace FreeChat.ViewModels
             return Task.CompletedTask;
         }
 
-        Task FilterOptionChanged(bool isOnline)
+        async Task FilterOptionChanged(bool notOnline)
         {
-            return Task.CompletedTask;
+            if (!notOnline)
+            {
+                var conversations = await _conversationDataStore.GetConversationsForUser(AppLocator.CurrentUserId);
+                Conversations = new ObservableCollection<Conversation>(conversations.Where(c => c.Peer.IsOnline));
+            }
+            else
+            {
+                var conversations = await _conversationDataStore.GetConversationsForUser(AppLocator.CurrentUserId);
+                Conversations = new ObservableCollection<Conversation>(conversations);
+            }
         }
 
         public override async Task Initialize()

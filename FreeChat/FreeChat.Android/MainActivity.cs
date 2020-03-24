@@ -24,6 +24,7 @@ namespace FreeChat.Droid
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            XamEffects.Droid.Effects.Init();
             CachedImageRenderer.Init(true);
             LoadApplication(new App());
         }

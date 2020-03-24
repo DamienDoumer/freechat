@@ -13,6 +13,7 @@
                 x:Name="conversationsPage"
                 xmlns:effects="clr-namespace:FreeChat.Views.Effects"
                 BackgroundColor="{StaticResource PrimaryColor}"
+                xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
                 xmlns:customControls="clr-namespace:FreeChat.Views.CustomControls"
                 xmlns:dataTemplates="clr-namespace:FreeChat.Views.DataTemplates">
 
@@ -97,7 +98,9 @@
 
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid>
+                            <Grid xe:TouchEffect.Color="LightGray"
+                                  xe:Commands.Tap="{Binding BindingContext.ConversationSelectedCommand, Source={x:Reference conversationsPage}}"
+                                  xe:Commands.TapParameter="{Binding}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition />
                                     <RowDefinition Height="Auto"/>

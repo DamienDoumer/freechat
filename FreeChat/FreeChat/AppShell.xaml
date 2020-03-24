@@ -11,10 +11,10 @@
 
     <TabBar>
         <Tab Title="{x:Static textRes:TextResources.Chat}"
-             Icon="tab_about.png">
+             Icon="{FontImage Glyph={StaticResource FontAwesomeComment}, FontFamily={StaticResource FontAwesome}}">
             <ShellContent ContentTemplate="{DataTemplate pages:ConversationsPage}" />
         </Tab>
-        <Tab Title="{x:Static textRes:TextResources.Settings}" Icon="tab_feed.png">
+        <Tab Title="{x:Static textRes:TextResources.Settings}" Icon="{FontImage Glyph={StaticResource FontAwesomeCog}, FontFamily={StaticResource FontAwesome}}">
             <ShellContent ContentTemplate="{DataTemplate pages:SettingsPage}" />
         </Tab>
     </TabBar>
