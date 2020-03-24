@@ -103,7 +103,7 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <dataTemplates:SimpleUserProfileTemplate />
-                                <pancakeView:PancakeView BackgroundGradientStartColor="LightGray"
+                                <pancakeView:PancakeView BackgroundGradientStartColor="#D8D8D8"
                                                          BackgroundGradientEndColor="Transparent"
                                                          HeightRequest="1"
                                                          Grid.Row="1"/>

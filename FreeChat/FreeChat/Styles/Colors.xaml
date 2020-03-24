@@ -11,6 +11,7 @@
     <Color x:Key="PrimaryColor">#F4F5F9</Color>
     <Color x:Key="PrimaryTextColor">#303C5E</Color>
     <Color x:Key="SecondaryTextColor">#979DAB</Color>
+    <Color x:Key="ConnectedColor">#4fc84a</Color>
     
 </ResourceDictionary>
     

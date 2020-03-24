@@ -8,26 +8,50 @@
              xmlns:ffimageLoader="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:models="clr-namespace:Models;assembly=Models"
              xmlns:markupExtensions="clr-namespace:FreeChat.Styles.MarkupExtensions"
-             x:Class="FreeChat.Views.DataTemplates.SimpleUserProfileTemplate">
+             x:Class="FreeChat.Views.DataTemplates.SimpleUserProfileTemplate"
+             HeightRequest="100">
   <ContentView.Content>
-        <Grid d:HorizontalOptions="Center" d:VerticalOptions="Center"
-              Margin="0,15">
+        <Grid Margin="0,15">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition />
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <ffimageLoader:CachedImage Source="{Binding ProfilePic, Converter={StaticResource ImageResourceConverter}}"
-                                       Margin="10" BackgroundColor="Red"
-                                       d:Source="{markupExtensions:ImageResourceMarkupExtension FreeChat.Resources.Images.john.jpg}">
-                
-                <ffimageLoader:CachedImage.Transformations>
-                    <ffimageTransform:CircleTransformation />
-                </ffimageLoader:CachedImage.Transformations>
-            </ffimageLoader:CachedImage>
+            <Grid WidthRequest="70"
+                  Margin="10,0,5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-            <StackLayout Grid.Column="1" Spacing="5">
+                <ffimageLoader:CachedImage Grid.ColumnSpan="2"
+                                           Grid.RowSpan="2"
+                                           HeightRequest="70"
+                                           WidthRequest="70"
+                                           Source="{Binding Peer.ProfilePic, Converter={StaticResource ImageResourceConverter}}">
+                                           <!--Source="{markupExtensions:ImageResourceMarkupExtension Source=FreeChat.Resources.Images.john.jpg}">-->
+
+                    <ffimageLoader:CachedImage.Transformations>
+                        <ffimageTransform:CircleTransformation />
+                    </ffimageLoader:CachedImage.Transformations>
+                </ffimageLoader:CachedImage>
+
+                <BoxView CornerRadius="90"
+                         BackgroundColor="{StaticResource ConnectedColor}"
+                         Grid.Column="1" Grid.Row="1"
+                         HeightRequest="12" WidthRequest="12"
+                         Margin="0,0,5,5"
+                         IsVisible="{Binding Peer.IsOnline}"/>
+
+            </Grid>
+            
+            <StackLayout Grid.Column="1" Spacing="5"
+                         VerticalOptions="Center">
                 <Label FontFamily="{StaticResource QuickSandBold}">
                     <Label.FormattedText>
                         <FormattedString>
@@ -37,8 +61,9 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label Text="{Binding LastMessage.Content}" 
+                <Label Text="{Binding LastMessage.Content}"
                        TextColor="{StaticResource SecondaryTextColor}"
+                       LineBreakMode="TailTruncation"
                        FontFamily="{StaticResource QuickSandRegular}"/>
             </StackLayout>
 
