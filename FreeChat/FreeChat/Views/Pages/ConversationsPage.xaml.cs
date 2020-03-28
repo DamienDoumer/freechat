@@ -13,10 +13,9 @@ namespace FreeChat.Views.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ConversationsPage : BasePage
     {
-        public ConversationsPage()
+        public ConversationsPage() 
         {
             InitializeComponent();
-            ViewModel = (IViewModel)BindingContext;
         }
     }
 }

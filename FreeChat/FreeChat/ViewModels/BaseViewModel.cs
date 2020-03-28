@@ -24,6 +24,7 @@ namespace FreeChat.ViewModels
         protected IDataStore<User> _userDataStore;
         protected IMessageDataStore _messageDataStore;
         protected IConversationsDataStore _conversationDataStore;
+        protected IObservable<bool> _notBusyObservable;
 
         public BaseViewModel(IDataStore<User> userDataStore, 
             IConversationsDataStore convDataStore, IMessageDataStore messageDataStore)
@@ -31,6 +32,7 @@ namespace FreeChat.ViewModels
             _conversationDataStore = convDataStore;
             _messageDataStore = messageDataStore;
             _userDataStore = userDataStore;
+            _notBusyObservable = this.WhenAnyValue(vm => vm.IsBusy, isBusy => !isBusy);
         }
 
         public abstract Task Initialize();

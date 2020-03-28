@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace FreeChat.Views.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MessagesPage : ContentPage
+    public partial class MessagesPage : BasePage
     {
         public MessagesPage()
         {

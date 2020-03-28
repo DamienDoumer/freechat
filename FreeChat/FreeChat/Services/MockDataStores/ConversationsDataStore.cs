@@ -55,7 +55,7 @@ namespace FreeChat.Services.MockDataStores
 
         public Task<Conversation> GetItemAsync(string id)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(_conversations.Where(c => c.Id == id).FirstOrDefault());
         }
 
         public Task<IEnumerable<Conversation>> GetItemsAsync(bool forceRefresh = false)

@@ -1,4 +1,5 @@
 ﻿using FreeChat.Services;
+using FreeChat.Services.Navigation;
 using Models;
 using ReactiveUI;
 using System;
@@ -13,6 +14,7 @@ namespace FreeChat.ViewModels
 {
     public class ConversationsViewModel : BaseViewModel
     {
+        INavigationService _navigationService;
         private string _searchText;
         public string SearchText
         {
@@ -31,20 +33,22 @@ namespace FreeChat.ViewModels
         public ICommand FilterOptionChangedCommand { get; private set; }
 
         public ConversationsViewModel(IDataStore<User> userDataStore, IConversationsDataStore convDataStore, 
-            IMessageDataStore messageDataStore) 
+            IMessageDataStore messageDataStore, INavigationService navigationService) 
             : base(userDataStore, convDataStore, messageDataStore)
         {
+            _navigationService = navigationService;
             ConversationSelectedCommand = ReactiveCommand.CreateFromTask<Conversation>(ConversationSelected);
-            FilterOptionChangedCommand = ReactiveCommand.CreateFromTask<bool>(FilterOptionChanged);
+            FilterOptionChangedCommand = ReactiveCommand.CreateFromTask<bool>(FilterOptionChanged, _notBusyObservable);
         }
 
         Task ConversationSelected(Conversation conversation)
         {
-            return Task.CompletedTask;
+            return _navigationService.GotoPage($"{Constants.MessagesPageUrl}?conversation_id={conversation.Id}");
         }
 
         async Task FilterOptionChanged(bool notOnline)
         {
+            IsBusy = true;
             if (!notOnline)
             {
                 var conversations = await _conversationDataStore.GetConversationsForUser(AppLocator.CurrentUserId);
@@ -55,6 +59,7 @@ namespace FreeChat.ViewModels
                 var conversations = await _conversationDataStore.GetConversationsForUser(AppLocator.CurrentUserId);
                 Conversations = new ObservableCollection<Conversation>(conversations);
             }
+            IsBusy = false;
         }
 
         public override async Task Initialize()

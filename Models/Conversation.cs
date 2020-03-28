@@ -14,7 +14,12 @@ namespace Models
 			get { return _lastMessage; }
 			set { SetProperty(ref _lastMessage, value); }
 		}
-		public User Peer { get; set; }
+		User _peer;
+		public User Peer
+		{
+			get => _peer;
+			set => SetProperty(ref _peer, value);
+		}
 
 		public Conversation()
 		{

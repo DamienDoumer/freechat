@@ -6,11 +6,15 @@
              mc:Ignorable="d"
              x:Class="FreeChat.Styles.Fonts">
 
+    <ResourceDictionary Source="Colors.xaml" />
 
     <x:String x:Key="FontAwesomeSearch">&#xf002;</x:String>
     <x:String x:Key="FontAwesomeHome">&#xf015;</x:String>
     <x:String x:Key="FontAwesomeCog">&#xf013;</x:String>
     <x:String x:Key="FontAwesomeComment">&#xf27a;</x:String>
+    <x:String x:Key="FontAwesomeChevronLeft">&#xf053;</x:String>
+    <x:String x:Key="FontAwesomePhone">&#xf095;</x:String>
+    <x:String x:Key="FontAwesomeVideo">&#xf03d;</x:String>
 
     <!--Font Awesome-->
     <OnPlatform x:Key="FontAwesome"
@@ -43,6 +47,7 @@
            TargetType="{x:Type Label}">
         <Setter Property="FontFamily"
                 Value="{StaticResource FontAwesome}" />
+        <Setter Property="TextColor" Value="{StaticResource AccentColor}"/>
     </Style>
     <Style x:Key="FontAwesomeBrandLabel"
            TargetType="{x:Type Label}">

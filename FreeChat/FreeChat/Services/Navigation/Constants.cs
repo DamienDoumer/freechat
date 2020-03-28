@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FreeChat.Services.Navigation
 {
-    public interface INavigationService
+    public class Constants
     {
-        Task GotoPage(string route);
+        public const string MessagesPageUrl = "MessagesPage";
     }
 }

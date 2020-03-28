@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FreeChat.Services.Navigation;
+using FreeChat.Views.Pages;
+using System;
 using System.Collections.Generic;
 
 using Xamarin.Forms;
@@ -10,6 +12,7 @@ namespace FreeChat
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute(Constants.MessagesPageUrl, typeof(MessagesPage));
         }
     }
 }
