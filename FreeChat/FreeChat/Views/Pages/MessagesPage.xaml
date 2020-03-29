@@ -10,7 +10,11 @@
                 xmlns:dataTemplates="clr-namespace:FreeChat.Views.DataTemplates"
                 xmlns:root="clr-namespace:FreeChat"
                 xmlns:local="clr-namespace:FreeChat.Views.Pages"
-                BindingContext="{x:Static root:AppLocator.MessagesViewModel}">
+                xmlns:effects="clr-namespace:FreeChat.Views.Effects"
+                xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
+                xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                BindingContext="{x:Static root:AppLocator.MessagesViewModel}"
+                x:Name="MessagePagecmdeio">
 
     <ContentPage.Content>
         
@@ -20,33 +24,144 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <Grid>
+            <Grid Margin="0,-10 ,0,0"
+                  VerticalOptions="Start">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="{StaticResource FontAwesomeChevronLeft}"
-                           FontSize="Large"
-                       Style="{StaticResource FontAwesomeLabel}"
-                       Margin="5"/>
+                <pancakeView:PancakeView Margin="10,0,0,0"
+                                         HorizontalOptions="Start"
+                                         VerticalOptions="Center"
+                                         xe:TouchEffect.Color="LightGray"
+                                         HeightRequest="30" WidthRequest="30"
+                                         xe:EffectsConfig.ChildrenInputTransparent="False"
+                                         xe:Commands.Tap="{Binding Source={x:Reference MessagePagecmdeio}, Path=BackCommand}"
+                                         CornerRadius="90">
+                    <Label Text="{StaticResource FontAwesomeChevronLeft}"
+                            FontSize="Large" HorizontalOptions="Center"
+                            Style="{StaticResource FontAwesomeLabel}"/>
+                </pancakeView:PancakeView>
 
                 <dataTemplates:SimpleUserProfileTemplate BindingContext="{Binding CurrentConversation}"
-                                                         Grid.Column="1"/>
+                                                         Grid.Column="1"
+                                                         IsInTitle="True"
+                                                         Margin="-10,0,0,0"/>
 
                 <StackLayout Orientation="Horizontal" Grid.Column="2"
                              VerticalOptions="Center"
                              HorizontalOptions="End"
-                             Margin="5" Spacing="5">
+                             Margin="5" Spacing="30">
                     <Label Style="{StaticResource FontAwesomeLabel}"
                            Text="{StaticResource FontAwesomePhone}"
                            FontSize="Large"/>
                     <Label Style="{StaticResource FontAwesomeLabel}"
                            Text="{StaticResource FontAwesomeVideo}"
-                           FontSize="Large"/>
+                           FontSize="Large"
+                           Margin="0,0,20,0"/>
                 </StackLayout>
 
+            </Grid>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <CollectionView ItemsSource="{Binding Messages}">
+                    
+                </CollectionView>
+
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <pancakeView:PancakeView BackgroundGradientStartColor="Transparent"
+                                             BackgroundGradientEndColor="LightGray"
+                                             Margin="10,-22,5,10" InputTransparent="True"
+                                             CornerRadius="30"
+                                             HeightRequest="60" />
+                    
+                    <pancakeView:PancakeView HasShadow="False"
+                                         CornerRadius="20"
+                                         Margin="10,0,5,10"
+                                         BackgroundColor="White">
+                        <Grid Margin="20,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.ColumnSpan="2"
+                                  Padding="5" BindingContext="{Binding ReplyMessage}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <BoxView WidthRequest="3" BackgroundColor="{StaticResource AccentColor}"/>
+                                <Label Text="{Binding Content}"
+                                       LineBreakMode="TailTruncation"
+                                       Grid.Column="1"/>
+                                <pancakeView:PancakeView Grid.Column="2"
+                                                         xe:TouchEffect.Color="LightGray"
+                                                         xe:Commands.Tap="{Binding BindingContext.CancelReplyCommand, Source={x:Reference MessagePagecmdeio}}">
+                                    <Label Text="{StaticResource FontAwesomeTimes}"
+                                           Style="{StaticResource FontAwesomeLabel}"
+                                           VerticalOptions="Center"/>
+                                </pancakeView:PancakeView>
+                            </Grid>
+
+                            <Entry Placeholder="Message"
+                                   Grid.Row="1"
+                                   Text="{Binding SearchText}"
+                                   VerticalOptions="Center"
+                                   FontFamily="{StaticResource QuickSandBold}"
+                                   FontAttributes="Bold">
+                                <Entry.Effects>
+                                    <effects:BorderlessEntryEffect />
+                                </Entry.Effects>
+                            </Entry>
+                            <pancakeView:PancakeView CornerRadius="90"
+                                                     Grid.Row="1"
+                                                     Grid.Column="1"
+                                                     Margin="5,0,0,0"
+                                                     xe:TouchEffect.Color="LightGray">
+                                <Label Style="{StaticResource FontAwesomeLabel}"
+                                       Text="{StaticResource FontAwesomePaperClip}"
+                                       FontSize="Large"
+                                       TextColor="{StaticResource PrimaryTextColor}"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
+                            </pancakeView:PancakeView>
+                            
+                        </Grid>
+                    </pancakeView:PancakeView>
+
+                    <pancakeView:PancakeView CornerRadius="18"
+                                             Grid.Column="1" WidthRequest="55" HeightRequest="50"
+                                             HorizontalOptions="Center" VerticalOptions="Center"
+                                             BackgroundColor="{StaticResource AccentColor}"
+                                             xe:TouchEffect.Color="LightGray"
+                                             Margin="5,0,10,0">
+                        <Label HorizontalOptions="Center"
+                               VerticalOptions="Center"  FontSize="Large"
+                               TextColor="{StaticResource PrimaryColor}"
+                               Style="{StaticResource FontAwesomeLabel}"
+                               Text="{StaticResource FontAwesomePaperPlane}"/>
+                    </pancakeView:PancakeView>
+                </Grid>
+                
             </Grid>
 
         </Grid>

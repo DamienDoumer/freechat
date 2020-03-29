@@ -15,6 +15,9 @@
     <x:String x:Key="FontAwesomeChevronLeft">&#xf053;</x:String>
     <x:String x:Key="FontAwesomePhone">&#xf095;</x:String>
     <x:String x:Key="FontAwesomeVideo">&#xf03d;</x:String>
+    <x:String x:Key="FontAwesomePaperClip">&#xf0c6;</x:String>
+    <x:String x:Key="FontAwesomePaperPlane">&#xf1d8;</x:String>
+    <x:String x:Key="FontAwesomeTimes">&#xf00d;</x:String>
 
     <!--Font Awesome-->
     <OnPlatform x:Key="FontAwesome"

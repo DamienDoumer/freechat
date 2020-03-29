@@ -22,7 +22,8 @@ namespace FreeChat.ViewModels
             set => this.RaiseAndSetIfChanged(ref _conversation, value);
         }
         public ICommand SendMessageCommand { get; private set; }
-        public ICommand MessageSwipped { get; private set; }
+        public ICommand MessageSwippedCommand { get; private set; }
+        public ICommand CancelReplyCommand { get; private set; }
         Message _replyMessage;
         public Message ReplyMessage
         {
@@ -43,8 +44,14 @@ namespace FreeChat.ViewModels
         public MessagesViewModel(IDataStore<User> userDataStore, IConversationsDataStore convDataStore, 
             IMessageDataStore messageDataStore) : base(userDataStore, convDataStore, messageDataStore)
         {
-            MessageSwipped = ReactiveCommand.Create<Message>(MessageSwiped);
+            MessageSwippedCommand = ReactiveCommand.Create<Message>(MessageSwiped);
             SendMessageCommand = ReactiveCommand.CreateFromTask(SendMeessage);
+            CancelReplyCommand = ReactiveCommand.Create(CancelReply);
+        }
+
+        public void CancelReply()
+        {
+            ReplyMessage = null;
         }
 
         public async override Task Initialize()

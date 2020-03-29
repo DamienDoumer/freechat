@@ -33,11 +33,22 @@
 
                 <ffimageLoader:CachedImage Grid.ColumnSpan="2"
                                            Grid.RowSpan="2"
-                                           HeightRequest="70"
-                                           WidthRequest="70"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           HeightRequest="60"
+                                           WidthRequest="60"
                                            d:Source="{markupExtensions:ImageResourceMarkupExtension Source=FreeChat.Resources.Images.john.jpg}"
                                            Source="{Binding Peer.ProfilePic, Converter={StaticResource ImageResourceConverter}}">
 
+                    <ffimageLoader:CachedImage.Triggers>
+                        <DataTrigger TargetType="ffimageLoader:CachedImage"
+                                     Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                     Value="True">
+                            <Setter Property="HeightRequest" Value="45"/>
+                            <Setter Property="WidthRequest" Value="45"/>
+                        </DataTrigger>
+                    </ffimageLoader:CachedImage.Triggers>
+                    
                     <ffimageLoader:CachedImage.Transformations>
                         <ffimageTransform:CircleTransformation />
                     </ffimageLoader:CachedImage.Transformations>
@@ -47,14 +58,43 @@
                          BackgroundColor="{StaticResource ConnectedColor}"
                          Grid.Column="1" Grid.Row="1"
                          HeightRequest="12" WidthRequest="12"
-                         Margin="0,0,5,5"
-                         IsVisible="{Binding Peer.IsOnline}"/>
+                         Margin="0,0,8,8"
+                         IsVisible="{Binding Peer.IsOnline}">
+                    <BoxView.Triggers>
+                        <DataTrigger TargetType="BoxView"
+                                     Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                     Value="True">
+                            <Setter Property="Margin" Value="0,0,15,15"/>
+                            <Setter Property="HeightRequest" Value="10"/>
+                            <Setter Property="WidthRequest" Value="10"/>
+                        </DataTrigger>
+                    </BoxView.Triggers>
+                </BoxView>
 
             </Grid>
             
             <StackLayout Grid.Column="1" Spacing="5"
                          VerticalOptions="Center">
-                <Label FontFamily="{StaticResource QuickSandBold}">
+                <StackLayout.Triggers>
+                    <MultiTrigger TargetType="StackLayout">
+                        <MultiTrigger.Conditions>
+                            <BindingCondition Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                              Value="True"/>
+                            <BindingCondition Binding="{Binding Peer.IsOnline}" Value="False"/>
+                        </MultiTrigger.Conditions>
+                        <MultiTrigger.Setters>
+                            <Setter Property="VerticalOptions" Value="End"/>
+                        </MultiTrigger.Setters>
+                    </MultiTrigger>
+                    <DataTrigger TargetType="StackLayout"
+                                 Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                 Value="True">
+                        <Setter Property="Margin" Value="-10,0,0,0"/>
+                    </DataTrigger>
+                </StackLayout.Triggers>
+                
+                <Label FontFamily="{StaticResource QuickSandBold}"
+                       LineBreakMode="TailTruncation">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{Binding Peer.FirstName}" />
@@ -63,10 +103,35 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label Text="{Binding LastMessage.Content}"
-                       TextColor="{StaticResource SecondaryTextColor}"
-                       LineBreakMode="TailTruncation"
-                       FontFamily="{StaticResource QuickSandRegular}"/>
+                
+                <ContentView>
+                    <ContentView.Triggers>
+                        <DataTrigger TargetType="ContentView"
+                                     Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                     Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <Label TextColor="{StaticResource SecondaryTextColor}"
+                                           FontFamily="{StaticResource QuickSandRegular}">
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label" 
+                                                         Binding="{Binding Peer.IsOnline}"
+                                                         Value="True">
+                                                <Setter Property="Text" Value="Online"/>
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </ContentView.Triggers>
+                    
+                    <Label Text="{Binding LastMessage.Content}"
+                           TextColor="{StaticResource SecondaryTextColor}"
+                           LineBreakMode="TailTruncation"
+                           FontFamily="{StaticResource QuickSandRegular}"/>
+                    
+                </ContentView>
             </StackLayout>
 
             <Label Text="{Binding LastMessage.CreationDate, Converter={StaticResource DatehumanizerConverter}}" 
@@ -77,7 +142,15 @@
                    TextColor="{StaticResource SecondaryTextColor}"
                    FontFamily="{StaticResource QuickSandRegular}"
                    HorizontalOptions="Center"
-                   Margin="10"/>
+                   Margin="10">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" 
+                                 Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                 Value="True">
+                        <Setter Property="IsVisible" Value="False"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
             
         </Grid>
   </ContentView.Content>
