@@ -65,13 +65,54 @@
 
             </Grid>
 
-            <Grid>
+            <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <CollectionView ItemsSource="{Binding Messages}">
+                <CollectionView ItemsSource="{Binding Messages}"
+                                IsGrouped="True">
+
+                    <CollectionView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Label Text="{Binding GroupHeader}"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       Margin="15"
+                                       FontFamily="{StaticResource QuickSandRegular}"
+                                       TextColor="{StaticResource SecondaryTextColor}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.GroupHeaderTemplate>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <ContentView>
+                                <Grid Margin="10,0,0,5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+
+                                    <pancakeView:PancakeView HorizontalOptions="Start"
+                                                             VerticalOptions="Center"
+                                                             BackgroundColor="{StaticResource AccentColor}"
+                                                             CornerRadius="15"
+                                                             Padding="15"
+                                                             x:Name="MessageBubble">
+                                        <Label Text="{Binding Content}"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               TextColor="White"
+                                               FontFamily="{StaticResource QuickSandRegular}"/>
+                                    </pancakeView:PancakeView>
+                                    
+                                </Grid>
+                            </ContentView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
                     
                 </CollectionView>
 
@@ -87,14 +128,14 @@
                                              Margin="10,-22,5,10" InputTransparent="True"
                                              CornerRadius="30"
                                              HeightRequest="60" />
-                    
+
                     <pancakeView:PancakeView HasShadow="False"
-                                         CornerRadius="20"
-                                         Margin="10,0,5,10"
-                                         BackgroundColor="White">
+                                             CornerRadius="20"
+                                             Margin="10,0,5,10"
+                                             BackgroundColor="White">
                         <Grid Margin="20,10">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="65"/>
                                 <RowDefinition />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>

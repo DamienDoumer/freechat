@@ -1,9 +1,13 @@
-﻿using FreeChat.Services;
+﻿using FreeChat.Resources;
+using FreeChat.Services;
+using FreeChat.ViewModels.Helpers;
+using Humanizer;
 using Models;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -30,7 +34,13 @@ namespace FreeChat.ViewModels
             get => _replyMessage;
             set => this.RaiseAndSetIfChanged(ref _replyMessage, value);
         }
-        public ObservableCollection<Message> Messages { get; set; }
+        ObservableCollection<MessagesGroup> _messagesGroups;
+        public ObservableCollection<MessagesGroup> Messages
+        {
+            get => _messagesGroups;
+            set => this.RaiseAndSetIfChanged(ref _messagesGroups, value);
+        }
+        private List<Message> _messages;
 
         private string _currentMessage;
         public string CurrentMessage
@@ -39,14 +49,13 @@ namespace FreeChat.ViewModels
             set { this.RaiseAndSetIfChanged(ref _currentMessage, value); }
         }
 
-
-
         public MessagesViewModel(IDataStore<User> userDataStore, IConversationsDataStore convDataStore, 
             IMessageDataStore messageDataStore) : base(userDataStore, convDataStore, messageDataStore)
         {
             MessageSwippedCommand = ReactiveCommand.Create<Message>(MessageSwiped);
             SendMessageCommand = ReactiveCommand.CreateFromTask(SendMeessage);
             CancelReplyCommand = ReactiveCommand.Create(CancelReply);
+            _messages = new List<Message>();
         }
 
         public void CancelReply()
@@ -58,7 +67,33 @@ namespace FreeChat.ViewModels
         {
             CurrentConversation = await _conversationDataStore.GetItemAsync(ConversationId);
             var messages = await _messageDataStore.GetMessagesForConversation(ConversationId);
-            Messages = new ObservableCollection<Message>();
+            _messages.AddRange(messages);
+            var messagesGroups = _messages.GroupBy(m => m.CreationDate.Day)
+                .Select(grp => 
+                {
+                    var messagesGrp = grp.ToList();
+                    var msg = messagesGrp.First();
+                    var date = msg.CreationDate.Date;
+                    var dayDiff = DateTime.Now.Day - date.Day;
+                    string groupHeader = string.Empty;
+
+                    if (dayDiff == 0)
+                        groupHeader = TextResources.Today;
+                    else if (dayDiff == 1)
+                        groupHeader = TextResources.Yesterday;
+                    else groupHeader = date.ToString("MM-dd-yyyy");
+
+                    return new MessagesGroup
+                    (
+                        dateTime : date,
+                        groupHeader : groupHeader,
+                        messages : new ObservableCollection<Message>(messagesGrp)
+                    );
+                })
+                .OrderBy(m => m.DateTime.Day)
+                .ToList();
+
+            Messages = new ObservableCollection<MessagesGroup>(messagesGroups);
         }
 
         void MessageSwiped(Message message)

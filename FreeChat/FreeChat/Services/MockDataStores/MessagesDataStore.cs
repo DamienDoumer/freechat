@@ -38,12 +38,11 @@ namespace FreeChat.Services.MockDataStores
                 ConversationId = conversation.Id,
                 Id = Guid.NewGuid().ToString(),
                 Content = "Yeah. But you were not arround",
-                CreationDate = DateTime.Now + TimeSpan.FromMinutes(10),
+                CreationDate = DateTime.Now - TimeSpan.FromDays(1),
                 ISent = false,
                 SenderId = conversation.Peer.Id,
             });
-            conversation.LastMessage.CreationDate = DateTime.Now + TimeSpan.FromHours(6);
-            _messages.Add(conversation.LastMessage);
+            conversation.LastMessage = _messages.Last();
         }
 
         public Task<bool> AddItemAsync(Message item)

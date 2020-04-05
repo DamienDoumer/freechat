@@ -29,7 +29,7 @@ namespace FreeChat
             var users = await UserDataStores.GetItemsAsync();
             Locator.CurrentMutable.RegisterConstant<IConversationsDataStore>(new ConversationsDataStore(users.Last(), new List<User>(users)));
             var conversations = await ConversationsDataStore.GetItemsAsync();
-            Locator.CurrentMutable.RegisterConstant<IMessageDataStore>(new MessagesDataStore(conversations.Last()));
+            Locator.CurrentMutable.RegisterConstant<IMessageDataStore>(new MessagesDataStore(conversations.First()));
             Locator.CurrentMutable.Register(() => new ConversationsViewModel(UserDataStores,
                 ConversationsDataStore, MessagesDataStore, NavigationService));
             Locator.CurrentMutable.Register(() => new MessagesViewModel(UserDataStores,
