@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace FreeChat.Views.DataTemplates
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MesageTemplate : ContentView
+    public partial class MessagePeerSentTemplate : BaseTemplate
     {
-        public MesageTemplate()
+        public MessagePeerSentTemplate()
         {
             InitializeComponent();
         }

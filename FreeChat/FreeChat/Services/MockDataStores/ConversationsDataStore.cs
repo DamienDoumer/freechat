@@ -24,7 +24,8 @@ namespace FreeChat.Services.MockDataStores
                     {
                         Content = "Hello, how are you ?",
                         ISent = true,
-                        CreationDate = DateTime.UtcNow - TimeSpan.FromHours(randomHours)
+                        CreationDate = DateTime.UtcNow - TimeSpan.FromHours(randomHours),
+                        Sender = user
                     },
                     Peer = user,
                     UserIds = new string[] { currentUser.Id, user.Id }

@@ -17,7 +17,7 @@
         <Setter Property="FontSize"
                 Value="Body" />
         <Setter Property="FontFamily"
-                Value="{StaticResource QuickSandLight}" />
+                Value="{StaticResource QuickSandRegular}" />
         <Setter Property="TextColor"
                 Value="{StaticResource PrimaryTextColor}" />
         <Setter Property="LineBreakMode"

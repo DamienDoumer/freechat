@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<dataTemplates:BaseTemplate xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:dataTemplates="clr-namespace:FreeChat.Views.DataTemplates"
+             xmlns:customViews="clr-namespace:FreeChat.Views.CustomControls"
+             x:Class="FreeChat.Views.DataTemplates.MessagePeerSentTemplate"
+             xmlns:ffimageTransform="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:ffimageLoader="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                            xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                            x:Name="msgTemplate329ew">
+    <ContentView.Content>
+        <SwipeView>
+            <SwipeView.LeftItems>
+                <SwipeItems SwipeBehaviorOnInvoked="Close"
+                            Mode="Execute">
+                    <SwipeItemView Command="{Binding Source={x:Reference msgTemplate329ew}, Path=ParentContext.MessageSwippedCommand}"
+                                   CommandParameter="{Binding}">
+                        <pancakeView:PancakeView BackgroundColor="White">
+                            <Label Style="{StaticResource FontAwesomeLabel}"
+                               Text="{StaticResource FontAwesomeReply}"
+                               TextColor="LightGray"
+                               Margin="20"
+                               FontSize="Large"/>
+                        </pancakeView:PancakeView>
+                    </SwipeItemView>
+                </SwipeItems>
+            </SwipeView.LeftItems>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <ffimageLoader:CachedImage HeightRequest="40"
+                                           Margin="15,0,0,0"
+                                           WidthRequest="40"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Center"
+                                           Source="{Binding Sender.ProfilePic, Converter={StaticResource ImageResourceConverter}}">
+                        <ffimageLoader:CachedImage.Transformations>
+                            <ffimageTransform:CircleTransformation />
+                        </ffimageLoader:CachedImage.Transformations>
+                    </ffimageLoader:CachedImage>
+
+                    <customViews:MessageBubble Text="{Binding Content}"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"
+                                       BackgroundColor="White"
+                                           Grid.Column="1"
+                                       Margin="5">
+                        <customViews:MessageBubble.Triggers>
+                            <DataTrigger TargetType="customViews:MessageBubble"
+                                 Binding="{Binding ISentPreviousMessage}"
+                                 Value="true">
+                                <Setter Property="Margin" Value="15, 15, 5, 5"/>
+                            </DataTrigger>
+                        </customViews:MessageBubble.Triggers>
+                    </customViews:MessageBubble>
+                </Grid>
+
+            </Grid>
+        </SwipeView>
+    </ContentView.Content>
+</dataTemplates:BaseTemplate>

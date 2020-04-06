@@ -25,6 +25,7 @@ namespace FreeChat.Services
 
         public async Task<bool> AddItemAsync(Item item)
         {
+            item.Id = Guid.NewGuid().ToString();
             items.Add(item);
 
             return await Task.FromResult(true);

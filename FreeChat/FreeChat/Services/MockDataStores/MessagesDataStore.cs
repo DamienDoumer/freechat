@@ -23,13 +23,14 @@ namespace FreeChat.Services.MockDataStores
                 CreationDate = DateTime.Now,
                 ISent = false,
                 SenderId = conversation.Peer.Id,
+                Sender = conversation.Peer
             });
             _messages.Add(new Message
             {
                 ConversationId = conversation.Id,
                 Id = Guid.NewGuid().ToString(),
                 Content = "Ooh really ?",
-                CreationDate = DateTime.Now + TimeSpan.FromMinutes(2),
+                CreationDate = DateTime.Now - TimeSpan.FromMinutes(2),
                 ISent = true,
                 SenderId = conversation.UserIds[0],
             });
@@ -37,10 +38,23 @@ namespace FreeChat.Services.MockDataStores
             {
                 ConversationId = conversation.Id,
                 Id = Guid.NewGuid().ToString(),
+                ISentPreviousMessage = true,
                 Content = "Yeah. But you were not arround",
                 CreationDate = DateTime.Now - TimeSpan.FromDays(1),
                 ISent = false,
                 SenderId = conversation.Peer.Id,
+                Sender = conversation.Peer
+            });
+            _messages.Add(new Message
+            {
+                ConversationId = conversation.Id,
+                Id = Guid.NewGuid().ToString(),
+                ISentPreviousMessage = true,
+                Content = "Yeah. But you were not arround",
+                CreationDate = DateTime.Now - TimeSpan.FromMinutes(2),
+                ISent = true,
+                SenderId = conversation.Peer.Id,
+                Sender = conversation.Peer
             });
             conversation.LastMessage = _messages.Last();
         }

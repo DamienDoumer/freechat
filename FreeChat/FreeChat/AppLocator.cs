@@ -21,6 +21,7 @@ namespace FreeChat
         public static MessagesViewModel MessagesViewModel => Locator.Current.GetService<MessagesViewModel>();
         public static INavigationService NavigationService => Locator.Current.GetService<INavigationService>();
         public static string CurrentUserId { get; set; }
+        public static User CurrentUser { get; set; }
 
         public static async void Initialize()
         {
@@ -37,6 +38,7 @@ namespace FreeChat
             Locator.CurrentMutable.Register(() => new SettingsViewModel(UserDataStores,
                 ConversationsDataStore, MessagesDataStore));
             CurrentUserId = users.Last().Id;
+            CurrentUser = users.Last();
         }
     }
 }

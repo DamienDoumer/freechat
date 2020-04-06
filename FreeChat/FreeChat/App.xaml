@@ -15,6 +15,7 @@
         <!--Value Converters-->
         <valueConverters:DateHUmanizerConverter x:Key="DatehumanizerConverter"/>
         <valueConverters:ImageResourceValueConverter x:Key="ImageResourceConverter" />
+        <valueConverters:IsNullConverter x:Key="IsNullValueConverter"/>
 
 
         <Style x:Key="BaseStyle"

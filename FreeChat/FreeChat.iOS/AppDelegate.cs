@@ -4,6 +4,7 @@ using System.Linq;
 using FFImageLoading.Forms.Platform;
 using Foundation;
 using UIKit;
+using Xamarin.Forms;
 
 namespace FreeChat.iOS
 {
@@ -22,7 +23,7 @@ namespace FreeChat.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
+            global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental", "SwipeView_Experimental");
             global::Xamarin.Forms.Forms.Init();
             CachedImageRenderer.Init();
             XamEffects.iOS.Effects.Init();

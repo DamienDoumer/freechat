@@ -44,6 +44,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>TextResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Views\DataTemplates\MesageISentTemplate.xaml.cs">
+      <DependentUpon>MesageISentTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
@@ -63,10 +66,16 @@
     <EmbeddedResource Update="Styles\Fonts.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\CustomControls\MessageBubble.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\CustomControls\ToggleButton.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\DataTemplates\MesageTemplate.xaml">
+    <EmbeddedResource Update="Views\DataTemplates\MesageISentTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DataTemplates\MessagePeerSentTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DataTemplates\SimpleUserProfileTemplate.xaml">

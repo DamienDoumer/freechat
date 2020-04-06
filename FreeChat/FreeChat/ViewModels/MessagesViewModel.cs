@@ -28,6 +28,14 @@ namespace FreeChat.ViewModels
         public ICommand SendMessageCommand { get; private set; }
         public ICommand MessageSwippedCommand { get; private set; }
         public ICommand CancelReplyCommand { get; private set; }
+        private bool _isTyping;
+
+        public bool IsTyping
+        {
+            get { return _isTyping; }
+            set { this.RaiseAndSetIfChanged(ref _isTyping, value); }
+        }
+
         Message _replyMessage;
         public Message ReplyMessage
         {
@@ -53,7 +61,7 @@ namespace FreeChat.ViewModels
             IMessageDataStore messageDataStore) : base(userDataStore, convDataStore, messageDataStore)
         {
             MessageSwippedCommand = ReactiveCommand.Create<Message>(MessageSwiped);
-            SendMessageCommand = ReactiveCommand.CreateFromTask(SendMeessage);
+            SendMessageCommand = ReactiveCommand.CreateFromTask(SendMeessage, this.WhenAnyValue(vm => vm.CurrentMessage, curm => !String.IsNullOrEmpty(curm)));
             CancelReplyCommand = ReactiveCommand.Create(CancelReply);
             _messages = new List<Message>();
         }
@@ -67,11 +75,12 @@ namespace FreeChat.ViewModels
         {
             CurrentConversation = await _conversationDataStore.GetItemAsync(ConversationId);
             var messages = await _messageDataStore.GetMessagesForConversation(ConversationId);
+            ReplyMessage = messages.First();
             _messages.AddRange(messages);
             var messagesGroups = _messages.GroupBy(m => m.CreationDate.Day)
                 .Select(grp => 
                 {
-                    var messagesGrp = grp.ToList();
+                    var messagesGrp = grp.ToList().OrderBy(m => m.CreationDate);
                     var msg = messagesGrp.First();
                     var date = msg.CreationDate.Date;
                     var dayDiff = DateTime.Now.Day - date.Day;
@@ -103,12 +112,51 @@ namespace FreeChat.ViewModels
 
         async Task SendMeessage()
         {
-            await Task.CompletedTask;
+            var message = new Message
+            {
+                Content = CurrentMessage,
+                ReplyTo = ReplyMessage,
+                CreationDate = DateTime.Now,
+                Sender = AppLocator.CurrentUser,
+                ISentPreviousMessage = Messages.Last().Last().ISent,
+                ISent = true,
+                ConversationId = CurrentConversation.Id,
+                SenderId = AppLocator.CurrentUserId
+            };
+            CurrentMessage = string.Empty;
+            Messages.Last().Add(message);
+            await _messageDataStore.AddItemAsync(message);
         }
 
         public override Task Stop()
         {
             return Task.CompletedTask;
+        }
+
+        public async Task FakeMessaging()
+        {
+            var shouldReply = new Random().Next(0, 1) == 1 ? true : false;
+
+            if (shouldReply)
+            {
+                IsTyping = true;
+                await Task.Delay(TimeSpan.FromSeconds(2));
+                var message = new Message
+                {
+                    Content = "Hey here is a simple rely.",
+                    CreationDate = DateTime.Now,
+                    Sender = CurrentConversation.Peer,
+                    ISentPreviousMessage = Messages.Last().Last().ISent,
+                    ISent = false,
+                    ConversationId = CurrentConversation.Id,
+                    SenderId = CurrentConversation.Peer.Id
+                };
+                Messages.Last().Add(message);
+
+                IsTyping = false;
+                Messages.Last().Add(message);
+                await _messageDataStore.AddItemAsync(message);
+            }
         }
     }
 }

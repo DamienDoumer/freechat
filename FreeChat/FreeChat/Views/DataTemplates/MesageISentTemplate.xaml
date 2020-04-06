@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<datatemplates:BaseTemplate xmlns="http://xamarin.com/schemas/2014/forms" 
+                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            mc:Ignorable="d"
+             xmlns:customViews="clr-namespace:FreeChat.Views.CustomControls"
+             xmlns:datatemplates="clr-namespace:FreeChat.Views.DataTemplates"
+             x:Class="FreeChat.Views.DataTemplates.MesageISentTemplate"
+                            xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                            x:Name="msgTemplate3290">
+  <ContentView.Content>
+        <SwipeView>
+            <SwipeView.RightItems>
+                <SwipeItems SwipeBehaviorOnInvoked="Close"
+                            Mode="Execute">
+                    <SwipeItemView Command="{Binding Source={x:Reference msgTemplate3290}, Path=ParentContext.MessageSwippedCommand}"
+                                   CommandParameter="{Binding}">
+                        <pancakeView:PancakeView BackgroundColor="White">
+                            <Label Style="{StaticResource FontAwesomeLabel}"
+                               Text="{StaticResource FontAwesomeReply}"
+                               TextColor="LightGray"
+                               Margin="20"
+                               FontSize="Large"/>
+                        </pancakeView:PancakeView>
+                    </SwipeItemView>
+                </SwipeItems>
+            </SwipeView.RightItems>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <customViews:MessageBubble Text="{Binding Content}"
+                                       Grid.Column="1"
+                                       HorizontalOptions="End"
+                                       VerticalOptions="Center"
+                                       TextColor="White"
+                                       BackgroundColor="{StaticResource AccentColor}"
+                                       Margin="5,5,15,5">
+                    <customViews:MessageBubble.Triggers>
+                        <DataTrigger TargetType="customViews:MessageBubble"
+                                 Binding="{Binding ISentPreviousMessage}"
+                                 Value="False">
+                            <Setter Property="Margin" Value="5, 15, 15, 5"/>
+                        </DataTrigger>
+                    </customViews:MessageBubble.Triggers>
+                </customViews:MessageBubble>
+            </Grid>
+        </SwipeView>
+  </ContentView.Content>
+</datatemplates:BaseTemplate>

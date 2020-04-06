@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pancakeView:PancakeView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="FreeChat.Views.CustomControls.MessageBubble"
+             x:Name="bubble_fdasdl"
+            HasShadow="True" 
+            d:BackgroundColor="{StaticResource AccentColor}"
+            CornerRadius="15"
+            Padding="15">
+    
+    <Label Text="{Binding Text, Source={x:Reference bubble_fdasdl}}"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"
+           TextColor="{Binding TextColor, Source={x:Reference bubble_fdasdl}}"
+           FontFamily="{StaticResource QuickSandRegular}"/>
+    
+</pancakeView:PancakeView>

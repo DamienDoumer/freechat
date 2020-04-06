@@ -14,11 +14,14 @@
                 xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
                 xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                 BindingContext="{x:Static root:AppLocator.MessagesViewModel}"
+                xmlns:dataTemplateSelector="clr-namespace:FreeChat.Views.TemplateSelectors"
+                BackgroundColor="White"
                 x:Name="MessagePagecmdeio">
 
     <ContentPage.Content>
-        
+
         <Grid>
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition />
@@ -88,34 +91,10 @@
                     </CollectionView.GroupHeaderTemplate>
 
                     <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <ContentView>
-                                <Grid Margin="10,0,0,5">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition />
-                                    </Grid.ColumnDefinitions>
-
-                                    <pancakeView:PancakeView HorizontalOptions="Start"
-                                                             VerticalOptions="Center"
-                                                             BackgroundColor="{StaticResource AccentColor}"
-                                                             CornerRadius="15"
-                                                             Padding="15"
-                                                             x:Name="MessageBubble">
-                                        <Label Text="{Binding Content}"
-                                               HorizontalOptions="Center"
-                                               VerticalOptions="Center"
-                                               TextColor="White"
-                                               FontFamily="{StaticResource QuickSandRegular}"/>
-                                    </pancakeView:PancakeView>
-                                    
-                                </Grid>
-                            </ContentView>
-                        </DataTemplate>
+                        <dataTemplateSelector:ChatBubbleTemplateSelctor />
                     </CollectionView.ItemTemplate>
-                    
-                </CollectionView>
 
+                </CollectionView>
 
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions >
@@ -123,37 +102,46 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <pancakeView:PancakeView BackgroundGradientStartColor="Transparent"
-                                             BackgroundGradientEndColor="LightGray"
-                                             Margin="10,-22,5,10" InputTransparent="True"
-                                             CornerRadius="30"
-                                             HeightRequest="60" />
-
-                    <pancakeView:PancakeView HasShadow="False"
+                    <pancakeView:PancakeView HasShadow="True"
                                              CornerRadius="20"
-                                             Margin="10,0,5,10"
+                                             Margin="10,0,0,10"
                                              BackgroundColor="White">
-                        <Grid Margin="20,10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="65"/>
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
+                        <Grid>
 
-                            <Grid Grid.ColumnSpan="2"
-                                  Padding="5" BindingContext="{Binding ReplyMessage}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid IsVisible="{Binding Converter={StaticResource IsNullValueConverter}}"
+                                  BindingContext="{Binding ReplyMessage}"
+                                  HeightRequest="70">
+
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition />
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <BoxView WidthRequest="3" BackgroundColor="{StaticResource AccentColor}"/>
-                                <Label Text="{Binding Content}"
-                                       LineBreakMode="TailTruncation"
-                                       Grid.Column="1"/>
+
+                                <BoxView WidthRequest="2" BackgroundColor="{StaticResource AccentColor}"/>
+
+                                <StackLayout Grid.Column="1">
+                                    <Label FontFamily="{StaticResource QuickSandBold}"
+                                           LineBreakMode="TailTruncation"
+                                           Margin="0,0,0,5">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Peer.FirstName}" />
+                                                <Span Text=" " />
+                                                <Span Text="{Binding Peer.LastName}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Text="{Binding Content}"
+                                           LineBreakMode="TailTruncation"
+                                           Grid.Column="1"/>
+                                </StackLayout>
+
                                 <pancakeView:PancakeView Grid.Column="2"
                                                          xe:TouchEffect.Color="LightGray"
                                                          xe:Commands.Tap="{Binding BindingContext.CancelReplyCommand, Source={x:Reference MessagePagecmdeio}}">
@@ -163,38 +151,51 @@
                                 </pancakeView:PancakeView>
                             </Grid>
 
-                            <Entry Placeholder="Message"
-                                   Grid.Row="1"
-                                   Text="{Binding SearchText}"
-                                   VerticalOptions="Center"
-                                   FontFamily="{StaticResource QuickSandBold}"
-                                   FontAttributes="Bold">
-                                <Entry.Effects>
-                                    <effects:BorderlessEntryEffect />
-                                </Entry.Effects>
-                            </Entry>
-                            <pancakeView:PancakeView CornerRadius="90"
-                                                     Grid.Row="1"
-                                                     Grid.Column="1"
-                                                     Margin="5,0,0,0"
-                                                     xe:TouchEffect.Color="LightGray">
-                                <Label Style="{StaticResource FontAwesomeLabel}"
-                                       Text="{StaticResource FontAwesomePaperClip}"
-                                       FontSize="Large"
-                                       TextColor="{StaticResource PrimaryTextColor}"
-                                       HorizontalOptions="Center"
-                                       VerticalOptions="Center" />
-                            </pancakeView:PancakeView>
-                            
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Entry Placeholder="Message"
+                                       Margin="10,5,5,5"
+                                       Text="{Binding CurrentMessage}"
+                                       VerticalOptions="Center"
+                                       FontFamily="{StaticResource QuickSandRegular}"
+                                       FontAttributes="Bold">
+                                    <Entry.Effects>
+                                        <effects:BorderlessEntryEffect />
+                                    </Entry.Effects>
+                                </Entry>
+
+                                <pancakeView:PancakeView CornerRadius="90"
+                                                         Grid.Column="1"
+                                                         HeightRequest="50"
+                                                         WidthRequest="50"
+                                                         Margin="5"
+                                                         VerticalOptions="Center"
+                                                         xe:TouchEffect.Color="LightGray"
+                                                         xe:Commands.Tap="{Binding SendMessageCommand}">
+                                    <Label Style="{StaticResource FontAwesomeLabel}"
+                                           Text="{StaticResource FontAwesomePaperClip}"
+                                           FontSize="Large"
+                                           TextColor="{StaticResource PrimaryTextColor}"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                </pancakeView:PancakeView>
+                            </Grid>
+
                         </Grid>
                     </pancakeView:PancakeView>
 
                     <pancakeView:PancakeView CornerRadius="18"
-                                             Grid.Column="1" WidthRequest="55" HeightRequest="50"
-                                             HorizontalOptions="Center" VerticalOptions="Center"
+                                             HasShadow="True"
+                                             Grid.Column="1" WidthRequest="60" HeightRequest="60"
+                                             HorizontalOptions="Center" VerticalOptions="End"
                                              BackgroundColor="{StaticResource AccentColor}"
                                              xe:TouchEffect.Color="LightGray"
-                                             Margin="5,0,10,0">
+                                             xe:Commands.Tap="{Binding SendMessageCommand}"
+                                             Margin="5,0,10,10">
                         <Label HorizontalOptions="Center"
                                VerticalOptions="Center"  FontSize="Large"
                                TextColor="{StaticResource PrimaryColor}"
