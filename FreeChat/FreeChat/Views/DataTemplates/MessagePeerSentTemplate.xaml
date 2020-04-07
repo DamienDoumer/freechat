@@ -30,7 +30,7 @@
             </SwipeView.LeftItems>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
@@ -52,11 +52,12 @@
                     </ffimageLoader:CachedImage>
 
                     <customViews:MessageBubble Text="{Binding Content}"
-                                       HorizontalOptions="Start"
-                                       VerticalOptions="Center"
-                                       BackgroundColor="White"
-                                           Grid.Column="1"
-                                       Margin="5">
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Center"
+                                               BackgroundColor="White"
+                                               Grid.Column="1"
+                                               ReplyTappedCommand="{Binding ParentContext.ReplyMessageSelectedCommand, Source={x:Reference msgTemplate329ew}}"
+                                               Margin="5">
                         <customViews:MessageBubble.Triggers>
                             <DataTrigger TargetType="customViews:MessageBubble"
                                  Binding="{Binding ISentPreviousMessage}"

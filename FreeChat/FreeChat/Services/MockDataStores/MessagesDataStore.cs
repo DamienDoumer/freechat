@@ -20,26 +20,6 @@ namespace FreeChat.Services.MockDataStores
                 ConversationId = conversation.Id,
                 Id = Guid.NewGuid().ToString(),
                 Content = "I was at your office yesterday.",
-                CreationDate = DateTime.Now,
-                ISent = false,
-                SenderId = conversation.Peer.Id,
-                Sender = conversation.Peer
-            });
-            _messages.Add(new Message
-            {
-                ConversationId = conversation.Id,
-                Id = Guid.NewGuid().ToString(),
-                Content = "Ooh really ?",
-                CreationDate = DateTime.Now - TimeSpan.FromMinutes(2),
-                ISent = true,
-                SenderId = conversation.UserIds[0],
-            });
-            _messages.Add(new Message
-            {
-                ConversationId = conversation.Id,
-                Id = Guid.NewGuid().ToString(),
-                ISentPreviousMessage = true,
-                Content = "Yeah. But you were not arround",
                 CreationDate = DateTime.Now - TimeSpan.FromDays(1),
                 ISent = false,
                 SenderId = conversation.Peer.Id,
@@ -49,18 +29,52 @@ namespace FreeChat.Services.MockDataStores
             {
                 ConversationId = conversation.Id,
                 Id = Guid.NewGuid().ToString(),
+                Content = "Ooh really ?",
+                CreationDate = DateTime.Now - TimeSpan.FromDays(1),
+                ISent = true,
+                SenderId = conversation.UserIds[0],
+            });
+            _messages.Add(new Message
+            {
+                ConversationId = conversation.Id,
+                Id = Guid.NewGuid().ToString(),
                 ISentPreviousMessage = true,
                 Content = "Yeah. But you were not arround",
+                CreationDate = DateTime.Now - TimeSpan.FromMinutes(5),
+                ISent = false,
+                SenderId = conversation.Peer.Id,
+                Sender = conversation.Peer
+            });
+            _messages.Add(new Message
+            {
+                ConversationId = conversation.Id,
+                Id = Guid.NewGuid().ToString(),
+                ISentPreviousMessage = true,
+                Content = "Yeah I was not arround bla bla bla bla bla say what ? hein pere ?",
                 CreationDate = DateTime.Now - TimeSpan.FromMinutes(2),
                 ISent = true,
                 SenderId = conversation.Peer.Id,
-                Sender = conversation.Peer
+                Sender = conversation.Peer,
+                ReplyTo = _messages[_messages.Count - 3]
+            });
+            _messages.Add(new Message
+            {
+                ConversationId = conversation.Id,
+                Id = Guid.NewGuid().ToString(),
+                ISentPreviousMessage = true,
+                Content = "I know you were not arround. I even left you a Fucking message.",
+                CreationDate = DateTime.Now - TimeSpan.FromMinutes(1),
+                ISent = false,
+                SenderId = conversation.Peer.Id,
+                Sender = conversation.Peer,
+                ReplyTo = _messages[_messages.Count - 2]
             });
             conversation.LastMessage = _messages.Last();
         }
 
         public Task<bool> AddItemAsync(Message item)
         {
+            item.Id = Guid.NewGuid().ToString();
             _messages.Add(item);
             return Task.FromResult(true);
         }

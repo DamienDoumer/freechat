@@ -44,7 +44,7 @@ namespace FreeChat.Views.Pages
         {
             InitializeComponent();
             BackCommand = new Command(async _ => 
-                await AppShell.Current.Navigation.PopToRootAsync());
+                await AppShell.Current.Navigation.PopModalAsync());
         }
     }
 }

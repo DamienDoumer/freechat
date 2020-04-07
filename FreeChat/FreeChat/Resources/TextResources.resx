@@ -141,4 +141,7 @@
   <data name="Yesterday" xml:space="preserve">
     <value>Yesterday</value>
   </data>
+  <data name="You" xml:space="preserve">
+    <value>You</value>
+  </data>
 </root>

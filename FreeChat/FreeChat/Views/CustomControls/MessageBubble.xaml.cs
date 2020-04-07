@@ -63,6 +63,63 @@ namespace FreeChat.Views.CustomControls
         }
         #endregion
 
+
+
+        #region ReplyTappedCommand
+        public static readonly BindableProperty ReplyTappedCommandProperty = BindableProperty.Create(nameof(ReplyTappedCommand), typeof(ICommand), typeof(MessageBubble), propertyChanged: (obj, old, newV) =>
+        {
+            var me = obj as MessageBubble;
+            if (newV != null && !(newV is ICommand)) return;
+            var oldReplyTappedCommand = (ICommand)old;
+            var newReplyTappedCommand = (ICommand)newV;
+            me?.ReplyTappedCommandChanged(oldReplyTappedCommand, newReplyTappedCommand);
+        });
+
+        private void ReplyTappedCommandChanged(ICommand oldReplyTappedCommand, ICommand newReplyTappedCommand)
+        {
+
+        }
+
+        /// <summary>
+        /// A bindable property
+        /// </summary>
+        public ICommand ReplyTappedCommand
+        {
+            get => (ICommand)GetValue(ReplyTappedCommandProperty);
+            set => SetValue(ReplyTappedCommandProperty, value);
+        }
+        #endregion
+
+
+
+
+        #region ReplyBackgroundOpacity
+        public static readonly BindableProperty ReplyBackgroundOpacityProperty = BindableProperty.Create(nameof(ReplyBackgroundOpacity),
+            typeof(float), typeof(MessageBubble), defaultValue: 1f, propertyChanged: (obj, old, newV) =>
+        {
+            var me = obj as MessageBubble;
+            if (newV != null && !(newV is Type)) return;
+            var oldReplyBackgroundOpacity = (Type)old;
+            var newReplyBackgroundOpacity = (Type)newV;
+            me?.ReplyBackgroundOpacityChanged(oldReplyBackgroundOpacity, newReplyBackgroundOpacity);
+        });
+
+        private void ReplyBackgroundOpacityChanged(Type oldReplyBackgroundOpacity, Type newReplyBackgroundOpacity)
+        {
+        }
+
+        /// <summary>
+        /// A bindable property
+        /// </summary>
+        public Type ReplyBackgroundOpacity
+        {
+            get => (Type)GetValue(ReplyBackgroundOpacityProperty);
+            set => SetValue(ReplyBackgroundOpacityProperty, value);
+        }
+        #endregion
+
+
+
         public MessageBubble()
         {
             InitializeComponent();

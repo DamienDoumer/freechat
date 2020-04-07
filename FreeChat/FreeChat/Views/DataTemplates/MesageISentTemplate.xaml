@@ -34,12 +34,13 @@
                 </Grid.ColumnDefinitions>
 
                 <customViews:MessageBubble Text="{Binding Content}"
-                                       Grid.Column="1"
-                                       HorizontalOptions="End"
-                                       VerticalOptions="Center"
-                                       TextColor="White"
-                                       BackgroundColor="{StaticResource AccentColor}"
-                                       Margin="5,5,15,5">
+                                           Grid.Column="1"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="Center"
+                                           TextColor="White"
+                                           BackgroundColor="{StaticResource AccentColor}"
+                                           Margin="5,5,15,5"
+                                           ReplyTappedCommand="{Binding ParentContext.ReplyMessageSelectedCommand, Source={x:Reference msgTemplate3290}}">
                     <customViews:MessageBubble.Triggers>
                         <DataTrigger TargetType="customViews:MessageBubble"
                                  Binding="{Binding ISentPreviousMessage}"
@@ -48,6 +49,7 @@
                         </DataTrigger>
                     </customViews:MessageBubble.Triggers>
                 </customViews:MessageBubble>
+                
             </Grid>
         </SwipeView>
   </ContentView.Content>

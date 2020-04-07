@@ -35,18 +35,15 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <pancakeView:PancakeView Margin="10,0,0,0"
-                                         HorizontalOptions="Start"
-                                         VerticalOptions="Center"
-                                         xe:TouchEffect.Color="LightGray"
-                                         HeightRequest="30" WidthRequest="30"
-                                         xe:EffectsConfig.ChildrenInputTransparent="False"
-                                         xe:Commands.Tap="{Binding Source={x:Reference MessagePagecmdeio}, Path=BackCommand}"
-                                         CornerRadius="90">
-                    <Label Text="{StaticResource FontAwesomeChevronLeft}"
-                            FontSize="Large" HorizontalOptions="Center"
-                            Style="{StaticResource FontAwesomeLabel}"/>
-                </pancakeView:PancakeView>
+                <customControls:FloatingButton Margin="5,0,0,0"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Center" 
+                                               HeightRequest="40" WidthRequest="40"
+                                               IconSize="25"
+                                               PressedCommand="{Binding Source={x:Reference MessagePagecmdeio}, Path=BackCommand}"
+                                               Icon="{StaticResource FontAwesomeChevronLeft}"
+                                               BackgroundColor="White" HasShadow="False"
+                                               IconColor="{StaticResource AccentColor}"/>
 
                 <dataTemplates:SimpleUserProfileTemplate BindingContext="{Binding CurrentConversation}"
                                                          Grid.Column="1"
@@ -56,14 +53,33 @@
                 <StackLayout Orientation="Horizontal" Grid.Column="2"
                              VerticalOptions="Center"
                              HorizontalOptions="End"
-                             Margin="5" Spacing="30">
-                    <Label Style="{StaticResource FontAwesomeLabel}"
+                             Margin="5" Spacing="15">
+
+                    <customControls:FloatingButton Icon="{StaticResource FontAwesomePhone}"
+                                                   IconColor="{StaticResource AccentColor}"
+                                                   HasShadow="False"
+                                                   BackgroundColor="White"
+                                                   IconSize="25"
+                                                   WidthRequest="40"
+                                                   HeightRequest="40"/>
+
+                    <!--<Label Style="{StaticResource FontAwesomeLabel}"
                            Text="{StaticResource FontAwesomePhone}"
-                           FontSize="Large"/>
-                    <Label Style="{StaticResource FontAwesomeLabel}"
+                           FontSize="Large"/>-->
+
+                    <customControls:FloatingButton Icon="{StaticResource FontAwesomeVideo}"
+                                                   IconColor="{StaticResource AccentColor}"
+                                                   HasShadow="False"
+                                                   BackgroundColor="White"
+                                                   IconSize="25"
+                                                   WidthRequest="40"
+                                                   HeightRequest="40"
+                                                   Margin="0,0,15,0"/>
+                    
+                    <!--<Label Style="{StaticResource FontAwesomeLabel}"
                            Text="{StaticResource FontAwesomeVideo}"
                            FontSize="Large"
-                           Margin="0,0,20,0"/>
+                           Margin="0,0,20,0"/>-->
                 </StackLayout>
 
             </Grid>
@@ -115,7 +131,8 @@
 
                             <Grid IsVisible="{Binding Converter={StaticResource IsNullValueConverter}}"
                                   BindingContext="{Binding ReplyMessage}"
-                                  HeightRequest="70">
+                                  HeightRequest="70"
+                                  Margin="10,10,10,0">
 
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
@@ -123,17 +140,19 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
+                                <BoxView BackgroundColor="{StaticResource PrimaryColor}" Grid.ColumnSpan="2"/>
                                 <BoxView WidthRequest="2" BackgroundColor="{StaticResource AccentColor}"/>
 
-                                <StackLayout Grid.Column="1">
+                                <StackLayout Grid.Column="1"
+                                             Margin="1">
                                     <Label FontFamily="{StaticResource QuickSandBold}"
                                            LineBreakMode="TailTruncation"
                                            Margin="0,0,0,5">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding Peer.FirstName}" />
+                                                <Span Text="{Binding Sender.FirstName}" />
                                                 <Span Text=" " />
-                                                <Span Text="{Binding Peer.LastName}" />
+                                                <Span Text="{Binding Sender.LastName}" />
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
@@ -142,13 +161,17 @@
                                            Grid.Column="1"/>
                                 </StackLayout>
 
-                                <pancakeView:PancakeView Grid.Column="2"
-                                                         xe:TouchEffect.Color="LightGray"
-                                                         xe:Commands.Tap="{Binding BindingContext.CancelReplyCommand, Source={x:Reference MessagePagecmdeio}}">
-                                    <Label Text="{StaticResource FontAwesomeTimes}"
-                                           Style="{StaticResource FontAwesomeLabel}"
-                                           VerticalOptions="Center"/>
-                                </pancakeView:PancakeView>
+                                <customControls:FloatingButton Grid.Column="2"
+                                                               IconSize="15"
+                                                               HeightRequest="30"
+                                                               WidthRequest="30"
+                                                               HorizontalOptions="Center"
+                                                               VerticalOptions="Center"
+                                                               HasShadow="False"
+                                                               BackgroundColor="White"
+                                                               PressedCommand="{Binding BindingContext.CancelReplyCommand, Source={x:Reference MessagePagecmdeio}}"
+                                                               Icon="{StaticResource FontAwesomeTimes}"
+                                                               IconColor="{StaticResource PrimaryTextColor}"/>
                             </Grid>
 
                             <Grid Grid.Row="1">
@@ -168,40 +191,28 @@
                                     </Entry.Effects>
                                 </Entry>
 
-                                <pancakeView:PancakeView CornerRadius="90"
-                                                         Grid.Column="1"
-                                                         HeightRequest="50"
-                                                         WidthRequest="50"
-                                                         Margin="5"
-                                                         VerticalOptions="Center"
-                                                         xe:TouchEffect.Color="LightGray"
-                                                         xe:Commands.Tap="{Binding SendMessageCommand}">
-                                    <Label Style="{StaticResource FontAwesomeLabel}"
-                                           Text="{StaticResource FontAwesomePaperClip}"
-                                           FontSize="Large"
-                                           TextColor="{StaticResource PrimaryTextColor}"
-                                           HorizontalOptions="Center"
-                                           VerticalOptions="Center" />
-                                </pancakeView:PancakeView>
+                                <customControls:FloatingButton CornerRadius="90"
+                                                               Grid.Column="1"
+                                                               HeightRequest="50"
+                                                               WidthRequest="50"
+                                                               Margin="5"
+                                                               PressedCommand="{Binding SendMessageCommand}"
+                                                               Icon="{StaticResource FontAwesomePaperClip}"
+                                                               IconColor="{StaticResource PrimaryTextColor}"
+                                                               BackgroundColor="White"
+                                                               HasShadow="False"/>
                             </Grid>
 
                         </Grid>
                     </pancakeView:PancakeView>
 
-                    <pancakeView:PancakeView CornerRadius="18"
-                                             HasShadow="True"
-                                             Grid.Column="1" WidthRequest="60" HeightRequest="60"
-                                             HorizontalOptions="Center" VerticalOptions="End"
-                                             BackgroundColor="{StaticResource AccentColor}"
-                                             xe:TouchEffect.Color="LightGray"
-                                             xe:Commands.Tap="{Binding SendMessageCommand}"
-                                             Margin="5,0,10,10">
-                        <Label HorizontalOptions="Center"
-                               VerticalOptions="Center"  FontSize="Large"
-                               TextColor="{StaticResource PrimaryColor}"
-                               Style="{StaticResource FontAwesomeLabel}"
-                               Text="{StaticResource FontAwesomePaperPlane}"/>
-                    </pancakeView:PancakeView>
+                    <customControls:FloatingButton Grid.Column="1" WidthRequest="60" HeightRequest="60"
+                                                   HorizontalOptions="Center" VerticalOptions="End"
+                                                   BackgroundColor="{StaticResource AccentColor}"
+                                                   PressedCommand="{Binding SendMessageCommand}"
+                                                   Icon="{StaticResource FontAwesomePaperPlane}"
+                                                   IconColor="{StaticResource PrimaryColor}"
+                                                   Margin="5,0,10,10"/>
                 </Grid>
                 
             </Grid>

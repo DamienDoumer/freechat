@@ -131,5 +131,14 @@ namespace FreeChat.Resources {
                 return ResourceManager.GetString("Yesterday", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You.
+        /// </summary>
+        internal static string You {
+            get {
+                return ResourceManager.GetString("You", resourceCulture);
+            }
+        }
     }
 }

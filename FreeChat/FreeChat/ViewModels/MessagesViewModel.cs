@@ -28,6 +28,7 @@ namespace FreeChat.ViewModels
         public ICommand SendMessageCommand { get; private set; }
         public ICommand MessageSwippedCommand { get; private set; }
         public ICommand CancelReplyCommand { get; private set; }
+        public ICommand ReplyMessageSelectedCommand { get; private set; }
         private bool _isTyping;
 
         public bool IsTyping
@@ -60,6 +61,7 @@ namespace FreeChat.ViewModels
         public MessagesViewModel(IDataStore<User> userDataStore, IConversationsDataStore convDataStore, 
             IMessageDataStore messageDataStore) : base(userDataStore, convDataStore, messageDataStore)
         {
+            ReplyMessageSelectedCommand = ReactiveCommand.Create<Message>(ReplyMessageSelected);
             MessageSwippedCommand = ReactiveCommand.Create<Message>(MessageSwiped);
             SendMessageCommand = ReactiveCommand.CreateFromTask(SendMeessage, this.WhenAnyValue(vm => vm.CurrentMessage, curm => !String.IsNullOrEmpty(curm)));
             CancelReplyCommand = ReactiveCommand.Create(CancelReply);
@@ -71,11 +73,16 @@ namespace FreeChat.ViewModels
             ReplyMessage = null;
         }
 
+        private void ReplyMessageSelected(Message message)
+        {
+
+        }
+
         public async override Task Initialize()
         {
             CurrentConversation = await _conversationDataStore.GetItemAsync(ConversationId);
             var messages = await _messageDataStore.GetMessagesForConversation(ConversationId);
-            ReplyMessage = messages.First();
+
             _messages.AddRange(messages);
             var messagesGroups = _messages.GroupBy(m => m.CreationDate.Day)
                 .Select(grp => 
@@ -118,13 +125,14 @@ namespace FreeChat.ViewModels
                 ReplyTo = ReplyMessage,
                 CreationDate = DateTime.Now,
                 Sender = AppLocator.CurrentUser,
-                ISentPreviousMessage = Messages.Last().Last().ISent,
+                ISentPreviousMessage = (bool) Messages?.Last()?.Last()?.ISent,
                 ISent = true,
                 ConversationId = CurrentConversation.Id,
                 SenderId = AppLocator.CurrentUserId
             };
             CurrentMessage = string.Empty;
             Messages.Last().Add(message);
+            ReplyMessage = null;
             await _messageDataStore.AddItemAsync(message);
         }
 
