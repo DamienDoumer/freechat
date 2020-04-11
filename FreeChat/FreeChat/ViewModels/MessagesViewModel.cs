@@ -1,4 +1,6 @@
-﻿using FreeChat.Resources;
+﻿using FreeChat.Helpers;
+using FreeChat.Helpers.MyEventArgs;
+using FreeChat.Resources;
 using FreeChat.Services;
 using FreeChat.ViewModels.Helpers;
 using Humanizer;
@@ -75,7 +77,7 @@ namespace FreeChat.ViewModels
 
         private void ReplyMessageSelected(Message message)
         {
-
+            ScrollToMessage(message);
         }
 
         public async override Task Initialize()
@@ -110,11 +112,19 @@ namespace FreeChat.ViewModels
                 .ToList();
 
             Messages = new ObservableCollection<MessagesGroup>(messagesGroups);
+
+            await Task.Delay(TimeSpan.FromSeconds(1));
+            ScrollToMessage(Messages.Last().Last());
         }
 
         void MessageSwiped(Message message)
         {
             ReplyMessage = message;
+        }
+
+        void ScrollToMessage(Message message)
+        {
+            MessagingCenter.Send<IViewModel, ScrollToItemEventArgs>(this, Constants.ScrollToItem, new ScrollToItemEventArgs { Item = message });
         }
 
         async Task SendMeessage()
@@ -134,6 +144,8 @@ namespace FreeChat.ViewModels
             Messages.Last().Add(message);
             ReplyMessage = null;
             await _messageDataStore.AddItemAsync(message);
+            ScrollToMessage(message);
+            await FakeMessaging();
         }
 
         public override Task Stop()
@@ -143,12 +155,13 @@ namespace FreeChat.ViewModels
 
         public async Task FakeMessaging()
         {
-            var shouldReply = new Random().Next(0, 1) == 1 ? true : false;
+            var shouldReply = new Random().Next(0, 3) > 0 ? true : false;
 
             if (shouldReply)
             {
+                ScrollToMessage(Messages.Last().Last());
                 IsTyping = true;
-                await Task.Delay(TimeSpan.FromSeconds(2));
+                await Task.Delay(TimeSpan.FromSeconds(3));
                 var message = new Message
                 {
                     Content = "Hey here is a simple rely.",
@@ -162,7 +175,7 @@ namespace FreeChat.ViewModels
                 Messages.Last().Add(message);
 
                 IsTyping = false;
-                Messages.Last().Add(message);
+                ScrollToMessage(message);
                 await _messageDataStore.AddItemAsync(message);
             }
         }

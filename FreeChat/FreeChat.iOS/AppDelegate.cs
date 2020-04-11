@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FFImageLoading.Forms.Platform;
 using Foundation;
+using Lottie.Forms.iOS.Renderers;
 using UIKit;
 using Xamarin.Forms;
 
@@ -27,6 +28,9 @@ namespace FreeChat.iOS
             global::Xamarin.Forms.Forms.Init();
             CachedImageRenderer.Init();
             XamEffects.iOS.Effects.Init();
+
+            AnimationViewRenderer.Init();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

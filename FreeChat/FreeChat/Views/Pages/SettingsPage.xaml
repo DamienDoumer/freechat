@@ -8,12 +8,23 @@
              Title="{x:Static textRes:TextResources.AppName}"
              xmlns:root="clr-namespace:FreeChat"
              BindingContext="{x:Static root:AppLocator.SettingsViewModel}"
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="FreeChat.Views.Pages.SettingsPage">
     <ContentPage.Content>
-        <StackLayout>
+        <!--<StackLayout>
             <Label Text="Welcome to Xamarin.Forms!"
                    VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        </StackLayout>-->
+        <Grid>
+            <lottie:AnimationView HorizontalOptions="Center"
+                                  VerticalOptions="Center"
+                                  Loop="True"
+                                  AutoPlay="True"
+                                  Animation="typing.json"
+                                  HeightRequest="50"
+                                  WidthRequest="70"
+                                  BackgroundColor="SkyBlue"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

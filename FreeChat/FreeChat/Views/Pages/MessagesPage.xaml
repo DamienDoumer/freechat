@@ -16,6 +16,7 @@
                 BindingContext="{x:Static root:AppLocator.MessagesViewModel}"
                 xmlns:dataTemplateSelector="clr-namespace:FreeChat.Views.TemplateSelectors"
                 BackgroundColor="White"
+                xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
                 x:Name="MessagePagecmdeio">
 
     <ContentPage.Content>
@@ -63,10 +64,6 @@
                                                    WidthRequest="40"
                                                    HeightRequest="40"/>
 
-                    <!--<Label Style="{StaticResource FontAwesomeLabel}"
-                           Text="{StaticResource FontAwesomePhone}"
-                           FontSize="Large"/>-->
-
                     <customControls:FloatingButton Icon="{StaticResource FontAwesomeVideo}"
                                                    IconColor="{StaticResource AccentColor}"
                                                    HasShadow="False"
@@ -75,23 +72,20 @@
                                                    WidthRequest="40"
                                                    HeightRequest="40"
                                                    Margin="0,0,15,0"/>
-                    
-                    <!--<Label Style="{StaticResource FontAwesomeLabel}"
-                           Text="{StaticResource FontAwesomeVideo}"
-                           FontSize="Large"
-                           Margin="0,0,20,0"/>-->
                 </StackLayout>
 
             </Grid>
 
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" BackgroundColor="Transparent">
                 <Grid.RowDefinitions>
                     <RowDefinition />
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <CollectionView ItemsSource="{Binding Messages}"
-                                IsGrouped="True">
+                                IsGrouped="True" Grid.Row="0"
+                                x:Name="MessagesCollectionView">
 
                     <CollectionView.GroupHeaderTemplate>
                         <DataTemplate>
@@ -112,7 +106,20 @@
 
                 </CollectionView>
 
-                <Grid Grid.Row="1">
+
+                <lottie:AnimationView Grid.Row="1"
+                                      Loop="True" Margin="5,10,0,0"
+                                      HorizontalOptions="Center" 
+                                      VerticalOptions="Center"
+                                      IsPlaying="{Binding IsTyping}"
+                                      IsVisible="{Binding IsTyping}"
+                                      AutoPlay="True"
+                                      HeightRequest="20"
+                                      WidthRequest="70"
+                                      Animation="typing.json"
+                                      BackgroundColor="Transparent"/>
+
+                <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions >
                         <ColumnDefinition />
                         <ColumnDefinition Width="Auto"/>

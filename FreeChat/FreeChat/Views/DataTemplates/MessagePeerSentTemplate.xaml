@@ -28,6 +28,7 @@
                     </SwipeItemView>
                 </SwipeItems>
             </SwipeView.LeftItems>
+            
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*"/>

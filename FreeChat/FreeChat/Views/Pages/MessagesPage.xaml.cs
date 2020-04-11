@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FreeChat.Helpers;
+using FreeChat.Helpers.MyEventArgs;
+using FreeChat.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +15,6 @@ namespace FreeChat.Views.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MessagesPage : BasePage
     {
-
-
         #region BackCommand
         public static readonly BindableProperty BackCommandProperty = BindableProperty.Create(nameof(BackCommand), typeof(ICommand), typeof(MessagesPage), propertyChanged: (obj, old, newV) =>
         {
@@ -45,6 +46,21 @@ namespace FreeChat.Views.Pages
             InitializeComponent();
             BackCommand = new Command(async _ => 
                 await AppShell.Current.Navigation.PopModalAsync());
+        }
+
+        protected override void OnAppearing()
+        {
+            MessagingCenter.Subscribe<IViewModel, ScrollToItemEventArgs>(this, Constants.ScrollToItem, (s, eargs) =>
+            {
+                MessagesCollectionView.ScrollTo(eargs.Item);
+            });
+            base.OnAppearing();
+        }
+
+        protected override void OnDisappearing()
+        {
+           MessagingCenter.Unsubscribe<IViewModel, ScrollToItemEventArgs>(this, Constants.ScrollToItem);
+           base.OnDisappearing();
         }
     }
 }

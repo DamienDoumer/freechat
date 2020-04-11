@@ -90,6 +90,7 @@
             </StackLayout>
         </Grid>
 
+
         <Label Text="{Binding Text, Source={x:Reference bubble_fdasdl}}"
                Grid.Row="1"
                Margin="10,0,10,10"
