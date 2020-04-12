@@ -16,7 +16,6 @@
                 BindingContext="{x:Static root:AppLocator.MessagesViewModel}"
                 xmlns:dataTemplateSelector="clr-namespace:FreeChat.Views.TemplateSelectors"
                 BackgroundColor="White"
-                xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
                 x:Name="MessagePagecmdeio">
 
     <ContentPage.Content>
@@ -29,7 +28,8 @@
             </Grid.RowDefinitions>
 
             <Grid Margin="0,-10 ,0,0"
-                  VerticalOptions="Start">
+                  VerticalOptions="Start"
+                  HeightRequest="95">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition />
@@ -49,7 +49,8 @@
                 <dataTemplates:SimpleUserProfileTemplate BindingContext="{Binding CurrentConversation}"
                                                          Grid.Column="1"
                                                          IsInTitle="True"
-                                                         Margin="-10,0,0,0"/>
+                                                         Margin="-10,0,0,0"
+                                                         IsUserTyping="{Binding BindingContext.IsTyping, Source={x:Reference MessagePagecmdeio}}"/>
 
                 <StackLayout Orientation="Horizontal" Grid.Column="2"
                              VerticalOptions="Center"
@@ -106,18 +107,6 @@
 
                 </CollectionView>
 
-
-                <lottie:AnimationView Grid.Row="1"
-                                      Loop="True" Margin="5,10,0,0"
-                                      HorizontalOptions="Center" 
-                                      VerticalOptions="Center"
-                                      IsPlaying="{Binding IsTyping}"
-                                      IsVisible="{Binding IsTyping}"
-                                      AutoPlay="True"
-                                      HeightRequest="20"
-                                      WidthRequest="70"
-                                      Animation="typing.json"
-                                      BackgroundColor="Transparent"/>
 
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions >
@@ -187,16 +176,17 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
-                                <Entry Placeholder="Message"
-                                       Margin="10,5,5,5"
-                                       Text="{Binding CurrentMessage}"
-                                       VerticalOptions="Center"
-                                       FontFamily="{StaticResource QuickSandRegular}"
-                                       FontAttributes="Bold">
-                                    <Entry.Effects>
+                                <Editor Placeholder="Message"
+                                        Margin="10,5,5,5"
+                                        AutoSize="TextChanges"
+                                        Text="{Binding CurrentMessage}"
+                                        VerticalOptions="Center"
+                                        FontFamily="{StaticResource QuickSandRegular}"
+                                        FontAttributes="Bold">
+                                    <Editor.Effects>
                                         <effects:BorderlessEntryEffect />
-                                    </Entry.Effects>
-                                </Entry>
+                                    </Editor.Effects>
+                                </Editor>
 
                                 <customControls:FloatingButton CornerRadius="90"
                                                                Grid.Column="1"

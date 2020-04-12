@@ -92,7 +92,6 @@
     <AndroidAsset Include="Assets\Quicksand-Bold.ttf" />
     <AndroidAsset Include="Assets\Quicksand-Light.ttf" />
     <AndroidAsset Include="Assets\Quicksand-Regular.ttf" />
-    <AndroidAsset Include="Assets\18907-tada.json" />
     <AndroidAsset Include="Assets\typing.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />

@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <dataTemplates:BaseTemplate xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             xmlns:dataTemplates="clr-namespace:FreeChat.Views.DataTemplates"
-             xmlns:customViews="clr-namespace:FreeChat.Views.CustomControls"
-             x:Class="FreeChat.Views.DataTemplates.MessagePeerSentTemplate"
-             xmlns:ffimageTransform="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-             xmlns:ffimageLoader="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            mc:Ignorable="d"
+                            xmlns:dataTemplates="clr-namespace:FreeChat.Views.DataTemplates"
+                            xmlns:customViews="clr-namespace:FreeChat.Views.CustomControls"
+                            x:Class="FreeChat.Views.DataTemplates.MessagePeerSentTemplate"
+                            xmlns:ffimageTransform="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+                            xmlns:ffimageLoader="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                             xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                            x:Name="msgTemplate329ew">
+                            x:Name="msgTemplate329ew"
+                            Scale="0.5">
     <ContentView.Content>
         <SwipeView>
             <SwipeView.LeftItems>

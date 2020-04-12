@@ -37,6 +37,31 @@ namespace FreeChat.Views.DataTemplates
         }
         #endregion
 
+        #region IsTyping
+        public static readonly BindableProperty IsUserTypingProperty = BindableProperty.Create(nameof(IsUserTyping), typeof(bool), typeof(SimpleUserProfileTemplate), propertyChanged: (obj, old, newV) =>
+        {
+            var me = obj as SimpleUserProfileTemplate;
+            if (newV != null && !(newV is bool)) return;
+            var oldIsTyping = (bool)old;
+            var newIsTyping = (bool)newV;
+
+            me?.IsTypingChanged(oldIsTyping, newIsTyping);
+        });
+
+        private void IsTypingChanged(bool oldIsTyping, bool newIsTyping)
+        {
+        }
+
+        /// <summary>
+        /// Tells if the current user is typing or not
+        /// </summary>
+        public bool IsUserTyping
+        {
+            get => (bool)GetValue(IsUserTypingProperty);
+            set => SetValue(IsUserTypingProperty, value);
+        }
+        #endregion
+
 
         public SimpleUserProfileTemplate()
         {

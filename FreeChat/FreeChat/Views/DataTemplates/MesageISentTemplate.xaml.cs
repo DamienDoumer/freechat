@@ -16,5 +16,11 @@ namespace FreeChat.Views.DataTemplates
         {
             InitializeComponent();
         }
+
+        protected override void OnBindingContextChanged()
+        {
+            this.ScaleTo(1, 300);
+            base.OnBindingContextChanged();
+        }
     }
 }

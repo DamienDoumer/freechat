@@ -4,11 +4,12 @@
                             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
                             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                             mc:Ignorable="d"
-             xmlns:customViews="clr-namespace:FreeChat.Views.CustomControls"
-             xmlns:datatemplates="clr-namespace:FreeChat.Views.DataTemplates"
-             x:Class="FreeChat.Views.DataTemplates.MesageISentTemplate"
+                            xmlns:customViews="clr-namespace:FreeChat.Views.CustomControls"
+                            xmlns:datatemplates="clr-namespace:FreeChat.Views.DataTemplates"
+                            x:Class="FreeChat.Views.DataTemplates.MesageISentTemplate"
                             xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                            x:Name="msgTemplate3290">
+                            x:Name="msgTemplate3290"
+                            Scale="0.5">
   <ContentView.Content>
         <SwipeView>
             <SwipeView.RightItems>

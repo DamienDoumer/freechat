@@ -7,10 +7,11 @@
              xmlns:ffimageTransform="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:ffimageLoader="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:models="clr-namespace:Models;assembly=Models"
-             xmlns:markupExtensions="clr-namespace:FreeChat.Styles.MarkupExtensions"
-             x:Class="FreeChat.Views.DataTemplates.SimpleUserProfileTemplate"
-             x:Name="simpleUserProfileTemplate_srew"
-             HeightRequest="100">
+                xmlns:markupExtensions="clr-namespace:FreeChat.Styles.MarkupExtensions"
+                x:Class="FreeChat.Views.DataTemplates.SimpleUserProfileTemplate"
+                x:Name="simpleUserProfileTemplate_srew"
+                HeightRequest="100"
+                xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms">
     
   <ContentView.Content>
         <Grid Margin="0,15">
@@ -37,8 +38,11 @@
                                            VerticalOptions="Center"
                                            HeightRequest="60"
                                            WidthRequest="60"
-                                           d:Source="{markupExtensions:ImageResourceMarkupExtension Source=FreeChat.Resources.Images.john.jpg}"
                                            Source="{Binding Peer.ProfilePic, Converter={StaticResource ImageResourceConverter}}">
+
+                    <!--
+                                           d:Source="{markupExtensions:ImageResourceMarkupExtension Source=FreeChat.Resources.Images.john.jpg}"
+                    -->
 
                     <ffimageLoader:CachedImage.Triggers>
                         <DataTrigger TargetType="ffimageLoader:CachedImage"
@@ -106,24 +110,58 @@
                 
                 <ContentView>
                     <ContentView.Triggers>
-                        <DataTrigger TargetType="ContentView"
-                                     Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
-                                     Value="True">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <Label TextColor="{StaticResource SecondaryTextColor}"
-                                           FontFamily="{StaticResource QuickSandRegular}">
-                                        <Label.Triggers>
-                                            <DataTrigger TargetType="Label" 
-                                                         Binding="{Binding Peer.IsOnline}"
-                                                         Value="True">
-                                                <Setter Property="Text" Value="Online"/>
-                                            </DataTrigger>
-                                        </Label.Triggers>
-                                    </Label>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
+                        <MultiTrigger TargetType="ContentView">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                                  Value="True"/>
+                                <BindingCondition Binding="{Binding IsUserTyping, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                                  Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Label TextColor="{StaticResource SecondaryTextColor}"
+                                               FontFamily="{StaticResource QuickSandRegular}">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label" 
+                                                             Binding="{Binding Peer.IsOnline}"
+                                                             Value="True">
+                                                    <Setter Property="Text" Value="Online"/>
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                    </Setter.Value>
+                                </Setter>
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        
+                        <MultiTrigger TargetType="ContentView">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                                  Value="True"/>
+                                <BindingCondition Binding="{Binding IsUserTyping, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                                  Value="True"/>
+                            </MultiTrigger.Conditions>
+
+                            <MultiTrigger.Setters>
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <lottie:AnimationView Grid.Row="1"
+                                                          Loop="True" Margin="-10,0,0,0"
+                                                          HorizontalOptions="Start" 
+                                                          VerticalOptions="Center"
+                                                          IsPlaying="{Binding IsUserTyping, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                                          IsVisible="{Binding IsUserTyping, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                                          AutoPlay="True"
+                                                          HeightRequest="20"
+                                                          WidthRequest="70"
+                                                          Animation="typing.json"
+                                                          BackgroundColor="Transparent"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        
                     </ContentView.Triggers>
                     
                     <Label Text="{Binding LastMessage.Content}"
