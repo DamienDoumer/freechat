@@ -114,7 +114,7 @@ namespace FreeChat.ViewModels
 
             Messages = new ObservableCollection<MessagesGroup>(messagesGroups);
 
-            await Task.Delay(TimeSpan.FromSeconds(1));
+            await Task.Delay(TimeSpan.FromSeconds(0.5));
             ScrollToMessage(Messages.Last().Last());
         }
 
@@ -157,7 +157,8 @@ namespace FreeChat.ViewModels
 
         public async Task FakeMessaging()
         {
-            var shouldReply = new Random().Next(0, 3) > 0 ? true : false;
+            //var shouldReply = new Random().Next(0, 3) > 0 ? true : false;
+            var shouldReply = true;
 
             if (shouldReply)
             {
@@ -166,7 +167,7 @@ namespace FreeChat.ViewModels
                 await Task.Delay(TimeSpan.FromSeconds(3));
                 var message = new Message
                 {
-                    Content = "Hey here is a simple rely.",
+                    Content = "Hey here is a simple reply.",
                     CreationDate = DateTime.Now,
                     Sender = CurrentConversation.Peer,
                     ISentPreviousMessage = Messages.Last().Last().ISent,

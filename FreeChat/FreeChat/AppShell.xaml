@@ -10,11 +10,10 @@
        x:Class="FreeChat.AppShell">
 
     <TabBar>
-        <Tab Title="{x:Static textRes:TextResources.Chat}"
-             Icon="{FontImage Glyph={StaticResource FontAwesomeComment}, FontFamily={StaticResource FontAwesome}}">
+        <Tab Icon="{FontImage Glyph={StaticResource FontAwesomeComment}, FontFamily={StaticResource FontAwesome}}">
             <ShellContent ContentTemplate="{DataTemplate pages:ConversationsPage}" />
         </Tab>
-        <Tab Title="{x:Static textRes:TextResources.Settings}" Icon="{FontImage Glyph={StaticResource FontAwesomeCog}, FontFamily={StaticResource FontAwesome}}">
+        <Tab Icon="{FontImage Glyph={StaticResource FontAwesomeCog}, FontFamily={StaticResource FontAwesome}}">
             <ShellContent ContentTemplate="{DataTemplate pages:SettingsPage}" />
         </Tab>
     </TabBar>

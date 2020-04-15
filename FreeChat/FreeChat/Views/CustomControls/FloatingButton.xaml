@@ -9,7 +9,7 @@
                          x:Class="FreeChat.Views.CustomControls.FloatingButton"
                          CornerRadius="18"
                          HasShadow="True"
-                         BackgroundColor="{StaticResource AccentColor}"
+                         BackgroundColor="{StaticResource PrimaryColor}"
                          xe:Commands.Tap="{Binding PressedCommand, Source={x:Reference floatingButton}}"
                          xe:TouchEffect.Color="LightGray"
                          x:Name="floatingButton">

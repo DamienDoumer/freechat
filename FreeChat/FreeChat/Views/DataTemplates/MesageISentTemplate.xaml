@@ -11,13 +11,13 @@
                             x:Name="msgTemplate3290"
                             Scale="0.5">
   <ContentView.Content>
-        <SwipeView>
+        <SwipeView BackgroundColor="{StaticResource PrimaryColor}">
             <SwipeView.RightItems>
                 <SwipeItems SwipeBehaviorOnInvoked="Close"
                             Mode="Execute">
                     <SwipeItemView Command="{Binding Source={x:Reference msgTemplate3290}, Path=ParentContext.MessageSwippedCommand}"
                                    CommandParameter="{Binding}">
-                        <pancakeView:PancakeView BackgroundColor="White">
+                        <pancakeView:PancakeView BackgroundColor="{StaticResource PrimaryColor}">
                             <Label Style="{StaticResource FontAwesomeLabel}"
                                Text="{StaticResource FontAwesomeReply}"
                                TextColor="LightGray"

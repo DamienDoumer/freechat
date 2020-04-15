@@ -11,15 +11,16 @@
                             xmlns:ffimageLoader="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                             xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                             x:Name="msgTemplate329ew"
+                            BackgroundColor="{StaticResource PrimaryColor}"
                             Scale="0.5">
     <ContentView.Content>
-        <SwipeView>
+        <SwipeView BackgroundColor="{StaticResource PrimaryColor}">
             <SwipeView.LeftItems>
                 <SwipeItems SwipeBehaviorOnInvoked="Close"
                             Mode="Execute">
                     <SwipeItemView Command="{Binding Source={x:Reference msgTemplate329ew}, Path=ParentContext.MessageSwippedCommand}"
                                    CommandParameter="{Binding}">
-                        <pancakeView:PancakeView BackgroundColor="White">
+                        <pancakeView:PancakeView BackgroundColor="{StaticResource PrimaryColor}">
                             <Label Style="{StaticResource FontAwesomeLabel}"
                                Text="{StaticResource FontAwesomeReply}"
                                TextColor="LightGray"

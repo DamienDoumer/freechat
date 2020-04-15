@@ -50,7 +50,7 @@ namespace FreeChat.Services.MockDataStores
 
         public async Task<IEnumerable<Conversation>> GetConversationsForUser(string userId)
         {
-            await Task.Delay(TimeSpan.FromSeconds(2));
+            await Task.Delay(TimeSpan.FromSeconds(1));
             return await Task.FromResult(_conversations.Where(c => c.UserIds[0] == userId));
         }
 

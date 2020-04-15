@@ -15,7 +15,7 @@
                 xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                 BindingContext="{x:Static root:AppLocator.MessagesViewModel}"
                 xmlns:dataTemplateSelector="clr-namespace:FreeChat.Views.TemplateSelectors"
-                BackgroundColor="White"
+                BackgroundColor="{StaticResource PrimaryColor}"
                 x:Name="MessagePagecmdeio">
 
     <ContentPage.Content>
@@ -43,7 +43,8 @@
                                                IconSize="25"
                                                PressedCommand="{Binding Source={x:Reference MessagePagecmdeio}, Path=BackCommand}"
                                                Icon="{StaticResource FontAwesomeChevronLeft}"
-                                               BackgroundColor="White" HasShadow="False"
+                                               BackgroundColor="{StaticResource PrimaryColor}" 
+                                               HasShadow="False"
                                                IconColor="{StaticResource AccentColor}"/>
 
                 <dataTemplates:SimpleUserProfileTemplate BindingContext="{Binding CurrentConversation}"
@@ -60,7 +61,7 @@
                     <customControls:FloatingButton Icon="{StaticResource FontAwesomePhone}"
                                                    IconColor="{StaticResource AccentColor}"
                                                    HasShadow="False"
-                                                   BackgroundColor="White"
+                                                   BackgroundColor="{StaticResource PrimaryColor}"
                                                    IconSize="25"
                                                    WidthRequest="40"
                                                    HeightRequest="40"/>
@@ -68,7 +69,7 @@
                     <customControls:FloatingButton Icon="{StaticResource FontAwesomeVideo}"
                                                    IconColor="{StaticResource AccentColor}"
                                                    HasShadow="False"
-                                                   BackgroundColor="White"
+                                                   BackgroundColor="{StaticResource PrimaryColor}"
                                                    IconSize="25"
                                                    WidthRequest="40"
                                                    HeightRequest="40"
@@ -77,7 +78,7 @@
 
             </Grid>
 
-            <Grid Grid.Row="1" BackgroundColor="Transparent">
+            <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition Height="Auto"/>
@@ -86,6 +87,7 @@
 
                 <CollectionView ItemsSource="{Binding Messages}"
                                 IsGrouped="True" Grid.Row="0"
+                                BackgroundColor="{StaticResource PrimaryColor}"
                                 x:Name="MessagesCollectionView">
 
                     <CollectionView.GroupHeaderTemplate>
@@ -177,7 +179,7 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Editor Placeholder="Message"
-                                        Margin="10,5,5,5"
+                                        Margin="10,5,5,10"
                                         AutoSize="TextChanges"
                                         Text="{Binding CurrentMessage}"
                                         VerticalOptions="Center"
@@ -210,7 +212,7 @@
                                                    PressedCommand="{Binding SendMessageCommand}"
                                                    Icon="{StaticResource FontAwesomePaperPlane}"
                                                    IconColor="{StaticResource PrimaryColor}"
-                                                   Margin="5,0,10,10"/>
+                                                   Margin="5,0,5,10"/>
                 </Grid>
                 
             </Grid>
