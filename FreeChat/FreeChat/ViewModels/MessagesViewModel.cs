@@ -73,6 +73,7 @@ namespace FreeChat.ViewModels
         public void CancelReply()
         {
             ReplyMessage = null;
+            MessagingCenter.Send<IViewModel, MyFocusEventArgs>(this, Constants.ShowKeyboard, new MyFocusEventArgs { IsFocused = false });
         }
 
         private void ReplyMessageSelected(Message message)
@@ -120,6 +121,7 @@ namespace FreeChat.ViewModels
         void MessageSwiped(Message message)
         {
             ReplyMessage = message;
+            MessagingCenter.Send<IViewModel, MyFocusEventArgs>(this, Constants.ShowKeyboard, new MyFocusEventArgs { IsFocused = true });
         }
 
         void ScrollToMessage(Message message)

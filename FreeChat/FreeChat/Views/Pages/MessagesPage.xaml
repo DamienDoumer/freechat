@@ -182,7 +182,8 @@
                                         Text="{Binding CurrentMessage}"
                                         VerticalOptions="Center"
                                         FontFamily="{StaticResource QuickSandRegular}"
-                                        FontAttributes="Bold">
+                                        FontAttributes="Bold"
+                                        x:Name="TextInput">
                                     <Editor.Effects>
                                         <effects:BorderlessEntryEffect />
                                     </Editor.Effects>

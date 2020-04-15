@@ -7,5 +7,6 @@ namespace FreeChat.Helpers
     public class Constants
     {
         public const string ScrollToItem = "ScrollToItem";
+        public const string ShowKeyboard = "ShowKeyboard";
     }
 }

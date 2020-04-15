@@ -13,7 +13,7 @@ namespace FreeChat.Views.Pages
         public BasePage()
         {
         }
-
+        
         protected async override void OnAppearing()
         {
             await ViewModel.Initialize();

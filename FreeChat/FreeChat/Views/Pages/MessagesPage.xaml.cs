@@ -41,6 +41,14 @@ namespace FreeChat.Views.Pages
         #endregion
 
 
+        void IsFocusOnKeyBoardChanged(bool newIsFocusOnKeyBoard)
+        {
+            if (newIsFocusOnKeyBoard)
+                TextInput.Focus();
+            else
+                TextInput.Unfocus();
+        }
+
         public MessagesPage()
         {
             InitializeComponent();
@@ -50,6 +58,8 @@ namespace FreeChat.Views.Pages
 
         protected override void OnAppearing()
         {
+            MessagingCenter.Subscribe<IViewModel, MyFocusEventArgs>(this, Constants.ShowKeyboard, (s, args) =>
+                IsFocusOnKeyBoardChanged(args.IsFocused));
             MessagingCenter.Subscribe<IViewModel, ScrollToItemEventArgs>(this, Constants.ScrollToItem, (s, eargs) =>
             {
                 MessagesCollectionView.ScrollTo(eargs.Item);
@@ -59,7 +69,8 @@ namespace FreeChat.Views.Pages
 
         protected override void OnDisappearing()
         {
-           MessagingCenter.Unsubscribe<IViewModel, ScrollToItemEventArgs>(this, Constants.ScrollToItem);
+            MessagingCenter.Unsubscribe<IViewModel, MyFocusEventArgs>(this, Constants.ShowKeyboard);
+            MessagingCenter.Unsubscribe<IViewModel, ScrollToItemEventArgs>(this, Constants.ScrollToItem);
            base.OnDisappearing();
         }
     }
