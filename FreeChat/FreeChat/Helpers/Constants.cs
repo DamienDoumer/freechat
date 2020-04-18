@@ -8,5 +8,7 @@ namespace FreeChat.Helpers
     {
         public const string ScrollToItem = "ScrollToItem";
         public const string ShowKeyboard = "ShowKeyboard";
+        public const string iOSKeyboardAppears = "KeyboardAppears";
+        public const string iOSKeyboardDisappears = "KeyboardDisappears";
     }
 }

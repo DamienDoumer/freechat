@@ -33,5 +33,24 @@
     <Style BasedOn="{StaticResource BaseLabelStyle}"
            TargetType="{x:Type Label}" />
 
+    <!--Swipeviews-->
+    
+            <Style TargetType="SwipeView" x:Key="MessageBubbleSwipeViewStyle">
+                <Setter Property="Padding">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS" Value="0,10"/>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Margin">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS" Value="0,7"/>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+            </Style>
 
 </ResourceDictionary>

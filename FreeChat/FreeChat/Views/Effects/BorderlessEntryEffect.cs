@@ -5,10 +5,10 @@ using Xamarin.Forms;
 
 namespace FreeChat.Views.Effects
 {
-    public class BorderlessEntryEffect : RoutingEffect
+    public class BorderlessEntryEffect : BaseFreechatEffect
     {
         public BorderlessEntryEffect() : 
-            base($"FreeChat.{nameof(BorderlessEntryEffect)}")
+            base(nameof(BorderlessEntryEffect))
         {
         }
     }

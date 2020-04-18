@@ -137,7 +137,7 @@ namespace FreeChat.ViewModels
                 ReplyTo = ReplyMessage,
                 CreationDate = DateTime.Now,
                 Sender = AppLocator.CurrentUser,
-                ISentPreviousMessage = (bool) Messages?.Last()?.Last()?.ISent,
+                //ISentPreviousMessage = (bool) Messages?.Last()?.Last()?.ISent,
                 ISent = true,
                 ConversationId = CurrentConversation.Id,
                 SenderId = AppLocator.CurrentUserId
@@ -170,7 +170,7 @@ namespace FreeChat.ViewModels
                     Content = "Hey here is a simple reply.",
                     CreationDate = DateTime.Now,
                     Sender = CurrentConversation.Peer,
-                    ISentPreviousMessage = Messages.Last().Last().ISent,
+                    //ISentPreviousMessage = Messages.Last().Last().ISent,
                     ISent = false,
                     ConversationId = CurrentConversation.Id,
                     SenderId = CurrentConversation.Peer.Id

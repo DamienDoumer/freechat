@@ -14,7 +14,7 @@
                             BackgroundColor="{StaticResource PrimaryColor}"
                             Scale="0.5">
     <ContentView.Content>
-        <SwipeView BackgroundColor="{StaticResource PrimaryColor}">
+        <SwipeView Style="{StaticResource MessageBubbleSwipeViewStyle}">
             <SwipeView.LeftItems>
                 <SwipeItems SwipeBehaviorOnInvoked="Close"
                             Mode="Execute">
@@ -33,7 +33,7 @@
             
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="6*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
@@ -44,7 +44,6 @@
                     </Grid.ColumnDefinitions>
 
                     <ffimageLoader:CachedImage HeightRequest="40"
-                                           Margin="15,0,0,0"
                                            WidthRequest="40"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Center"
@@ -52,6 +51,13 @@
                         <ffimageLoader:CachedImage.Transformations>
                             <ffimageTransform:CircleTransformation />
                         </ffimageLoader:CachedImage.Transformations>
+
+                        <ffimageLoader:CachedImage.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="15,0,0,0"/>
+                                <On Platform="iOS" Value="5"/>
+                            </OnPlatform>
+                        </ffimageLoader:CachedImage.Margin>
                     </ffimageLoader:CachedImage>
 
                     <customViews:MessageBubble Text="{Binding Content}"
@@ -60,14 +66,22 @@
                                                BackgroundColor="White"
                                                Grid.Column="1"
                                                ReplyTappedCommand="{Binding ParentContext.ReplyMessageSelectedCommand, Source={x:Reference msgTemplate329ew}}"
-                                               Margin="5">
-                        <customViews:MessageBubble.Triggers>
+                                               >
+                        
+                        <customViews:MessageBubble.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="0,0,12,12"/>
+                                <On Platform="iOS" Value="5,10,0,10"/>
+                            </OnPlatform>
+                        </customViews:MessageBubble.Margin>
+
+                        <!--<customViews:MessageBubble.Triggers>
                             <DataTrigger TargetType="customViews:MessageBubble"
                                  Binding="{Binding ISentPreviousMessage}"
                                  Value="true">
                                 <Setter Property="Margin" Value="15, 15, 5, 5"/>
                             </DataTrigger>
-                        </customViews:MessageBubble.Triggers>
+                        </customViews:MessageBubble.Triggers>-->
                     </customViews:MessageBubble>
                 </Grid>
 

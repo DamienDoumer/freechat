@@ -19,6 +19,7 @@
     <x:String x:Key="FontAwesomePaperPlane">&#xf1d8;</x:String>
     <x:String x:Key="FontAwesomeTimes">&#xf00d;</x:String>
     <x:String x:Key="FontAwesomeReply">&#xf3e5;</x:String>
+    <x:String x:Key="FontAwesomeCircle">&#xf111;</x:String>
 
     <!--Font Awesome-->
     <OnPlatform x:Key="FontAwesome"

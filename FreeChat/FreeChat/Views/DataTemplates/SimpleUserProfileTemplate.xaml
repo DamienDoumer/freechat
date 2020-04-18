@@ -10,11 +10,19 @@
                 xmlns:markupExtensions="clr-namespace:FreeChat.Styles.MarkupExtensions"
                 x:Class="FreeChat.Views.DataTemplates.SimpleUserProfileTemplate"
                 x:Name="simpleUserProfileTemplate_srew"
-                HeightRequest="100"
+                
+                xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                 xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms">
     
   <ContentView.Content>
-        <Grid Margin="0,15">
+        <Grid >
+            <Grid.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="Android" Value="0,15"/>
+                    <On Platform="iOS" Value="0,5"/>
+                </OnPlatform>
+            </Grid.Margin>
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition />
@@ -36,8 +44,8 @@
                                            Grid.RowSpan="2"
                                            HorizontalOptions="Center"
                                            VerticalOptions="Center"
-                                           HeightRequest="60"
-                                           WidthRequest="60"
+                                           HeightRequest="{OnPlatform Android=60, iOS=50}"
+                                           WidthRequest="{OnPlatform Android=60, iOS=50}"
                                            Source="{Binding Peer.ProfilePic, Converter={StaticResource ImageResourceConverter}}">
 
                     <!--
@@ -58,22 +66,52 @@
                     </ffimageLoader:CachedImage.Transformations>
                 </ffimageLoader:CachedImage>
 
-                <BoxView CornerRadius="90"
-                         BackgroundColor="{StaticResource ConnectedColor}"
-                         Grid.Column="1" Grid.Row="1"
-                         HeightRequest="12" WidthRequest="12"
-                         Margin="0,0,8,8"
-                         IsVisible="{Binding Peer.IsOnline}">
-                    <BoxView.Triggers>
-                        <DataTrigger TargetType="BoxView"
+                <Label Text="{StaticResource FontAwesomeCircle}"
+                       FontFamily="{StaticResource FontAwesome}"
+                       Grid.Column="1" Grid.Row="1"
+                       IsVisible="{Binding Peer.IsOnline}"
+                       FontSize="Caption"
+                       TextColor="{StaticResource ConnectedColor}">
+                    <Label.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="0,0,8,8"/>
+                            <On Platform="iOS" Value="0,0,10,12"/>
+                        </OnPlatform>
+                    </Label.Margin>
+
+                    <Label.Triggers>
+                        <DataTrigger TargetType="Label"
+                                     Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                     Value="True">
+                            <Setter Property="Margin" Value="0,0,12,15"/>
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+
+  <!-- <pancakeView:PancakeView CornerRadius="90"
+                                BackgroundColor="{StaticResource ConnectedColor}"
+                                         Grid.Column="1" Grid.Row="1"
+                                         HeightRequest="12" WidthRequest="12"
+                                         IsVisible="{Binding Peer.IsOnline}">
+
+                    <pancakeView:PancakeView.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="0,0,8,8"/>
+                            <On Platform="iOS" Value="0,0,10,20"/>
+                        </OnPlatform>
+                    </pancakeView:PancakeView.Margin>
+
+                    <pancakeView:PancakeView.Triggers>
+                        <DataTrigger TargetType="pancakeView:PancakeView"
                                      Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
                                      Value="True">
                             <Setter Property="Margin" Value="0,0,15,15"/>
                             <Setter Property="HeightRequest" Value="10"/>
                             <Setter Property="WidthRequest" Value="10"/>
                         </DataTrigger>
-                    </BoxView.Triggers>
-                </BoxView>
+                    </pancakeView:PancakeView.Triggers>
+                </pancakeView:PancakeView>
+  -->
 
             </Grid>
             

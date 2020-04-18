@@ -12,6 +12,7 @@
                 xmlns:local="clr-namespace:FreeChat.Views.Pages"
                 xmlns:effects="clr-namespace:FreeChat.Views.Effects"
                 xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
+                xmlns:xf="clr-namespace:Xamarin.Forms.Core;assembly=Xamarin.Forms.Core"
                 xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                 BindingContext="{x:Static root:AppLocator.MessagesViewModel}"
                 xmlns:dataTemplateSelector="clr-namespace:FreeChat.Views.TemplateSelectors"
@@ -20,23 +21,34 @@
 
     <ContentPage.Content>
 
-        <Grid>
+        <Grid x:Name="ContainerGrid">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <Grid Margin="0,-10 ,0,0"
-                  VerticalOptions="Start"
-                  HeightRequest="95">
+            <Grid VerticalOptions="Start">
+
+                <Grid.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="0,0"/>
+                        <On Platform="Android" Value="0,-10 ,0,0"/>
+                    </OnPlatform>
+                </Grid.Margin>
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <customControls:FloatingButton Margin="5,0,0,0"
+                <xe:BorderView BackgroundColor="Red" xe:TouchEffect.Color="AliceBlue"
+                               xe:Commands.Tap="{Binding Source={x:Reference MessagePagecmdeio}, Path=BackCommand}">
+                    <Label Text="Fuck!!"/>
+                </xe:BorderView>
+
+               <!-- <customControls:FloatingButton Margin="5,0,0,0"
                                                HorizontalOptions="Start"
                                                VerticalOptions="Center" 
                                                HeightRequest="40" WidthRequest="40"
@@ -45,18 +57,36 @@
                                                Icon="{StaticResource FontAwesomeChevronLeft}"
                                                BackgroundColor="{StaticResource PrimaryColor}" 
                                                HasShadow="False"
-                                               IconColor="{StaticResource AccentColor}"/>
+                                               IconColor="{StaticResource AccentColor}">
+                    <customControls:FloatingButton.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="0"/>
+                        <On Platform="Android" Value="5,0 ,0,0"/>
+                    </OnPlatform>
+                    </customControls:FloatingButton.Margin>
+                </customControls:FloatingButton>-->
 
                 <dataTemplates:SimpleUserProfileTemplate BindingContext="{Binding CurrentConversation}"
                                                          Grid.Column="1"
                                                          IsInTitle="True"
-                                                         Margin="-10,0,0,0"
-                                                         IsUserTyping="{Binding BindingContext.IsTyping, Source={x:Reference MessagePagecmdeio}}"/>
+                                                         IsUserTyping="{Binding BindingContext.IsTyping, Source={x:Reference MessagePagecmdeio}}">
+                    <dataTemplates:SimpleUserProfileTemplate.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="-25,0,0,0"/>
+                        <On Platform="Android" Value="-15,0,0,0"/>
+                    </OnPlatform>
+                    </dataTemplates:SimpleUserProfileTemplate.Margin>
+                </dataTemplates:SimpleUserProfileTemplate>
 
                 <StackLayout Orientation="Horizontal" Grid.Column="2"
                              VerticalOptions="Center"
-                             HorizontalOptions="End"
-                             Margin="5" Spacing="15">
+                             HorizontalOptions="End">
+                    <StackLayout.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS" Value="0,0,0,0"/>
+                            <On Platform="Android" Value="0,0,0,0"/>
+                        </OnPlatform>
+                    </StackLayout.Margin>
 
                     <customControls:FloatingButton Icon="{StaticResource FontAwesomePhone}"
                                                    IconColor="{StaticResource AccentColor}"
@@ -73,12 +103,12 @@
                                                    IconSize="25"
                                                    WidthRequest="40"
                                                    HeightRequest="40"
-                                                   Margin="0,0,15,0"/>
+                                                   Margin="0,0,10,0"/>
                 </StackLayout>
 
             </Grid>
 
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" x:Name="MessagesGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition Height="Auto"/>
@@ -111,6 +141,11 @@
 
 
                 <Grid Grid.Row="2">
+                    <Grid.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS" Value="0"/>
+                        </OnPlatform>
+                    </Grid.Margin>
                     <Grid.ColumnDefinitions >
                         <ColumnDefinition />
                         <ColumnDefinition Width="Auto"/>
@@ -118,8 +153,14 @@
 
                     <pancakeView:PancakeView HasShadow="True"
                                              CornerRadius="20"
-                                             Margin="10,0,0,10"
                                              BackgroundColor="White">
+
+                        <pancakeView:PancakeView.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="10,0,0,10"/>
+                                <On Platform="iOS" Value="10,0,0,0"/>
+                            </OnPlatform>
+                        </pancakeView:PancakeView.Margin>
                         <Grid>
 
                             <Grid.RowDefinitions>
@@ -127,21 +168,21 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <Grid IsVisible="{Binding Converter={StaticResource IsNullValueConverter}}"
-                                  BindingContext="{Binding ReplyMessage}"
-                                  HeightRequest="70"
-                                  Margin="10,10,10,0">
+                            <pancakeView:PancakeView Margin="10,10,10,0" IsVisible="{Binding Converter={StaticResource IsNullValueConverter}}"
+                                                     BindingContext="{Binding ReplyMessage}">
+                                <Grid HeightRequest="70">
 
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
 
-                                <BoxView BackgroundColor="{StaticResource PrimaryColor}" Grid.ColumnSpan="2"/>
+                                <BoxView BackgroundColor="{StaticResource PrimaryColor}" Grid.ColumnSpan="3" />
                                 <BoxView WidthRequest="2" BackgroundColor="{StaticResource AccentColor}"/>
 
                                 <StackLayout Grid.Column="1"
+                                             Grid.ColumnSpan="2"
                                              Margin="1">
                                     <Label FontFamily="{StaticResource QuickSandBold}"
                                            LineBreakMode="TailTruncation"
@@ -163,14 +204,15 @@
                                                                IconSize="15"
                                                                HeightRequest="30"
                                                                WidthRequest="30"
-                                                               HorizontalOptions="Center"
-                                                               VerticalOptions="Center"
+                                                               HorizontalOptions="End"
+                                                               VerticalOptions="Start"
                                                                HasShadow="False"
-                                                               BackgroundColor="White"
+                                                               BackgroundColor="Transparent"
                                                                PressedCommand="{Binding BindingContext.CancelReplyCommand, Source={x:Reference MessagePagecmdeio}}"
                                                                Icon="{StaticResource FontAwesomeTimes}"
                                                                IconColor="{StaticResource PrimaryTextColor}"/>
                             </Grid>
+                            </pancakeView:PancakeView>
 
                             <Grid Grid.Row="1">
                                 <Grid.ColumnDefinitions>
@@ -186,9 +228,22 @@
                                         FontFamily="{StaticResource QuickSandRegular}"
                                         FontAttributes="Bold"
                                         x:Name="TextInput">
+
                                     <Editor.Effects>
-                                        <effects:BorderlessEntryEffect />
+                                        <OnPlatform x:TypeArguments="effects:BaseFreechatEffect">
+                                            <On Platform="iOS">
+                                                <On.Value>
+                                                    <effects:BorderlessEditorEffect />
+                                                </On.Value>
+                                            </On>
+                                            <On Platform="Android">
+                                                <On.Value>
+                                                    <effects:BorderlessEntryEffect />
+                                                </On.Value>
+                                            </On>
+                                        </OnPlatform>
                                     </Editor.Effects>
+
                                 </Editor>
 
                                 <customControls:FloatingButton CornerRadius="90"
@@ -212,7 +267,7 @@
                                                    PressedCommand="{Binding SendMessageCommand}"
                                                    Icon="{StaticResource FontAwesomePaperPlane}"
                                                    IconColor="{StaticResource PrimaryColor}"
-                                                   Margin="5,0,5,10"/>
+                                                   Margin="5,0,10,0"/>
                 </Grid>
                 
             </Grid>

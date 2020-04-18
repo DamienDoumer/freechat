@@ -22,7 +22,6 @@ namespace FreeChat.iOS.Effects
 
         protected override void OnDetached()
         {
-            throw new NotImplementedException();
         }
     }
 }

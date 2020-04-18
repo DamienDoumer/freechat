@@ -38,7 +38,7 @@ namespace FreeChat.Services.MockDataStores
             {
                 ConversationId = conversation.Id,
                 Id = Guid.NewGuid().ToString(),
-                ISentPreviousMessage = true,
+                //ISentPreviousMessage = true,
                 Content = "Yeah. But you were not arround",
                 CreationDate = DateTime.Now - TimeSpan.FromMinutes(5),
                 ISent = false,
@@ -49,7 +49,7 @@ namespace FreeChat.Services.MockDataStores
             {
                 ConversationId = conversation.Id,
                 Id = Guid.NewGuid().ToString(),
-                ISentPreviousMessage = true,
+                //ISentPreviousMessage = true,
                 Content = "Yeah I was not arround I left early yesterday",
                 CreationDate = DateTime.Now - TimeSpan.FromMinutes(2),
                 ISent = true,
@@ -61,7 +61,7 @@ namespace FreeChat.Services.MockDataStores
             {
                 ConversationId = conversation.Id,
                 Id = Guid.NewGuid().ToString(),
-                ISentPreviousMessage = true,
+                //ISentPreviousMessage = true,
                 Content = "I called you, and I left you a message did you see it ?",
                 CreationDate = DateTime.Now - TimeSpan.FromMinutes(1),
                 ISent = false,

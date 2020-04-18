@@ -19,12 +19,19 @@
 
     <!--BackgroundColor="{StaticResource PrimaryColor}"-->
     <Shell.TitleView>
-        <Grid Margin="0,10,0,0">
+        <Grid >
             <Label Text="{Binding Title, Source={x:Reference conversationsPage}}"
                    VerticalOptions="Center"
-                   FontSize="Large"
+                   FontSize="Title"
                    FontAttributes="Bold"
-                   FontFamily="{StaticResource QuickSandBold}" />
+                   FontFamily="{StaticResource QuickSandBold}">
+                <Label.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="0,10,0,0"/>
+                        <On Platform="iOS" Value="15,5,0,0"/>
+                    </OnPlatform>
+                </Label.Margin>
+            </Label>
         </Grid>
     </Shell.TitleView>
     
@@ -49,11 +56,17 @@
 
                 <pancakeView:PancakeView BackgroundGradientStartColor="LightGray"
                                          BackgroundGradientEndColor="Transparent"
-                                         Margin="15,20,15,-10"
                                          CornerRadius="30"
-                                         HeightRequest="60" />
-                <pancakeView:PancakeView HasShadow="False"
-                                         CornerRadius="20"
+                                         HeightRequest="60" >
+                    <pancakeView:PancakeView.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="15,20,15,-10"/>
+                            <On Platform="iOS" Value="15,25,15,-15"/>
+                        </OnPlatform>
+                    </pancakeView:PancakeView.Margin>
+                </pancakeView:PancakeView>
+
+                <pancakeView:PancakeView CornerRadius="20"
                                          Margin="15,10,15,10"
                                          HeightRequest="60"
                                          BackgroundColor="White">
@@ -72,6 +85,7 @@
                                 <effects:BorderlessEntryEffect />
                             </Entry.Effects>
                         </Entry>
+
                         <Label Style="{StaticResource FontAwesomeLabel}"
                                Text="{StaticResource FontAwesomeSearch}"
                                Grid.Column="1"
@@ -105,7 +119,7 @@
                                     <RowDefinition />
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <dataTemplates:SimpleUserProfileTemplate />
+                                <dataTemplates:SimpleUserProfileTemplate HeightRequest="{OnPlatform Android=100, iOS=80}"/>
                                 <pancakeView:PancakeView BackgroundGradientStartColor="#D8D8D8"
                                                          BackgroundGradientEndColor="Transparent"
                                                          HeightRequest="1"
@@ -131,9 +145,18 @@
             <pancakeView:PancakeView HeightRequest="30"
                                      HasShadow="True"
                                      Grid.Row="1"
-                                     Margin="0,0,0,-15"
+                                     IsVisible="False"
                                      CornerRadius="50"
-                                     BackgroundColor="White" />
+                                     BackgroundColor="White" >
+
+                <pancakeView:PancakeView.Margin>
+                    
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="0,0,0,-15"/>
+                        <On Platform="iOS" Value="0,0,0,-1"/>
+                    </OnPlatform>
+                </pancakeView:PancakeView.Margin>
+            </pancakeView:PancakeView>
         </Grid>
  
     </ContentPage.Content>

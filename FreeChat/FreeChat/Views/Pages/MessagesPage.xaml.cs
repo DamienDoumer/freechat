@@ -1,5 +1,6 @@
 ﻿using FreeChat.Helpers;
 using FreeChat.Helpers.MyEventArgs;
+using FreeChat.PlatformSpecifics;
 using FreeChat.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -60,9 +61,24 @@ namespace FreeChat.Views.Pages
         {
             MessagingCenter.Subscribe<IViewModel, MyFocusEventArgs>(this, Constants.ShowKeyboard, (s, args) =>
                 IsFocusOnKeyBoardChanged(args.IsFocused));
+
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                var safeInset = DependencyService.Get<IGetSafeAreaInsetiOS>().GetSafeInset();
+                ContainerGrid.Margin = safeInset;
+            }
+
             MessagingCenter.Subscribe<IViewModel, ScrollToItemEventArgs>(this, Constants.ScrollToItem, (s, eargs) =>
             {
                 MessagesCollectionView.ScrollTo(eargs.Item);
+            });
+            MessagingCenter.Subscribe<object, KeyboardAppearEventArgs>(this, Constants.iOSKeyboardAppears, (sender, eargs) =>
+            {
+                MessagesGrid.TranslationY -= eargs.KeyboardSize;
+            });
+            MessagingCenter.Subscribe<object, string>(this, Constants.iOSKeyboardDisappears, (sender, eargs) =>
+            {
+                MessagesGrid.TranslationY = 0;
             });
             base.OnAppearing();
         }
@@ -71,7 +87,8 @@ namespace FreeChat.Views.Pages
         {
             MessagingCenter.Unsubscribe<IViewModel, MyFocusEventArgs>(this, Constants.ShowKeyboard);
             MessagingCenter.Unsubscribe<IViewModel, ScrollToItemEventArgs>(this, Constants.ScrollToItem);
-           base.OnDisappearing();
+            MessagingCenter.Unsubscribe<object, KeyboardAppearEventArgs>(this, Constants.iOSKeyboardAppears);
+            base.OnDisappearing();
         }
     }
 }

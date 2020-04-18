@@ -12,8 +12,6 @@ namespace FreeChat.Styles.ValueConverters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Debug.WriteLine("### :" + value?.ToString());
-            Debug.WriteLine("### :" + value as string);
             if (value as string == null)
                 return null;
 

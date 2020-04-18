@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -120,7 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FreeChat\FreeChat.csproj">
-      <Project>{F0D3265F-E294-466D-8DBE-233A2814BE85}</Project>
+      <Project>{037765CD-0C05-47E5-8D44-2A265200E35A}</Project>
       <Name>FreeChat</Name>
     </ProjectReference>
   </ItemGroup>
