@@ -43,12 +43,12 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <xe:BorderView BackgroundColor="Red" xe:TouchEffect.Color="AliceBlue"
+                <!--<xe:BorderView BackgroundColor="Red" xe:TouchEffect.Color="AliceBlue"
                                xe:Commands.Tap="{Binding Source={x:Reference MessagePagecmdeio}, Path=BackCommand}">
                     <Label Text="Fuck!!"/>
-                </xe:BorderView>
+                </xe:BorderView>-->
 
-               <!-- <customControls:FloatingButton Margin="5,0,0,0"
+                <customControls:FloatingButton Margin="5,0,0,0"
                                                HorizontalOptions="Start"
                                                VerticalOptions="Center" 
                                                HeightRequest="40" WidthRequest="40"
@@ -59,12 +59,12 @@
                                                HasShadow="False"
                                                IconColor="{StaticResource AccentColor}">
                     <customControls:FloatingButton.Margin>
-                    <OnPlatform x:TypeArguments="Thickness">
-                        <On Platform="iOS" Value="0"/>
-                        <On Platform="Android" Value="5,0 ,0,0"/>
-                    </OnPlatform>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS" Value="0"/>
+                            <On Platform="Android" Value="5,0 ,0,0"/>
+                        </OnPlatform>
                     </customControls:FloatingButton.Margin>
-                </customControls:FloatingButton>-->
+                </customControls:FloatingButton>
 
                 <dataTemplates:SimpleUserProfileTemplate BindingContext="{Binding CurrentConversation}"
                                                          Grid.Column="1"
@@ -151,16 +151,17 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <pancakeView:PancakeView HasShadow="True"
+                    <customControls:MyPancakeView HasShadow="True"
                                              CornerRadius="20"
                                              BackgroundColor="White">
 
-                        <pancakeView:PancakeView.Margin>
+                        <customControls:MyPancakeView.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="Android" Value="10,0,0,10"/>
                                 <On Platform="iOS" Value="10,0,0,0"/>
                             </OnPlatform>
-                        </pancakeView:PancakeView.Margin>
+                        </customControls:MyPancakeView.Margin>
+                        
                         <Grid>
 
                             <Grid.RowDefinitions>
@@ -259,7 +260,7 @@
                             </Grid>
 
                         </Grid>
-                    </pancakeView:PancakeView>
+                    </customControls:MyPancakeView>
 
                     <customControls:FloatingButton Grid.Column="1" WidthRequest="60" HeightRequest="60"
                                                    HorizontalOptions="Center" VerticalOptions="End"

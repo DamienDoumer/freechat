@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<pancakeView:PancakeView xmlns="http://xamarin.com/schemas/2014/forms" 
-                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                         xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-                         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+<local:MyPancakeView xmlns="http://xamarin.com/schemas/2014/forms" 
+                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                         xmlns:local="clr-namespace:FreeChat.Views.CustomControls"
                          xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
                          x:Class="FreeChat.Views.CustomControls.MessageBubble"
                          x:Name="bubble_fdasdl"
@@ -21,26 +21,27 @@
 
         <Grid IsVisible="{Binding Converter={StaticResource IsNullValueConverter}}"
               BindingContext="{Binding ReplyTo}"
-                                 VerticalOptions="Start"
-                                 Margin="5"
-                                 xe:Commands.Tap="{Binding ReplyTappedCommand, Source={x:Reference bubble_fdasdl}}"
-                                 xe:TouchEffect.Color="LightGray"
-                                 xe:Commands.TapParameter="{Binding}">
+              VerticalOptions="Start"
+              Margin="5"
+              xe:Commands.Tap="{Binding ReplyTappedCommand, Source={x:Reference bubble_fdasdl}}"
+              xe:TouchEffect.Color="LightGray"
+              xe:Commands.TapParameter="{Binding}">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <BoxView WidthRequest="2" BackgroundColor="White">
+            <BoxView WidthRequest="3" BackgroundColor="White">
                 <BoxView.Triggers>
                     <DataTrigger TargetType="BoxView"
                                  Binding="{Binding BindingContext.ISent, Source={x:Reference bubble_fdasdl}}"
                                  Value="False">
                         <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}"/>
                     </DataTrigger>
-                </BoxView.Triggers></BoxView>
-            <BoxView BackgroundColor="{StaticResource PrimaryColor}" Opacity="0.1"
+                </BoxView.Triggers>
+            </BoxView>
+            <BoxView BackgroundColor="{StaticResource LightDarkWhite}" Opacity="0.1"
                      Grid.Column="1" Margin="-7,0,0,0">
                 <BoxView.Triggers>
                     <DataTrigger TargetType="BoxView"
@@ -99,4 +100,4 @@
         
     </Grid>
     
-</pancakeView:PancakeView>
+</local:MyPancakeView>

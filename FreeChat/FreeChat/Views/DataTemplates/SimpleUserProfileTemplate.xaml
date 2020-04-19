@@ -10,12 +10,11 @@
                 xmlns:markupExtensions="clr-namespace:FreeChat.Styles.MarkupExtensions"
                 x:Class="FreeChat.Views.DataTemplates.SimpleUserProfileTemplate"
                 x:Name="simpleUserProfileTemplate_srew"
-                
                 xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                 xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms">
     
   <ContentView.Content>
-        <Grid >
+        <Grid>
             <Grid.Margin>
                 <OnPlatform x:TypeArguments="Thickness">
                     <On Platform="Android" Value="0,15"/>
@@ -83,7 +82,14 @@
                         <DataTrigger TargetType="Label"
                                      Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
                                      Value="True">
-                            <Setter Property="Margin" Value="0,0,12,15"/>
+                            <Setter Property="Margin" Value="0,0,12,15">
+                                <Setter.Value>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android" Value="0,0,12,15"/>
+                                        <On Platform="iOS" Value="0,0,8,7"/>
+                                    </OnPlatform>
+                                </Setter.Value>
+                            </Setter>
                         </DataTrigger>
                     </Label.Triggers>
                 </Label>

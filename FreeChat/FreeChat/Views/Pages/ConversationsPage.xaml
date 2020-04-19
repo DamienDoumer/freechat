@@ -54,19 +54,20 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <pancakeView:PancakeView BackgroundGradientStartColor="LightGray"
-                                         BackgroundGradientEndColor="Transparent"
-                                         CornerRadius="30"
-                                         HeightRequest="60" >
+                <customControls:MyPancakeView BackgroundGradientStartColor="LightGray"
+                                              BackgroundGradientEndColor="Transparent"
+                                              CornerRadius="30" IsVisible="{OnPlatform iOS=False}"
+                                              HeightRequest="60" >
                     <pancakeView:PancakeView.Margin>
                         <OnPlatform x:TypeArguments="Thickness">
                             <On Platform="Android" Value="15,20,15,-10"/>
                             <On Platform="iOS" Value="15,25,15,-15"/>
                         </OnPlatform>
                     </pancakeView:PancakeView.Margin>
-                </pancakeView:PancakeView>
+                </customControls:MyPancakeView>
 
-                <pancakeView:PancakeView CornerRadius="20"
+                <customControls:MyPancakeView CornerRadius="20"
+                                              HasShadow="True"
                                          Margin="15,10,15,10"
                                          HeightRequest="60"
                                          BackgroundColor="White">
@@ -94,7 +95,7 @@
                                HorizontalOptions="Center"
                                VerticalOptions="Center" />
                     </Grid>
-                </pancakeView:PancakeView>
+                </customControls:MyPancakeView>
 
                 <customControls:ToggleButton HorizontalOptions="Start"
                                              Margin="15,10,15,10"

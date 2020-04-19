@@ -62,6 +62,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomRenderers\MyPancakeViewRenderer.cs" />
     <Compile Include="Effects\BorderlessEntryEffect.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -168,8 +169,5 @@
       <Name>FreeChat</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CustomRenderers\" />
-    <Folder Include="iOSSpecific\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

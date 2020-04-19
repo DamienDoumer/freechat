@@ -12,7 +12,12 @@
                          BackgroundColor="{StaticResource PrimaryColor}"
                          xe:Commands.Tap="{Binding PressedCommand, Source={x:Reference floatingButton}}"
                          xe:TouchEffect.Color="LightGray"
+                         xe:EffectsConfig.ChildrenInputTransparent="{OnPlatform iOS=False}"
                          x:Name="floatingButton">
+
+    <pancakeView:PancakeView.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding PressedCommand, Source={x:Reference floatingButton}}"/>
+    </pancakeView:PancakeView.GestureRecognizers>
 
     <pancakeView:PancakeView.Content>
         <Label HorizontalOptions="Center"
