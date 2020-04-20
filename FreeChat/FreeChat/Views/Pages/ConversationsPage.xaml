@@ -67,7 +67,7 @@
                 </customControls:MyPancakeView>
 
                 <customControls:MyPancakeView CornerRadius="20"
-                                              HasShadow="True"
+                                              HasShadow="{OnPlatform Android=False, iOS=True}"
                                          Margin="15,10,15,10"
                                          HeightRequest="60"
                                          BackgroundColor="White">

@@ -140,7 +140,7 @@
                 </CollectionView>
 
 
-                <Grid Grid.Row="2">
+                <Grid Grid.Row="2" x:Name="WriteContainerGrid">
                     <Grid.Margin>
                         <OnPlatform x:TypeArguments="Thickness">
                             <On Platform="iOS" Value="0"/>
@@ -230,6 +230,37 @@
                                         FontAttributes="Bold"
                                         x:Name="TextInput">
 
+                                    <!--<VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="Focused">
+                                                <VisualState.Setters>
+                                                    <Setter Property="TranslationY"
+                                                            TargetName="ContainerGrid">
+                                                        <Setter.Value>
+                                                            <OnPlatform x:TypeArguments="x:Double">
+                                                                <On Platform="Android" Value="-20"/>
+                                                                <On Platform="iOS" Value="0"/>
+                                                            </OnPlatform>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="Unfocused">
+                                                <VisualState.Setters>
+                                                    <Setter Property="Margin"
+                                                            TargetName="ContainerGrid">
+                                                        <Setter.Value>
+                                                            <OnPlatform x:TypeArguments="Thickness">
+                                                                <On Platform="Android" Value="0,0,0,0"/>
+                                                                <On Platform="iOS" Value="0"/>
+                                                            </OnPlatform>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>-->
+                                    
                                     <Editor.Effects>
                                         <OnPlatform x:TypeArguments="effects:BaseFreechatEffect">
                                             <On Platform="iOS">
@@ -263,12 +294,19 @@
                     </customControls:MyPancakeView>
 
                     <customControls:FloatingButton Grid.Column="1" WidthRequest="60" HeightRequest="60"
-                                                   HorizontalOptions="Center" VerticalOptions="End"
+                                                   HorizontalOptions="Center" VerticalOptions="Center"
                                                    BackgroundColor="{StaticResource AccentColor}"
                                                    PressedCommand="{Binding SendMessageCommand}"
                                                    Icon="{StaticResource FontAwesomePaperPlane}"
                                                    IconColor="{StaticResource PrimaryColor}"
-                                                   Margin="5,0,10,0"/>
+                                                   Margin="5,0,10,0">
+                        <customControls:FloatingButton.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="iOS" Value="5,0,10,0"/>
+                                <On Platform="Android" Value="5,0,10,5"/>
+                            </OnPlatform>
+                        </customControls:FloatingButton.Margin>
+                    </customControls:FloatingButton>
                 </Grid>
                 
             </Grid>

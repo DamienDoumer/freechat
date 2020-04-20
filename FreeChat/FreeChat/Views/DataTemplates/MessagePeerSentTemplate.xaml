@@ -14,15 +14,14 @@
                             Scale="0.7">
 
 
-    <!--Scale="0.5"-->
+    <!--Scale="0.7"-->
 
     <ContentView.Content>
-        <SwipeView>
-
+        <SwipeView BackgroundColor="{StaticResource PrimaryColor}">
 
             <SwipeView.Margin>
                 <OnPlatform x:TypeArguments="Thickness">
-                    <On Platform="Android" Value="0,0,12,12"/>
+                    <On Platform="Android" Value="0,0,0,2"/>
                     <On Platform="iOS" Value="5,2,0,5"/>
                 </OnPlatform>
             </SwipeView.Margin>
@@ -35,7 +34,7 @@
                         <Setter.Value>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="iOS" Value="5, 15, 0, 5"/>
-                                <On Platform="Android" Value="0, 10, 10, 10"/>
+                                <On Platform="Android" Value="0, 10, 0, 0"/>
                             </OnPlatform>
                         </Setter.Value>
                     </Setter>
@@ -81,7 +80,7 @@
 
                         <ffimageLoader:CachedImage.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
-                                <On Platform="Android" Value="15,0,0,0"/>
+                                <On Platform="Android" Value="7,0,0,0"/>
                                 <On Platform="iOS" Value="5"/>
                             </OnPlatform>
                         </ffimageLoader:CachedImage.Margin>
@@ -97,7 +96,7 @@
 
                         <customViews:MessageBubble.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
-                                <On Platform="Android" Value="0,0,12,12"/>
+                                <On Platform="Android" Value="0,10"/>
                                 <On Platform="iOS" Value="0,2,0,10"/>
                             </OnPlatform>
                         </customViews:MessageBubble.Margin>
@@ -110,7 +109,7 @@
                                     <Setter.Value>
                                         <OnPlatform x:TypeArguments="Thickness">
                                             <On Platform="iOS" Value="0, 10,0,5"/>
-                                            <On Platform="Android" Value="0, 30, 10, 10"/>
+                                            <On Platform="Android" Value="0, 5"/>
                                         </OnPlatform>
                                     </Setter.Value>
                                 </Setter>

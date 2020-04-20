@@ -10,15 +10,15 @@
                             x:Name="msgTemplate3290"
                             Scale="0.7">
 
-    <!--Scale="0.5"-->
+    <!--Scale="0.7"-->
 
   <ContentView.Content>
-        <SwipeView>
+        <SwipeView  BackgroundColor="{StaticResource PrimaryColor}">
             <!--Style="{StaticResource MessageBubbleSwipeViewStyle}"-->
 
             <SwipeView.Margin>
                 <OnPlatform x:TypeArguments="Thickness">
-                    <On Platform="Android" Value="0,0,12,12"/>
+                    <On Platform="Android" Value="0,0,10,2"/>
                     <On Platform="iOS" Value="0,2,10,5"/>
                 </OnPlatform>
             </SwipeView.Margin>
@@ -31,7 +31,7 @@
                         <Setter.Value>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="iOS" Value="0, 15, 10, 5"/>
-                                <On Platform="Android" Value="0, 10, 10, 10"/>
+                                <On Platform="Android" Value="0, 15, 10, 0"/>
                             </OnPlatform>
                         </Setter.Value>
                     </Setter>
@@ -70,7 +70,7 @@
                     
                         <customViews:MessageBubble.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
-                                <On Platform="Android" Value="0,0,12,12"/>
+                                <On Platform="Android" Value="0,10"/>
                                 <On Platform="iOS" Value="0,0,0,10"/>
                             </OnPlatform>
                         </customViews:MessageBubble.Margin>
@@ -83,7 +83,7 @@
                                 <Setter.Value>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="iOS" Value="0, 10,0,0"/>
-                                        <On Platform="Android" Value="0, 30, 10, 10"/>
+                                        <On Platform="Android" Value="0, 5"/>
                                     </OnPlatform>
                                 </Setter.Value>
                             </Setter>

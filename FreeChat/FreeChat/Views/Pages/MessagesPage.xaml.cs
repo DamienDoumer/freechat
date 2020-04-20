@@ -54,6 +54,13 @@ namespace FreeChat.Views.Pages
             InitializeComponent();
             BackCommand = new Command(async _ => 
                 await AppShell.Current.Navigation.PopModalAsync());
+            TextInput.Focused += TextInput_Focused;
+        }
+
+        private void TextInput_Focused(object sender, FocusEventArgs e)
+        {
+            if (!e.IsFocused)
+                VisualStateManager.GoToState(TextInput, "Unfocused");
         }
 
         protected override void OnAppearing()

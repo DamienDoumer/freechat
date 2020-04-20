@@ -115,7 +115,8 @@ namespace FreeChat.ViewModels
             Messages = new ObservableCollection<MessagesGroup>(messagesGroups);
 
             await Task.Delay(TimeSpan.FromSeconds(0.5));
-            ScrollToMessage(Messages.Last().Last());
+            if (Messages.Any())
+                ScrollToMessage(Messages.Last().Last());
         }
 
         void MessageSwiped(Message message)
@@ -144,7 +145,7 @@ namespace FreeChat.ViewModels
             };
 
             CurrentConversation.LastMessage = message;
-            await _conversationDataStore.AddItemAsync(CurrentConversation);
+            await _conversationDataStore.UpdateItemAsync(CurrentConversation);
             CurrentMessage = string.Empty;
             Messages.Last().Add(message);
             ReplyMessage = null;
@@ -181,7 +182,7 @@ namespace FreeChat.ViewModels
                 };
                 Messages.Last().Add(message);
                 CurrentConversation.LastMessage = message;
-                await _conversationDataStore.AddItemAsync(CurrentConversation);
+                await _conversationDataStore.UpdateItemAsync(CurrentConversation);
 
                 IsTyping = false;
                 ScrollToMessage(message);
