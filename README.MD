@@ -8,7 +8,16 @@ Inspired [by]([https://dribbble.com/shots/10446738-Direct-messaging-mobile-app-d
 ## Android Demo
 ![Sample](images/freechatDemo.gif "Android Demo")
 ![Sample](images/home_screen.png "First Page")
-<p align="center">
-    <img src="images/home_screen.png" alt="Image"/>
-    <img src="images/freechatDemo.gif"/>
-</p>
+
+<html>
+  <table style="width:100%">
+    <tr>
+      <th>Android Demo</th>
+      <th>Home</th> 
+    </tr>
+    <tr>
+      <td><img src="images/freechatDemo.gif"></td>
+      <td><img src="images/home_screen.png"></td>
+    </tr>
+  </table>
+</html>
