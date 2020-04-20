@@ -10,7 +10,8 @@
                             xmlns:ffimageTransform="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
                             xmlns:ffimageLoader="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                             x:Name="msgTemplate329ew"
-                            BackgroundColor="{StaticResource PrimaryColor}">
+                            BackgroundColor="{StaticResource PrimaryColor}"
+                            Scale="0.7">
 
 
     <!--Scale="0.5"-->
@@ -91,32 +92,31 @@
                                                VerticalOptions="Center"
                                                BackgroundColor="White"
                                                Grid.Column="1"
-                                               Margin="0,5"
                                                ReplyTappedCommand="{Binding ParentContext.ReplyMessageSelectedCommand, Source={x:Reference msgTemplate329ew}}"
                                                >
-                        
-                        <!--<customViews:MessageBubble.Margin>
+
+                        <customViews:MessageBubble.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="Android" Value="0,0,12,12"/>
-                                <On Platform="iOS" Value="5,5,0,10"/>
+                                <On Platform="iOS" Value="0,2,0,10"/>
                             </OnPlatform>
-                        </customViews:MessageBubble.Margin>-->
+                        </customViews:MessageBubble.Margin>
 
-                        <!--<customViews:MessageBubble.Triggers>
+                        <customViews:MessageBubble.Triggers>
                             <DataTrigger TargetType="customViews:MessageBubble"
-                                         Binding="{Binding ISentPreviousMessage}"
-                                         Value="True">
+                                     Binding="{Binding ISentPreviousMessage}"
+                                     Value="True">
                                 <Setter Property="Margin">
                                     <Setter.Value>
                                         <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS" Value="0, 10"/>
-                                            <On Platform="Android" Value="15, 30, 5, 5"/>
+                                            <On Platform="iOS" Value="0, 10,0,5"/>
+                                            <On Platform="Android" Value="0, 30, 10, 10"/>
                                         </OnPlatform>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
-                        </customViews:MessageBubble.Triggers>-->
-                        
+                        </customViews:MessageBubble.Triggers>
+
                     </customViews:MessageBubble>
                 </Grid>
 

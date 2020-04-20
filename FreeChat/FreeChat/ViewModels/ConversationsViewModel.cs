@@ -56,8 +56,7 @@ namespace FreeChat.ViewModels
             }
             else
             {
-                var conversations = await _conversationDataStore.GetConversationsForUser(AppLocator.CurrentUserId);
-                Conversations = new ObservableCollection<Conversation>(conversations);
+                await LoadConversations();
             }
             IsBusy = false;
         }
@@ -65,11 +64,15 @@ namespace FreeChat.ViewModels
         public override async Task Initialize()
         {
             IsBusy = true;
-
-            var conversations = await _conversationDataStore.GetConversationsForUser(AppLocator.CurrentUserId);
-            Conversations = new ObservableCollection<Conversation>(conversations);
-
+            await LoadConversations();
             IsBusy = false;
+        }
+
+        async Task LoadConversations()
+        {
+            var conversations = await _conversationDataStore.GetConversationsForUser(AppLocator.CurrentUserId);
+            conversations = conversations.OrderByDescending(c => c.LastMessage.CreationDate);
+            Conversations = new ObservableCollection<Conversation>(conversations);
         }
 
         public override Task Stop()

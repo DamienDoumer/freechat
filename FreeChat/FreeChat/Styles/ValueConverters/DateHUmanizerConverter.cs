@@ -16,7 +16,7 @@ namespace FreeChat.Styles.ValueConverters
             if (date == null)
                 return null;
 
-            return date.Humanize();
+            return date.Humanize(false);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

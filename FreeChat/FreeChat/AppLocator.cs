@@ -37,6 +37,7 @@ namespace FreeChat
                 ConversationsDataStore, MessagesDataStore));
             Locator.CurrentMutable.Register(() => new SettingsViewModel(UserDataStores,
                 ConversationsDataStore, MessagesDataStore));
+
             CurrentUserId = users.Last().Id;
             CurrentUser = users.Last();
         }

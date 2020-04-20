@@ -103,7 +103,7 @@
                                              ToggleOptionTitle="All"
                                              Grid.Row="1"
                                              ToggleCommand="{Binding FilterOptionChangedCommand}"
-                                             NotToggledOptionTitle="Online (28)" />
+                                             NotToggledOptionTitle="Online (1)" />
 
 
                 <CollectionView ItemsSource="{Binding Conversations}"

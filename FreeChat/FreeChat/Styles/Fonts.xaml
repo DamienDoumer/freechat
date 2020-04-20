@@ -8,6 +8,8 @@
 
     <ResourceDictionary Source="Colors.xaml" />
 
+    <!--TODO: Move fonts into shared project-->
+    
     <x:String x:Key="FontAwesomeSearch">&#xf002;</x:String>
     <x:String x:Key="FontAwesomeHome">&#xf015;</x:String>
     <x:String x:Key="FontAwesomeCog">&#xf013;</x:String>

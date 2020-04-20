@@ -81,6 +81,18 @@ namespace FreeChat.Services.MockDataStores
                 Sender = conversation.Peer,
                 ReplyTo = _messages[_messages.Count - 2]
             });
+            _messages.Add(new Message
+            {
+                ConversationId = conversation.Id,
+                Id = Guid.NewGuid().ToString(),
+                ISentPreviousMessage = false,
+                Content = "I called you, and I left you a message did you see it ?",
+                CreationDate = DateTime.Now ,
+                ISent = false,
+                SenderId = conversation.Peer.Id,
+                Sender = conversation.Peer,
+                ReplyTo = _messages[_messages.Count - 2]
+            });
             conversation.LastMessage = _messages.Last();
         }
 

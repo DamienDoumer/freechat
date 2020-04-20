@@ -137,15 +137,19 @@ namespace FreeChat.ViewModels
                 ReplyTo = ReplyMessage,
                 CreationDate = DateTime.Now,
                 Sender = AppLocator.CurrentUser,
-                //ISentPreviousMessage = (bool) Messages?.Last()?.Last()?.ISent,
+                ISentPreviousMessage = (bool)Messages?.Last()?.Last()?.ISent,
                 ISent = true,
                 ConversationId = CurrentConversation.Id,
                 SenderId = AppLocator.CurrentUserId
             };
+
+            CurrentConversation.LastMessage = message;
+            await _conversationDataStore.AddItemAsync(CurrentConversation);
             CurrentMessage = string.Empty;
             Messages.Last().Add(message);
             ReplyMessage = null;
             await _messageDataStore.AddItemAsync(message);
+            CurrentConversation.LastMessage = message;
             ScrollToMessage(message);
             await FakeMessaging();
         }
@@ -176,6 +180,8 @@ namespace FreeChat.ViewModels
                     SenderId = CurrentConversation.Peer.Id
                 };
                 Messages.Last().Add(message);
+                CurrentConversation.LastMessage = message;
+                await _conversationDataStore.AddItemAsync(CurrentConversation);
 
                 IsTyping = false;
                 ScrollToMessage(message);

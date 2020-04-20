@@ -13,7 +13,17 @@ namespace FreeChat.Services.MockDataStores
 
         public ConversationsDataStore(User currentUser, List<User> users)
         {
+            var msgs = new string[]
+            {
+                "Hi, am ok and you ?",
+                "Hi, what's up ?", 
+                "I was aware of that",
+                "Get up.",
+                "Hello how are you ?"
+            };
+
             _conversations = new List<Conversation>();
+
             foreach (var user in users)
             {
                 int randomHours = new Random().Next(0, 24);
@@ -22,7 +32,7 @@ namespace FreeChat.Services.MockDataStores
                     Id = Guid.NewGuid().ToString(),
                     LastMessage = new Message
                     {
-                        Content = "Hello, how are you ?",
+                        Content = msgs[new Random().Next(0, msgs.Length - 1)],
                         ISent = true,
                         CreationDate = DateTime.UtcNow - TimeSpan.FromHours(randomHours),
                         Sender = user
@@ -31,6 +41,7 @@ namespace FreeChat.Services.MockDataStores
                     UserIds = new string[] { currentUser.Id, user.Id }
                 });
             }
+            _conversations.OrderByDescending(c => c.LastMessage.CreationDate);
         }
 
         public Task<bool> AddItemAsync(Conversation item)
@@ -66,7 +77,10 @@ namespace FreeChat.Services.MockDataStores
 
         public Task<bool> UpdateItemAsync(Conversation item)
         {
-            throw new NotImplementedException();
+            var conv = _conversations.Where(c => c.Id == item.Id).FirstOrDefault();
+            var i = _conversations.IndexOf(conv);
+            _conversations[i] = conv;
+            return Task.FromResult(true);
         }
     }
 }

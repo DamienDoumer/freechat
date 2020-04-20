@@ -41,7 +41,6 @@ namespace FreeChat.Views.Pages
         }
         #endregion
 
-
         void IsFocusOnKeyBoardChanged(bool newIsFocusOnKeyBoard)
         {
             if (newIsFocusOnKeyBoard)
@@ -74,7 +73,10 @@ namespace FreeChat.Views.Pages
             });
             MessagingCenter.Subscribe<object, KeyboardAppearEventArgs>(this, Constants.iOSKeyboardAppears, (sender, eargs) =>
             {
-                MessagesGrid.TranslationY -= eargs.KeyboardSize;
+                if (MessagesGrid.TranslationY == 0)
+                {
+                    MessagesGrid.TranslationY -= eargs.KeyboardSize;
+                }
             });
             MessagingCenter.Subscribe<object, string>(this, Constants.iOSKeyboardDisappears, (sender, eargs) =>
             {

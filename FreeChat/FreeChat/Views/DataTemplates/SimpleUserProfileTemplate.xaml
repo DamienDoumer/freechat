@@ -71,22 +71,28 @@
                        IsVisible="{Binding Peer.IsOnline}"
                        FontSize="Caption"
                        TextColor="{StaticResource ConnectedColor}">
-                    <Label.Margin>
-                        <OnPlatform x:TypeArguments="Thickness">
-                            <On Platform="Android" Value="0,0,8,8"/>
-                            <On Platform="iOS" Value="0,0,10,12"/>
-                        </OnPlatform>
-                    </Label.Margin>
 
                     <Label.Triggers>
                         <DataTrigger TargetType="Label"
                                      Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
                                      Value="True">
-                            <Setter Property="Margin" Value="0,0,12,15">
+                            <Setter Property="Margin">
                                 <Setter.Value>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android" Value="0,0,12,15"/>
                                         <On Platform="iOS" Value="0,0,8,7"/>
+                                    </OnPlatform>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Label"
+                                     Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                     Value="False">
+                            <Setter Property="Margin">
+                                <Setter.Value>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android" Value="0,0,8,8"/>
+                                        <On Platform="iOS" Value="0,0,10,12"/>
                                     </OnPlatform>
                                 </Setter.Value>
                             </Setter>

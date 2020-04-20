@@ -7,7 +7,8 @@
                             xmlns:customViews="clr-namespace:FreeChat.Views.CustomControls"
                             xmlns:datatemplates="clr-namespace:FreeChat.Views.DataTemplates"
                             x:Class="FreeChat.Views.DataTemplates.MesageISentTemplate"
-                            x:Name="msgTemplate3290">
+                            x:Name="msgTemplate3290"
+                            Scale="0.7">
 
     <!--Scale="0.5"-->
 
@@ -67,27 +68,27 @@
                                            BackgroundColor="{StaticResource AccentColor}"
                                            ReplyTappedCommand="{Binding ParentContext.ReplyMessageSelectedCommand, Source={x:Reference msgTemplate3290}}">
                     
-                        <!--<customViews:MessageBubble.Margin>
+                        <customViews:MessageBubble.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="Android" Value="0,0,12,12"/>
-                                <On Platform="iOS" Value="0,5,10,10"/>
+                                <On Platform="iOS" Value="0,0,0,10"/>
                             </OnPlatform>
-                        </customViews:MessageBubble.Margin>-->
+                        </customViews:MessageBubble.Margin>
 
-                    <!--<customViews:MessageBubble.Triggers>
+                    <customViews:MessageBubble.Triggers>
                         <DataTrigger TargetType="customViews:MessageBubble"
                                      Binding="{Binding ISentPreviousMessage}"
                                      Value="False">
                             <Setter Property="Margin">
                                 <Setter.Value>
                                     <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS" Value="0"/>
+                                        <On Platform="iOS" Value="0, 10,0,0"/>
                                         <On Platform="Android" Value="0, 30, 10, 10"/>
                                     </OnPlatform>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                    </customViews:MessageBubble.Triggers>-->
+                    </customViews:MessageBubble.Triggers>
                 </customViews:MessageBubble>
                 
             </Grid>
