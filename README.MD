@@ -13,8 +13,8 @@ Inspired [by]([https://dribbble.com/shots/10446738-Direct-messaging-mobile-app-d
       <th>Home</th> 
     </tr>
     <tr>
-      <td><img height="500"  width="300" src="images/freechatDemo.gif"></td>
-      <td><img  height="500"  width="300" src="images/home_screen.png"></td>
+      <td><img height="600"  width="300" src="images/freechatDemo.gif"></td>
+      <td><img  height="600"  width="300" src="images/home_screen.png"></td>
     </tr>
   </table>
 </html>
