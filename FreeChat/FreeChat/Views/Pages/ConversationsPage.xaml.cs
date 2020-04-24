@@ -11,7 +11,7 @@ using Xamarin.Forms.Xaml;
 namespace FreeChat.Views.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ConversationsPage : BasePage
+    public partial class ConversationsPage : BaseTabbedPage
     {
         public ConversationsPage() 
         {

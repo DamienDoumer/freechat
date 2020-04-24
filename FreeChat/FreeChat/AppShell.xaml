@@ -9,13 +9,13 @@
        Title="FreeChat"
        x:Class="FreeChat.AppShell">
 
-    <TabBar>
+    <TabBar Route="freechat">
         <Tab Icon="{FontImage Glyph={StaticResource FontAwesomeComment}, FontFamily={StaticResource FontAwesome}}"
-             Title="{x:Static textRes:TextResources.Messages}">
+             Title="{x:Static textRes:TextResources.Messages}" Route="conversations">
             <ShellContent ContentTemplate="{DataTemplate pages:ConversationsPage}" />
         </Tab>
         <Tab Icon="{FontImage Glyph={StaticResource FontAwesomeCog}, FontFamily={StaticResource FontAwesome}}"
-             Title="{x:Static textRes:TextResources.Settings}">
+             Title="{x:Static textRes:TextResources.Settings}" Route="settings">
             <ShellContent ContentTemplate="{DataTemplate pages:SettingsPage}" />
         </Tab>
     </TabBar>

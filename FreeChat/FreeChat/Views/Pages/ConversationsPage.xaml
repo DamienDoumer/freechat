@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<local:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+<local:BaseTabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                 xmlns:d="http://xamarin.com/schemas/2014/forms/design"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -15,7 +15,8 @@
                 BackgroundColor="{StaticResource PrimaryColor}"
                 xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
                 xmlns:customControls="clr-namespace:FreeChat.Views.CustomControls"
-                xmlns:dataTemplates="clr-namespace:FreeChat.Views.DataTemplates">
+                xmlns:dataTemplates="clr-namespace:FreeChat.Views.DataTemplates"
+                        TabSelectedIndex="0">
 
     <!--BackgroundColor="{StaticResource PrimaryColor}"-->
     <Shell.TitleView>
@@ -34,8 +35,8 @@
             </Label>
         </Grid>
     </Shell.TitleView>
-    
-    <ContentPage.Content>
+
+    <local:BaseTabbedPage.ViewContent>
         <!--<CollectionView ItemsSource="{Binding Conversations}">
             
         </CollectionView>-->
@@ -159,6 +160,6 @@
                 </pancakeView:PancakeView.Margin>
             </pancakeView:PancakeView>
         </Grid>
- 
-    </ContentPage.Content>
-</local:BasePage>
+
+    </local:BaseTabbedPage.ViewContent>
+</local:BaseTabbedPage>

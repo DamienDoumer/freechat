@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<local:BaseTabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -9,8 +9,10 @@
              xmlns:root="clr-namespace:FreeChat"
              BindingContext="{x:Static root:AppLocator.SettingsViewModel}"
              xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
-             x:Class="FreeChat.Views.Pages.SettingsPage">
-    <ContentPage.Content>
+                xmlns:local="clr-namespace:FreeChat.Views.Pages"
+             x:Class="FreeChat.Views.Pages.SettingsPage"
+                      TabSelectedIndex="1">
+    <local:BaseTabbedPage.ViewContent>
         <!--<StackLayout>
             <Label Text="Welcome to Xamarin.Forms!"
                    VerticalOptions="CenterAndExpand" 
@@ -26,5 +28,5 @@
                                   WidthRequest="70"
                                   BackgroundColor="SkyBlue"/>
         </Grid>
-    </ContentPage.Content>
-</ContentPage>
+    </local:BaseTabbedPage.ViewContent>
+</local:BaseTabbedPage>

@@ -82,7 +82,7 @@
                                      WidthRequest="{Binding WidthRequest, Source={x:Reference notToggledOption}}"
                                      Margin="1,5,1,-3"
                                      Grid.Column="1"
-                                     HasShadow="{OnPlatform Android=True, iOS=True}">
+                                     HasShadow="{OnPlatform iOS=True}">
                 <local:MyPancakeView.Triggers>
                     <DataTrigger TargetType="local:MyPancakeView"
                                  Value="True"

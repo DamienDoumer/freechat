@@ -10,7 +10,15 @@ namespace FreeChat.Services.Navigation
     {
         public Task GotoPage(string route)
         {
-            return Shell.Current.GoToAsync(route);
+            try
+            {
+                return Shell.Current.GoToAsync(route);
+                //return Shell.Current.GoToAsync("///freechat/settings");
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
         }
     }
 }

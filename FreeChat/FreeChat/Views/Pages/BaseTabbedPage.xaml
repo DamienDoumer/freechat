@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FreeChat.Views.Pages.BaseTabbedPage"
+             xmlns:pages="clr-namespace:FreeChat.Views.Pages"
+                x:Name="SimpleTabbedPage"
+                xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
+                xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ContentView Content="{Binding ViewContent, Source={x:Reference SimpleTabbedPage}}" />
+
+            <pancakeView:PancakeView Grid.Row="1"
+                                     BackgroundColor="White"
+                                     HeightRequest="80"
+                                     HasShadow="True"
+                                     CornerRadius="20"
+                                     Margin="0,-10,0,-10">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.Resources>
+                        <ResourceDictionary>
+                            <Style TargetType="Label">
+                                <Setter Property="FontFamily" Value="{StaticResource FontAwesome}"/>
+                                <Setter Property="TextColor" Value="{StaticResource SecondaryAccentColor}"/>
+                                <Setter Property="Scale" Value="0.9"/>
+                                <Setter Property="FontSize" Value="30"/>
+                                <Setter Property="HorizontalOptions" Value="Center"/>
+                                <Setter Property="VerticalOptions" Value="Center"/>
+                            </Style>
+                        </ResourceDictionary>
+                    </Grid.Resources>
+
+                    <StackLayout xe:TouchEffect.Color="LightGray"
+                                 xe:Commands.Tap="{Binding MessagesTappedCommand, Source={x:Reference SimpleTabbedPage}}">
+                        <Label Text="{StaticResource FontAwesomeComment}"
+                               Margin="0,15,0,0">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label"
+                                         Binding="{Binding TabSelectedIndex, Source={x:Reference SimpleTabbedPage}}"
+                                         Value="0">
+                                    <Setter Property="TextColor" Value="{StaticResource AccentColor}"/>
+                                    <Setter Property="Scale" Value="1"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+
+                        <Label TextColor="{StaticResource AccentColor}"
+                               Scale="1"
+                               Text="{StaticResource FontAwesomeCircle}"
+                               FontSize="Micro"
+                               VerticalOptions="End"
+                               IsVisible="False">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label"
+                                         Binding="{Binding TabSelectedIndex, Source={x:Reference SimpleTabbedPage}}"
+                                         Value="0">
+                                    <Setter Property="IsVisible" Value="True"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+
+                        <!--<StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </StackLayout.GestureRecognizers>-->
+                    </StackLayout>
+
+
+                    <StackLayout Grid.Column="1" xe:TouchEffect.Color="LightGray"
+                                 xe:Commands.Tap="{Binding SettingsTappedCommand, Source={x:Reference SimpleTabbedPage}}">
+
+                        <Label Text="{StaticResource FontAwesomeCog}"
+                               Margin="0,15,0,0">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label"
+                                         Binding="{Binding TabSelectedIndex, Source={x:Reference SimpleTabbedPage}}"
+                                         Value="1">
+                                    <Setter Property="TextColor" Value="{StaticResource AccentColor}"/>
+                                    <Setter Property="Scale" Value="1"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+
+                        <Label TextColor="{StaticResource AccentColor}"
+                               Text="{StaticResource FontAwesomeCircle}"
+                               IsVisible="False" Scale="1"
+                               VerticalOptions="End"
+                               FontSize="Micro">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label"
+                                         Binding="{Binding TabSelectedIndex, Source={x:Reference SimpleTabbedPage}}"
+                                         Value="1">
+                                    <Setter Property="IsVisible" Value="True"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+
+                        <!--<StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                        </StackLayout.GestureRecognizers>-->
+
+                    </StackLayout>
+                </Grid>
+            </pancakeView:PancakeView>
+        </Grid>
+    </ContentPage.Content>
+</pages:BasePage>

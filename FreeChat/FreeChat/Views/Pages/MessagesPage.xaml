@@ -45,12 +45,13 @@
 
                 <!--<xe:BorderView BackgroundColor="Red" xe:TouchEffect.Color="AliceBlue"
                                xe:Commands.Tap="{Binding Source={x:Reference MessagePagecmdeio}, Path=BackCommand}">
-                    <Label Text="Fuck!!"/>
+                    <Label Text="what !!"/>
                 </xe:BorderView>-->
 
                 <customControls:FloatingButton Margin="5,0,0,0"
                                                HorizontalOptions="Start"
                                                VerticalOptions="Center" 
+                                               CornerRadius="90"
                                                HeightRequest="40" WidthRequest="40"
                                                IconSize="25"
                                                PressedCommand="{Binding Source={x:Reference MessagePagecmdeio}, Path=BackCommand}"
@@ -67,13 +68,13 @@
                 </customControls:FloatingButton>
 
                 <dataTemplates:SimpleUserProfileTemplate BindingContext="{Binding CurrentConversation}"
-                                                         Grid.Column="1"
+                                                         Grid.Column="1" 
                                                          IsInTitle="True"
                                                          IsUserTyping="{Binding BindingContext.IsTyping, Source={x:Reference MessagePagecmdeio}}">
                     <dataTemplates:SimpleUserProfileTemplate.Margin>
                     <OnPlatform x:TypeArguments="Thickness">
                         <On Platform="iOS" Value="-25,0,0,0"/>
-                        <On Platform="Android" Value="-15,0,0,0"/>
+                        <On Platform="Android" Value="-25,0,0,0"/>
                     </OnPlatform>
                     </dataTemplates:SimpleUserProfileTemplate.Margin>
                 </dataTemplates:SimpleUserProfileTemplate>
@@ -92,13 +93,15 @@
                                                    IconColor="{StaticResource AccentColor}"
                                                    HasShadow="False"
                                                    BackgroundColor="{StaticResource PrimaryColor}"
-                                                   IconSize="25"
+                                                   IconSize="25" 
+                                                   CornerRadius="90"
                                                    WidthRequest="40"
                                                    HeightRequest="40"/>
 
                     <customControls:FloatingButton Icon="{StaticResource FontAwesomeVideo}"
                                                    IconColor="{StaticResource AccentColor}"
-                                                   HasShadow="False"
+                                                   HasShadow="False" 
+                                                   CornerRadius="90"
                                                    BackgroundColor="{StaticResource PrimaryColor}"
                                                    IconSize="25"
                                                    WidthRequest="40"
