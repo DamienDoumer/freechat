@@ -17,6 +17,19 @@
         <valueConverters:ImageResourceValueConverter x:Key="ImageResourceConverter" />
         <valueConverters:IsNullConverter x:Key="IsNullValueConverter"/>
 
+        <Style TargetType="Label" x:Key="PageTitleLabel">
+            <Setter Property="Margin">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="0,10,0,0"/>
+                        <On Platform="iOS" Value="5,5,0,0"/>
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontSize" Value="Title"/>
+            <Setter Property="FontFamily" Value="{StaticResource QuickSandBold}"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
 
         <Style x:Key="BaseStyle"
                TargetType="Element">

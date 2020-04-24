@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FreeChat.PlatformSpecifics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -127,6 +128,11 @@ namespace FreeChat.Views.Pages
                 Shell.Current.GoToAsync("///freechat/settings"));
             MessagesTappedCommand = new Command(() =>
                 Shell.Current.GoToAsync("///freechat/conversations"));
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                var safeInset = DependencyService.Get<IGetSafeAreaInsetiOS>().GetSafeInset();
+                TabView.Margin = new Thickness(0,0,0,- safeInset.Bottom);
+            }
         }
 
         //private void TapGestureRecognizer_Tapped(object sender, EventArgs e)

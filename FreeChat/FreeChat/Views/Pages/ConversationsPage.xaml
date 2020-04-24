@@ -20,18 +20,9 @@
 
     <!--BackgroundColor="{StaticResource PrimaryColor}"-->
     <Shell.TitleView>
-        <Grid >
+        <Grid>
             <Label Text="{Binding Title, Source={x:Reference conversationsPage}}"
-                   VerticalOptions="Center"
-                   FontSize="Title"
-                   FontAttributes="Bold"
-                   FontFamily="{StaticResource QuickSandBold}">
-                <Label.Margin>
-                    <OnPlatform x:TypeArguments="Thickness">
-                        <On Platform="Android" Value="0,10,0,0"/>
-                        <On Platform="iOS" Value="15,5,0,0"/>
-                    </OnPlatform>
-                </Label.Margin>
+                   Style="{StaticResource PageTitleLabel}">
             </Label>
         </Grid>
     </Shell.TitleView>

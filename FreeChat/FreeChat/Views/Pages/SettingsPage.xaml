@@ -11,7 +11,18 @@
              xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
                 xmlns:local="clr-namespace:FreeChat.Views.Pages"
              x:Class="FreeChat.Views.Pages.SettingsPage"
+                      x:Name="settingsPage"
                       TabSelectedIndex="1">
+
+
+    <Shell.TitleView>
+        <Grid>
+            <Label Text="{Binding Title, Source={x:Reference settingsPage}}"
+                   Style="{StaticResource PageTitleLabel}">
+            </Label>
+        </Grid>
+    </Shell.TitleView>
+
     <local:BaseTabbedPage.ViewContent>
         <!--<StackLayout>
             <Label Text="Welcome to Xamarin.Forms!"
