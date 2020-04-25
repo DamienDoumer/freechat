@@ -14,7 +14,7 @@ Inspired [by]([https://dribbble.com/shots/10446738-Direct-messaging-mobile-app-d
     </tr>
     <tr>
       <td><img height="600"  width="300" src="images/freechatAndroidDemo.gif"></td>
-      <td><img  height="600"  width="300" src="images/freechatiOSDemo.png"></td>
+      <td><img  height="600"  width="300" src="images/freechatiOSDemo.gif"></td>
     </tr>
   </table>
 </html>
