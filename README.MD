@@ -3,8 +3,8 @@
 
 __Chat freely with anybody.__
 
-This is a sample Xamarin.Forms application demonstrating how to build a user interface for a chat app.
-Inspired [by]([https://dribbble.com/shots/10446738-Direct-messaging-mobile-app-design])
+This is a sample Xamarin.Forms application demonstrating how to build a user interface for a chat app. 
+[Inspired by](https://dribbble.com/shots/10446738-Direct-messaging-mobile-app-design)
 
 <html>
   <table style="width:100%">
