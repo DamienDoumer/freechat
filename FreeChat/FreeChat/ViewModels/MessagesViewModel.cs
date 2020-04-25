@@ -116,7 +116,7 @@ namespace FreeChat.ViewModels
 
             await Task.Delay(TimeSpan.FromSeconds(0.5));
             if (Messages.Any())
-                ScrollToMessage(Messages.Last().Last());
+                ScrollToMessage(Messages?.Last()?.Last());
         }
 
         void MessageSwiped(Message message)

@@ -65,8 +65,6 @@ namespace FreeChat.Views.Pages
 
         //https://forums.xamarin.com/discussion/159752/can-we-override-the-clickevent-for-shell
 
-
-
         #region SettingsTappedCommand
         public static readonly BindableProperty SettingsTappedCommandProperty = BindableProperty.Create(nameof(SettingsTappedCommand), typeof(ICommand), typeof(BaseTabbedPage), propertyChanged: (obj, old, newV) =>
         {
@@ -91,8 +89,6 @@ namespace FreeChat.Views.Pages
             set => SetValue(SettingsTappedCommandProperty, value);
         }
         #endregion
-
-
 
         #region MessagesTappedCommand
         public static readonly BindableProperty MessagesTappedCommandProperty = BindableProperty.Create(nameof(MessagesTappedCommand), typeof(ICommand), typeof(BaseTabbedPage), propertyChanged: (obj, old, newV) =>

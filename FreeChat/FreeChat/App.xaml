@@ -17,18 +17,15 @@
         <valueConverters:ImageResourceValueConverter x:Key="ImageResourceConverter" />
         <valueConverters:IsNullConverter x:Key="IsNullValueConverter"/>
 
-        <Style TargetType="Label" x:Key="PageTitleLabel">
-            <Setter Property="Margin">
-                <Setter.Value>
-                    <OnPlatform x:TypeArguments="Thickness">
-                        <On Platform="Android" Value="0,10,0,0"/>
-                        <On Platform="iOS" Value="5,5,0,0"/>
-                    </OnPlatform>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="FontSize" Value="Title"/>
-            <Setter Property="FontFamily" Value="{StaticResource QuickSandBold}"/>
+
+        <Style TargetType="Label" x:Key="TabLabelStyle">
+            <Setter Property="FontFamily" Value="{StaticResource FontAwesome}"/>
+            <Setter Property="TextColor" Value="{StaticResource SecondaryAccentColor}"/>
+            <Setter Property="Scale" Value="0.9"/>
+            <Setter Property="FontSize" Value="{OnPlatform Android=25, iOS=25}"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
             <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="Margin" Value="0,15,0,0"/>
         </Style>
 
         <Style x:Key="BaseStyle"

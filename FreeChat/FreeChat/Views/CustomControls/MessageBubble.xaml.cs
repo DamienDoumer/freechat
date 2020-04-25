@@ -11,7 +11,7 @@ using Xamarin.Forms.Xaml;
 namespace FreeChat.Views.CustomControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MessageBubble : MyPancakeView
+    public partial class MessageBubble : PancakeView
     {
         #region Text
         public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(MessageBubble), propertyChanged: (obj, old, newV) =>

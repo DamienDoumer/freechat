@@ -154,16 +154,17 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <customControls:MyPancakeView HasShadow="True"
+                    <pancakeView:PancakeView HasShadow="True"
                                              CornerRadius="20"
+                                         Style="{StaticResource LightShadowPancakeViewStyle}"
                                              BackgroundColor="White">
 
-                        <customControls:MyPancakeView.Margin>
+                        <pancakeView:PancakeView.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="Android" Value="10,0,0,10"/>
                                 <On Platform="iOS" Value="10,0,0,0"/>
                             </OnPlatform>
-                        </customControls:MyPancakeView.Margin>
+                        </pancakeView:PancakeView.Margin>
                         
                         <Grid>
 
@@ -286,7 +287,6 @@
                                                                HeightRequest="50"
                                                                WidthRequest="50"
                                                                Margin="5"
-                                                               PressedCommand="{Binding SendMessageCommand}"
                                                                Icon="{StaticResource FontAwesomePaperClip}"
                                                                IconColor="{StaticResource PrimaryTextColor}"
                                                                BackgroundColor="White"
@@ -294,7 +294,7 @@
                             </Grid>
 
                         </Grid>
-                    </customControls:MyPancakeView>
+                    </pancakeView:PancakeView>
 
                     <customControls:FloatingButton Grid.Column="1" WidthRequest="60" HeightRequest="60"
                                                    HorizontalOptions="Center" VerticalOptions="Center"
@@ -302,6 +302,7 @@
                                                    PressedCommand="{Binding SendMessageCommand}"
                                                    Icon="{StaticResource FontAwesomePaperPlane}"
                                                    IconColor="{StaticResource PrimaryColor}"
+                                         Style="{StaticResource LightShadowPancakeViewStyle}"
                                                    Margin="5,0,10,0">
                         <customControls:FloatingButton.Margin>
                             <OnPlatform x:TypeArguments="Thickness">

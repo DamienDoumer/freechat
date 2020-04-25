@@ -10,8 +10,9 @@
                             xmlns:ffimageTransform="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
                             xmlns:ffimageLoader="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                             x:Name="msgTemplate329ew"
+                            xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                             BackgroundColor="{StaticResource PrimaryColor}"
-                            Scale="0.7">
+                            Scale="{OnPlatform Android=0.7}">
 
 
     <!--Scale="0.7"-->
@@ -46,13 +47,13 @@
                             Mode="Execute">
                     <SwipeItemView Command="{Binding Source={x:Reference msgTemplate329ew}, Path=ParentContext.MessageSwippedCommand}"
                                    CommandParameter="{Binding}">
-                        <customViews:MyPancakeView BackgroundColor="{StaticResource PrimaryColor}">
+                        <pancakeView:PancakeView BackgroundColor="{StaticResource PrimaryColor}">
                             <Label Style="{StaticResource FontAwesomeLabel}"
                                Text="{StaticResource FontAwesomeReply}"
                                TextColor="LightGray"
                                Margin="20"
                                FontSize="Large"/>
-                        </customViews:MyPancakeView>
+                        </pancakeView:PancakeView>
                     </SwipeItemView>
                 </SwipeItems>
             </SwipeView.LeftItems>

@@ -4,6 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+                    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                    xmlns:customControls="clr-namespace:FreeChat.Views.CustomControls"
              x:Class="FreeChat.Styles.ControlStyles">
 
 
@@ -11,6 +13,23 @@
     <ResourceDictionary Source="Colors.xaml" />
 
 
+    <!--Pancake view-->
+    <OnPlatform x:TypeArguments="pancakeView:DropShadow"
+                x:Key="LightShadow">
+        <On Platform="iOS">
+            <On.Value>
+                <pancakeView:DropShadow Color="LightGray" Opacity="0.6"/>
+            </On.Value>
+        </On>
+    </OnPlatform>
+    
+    <Style TargetType="pancakeView:PancakeView"
+           x:Key="LightShadowPancakeViewStyle">
+        <Setter Property="Shadow" Value="{StaticResource LightShadow}">
+        </Setter>
+    </Style>
+    
+    
     <!--Labels-->
     <Style x:Key="BaseLabelStyle"
            TargetType="{x:Type Label}">
@@ -33,24 +52,40 @@
     <Style BasedOn="{StaticResource BaseLabelStyle}"
            TargetType="{x:Type Label}" />
 
+
+    <Style TargetType="Label" x:Key="PageTitleLabel">
+        <Setter Property="Margin">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="Android" Value="0,10,0,0"/>
+                    <On Platform="iOS" Value="5,5,0,0"/>
+                </OnPlatform>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="FontSize" Value="Title"/>
+        <Setter Property="FontFamily" Value="{StaticResource QuickSandBold}"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+
     <!--Swipeviews-->
-    
-            <Style TargetType="SwipeView" x:Key="MessageBubbleSwipeViewStyle">
-                <Setter Property="Padding">
-                    <Setter.Value>
-                        <OnPlatform x:TypeArguments="Thickness">
-                            <On Platform="iOS" Value="0,10"/>
-                        </OnPlatform>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="Margin">
-                    <Setter.Value>
-                        <OnPlatform x:TypeArguments="Thickness">
-                            <On Platform="iOS" Value="0,7"/>
-                        </OnPlatform>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
-            </Style>
+
+    <Style TargetType="SwipeView" x:Key="MessageBubbleSwipeViewStyle">
+        <Setter Property="Padding">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,10"/>
+                </OnPlatform>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Margin">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,7"/>
+                </OnPlatform>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+    </Style>
 
 </ResourceDictionary>
