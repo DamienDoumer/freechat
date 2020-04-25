@@ -14,7 +14,6 @@
                             BackgroundColor="{StaticResource PrimaryColor}"
                             Scale="{OnPlatform Android=0.7}">
 
-
     <!--Scale="0.7"-->
 
     <ContentView.Content>
