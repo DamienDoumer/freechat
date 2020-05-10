@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="CustomRenderers\MyPancakeViewRenderer.cs" />
     <Compile Include="Effects\BorderlessEntryEffect.cs" />
+    <Compile Include="Effects\iOSSafeAreaInsetEffect.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />

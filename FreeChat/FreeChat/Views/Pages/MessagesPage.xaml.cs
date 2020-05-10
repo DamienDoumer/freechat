@@ -68,12 +68,6 @@ namespace FreeChat.Views.Pages
             MessagingCenter.Subscribe<IViewModel, MyFocusEventArgs>(this, Constants.ShowKeyboard, (s, args) =>
                 IsFocusOnKeyBoardChanged(args.IsFocused));
 
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                var safeInset = DependencyService.Get<IGetSafeAreaInsetiOS>().GetSafeInset();
-                ContainerGrid.Margin = safeInset;
-            }
-
             MessagingCenter.Subscribe<IViewModel, ScrollToItemEventArgs>(this, Constants.ScrollToItem, (s, eargs) =>
             {
                 MessagesCollectionView.ScrollTo(eargs.Item);

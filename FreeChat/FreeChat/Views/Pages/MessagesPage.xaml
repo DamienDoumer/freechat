@@ -16,7 +16,9 @@
                 xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                 BindingContext="{x:Static root:AppLocator.MessagesViewModel}"
                 xmlns:dataTemplateSelector="clr-namespace:FreeChat.Views.TemplateSelectors"
-                BackgroundColor="{StaticResource PrimaryColor}"
+                BackgroundColor="{StaticResource PrimaryColor}"             
+                xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+                ios:Page.UseSafeArea="true"
                 x:Name="MessagePagecmdeio">
 
     <ContentPage.Content>
