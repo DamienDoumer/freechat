@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace FreeChat.Views.Pages
@@ -126,8 +128,10 @@ namespace FreeChat.Views.Pages
                 Shell.Current.GoToAsync("///freechat/conversations"));
             //if (Device.RuntimePlatform == Device.iOS)
             //{
-            //    var safeInset = DependencyService.Get<IGetSafeAreaInsetiOS>().GetSafeInset();
-            //    TabView.Margin = new Thickness(0,0,0,- safeInset.Bottom);
+            //    var safeInsets = On<iOS>().SafeAreaInsets();
+            //    TabView.Margin = new Thickness(0, 0, 0, -safeInsets.Bottom);
+            //    //var safeInset = DependencyService.Get<IGetSafeAreaInsetiOS>().GetSafeInset();
+            //    //TabView.Margin = new Thickness(0, 0, 0, -safeInset.Bottom);
             //}
         }
 
