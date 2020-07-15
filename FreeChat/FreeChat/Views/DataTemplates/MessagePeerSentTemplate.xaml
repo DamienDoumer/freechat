@@ -7,6 +7,7 @@
                             xmlns:dataTemplates="clr-namespace:FreeChat.Views.DataTemplates"
                             xmlns:customViews="clr-namespace:FreeChat.Views.CustomControls"
                             x:Class="FreeChat.Views.DataTemplates.MessagePeerSentTemplate"
+                            xmlns:models="clr-namespace:Models;assembly=Models"
                             xmlns:ffimageTransform="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
                             xmlns:ffimageLoader="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                             x:Name="msgTemplate329ew"
@@ -17,7 +18,7 @@
     <!--Scale="0.7"-->
 
     <ContentView.Content>
-        <SwipeView BackgroundColor="{StaticResource PrimaryColor}">
+        <SwipeView BackgroundColor="{StaticResource PrimaryColor}" x:DataType="models:Message">
 
             <SwipeView.Margin>
                 <OnPlatform x:TypeArguments="Thickness">

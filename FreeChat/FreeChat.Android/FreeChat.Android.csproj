@@ -92,6 +92,7 @@
     <AndroidAsset Include="Assets\Quicksand-Light.ttf" />
     <AndroidAsset Include="Assets\Quicksand-Regular.ttf" />
     <AndroidAsset Include="Assets\typing.json" />
+    <AndroidEnvironment Include="GarbageCollector.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />

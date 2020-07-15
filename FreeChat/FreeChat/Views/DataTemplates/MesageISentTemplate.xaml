@@ -6,6 +6,7 @@
                             mc:Ignorable="d"
                             xmlns:customViews="clr-namespace:FreeChat.Views.CustomControls"
                             xmlns:datatemplates="clr-namespace:FreeChat.Views.DataTemplates"
+                            xmlns:models="clr-namespace:Models;assembly=Models"
                             xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                             x:Class="FreeChat.Views.DataTemplates.MesageISentTemplate"
                             x:Name="msgTemplate3290"
@@ -14,7 +15,7 @@
     <!--Scale="0.7"-->
 
   <ContentView.Content>
-        <SwipeView  BackgroundColor="{StaticResource PrimaryColor}">
+        <SwipeView  BackgroundColor="{StaticResource PrimaryColor}" x:DataType="models:Message">
             <!--Style="{StaticResource MessageBubbleSwipeViewStyle}"-->
 
             <SwipeView.Margin>

@@ -112,9 +112,10 @@ namespace FreeChat.ViewModels
                 .OrderBy(m => m.DateTime.Day)
                 .ToList();
 
+            await Task.Delay(TimeSpan.FromSeconds(1));
             Messages = new ObservableCollection<MessagesGroup>(messagesGroups);
 
-            await Task.Delay(TimeSpan.FromSeconds(0.5));
+            //await Task.Delay(TimeSpan.FromSeconds(0.5));
             if (Messages.Any())
                 ScrollToMessage(Messages?.Last()?.Last());
         }
