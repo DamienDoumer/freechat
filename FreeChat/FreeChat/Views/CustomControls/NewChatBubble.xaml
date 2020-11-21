@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TemplatedView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FreeChat.Views.CustomControls.NewChatBubble"
+                         xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
+               xmlns:local="clr-namespace:FreeChat.Views.CustomControls">
+
+
+    <TemplatedView.ControlTemplate>
+        <ControlTemplate>
+            <Grid RowDefinitions="Auto,Auto, Auto">
+                
+                <Rectangle Grid.RowSpan="3"
+                           Fill="{TemplateBinding BackgroundColor}"
+                           RadiusX="15"
+                           RadiusY="15"/>
+
+                <Grid Grid.Row="1" ColumnDefinitions="Auto,*"
+                      BindingContext="{Binding ReplyTo}"
+                      VerticalOptions="Start"
+                      Margin="5"
+                      xe:Commands.Tap="{Binding ReplyTappedCommand, Source={x:Reference bubble_fdasdl}}"
+                      xe:TouchEffect.Color="LightGray"
+                      xe:Commands.TapParameter="{Binding}">
+
+                    <Line Fill="White" StrokeThickness="3">
+                        <Line.Triggers>
+                            <DataTrigger TargetType="Line"
+                                         Binding="{TemplateBinding BindingContext.ISent}"
+                                         Value="False">
+                                <Setter Property="Fill" Value="{StaticResource AccentColor}"/>
+                            </DataTrigger>
+                        </Line.Triggers>
+                    </Line>
+                    <Line Fill="{StaticResource LightDarkWhite}" 
+                          Opacity="0.1"
+                          Grid.Column="1" Margin="-7,0,0,0">
+                        <Line.Triggers>
+                            <DataTrigger TargetType="Line"
+                                         Binding="{TemplateBinding BindingContext.ISent}"
+                                         Value="False">
+                                <Setter Property="Opacity" Value="1"/>
+                            </DataTrigger>
+                        </Line.Triggers>
+                    </Line>
+
+                    <StackLayout Grid.Column="1" Margin="-5,0,0,0">
+
+                        <Label FontFamily="{StaticResource QuickSandBold}"
+                                           LineBreakMode="TailTruncation"
+                                           Margin="10,3,10,5" TextColor="White">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Sender.FirstName}" />
+                                    <Span Text=" " />
+                                    <Span Text="{Binding Sender.LastName}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label"
+                                     Binding="{Binding BindingContext.ISent, Source={x:Reference bubble_fdasdl}}"
+                                     Value="False">
+                                    <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}"/>
+                                    <Setter Property="Text" Value="{x:Static resources:TextResources.You}"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+
+                        <Label Text="{Binding Content}" TextColor="White"
+                               LineBreakMode="TailTruncation" Margin="10,-10,10,10">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label"
+                                     Binding="{Binding BindingContext.ISent, Source={x:Reference bubble_fdasdl}}"
+                                     Value="False">
+                                    <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                    </StackLayout>
+                </Grid>
+                
+                <!--Used to show the any content latter... Image, audio...-->
+                <ContentPresenter Grid.Row="1"
+                                  Margin="{TemplateBinding Padding}"
+                                  Content="{TemplateBinding Content}"/>
+
+                <Label Grid.Row="2"
+                       TextColor="{TemplateBinding TextColor}"
+                       FontFamily="{StaticResource QuickSandRegular}"
+                       Text="{TemplateBinding Text}"/>
+
+            </Grid>
+        </ControlTemplate>
+    </TemplatedView.ControlTemplate>
+    
+</TemplatedView>
