@@ -36,10 +36,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Models\Models.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Resources\TextResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -100,5 +96,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PlatformSpecifics\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Models\Models.csproj" />
   </ItemGroup>
 </Project>

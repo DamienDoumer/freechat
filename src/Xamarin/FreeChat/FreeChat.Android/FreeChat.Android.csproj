@@ -119,13 +119,13 @@
     <AndroidResource Include="Resources\drawable\tab_feed.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FreeChat\FreeChat.csproj">
-      <Project>{037765CD-0C05-47E5-8D44-2A265200E35A}</Project>
-      <Name>FreeChat</Name>
-    </ProjectReference>
+    <Folder Include="CustomRenderers\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CustomRenderers\" />
+    <ProjectReference Include="..\FreeChat\FreeChat.csproj">
+      <Project>{037765cd-0c05-47e5-8d44-2a265200e35a}</Project>
+      <Name>FreeChat</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

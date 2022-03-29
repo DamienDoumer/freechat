@@ -166,9 +166,8 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\FreeChat\FreeChat.csproj">
-      <Project>{037765CD-0C05-47E5-8D44-2A265200E35A}</Project>
+      <Project>{037765cd-0c05-47e5-8d44-2a265200e35a}</Project>
       <Name>FreeChat</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
 </Project>
