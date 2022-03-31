@@ -1,0 +1,120 @@
+After upgrading every package, and shifting to Xamarin Forms > 5, 
+I ran the upgrade assistant tool on the entire solution. 
+
+I received several errors,  which are ; 
+
+PS D:\MyProjects\freechat> upgrade-assistant upgrade .\FreeChat.sln
+-----------------------------------------------------------------------------------------------------------------
+Microsoft .NET Upgrade Assistant v0.3.310801+057ffba0656270dc5d83c015748ac56daed55886
+
+We are interested in your feedback! Please use the following link to open a survey: https://aka.ms/DotNetUASurvey
+-----------------------------------------------------------------------------------------------------------------
+
+[22:16:21 INF] Loaded 6 extensions
+[22:16:27 INF] Using MSBuild from C:\Program Files\dotnet\sdk\6.0.300-preview.22154.4\
+[22:16:27 INF] Using Visual Studio install from C:\Program Files\Microsoft Visual Studio\2022\Preview [v17]
+[22:16:58 ERR] [NuGet] Package Com.Airbnb.Android.Lottie 4.2.2 is not compatible with net10.0 (.NETCoreApp,Version=v10.0). Package Com.Airbnb.Android.Lottie 4.2.2 supports: monoandroid10.0 (MonoAndroid,Version=v10.0)
+[22:16:58 ERR] [NuGet] Package Xamarin.Android.Support.Compat 28.0.0.3 is not compatible with net10.0 (.NETCoreApp,Version=v10.0). Package Xamarin.Android.Support.Compat 28.0.0.3 supports:
+  - monoandroid60 (MonoAndroid,Version=v6.0)
+  - monoandroid70 (MonoAndroid,Version=v7.0)
+  - monoandroid71 (MonoAndroid,Version=v7.1)
+  - monoandroid80 (MonoAndroid,Version=v8.0)
+  - monoandroid81 (MonoAndroid,Version=v8.1)
+  - monoandroid90 (MonoAndroid,Version=v9.0)
+[22:16:58 ERR] [NuGet] Package Xamarin.AndroidX.Migration 1.0.8 is not compatible with net10.0 (.NETCoreApp,Version=v10.0). Package Xamarin.AndroidX.Migration 1.0.8 supports: monoandroid90 (MonoAndroid,Version=v9.0)
+[22:16:58 ERR] [NuGet] Package OpenTK 3.0.1 is not compatible with net10.0 (.NETCoreApp,Version=v10.0). Package OpenTK 3.0.1 supports: net20 (.NETFramework,Version=v2.0)
+[22:16:58 ERR] [NuGet] Package OpenTK.GLControl 3.0.1 is not compatible with net10.0 (.NETCoreApp,Version=v10.0). Package OpenTK.GLControl 3.0.1 supports: net20 (.NETFramework,Version=v2.0)
+[22:16:58 ERR] [NuGet] Package Com.Airbnb.iOS.Lottie 2.5.13 is not compatible with net10 (.NETFramework,Version=v1.0). Package Com.Airbnb.iOS.Lottie 2.5.13 supports:
+  - xamarinios10 (Xamarin.iOS,Version=v1.0)
+  - xamarinmac20 (Xamarin.Mac,Version=v2.0)
+  - xamarintvos10 (Xamarin.TVOS,Version=v1.0)
+[22:16:58 ERR] [NuGet] Package Com.Airbnb.Xamarin.Forms.Lottie 4.1.0 is not compatible with net10 (.NETFramework,Version=v1.0). Package Com.Airbnb.Xamarin.Forms.Lottie 4.1.0 supports:
+  - monoandroid10.0 (MonoAndroid,Version=v10.0)
+  - net472 (.NETFramework,Version=v4.7.2)
+  - netcoreapp3.1 (.NETCoreApp,Version=v3.1)
+  - netstandard2.0 (.NETStandard,Version=v2.0)
+  - tizen40 (Tizen,Version=v4.0)
+  - uap10.0.18362 (UAP,Version=v10.0.18362)
+  - xamarinios10 (Xamarin.iOS,Version=v1.0)
+  - xamarinmac20 (Xamarin.Mac,Version=v2.0)
+[22:16:58 ERR] [NuGet] Package Xamarin.FFImageLoading.Forms 2.4.11.982 is not compatible with net10 (.NETFramework,Version=v1.0). Package Xamarin.FFImageLoading.Forms 2.4.11.982 supports:
+  - monoandroid10 (MonoAndroid,Version=v1.0)
+  - netstandard1.0 (.NETStandard,Version=v1.0)
+  - portable-net45+win+win81+wp8+wpa81 (.NETPortable,Version=v0.0,Profile=win+net45+wp80+win81+wpa81)
+  - tizen40 (Tizen,Version=v4.0)
+  - uap (UAP,Version=v0.0)
+  - xamarinios10 (Xamarin.iOS,Version=v1.0)
+  - xamarinmac20 (Xamarin.Mac,Version=v2.0)
+[22:16:58 ERR] [NuGet] Package Xamarin.FFImageLoading.Transformations 2.4.11.982 is not compatible with net10 (.NETFramework,Version=v1.0). Package Xamarin.FFImageLoading.Transformations 2.4.11.982 supports:
+  - monoandroid10 (MonoAndroid,Version=v1.0)
+  - netstandard1.0 (.NETStandard,Version=v1.0)
+  - portable-net45+win+win81+wp8+wpa81 (.NETPortable,Version=v0.0,Profile=win+net45+wp80+win81+wpa81)
+  - tizen40 (Tizen,Version=v4.0)
+  - uap (UAP,Version=v0.0)
+  - win81 (Windows,Version=v8.1)
+  - wpa81 (WindowsPhoneApp,Version=v8.1)
+  - xamarinios10 (Xamarin.iOS,Version=v1.0)
+  - xamarinmac20 (Xamarin.Mac,Version=v2.0)
+[22:16:58 ERR] [NuGet] Package Xamarin.Essentials 1.7.1 is not compatible with net10 (.NETFramework,Version=v1.0). Package Xamarin.Essentials 1.7.1 supports:
+  - monoandroid10.0 (MonoAndroid,Version=v10.0)
+  - netstandard1.0 (.NETStandard,Version=v1.0)
+  - netstandard2.0 (.NETStandard,Version=v2.0)
+  - tizen40 (Tizen,Version=v4.0)
+  - uap10.0.16299 (UAP,Version=v10.0.16299)
+  - xamarinios10 (Xamarin.iOS,Version=v1.0)
+  - xamarinmac20 (Xamarin.Mac,Version=v2.0)
+  - xamarintvos10 (Xamarin.TVOS,Version=v1.0)
+  - xamarinwatchos10 (Xamarin.WatchOS,Version=v1.0)
+[22:16:58 ERR] [NuGet] Package Xamarin.Forms.PancakeView 2.3.0.763-beta is not compatible with net10 (.NETFramework,Version=v1.0). Package Xamarin.Forms.PancakeView 2.3.0.763-beta supports:
+  - monoandroid10.0 (MonoAndroid,Version=v10.0)
+  - monoandroid90 (MonoAndroid,Version=v9.0)
+  - net471 (.NETFramework,Version=v4.7.1)
+  - net472 (.NETFramework,Version=v4.7.2)
+  - netcoreapp3.1 (.NETCoreApp,Version=v3.1)
+  - netstandard1.0 (.NETStandard,Version=v1.0)
+  - netstandard2.0 (.NETStandard,Version=v2.0)
+  - netstandard2.1 (.NETStandard,Version=v2.1)
+  - tizen40 (Tizen,Version=v4.0)
+  - uap10.0.17763 (UAP,Version=v10.0.17763)
+  - xamarinios10 (Xamarin.iOS,Version=v1.0)
+  - xamarinmac20 (Xamarin.Mac,Version=v2.0)
+[22:16:58 ERR] [NuGet] Package XamEffects 1.6.3 is not compatible with net10 (.NETFramework,Version=v1.0). Package XamEffects 1.6.3 supports:
+  - monoandroid (MonoAndroid,Version=v0.0)
+  - monotouch (MonoTouch,Version=v0.0)
+  - netstandard1.0 (.NETStandard,Version=v1.0)
+  - xamarinios (Xamarin.iOS,Version=v0.0)
+[22:16:58 ERR] [NuGet] Package NETStandard.Library 2.0.3 is not compatible with net10 (.NETFramework,Version=v1.0). Package NETStandard.Library 2.0.3 supports: netstandard1.0 (.NETStandard,Version=v1.0)
+[22:16:58 ERR] [NuGet] Package Humanizer.Core 2.14.1 is not compatible with net10 (.NETFramework,Version=v1.0). Package Humanizer.Core 2.14.1 supports:
+  - net6.0 (.NETCoreApp,Version=v6.0)
+  - netstandard1.0 (.NETStandard,Version=v1.0)
+  - netstandard2.0 (.NETStandard,Version=v2.0)
+[22:16:58 ERR] [NuGet] Package ReactiveUI.XamForms 17.1.50 is not compatible with net10 (.NETFramework,Version=v1.0). Package ReactiveUI.XamForms 17.1.50 supports:
+  - net6.0 (.NETCoreApp,Version=v6.0)
+  - netstandard2.0 (.NETStandard,Version=v2.0)
+[22:16:59 ERR] [NuGet] Package Splat 14.2.1 is not compatible with net10 (.NETFramework,Version=v1.0). Package Splat 14.2.1 supports:
+  - net6.0 (.NETCoreApp,Version=v6.0)
+  - netstandard2.0 (.NETStandard,Version=v2.0)
+[22:16:59 ERR] [NuGet] Package Xamarin.FFImageLoading 2.4.11.982 is not compatible with net10 (.NETFramework,Version=v1.0). Package Xamarin.FFImageLoading 2.4.11.982 supports:
+  - monoandroid10 (MonoAndroid,Version=v1.0)
+  - netstandard1.0 (.NETStandard,Version=v1.0)
+  - portable-net45+win+win81+wp8+wpa81 (.NETPortable,Version=v0.0,Profile=win+net45+wp80+win81+wpa81)
+  - tizen40 (Tizen,Version=v4.0)
+  - uap (UAP,Version=v0.0)
+  - win81 (Windows,Version=v8.1)
+  - wpa81 (WindowsPhoneApp,Version=v8.1)
+  - xamarinios10 (Xamarin.iOS,Version=v1.0)
+  - xamarinmac20 (Xamarin.Mac,Version=v2.0)
+[22:16:59 INF] Initializing upgrade step Select an entrypoint
+
+Upgrade Steps
+
+1. [Next step] Select an entrypoint
+2. Select project to upgrade
+
+Choose a command:
+   1. Apply next step (Select an entrypoint)
+   2. Skip next step (Select an entrypoint)
+   3. See more step details
+   4. Configure logging
+   5. Exit
+>
