@@ -46,8 +46,10 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <pancakeView:PancakeView BackgroundGradientStartColor="LightGray"
-                                         BackgroundGradientEndColor="Transparent"
+                <!--BackgroundGradientStartColor="LightGray"
+                BackgroundGradientEndColor="Transparent"-->
+
+                <pancakeView:PancakeView
                                          CornerRadius="30" IsVisible="{OnPlatform iOS=False}"
                                               HeightRequest="60">
                     <pancakeView:PancakeView.Margin>
@@ -59,7 +61,6 @@
                 </pancakeView:PancakeView>
 
                 <pancakeView:PancakeView CornerRadius="20"
-                                         HasShadow="{OnPlatform Android=False, iOS=True}"
                                          Margin="15,10,15,10"
                                          HeightRequest="60"
                                          Style="{StaticResource LightShadowPancakeViewStyle}"
@@ -115,10 +116,12 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <dataTemplates:SimpleUserProfileTemplate HeightRequest="{OnPlatform Android=100, iOS=80}"/>
-                                <pancakeView:PancakeView BackgroundGradientStartColor="#D8D8D8"
-                                                        BackgroundGradientEndColor="Transparent"
+                                <pancakeView:PancakeView 
                                                         HeightRequest="1"
                                                         Grid.Row="1"/>
+                                <!--BackgroundGradientStartColor="#D8D8D8"
+                                BackgroundGradientEndColor="Transparent"-->
+
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -138,7 +141,6 @@
                             WidthRequest="50"/>
 
             <pancakeView:PancakeView HeightRequest="30"
-                                    HasShadow="True"
                                     Grid.Row="1"
                                     IsVisible="False"
                                     CornerRadius="50"

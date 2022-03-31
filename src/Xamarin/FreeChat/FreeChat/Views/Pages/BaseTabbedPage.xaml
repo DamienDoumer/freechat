@@ -30,9 +30,10 @@
                                      x:Name="TabView"
                                      BackgroundColor="White"
                                      HeightRequest="80"
-                                     HasShadow="True"
                                      Style="{StaticResource LightShadowPancakeViewStyle}"
                                      CornerRadius="30">
+
+                <!--HasShadow="True"-->
 
                 <pancakeView:PancakeView.Effects>
                     <effects:iOSSafeAreaInsetEffect />

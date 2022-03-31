@@ -8,13 +8,13 @@
                          xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                          x:Class="FreeChat.Views.CustomControls.FloatingButton"
                          CornerRadius="18"
-                         HasShadow="True"
                          BackgroundColor="{StaticResource PrimaryColor}"
                          xe:Commands.Tap="{Binding PressedCommand, Source={x:Reference floatingButton}}"
                          xe:TouchEffect.Color="LightGray"
                          xe:EffectsConfig.ChildrenInputTransparent="{OnPlatform iOS=False}"
                          x:Name="floatingButton">
 
+    <!--HasShadow="True"-->
     <pancakeView:PancakeView.GestureRecognizers>
         <TapGestureRecognizer Command="{Binding PressedCommand, Source={x:Reference floatingButton}}"/>
     </pancakeView:PancakeView.GestureRecognizers>

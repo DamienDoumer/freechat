@@ -197,16 +197,17 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <lottie:AnimationView Grid.Row="1"
-                                                          Loop="True" Margin="-10,0,0,0"
                                                           HorizontalOptions="Start" 
                                                           VerticalOptions="Center"
-                                                          IsPlaying="{Binding IsUserTyping, Source={x:Reference simpleUserProfileTemplate_srew}}"
                                                           IsVisible="{Binding IsUserTyping, Source={x:Reference simpleUserProfileTemplate_srew}}"
                                                           AutoPlay="True"
                                                           HeightRequest="20"
                                                           WidthRequest="70"
                                                           Animation="typing.json"
                                                           BackgroundColor="Transparent"/>
+
+                                        <!--IsPlaying="{Binding IsUserTyping, Source={x:Reference simpleUserProfileTemplate_srew}}"-->
+
                                     </Setter.Value>
                                 </Setter>
                             </MultiTrigger.Setters>

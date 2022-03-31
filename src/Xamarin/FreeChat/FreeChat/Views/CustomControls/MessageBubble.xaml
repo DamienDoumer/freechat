@@ -10,7 +10,6 @@
                          x:Class="FreeChat.Views.CustomControls.MessageBubble"
                          x:Name="bubble_fdasdl"
                          Style="{StaticResource LightShadowPancakeViewStyle}"
-                         HasShadow="True"
                          xmlns:resources="clr-namespace:FreeChat.Resources"
              CornerRadius="15"
                          Padding="5">

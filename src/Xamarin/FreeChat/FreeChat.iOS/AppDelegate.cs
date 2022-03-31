@@ -6,7 +6,6 @@ using FFImageLoading.Forms.Platform;
 using Foundation;
 using FreeChat.Helpers;
 using FreeChat.Helpers.MyEventArgs;
-using Lottie.Forms.iOS.Renderers;
 using UIKit;
 using Xamarin.Forms;
 
@@ -36,7 +35,7 @@ namespace FreeChat.iOS
             CachedImageRenderer.Init();
             XamEffects.iOS.Effects.Init();
 
-            AnimationViewRenderer.Init();
+            //AnimationViewRenderer.Init();
 
             LoadApplication(new App());
 

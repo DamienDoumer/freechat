@@ -32,7 +32,6 @@
         <Grid>
             <lottie:AnimationView HorizontalOptions="Center"
                                   VerticalOptions="Center"
-                                  Loop="True"
                                   AutoPlay="True"
                                   Animation="typing.json"
                                   HeightRequest="50"

@@ -12,7 +12,6 @@
                 xmlns:local="clr-namespace:FreeChat.Views.Pages"
                 xmlns:effects="clr-namespace:FreeChat.Views.Effects"
                 xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
-                xmlns:xf="clr-namespace:Xamarin.Forms.Core;assembly=Xamarin.Forms.Core"
                 xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                 BindingContext="{x:Static root:AppLocator.MessagesViewModel}"
                 xmlns:dataTemplateSelector="clr-namespace:FreeChat.Views.TemplateSelectors"
@@ -50,7 +49,7 @@
                     <Label Text="what !!"/>
                 </xe:BorderView>-->
 
-                <customControls:FloatingButton Margin="5,0,0,0"
+                <customControls:FloatingButton 
                                                HorizontalOptions="Start"
                                                VerticalOptions="Center" 
                                                CornerRadius="90"
@@ -59,7 +58,6 @@
                                                PressedCommand="{Binding Source={x:Reference MessagePagecmdeio}, Path=BackCommand}"
                                                Icon="{StaticResource FontAwesomeChevronLeft}"
                                                BackgroundColor="{StaticResource PrimaryColor}" 
-                                               HasShadow="False"
                                                IconColor="{StaticResource AccentColor}">
                     <customControls:FloatingButton.Margin>
                         <OnPlatform x:TypeArguments="Thickness">
@@ -93,7 +91,6 @@
 
                     <customControls:FloatingButton Icon="{StaticResource FontAwesomePhone}"
                                                    IconColor="{StaticResource AccentColor}"
-                                                   HasShadow="False"
                                                    BackgroundColor="{StaticResource PrimaryColor}"
                                                    IconSize="25" 
                                                    CornerRadius="90"
@@ -102,7 +99,6 @@
 
                     <customControls:FloatingButton Icon="{StaticResource FontAwesomeVideo}"
                                                    IconColor="{StaticResource AccentColor}"
-                                                   HasShadow="False" 
                                                    CornerRadius="90"
                                                    BackgroundColor="{StaticResource PrimaryColor}"
                                                    IconSize="25"
@@ -156,7 +152,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <pancakeView:PancakeView HasShadow="True"
+                    <pancakeView:PancakeView 
                                              CornerRadius="20"
                                          Style="{StaticResource LightShadowPancakeViewStyle}"
                                              BackgroundColor="White">
@@ -213,7 +209,6 @@
                                                                WidthRequest="30"
                                                                HorizontalOptions="End"
                                                                VerticalOptions="Start"
-                                                               HasShadow="False"
                                                                BackgroundColor="Transparent"
                                                                PressedCommand="{Binding BindingContext.CancelReplyCommand, Source={x:Reference MessagePagecmdeio}}"
                                                                Icon="{StaticResource FontAwesomeTimes}"
@@ -291,8 +286,7 @@
                                                                Margin="5"
                                                                Icon="{StaticResource FontAwesomePaperClip}"
                                                                IconColor="{StaticResource PrimaryTextColor}"
-                                                               BackgroundColor="White"
-                                                               HasShadow="False"/>
+                                                               BackgroundColor="White"/>
                             </Grid>
 
                         </Grid>
@@ -304,8 +298,7 @@
                                                    PressedCommand="{Binding SendMessageCommand}"
                                                    Icon="{StaticResource FontAwesomePaperPlane}"
                                                    IconColor="{StaticResource PrimaryColor}"
-                                         Style="{StaticResource LightShadowPancakeViewStyle}"
-                                                   Margin="5,0,10,0">
+                                         Style="{StaticResource LightShadowPancakeViewStyle}">
                         <customControls:FloatingButton.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="iOS" Value="5,0,10,0"/>
