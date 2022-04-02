@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeChat.Android", "src\Xamarin_to_MAUI\FreeChat\FreeChat.Android\FreeChat.Android.csproj", "{CDEECCD9-8A40-40F7-85FA-A110DF56C017}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeChat.Android", "FreeChat.Android\FreeChat.Android.csproj", "{CDEECCD9-8A40-40F7-85FA-A110DF56C017}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeChat.iOS", "src\Xamarin_to_MAUI\FreeChat\FreeChat.iOS\FreeChat.iOS.csproj", "{B3B28FB5-762E-4C69-9029-B86FAA598387}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeChat.iOS", "FreeChat.iOS\FreeChat.iOS.csproj", "{B3B28FB5-762E-4C69-9029-B86FAA598387}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreeChat", "src\Xamarin_to_MAUI\FreeChat\FreeChat\FreeChat.csproj", "{037765CD-0C05-47E5-8D44-2A265200E35A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreeChat", "FreeChat\FreeChat.csproj", "{037765CD-0C05-47E5-8D44-2A265200E35A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "src\Models\Models.csproj", "{73535BFD-495B-401E-815E-9EA71791BD77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "..\..\Models\Models.csproj", "{73535BFD-495B-401E-815E-9EA71791BD77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
