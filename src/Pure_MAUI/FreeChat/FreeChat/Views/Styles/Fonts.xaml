@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    x:Class="FreeChat.Views.Styles.Fonts">
+
+    <ResourceDictionary Source="Colors.xaml" />
+
+    <!--TODO: Move fonts into shared project-->
+
+    <x:String x:Key="FontAwesomeSearch">&#xf002;</x:String>
+    <x:String x:Key="FontAwesomeHome">&#xf015;</x:String>
+    <x:String x:Key="FontAwesomeCog">&#xf013;</x:String>
+    <x:String x:Key="FontAwesomeComment">&#xf27a;</x:String>
+    <x:String x:Key="FontAwesomeChevronLeft">&#xf053;</x:String>
+    <x:String x:Key="FontAwesomePhone">&#xf095;</x:String>
+    <x:String x:Key="FontAwesomeVideo">&#xf03d;</x:String>
+    <x:String x:Key="FontAwesomePaperClip">&#xf0c6;</x:String>
+    <x:String x:Key="FontAwesomePaperPlane">&#xf1d8;</x:String>
+    <x:String x:Key="FontAwesomeTimes">&#xf00d;</x:String>
+    <x:String x:Key="FontAwesomeReply">&#xf3e5;</x:String>
+    <x:String x:Key="FontAwesomeCircle">&#xf111;</x:String>
+
+
+</ResourceDictionary>

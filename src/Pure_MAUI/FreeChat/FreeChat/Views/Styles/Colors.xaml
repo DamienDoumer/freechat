@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    x:Class="FreeChat.Views.Styles.Colors">
+    
+    <Color x:Key="AccentColor">#5A89FF</Color>
+    <Color x:Key="SecondaryAccentColor">#BFD0FB</Color>
+    <!--<Color x:Key="PrimaryColor">White</Color>-->
+    <OnPlatform x:TypeArguments="Color" x:Key="PrimaryColor">
+        <On Platform="iOS" Value="White"/>
+        <On Platform="Android" Value="#F4F5F9"/>
+    </OnPlatform>
+    <!--<Color x:Key="PrimaryColor">#F4F5F9</Color>-->
+    <Color x:Key="LightDarkWhite">#F4F5F9</Color>
+    <Color x:Key="PrimaryTextColor">#303C5E</Color>
+    <Color x:Key="SecondaryTextColor">#979DAB</Color>
+    <Color x:Key="ConnectedColor">#4fc84a</Color>
+
+</ResourceDictionary>

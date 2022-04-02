@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                     x:Class="FreeChat.Views.Styles.ControlStyles">
+
+
+    <ResourceDictionary Source="Fonts.xaml" />
+    <ResourceDictionary Source="Colors.xaml" />
+
+
+    <!--Labels-->
+    <Style x:Key="BaseLabelStyle"
+           TargetType="{x:Type Label}">
+        <Setter Property="FontSize"
+                Value="Body" />
+        <Setter Property="FontFamily"
+                Value="{StaticResource QuickSandRegular}" />
+        <Setter Property="TextColor"
+                Value="{StaticResource PrimaryTextColor}" />
+        <Setter Property="LineBreakMode"
+                Value="WordWrap" />
+        <Setter Property="VerticalTextAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalTextAlignment"
+                Value="Start" />
+        <Setter Property="LineBreakMode"
+                Value="WordWrap" />
+    </Style>
+
+    <Style BasedOn="{StaticResource BaseLabelStyle}"
+           TargetType="{x:Type Label}" />
+
+    <Style x:Key="FontAwesomeLabel"
+           TargetType="{x:Type Label}">
+        <Setter Property="FontFamily"
+                Value="{StaticResource FontAwesome}" />
+        <Setter Property="TextColor" Value="{StaticResource AccentColor}"/>
+    </Style>
+    <Style x:Key="FontAwesomeBrandLabel"
+           TargetType="{x:Type Label}">
+        <Setter Property="FontFamily"
+                Value="{StaticResource FontAwesomeBrandsRegular}" />
+    </Style>
+
+
+    <Style TargetType="Label" x:Key="PageTitleLabel">
+        <Setter Property="Margin">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="Android" Value="0,10,0,0"/>
+                    <On Platform="iOS" Value="5,5,0,0"/>
+                </OnPlatform>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="FontSize" Value="Title"/>
+        <Setter Property="FontFamily" Value="{StaticResource QuickSandBold}"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+
+    <!--Swipeviews-->
+
+    <Style TargetType="SwipeView" x:Key="MessageBubbleSwipeViewStyle">
+        <Setter Property="Padding">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,10"/>
+                </OnPlatform>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Margin">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,7"/>
+                </OnPlatform>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+    </Style>
+</ResourceDictionary>
