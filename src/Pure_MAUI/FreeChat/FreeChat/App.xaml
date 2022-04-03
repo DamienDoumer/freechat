@@ -7,15 +7,10 @@
     <Application.Resources>
         <ResourceDictionary>
 
-            <ResourceDictionary Source="Styles/Colors.xaml" />
-            <ResourceDictionary Source="Styles/Fonts.xaml" />
-            <ResourceDictionary Source="Styles/ControlStyles.xaml" />
+            <ResourceDictionary Source="Views/Styles/Colors.xaml" />
+            <ResourceDictionary Source="Views/Styles/Fonts.xaml" />
+            <ResourceDictionary Source="Views/Styles/ControlStyles.xaml" />
 
-            <!--Value Converters-->
-            <valueConverters:DateHUmanizerConverter x:Key="DatehumanizerConverter"/>
-            <valueConverters:ImageResourceValueConverter x:Key="ImageResourceConverter" />
-            <valueConverters:IsNullConverter x:Key="IsNullValueConverter"/>
-            
             <Color x:Key="PrimaryColor">#512bdf</Color>
             <Color x:Key="SecondaryColor">White</Color>
 

@@ -1,4 +1,7 @@
-﻿namespace FreeChat;
+﻿using FreeChat.Views.Pages;
+using FreeChat.Views.Styles;
+
+namespace FreeChat;
 
 public partial class App : Application
 {
@@ -7,5 +10,5 @@ public partial class App : Application
 		InitializeComponent();
 
 		MainPage = new AppShell();
-	}
+    }
 }
