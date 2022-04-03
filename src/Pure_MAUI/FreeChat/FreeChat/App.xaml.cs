@@ -1,5 +1,4 @@
 ﻿using FreeChat.Views.Pages;
-using FreeChat.Views.Styles;
 
 namespace FreeChat;
 
