@@ -2,10 +2,20 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:FreeChat"
-             x:Class="FreeChat.App">
+             x:Class="FreeChat.App"
+             xmlns:valueConverters="clr-namespace:FreeChat.Styles.ValueConverters">
     <Application.Resources>
         <ResourceDictionary>
 
+            <ResourceDictionary Source="Styles/Colors.xaml" />
+            <ResourceDictionary Source="Styles/Fonts.xaml" />
+            <ResourceDictionary Source="Styles/ControlStyles.xaml" />
+
+            <!--Value Converters-->
+            <valueConverters:DateHUmanizerConverter x:Key="DatehumanizerConverter"/>
+            <valueConverters:ImageResourceValueConverter x:Key="ImageResourceConverter" />
+            <valueConverters:IsNullConverter x:Key="IsNullValueConverter"/>
+            
             <Color x:Key="PrimaryColor">#512bdf</Color>
             <Color x:Key="SecondaryColor">White</Color>
 

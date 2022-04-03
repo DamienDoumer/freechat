@@ -1,6 +1,6 @@
 ﻿
 
-namespace FreeChat.Views.Styles
+namespace FreeChat.Styles
 {
     public partial class Colors : ResourceDictionary
     {
