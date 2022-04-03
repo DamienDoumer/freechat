@@ -11,21 +11,41 @@
             <ResourceDictionary Source="Styles/Fonts.xaml" />
             <ResourceDictionary Source="Styles/ControlStyles.xaml" />
 
-            <Color x:Key="PrimaryColor">#512bdf</Color>
-            <Color x:Key="SecondaryColor">White</Color>
-
-            <Style TargetType="Label">
-                <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
-                <Setter Property="FontFamily" Value="OpenSansRegular" />
+            <Style TargetType="Label" x:Key="TabLabelStyle">
+                <Setter Property="FontFamily" Value="FontAwesome"/>
+                <Setter Property="TextColor" Value="{StaticResource SecondaryAccentColor}"/>
+                <Setter Property="Scale" Value="0.9"/>
+                <Setter Property="FontSize" Value="{OnPlatform Android=25, iOS=25}"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="0,15,0,0"/>
             </Style>
 
-            <Style TargetType="Button">
-                <Setter Property="TextColor" Value="{DynamicResource SecondaryColor}" />
-                <Setter Property="FontFamily" Value="OpenSansRegular" />
-                <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
-                <Setter Property="Padding" Value="14,10" />
+            <Style x:Key="BaseStyle"
+               TargetType="Element">
+                <Setter Property="Shell.BackgroundColor"
+                    Value="{StaticResource PrimaryColor}" />
+                <Setter Property="Shell.ForegroundColor"
+                    Value="White" />
+                <Setter Property="Shell.NavBarHasShadow"
+                    Value="False" />
+                <Setter Property="Shell.TitleColor"
+                    Value="{StaticResource PrimaryTextColor}" />
+                <Setter Property="Shell.DisabledColor"
+                    Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor"
+                    Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor"
+                    Value="#FFFFFF" />
+                <Setter Property="Shell.TabBarForegroundColor"
+                    Value="{StaticResource AccentColor}" />
+                <Setter Property="Shell.TabBarUnselectedColor"
+                    Value="{StaticResource SecondaryAccentColor}" />
+                <Setter Property="Shell.TabBarTitleColor"
+                    Value="{StaticResource AccentColor}" />
             </Style>
-
+            <Style TargetType="TabBar"
+               BasedOn="{StaticResource BaseStyle}" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

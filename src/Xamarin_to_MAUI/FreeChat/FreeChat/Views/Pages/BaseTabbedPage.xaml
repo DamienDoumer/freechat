@@ -11,6 +11,7 @@
                 xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                 xmlns:effects="clr-namespace:FreeChat.Views.Effects"
                 xmlns:customViews="clr-namespace:FreeChat.Views.CustomControls">
+
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>

@@ -12,6 +12,8 @@ namespace FreeChat
         public AppShell()
         {
             InitializeComponent();
+            Shell.SetTabBarIsVisible(this, false);
+            Shell.SetNavBarIsVisible(this, false);
         }
     }
 }
