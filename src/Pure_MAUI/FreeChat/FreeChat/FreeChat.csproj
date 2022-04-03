@@ -55,44 +55,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Remove="AppShell.xaml" />
-	  <MauiXaml Remove="Views\Pages\BaseTabbedPage.xaml" />
-	  <MauiXaml Remove="Views\Pages\ConversationsPage.xaml" />
-	  <MauiXaml Remove="Views\Pages\MessagesPage.xaml" />
-	  <MauiXaml Remove="Views\Pages\SettingsPage.xaml" />
-	  <MauiXaml Remove="Views\Styles\Colors.xaml" />
-	  <MauiXaml Remove="Views\Styles\ControlStyles.xaml" />
-	  <MauiXaml Remove="Views\Styles\Fonts.xaml" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Include="AppShell.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Views\Pages\BaseTabbedPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Views\Pages\ConversationsPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Views\Pages\MessagesPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Views\Pages\SettingsPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Views\Styles\Colors.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Views\Styles\ControlStyles.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Views\Styles\Fonts.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	</ItemGroup>
-
-	<ItemGroup>
 	  <ProjectReference Include="..\..\..\Models\Models.csproj" />
 	</ItemGroup>
 
@@ -110,6 +72,7 @@
 	    <LastGenOutput>TextResources.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 	</ItemGroup>
+
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
 		<OutputType>WinExe</OutputType>

@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FreeChat.AppShell"
-       xmlns:textRes="clr-namespace:FreeChat.Resources.Texts">
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="FreeChat.AppShell"
+       xmlns:textRes="clr-namespace:FreeChat.Resources.Texts"
+       xmlns:pages="clr-namespace:FreeChat.Views.Pages">
 
     <TabBar Route="freechat">
         <Tab Icon="{FontImage Glyph={StaticResource FontAwesomeComment}, FontFamily={StaticResource FontAwesome}}"
