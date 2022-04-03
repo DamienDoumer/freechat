@@ -1,12 +1,152 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FreeChat.Views.Pages.ConversationsPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+<local:BaseTabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      x:Class="FreeChat.Views.Pages.ConversationsPage"
+                      xmlns:local="clr-namespace:FreeChat.Views.Pages"
+                      TabSelectedIndex="0"
+                      xmlns:textRes="clr-namespace:FreeChat.Resources.Texts"
+                      Title="{x:Static textRes:TextResources.Messages}"
+            BackgroundColor="{StaticResource PrimaryColor}"
+                      x:Name="conversationsPage">
+
+    <Shell.TitleView>
+        <Grid>
+            <Label Text="{Binding Title, Source={x:Reference conversationsPage}}"
+                    Style="{StaticResource PageTitleLabel}"
+                    VerticalOptions="Start"
+                    Margin="0,0,0,10"/>
+        </Grid>
+    </Shell.TitleView>
+
+    <local:BaseTabbedPage.ViewContent>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.RowSpan="2"
+                  Grid.Row="0"
+                  RowDefinitions="Auto,Auto">
+
+              <!-- <pancakeView:PancakeView CornerRadius="30" IsVisible="{OnPlatform iOS=False}"
+                                         HeightRequest="60">
+                    <pancakeView:PancakeView.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="15,20,15,-10"/>
+                            <On Platform="iOS" Value="15,25,15,-15"/>
+                        </OnPlatform>
+                    </pancakeView:PancakeView.Margin>
+                </pancakeView:PancakeView>
+--> 
+                
+                <Border Margin="15,10,15,10"
+                        HeightRequest="60"
+                        Style="{StaticResource LightShadowPancakeViewStyle}"
+                        BackgroundColor="White">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+
+                    <Border.Shadow>
+                        <Shadow Brush="{StaticResource ShadowColor}"/>
+                    </Border.Shadow>
+
+                    <Grid Margin="20,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Entry Placeholder="Search"
+                            Text="{Binding SearchText}"
+                            VerticalOptions="Center"
+                            FontFamily="{StaticResource QuickSandBold}"
+                            FontAttributes="Bold">
+                            <Entry.Effects>
+                                <!--       <effects:BorderlessEntryEffect />-->
+                            </Entry.Effects>
+                        </Entry>
+
+                        <Label Style="{StaticResource FontAwesomeLabel}"
+                            Text="{StaticResource FontAwesomeSearch}"
+                            Grid.Column="1"
+                            FontSize="Large"
+                            TextColor="LightGray"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                    </Grid>
+                </Border>
+
+                <!--
+                <customControls:ToggleButton HorizontalOptions="Start"
+                                            Margin="15,10,15,10"
+                                            VerticalOptions="Center"
+                                            ToggleOptionTitle="All"
+                                            Grid.Row="1"
+                                            ToggleCommand="{Binding FilterOptionChangedCommand}"
+                                            NotToggledOptionTitle="Online (1)" />
+-->
+
+                <CollectionView ItemsSource="{Binding Conversations}"
+                            Grid.Row="2"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid RowDefinitions="*,Auto">
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.ConversationSelectedCommand, Source={x:Reference conversationsPage}}"
+                                                          CommandParameter="{Binding}"/>
+                                </Grid.GestureRecognizers>
+                                
+                              <!--  <dataTemplates:SimpleUserProfileTemplate HeightRequest="{OnPlatform Android=100, iOS=80}"/>
+                                <pancakeView:PancakeView 
+                                                        HeightRequest="1"
+                                                        Grid.Row="1"/>
+-->
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+
+            </Grid>
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}"
+                            IsVisible="{Binding IsBusy}"
+                            Grid.RowSpan="2"
+                            Color="{StaticResource AccentColor}"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            HeightRequest="50"
+                            WidthRequest="50"/>
+
+            <Border HeightRequest="30"
+                                    Grid.Row="1"
+                                    IsVisible="False"
+                                    BackgroundColor="White" >
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="50" />
+                </Border.StrokeShape>
+
+                <Border.Shadow>
+                    <Shadow Brush="{StaticResource ShadowColor}"/>
+                </Border.Shadow>
+
+                <Border.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="0,0,0,-15"/>
+                        <On Platform="iOS" Value="0,0,0,-1"/>
+                    </OnPlatform>
+                </Border.Margin>
+            </Border>
+        </Grid>
+    </local:BaseTabbedPage.ViewContent>
+    
+</local:BaseTabbedPage>

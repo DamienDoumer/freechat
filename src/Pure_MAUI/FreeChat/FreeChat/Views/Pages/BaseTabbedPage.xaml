@@ -1,12 +1,121 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FreeChat.Views.Pages.BaseTabbedPage">
+             x:Class="FreeChat.Views.Pages.BaseTabbedPage"
+             xmlns:pages="clr-namespace:FreeChat.Views.Pages"
+                x:Name="SimpleTabbedPage">
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ContentView Content="{Binding ViewContent, Source={x:Reference SimpleTabbedPage}}" >
+                <ContentView.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="0,0,0,-15"/>
+                    </OnPlatform>
+                </ContentView.Margin>
+            </ContentView>
+
+            <Border Grid.Row="1"
+                    HeightRequest="60"
+                    Margin="0,0,0,-5">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="30,30,0,0" />
+                </Border.StrokeShape>
+                
+                <Border.Stroke>
+                    <LinearGradientBrush>
+                        <GradientStop Color="Transparent"
+                      Offset="0.1" />
+                        <GradientStop Color="LightGray"
+                      Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Stroke>
+                
+                <Border.Shadow>
+                    <Shadow Brush="{StaticResource ShadowColor}"/>
+                </Border.Shadow>
+
+                <Grid ColumnDefinitions="*,*">
+
+                    <StackLayout>
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding MessagesTappedCommand, Source={x:Reference SimpleTabbedPage}}"/>
+                        </StackLayout.GestureRecognizers>
+
+                        <Label Text="{StaticResource FontAwesomeComment}"
+                                   Style="{StaticResource TabLabelStyle}">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label"
+                                                 Binding="{Binding TabSelectedIndex, Source={x:Reference SimpleTabbedPage}}"
+                                                 Value="0">
+                                    <Setter Property="TextColor" Value="{StaticResource AccentColor}"/>
+                                    <Setter Property="Scale" Value="1"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+
+                        <Label TextColor="{StaticResource AccentColor}"
+                                   Scale="1" Margin="0"
+                                   Style="{StaticResource TabLabelStyle}"
+                                   Text="{StaticResource FontAwesomeCircle}"
+                                   FontSize="7"
+                                   VerticalOptions="End"
+                                   IsVisible="False">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label"
+                                             Binding="{Binding TabSelectedIndex, Source={x:Reference SimpleTabbedPage}}"
+                                             Value="0">
+                                    <Setter Property="IsVisible" Value="True"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1">
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SettingsTappedCommand, Source={x:Reference SimpleTabbedPage}}"/>
+                        </StackLayout.GestureRecognizers>
+
+                        <Label Text="{StaticResource FontAwesomeCog}"
+                                   Style="{StaticResource TabLabelStyle}">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label"
+                                             Binding="{Binding TabSelectedIndex, Source={x:Reference SimpleTabbedPage}}"
+                                             Value="1">
+                                    <Setter Property="TextColor" Value="{StaticResource AccentColor}"/>
+                                    <Setter Property="Scale" Value="1"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+
+                        <Label TextColor="{StaticResource AccentColor}"
+                                   Style="{StaticResource TabLabelStyle}"
+                                   Text="{StaticResource FontAwesomeCircle}"
+                                   IsVisible="False" Scale="1"
+                                    Margin="0"
+                                   VerticalOptions="End"
+                                   FontSize="7">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label"
+                                             Binding="{Binding TabSelectedIndex, Source={x:Reference SimpleTabbedPage}}"
+                                             Value="1">
+                                    <Setter Property="IsVisible" Value="True"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                    </StackLayout>
+
+                </Grid>
+            </Border>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

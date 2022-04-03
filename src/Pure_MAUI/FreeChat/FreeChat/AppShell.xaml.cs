@@ -13,7 +13,6 @@ namespace FreeChat
         {
             InitializeComponent();
             Shell.SetTabBarIsVisible(this, false);
-            Shell.SetNavBarIsVisible(this, false);
         }
     }
 }

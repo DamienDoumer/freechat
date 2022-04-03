@@ -1,12 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FreeChat.Views.Pages.SettingsPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+<local:BaseTabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      x:Class="FreeChat.Views.Pages.SettingsPage"
+                      xmlns:local="clr-namespace:FreeChat.Views.Pages"
+                      x:Name="settingsPage"
+                      BackgroundColor="{StaticResource PrimaryColor}"
+                      TabSelectedIndex="1"
+                      xmlns:textRes="clr-namespace:FreeChat.Resources.Texts"
+                      Title="{x:Static textRes:TextResources.Settings}">
+
+    <Shell.TitleView>
+        <Grid>
+            <Label Text="{Binding Title, Source={x:Reference settingsPage}}"
+                   Style="{StaticResource PageTitleLabel}"
+                   VerticalOptions="Start"
+                   Margin="0,0,0,10"/>
+        </Grid>
+    </Shell.TitleView>
+
+    <local:BaseTabbedPage.ViewContent>
+        <Grid>
+            <Label Text="Welcome to Free Chat!"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+        </Grid>
+    </local:BaseTabbedPage.ViewContent>
+
+</local:BaseTabbedPage>

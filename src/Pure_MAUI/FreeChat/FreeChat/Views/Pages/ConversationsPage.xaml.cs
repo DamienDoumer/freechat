@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace FreeChat.Views.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ConversationsPage : ContentPage
+    public partial class ConversationsPage : BaseTabbedPage
     {
         public ConversationsPage()
         {
