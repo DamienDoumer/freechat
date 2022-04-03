@@ -14,7 +14,7 @@
         <Setter Property="FontSize"
                 Value="Body" />
         <Setter Property="FontFamily"
-                Value="{StaticResource QuickSandRegular}" />
+                Value="QuickSandRegular" />
         <Setter Property="TextColor"
                 Value="{StaticResource PrimaryTextColor}" />
         <Setter Property="LineBreakMode"
@@ -33,13 +33,13 @@
     <Style x:Key="FontAwesomeLabel"
            TargetType="{x:Type Label}">
         <Setter Property="FontFamily"
-                Value="{StaticResource FontAwesome}" />
+                Value="FontAwesome" />
         <Setter Property="TextColor" Value="{StaticResource AccentColor}"/>
     </Style>
     <Style x:Key="FontAwesomeBrandLabel"
            TargetType="{x:Type Label}">
         <Setter Property="FontFamily"
-                Value="{StaticResource FontAwesomeBrandsRegular}" />
+                Value="FontAwesomeBrandsRegular" />
     </Style>
 
 
@@ -53,7 +53,7 @@
             </Setter.Value>
         </Setter>
         <Setter Property="FontSize" Value="Title"/>
-        <Setter Property="FontFamily" Value="{StaticResource QuickSandBold}"/>
+        <Setter Property="FontFamily" Value="QuickSandBold"/>
         <Setter Property="VerticalOptions" Value="Center"/>
     </Style>
 

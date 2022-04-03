@@ -54,7 +54,7 @@
 		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.30" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<!--<ItemGroup>
 	  <MauiXaml Remove="AppShell.xaml" />
 	  <MauiXaml Remove="Views\Pages\BaseTabbedPage.xaml" />
 	  <MauiXaml Remove="Views\Pages\ConversationsPage.xaml" />
@@ -90,7 +90,7 @@
 	  <EmbeddedResource Include="Views\Styles\Fonts.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
-	</ItemGroup>
+	</ItemGroup>-->
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\Models\Models.csproj" />
