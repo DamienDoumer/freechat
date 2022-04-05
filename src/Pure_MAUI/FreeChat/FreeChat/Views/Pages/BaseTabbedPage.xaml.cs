@@ -113,6 +113,7 @@ namespace FreeChat.Views.Pages
         public BaseTabbedPage()
         {
             InitializeComponent();
+            //TODO: Report this bug to the .NET MAUI team. 
             SettingsTappedCommand = new Command(() =>
                 Shell.Current.GoToAsync("///freechat/settings"));
             MessagesTappedCommand = new Command(() =>
