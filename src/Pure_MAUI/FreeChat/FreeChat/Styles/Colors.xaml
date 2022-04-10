@@ -17,9 +17,9 @@
     <Color x:Key="ConnectedColor">#4fc84a</Color>
 
     <LinearGradientBrush StartPoint="1,0" x:Key="ShadowColor">
-        <GradientStop Color="Gray"
-                      Offset="0.1" />
         <GradientStop Color="LightGray"
+                      Offset="0.1" />
+        <GradientStop Color="{StaticResource PrimaryColor}"
                       Offset="1.0" />
     </LinearGradientBrush>
     

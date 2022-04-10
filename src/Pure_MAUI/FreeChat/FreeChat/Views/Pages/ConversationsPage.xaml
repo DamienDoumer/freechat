@@ -53,6 +53,7 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
+                        <!--NOTE: For some reason, font family doesn't apply to entries. Checkout what you can do about it.-->
                         <customControls:BorderlessEntry Placeholder="Search"
                                                         Text="{Binding SearchText}"
                                                         VerticalOptions="Center"
@@ -93,30 +94,28 @@
                                     <TapGestureRecognizer Command="{Binding BindingContext.ConversationSelectedCommand, Source={x:Reference conversationsPage}}"
                                                           CommandParameter="{Binding}"/>
                                 </Grid.GestureRecognizers>
+
+                                <!--  
                                 
-                                <!--  <dataTemplates:SimpleUserProfileTemplate HeightRequest="{OnPlatform Android=100, iOS=80}"/>
-                                <pancakeView:PancakeView 
-                                                        HeightRequest="1"
-                                                        Grid.Row="1"/>
+                                <dataTemplates:SimpleUserProfileTemplate HeightRequest="{OnPlatform Android=100, iOS=80}"/>
+                                    <pancakeView:PancakeView HeightRequest="1"
+                                                             Grid.Row="1"/>
                               -->
-                                
+
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
-
                 </CollectionView>
-
-
             </Grid>
 
             <ActivityIndicator IsRunning="{Binding IsBusy}"
-                            IsVisible="{Binding IsBusy}"
-                            Grid.RowSpan="2"
-                            Color="{StaticResource AccentColor}"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            HeightRequest="50"
-                            WidthRequest="50"/>
+                               IsVisible="{Binding IsBusy}"
+                               Grid.RowSpan="2"
+                               Color="{StaticResource AccentColor}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               HeightRequest="50"
+                               WidthRequest="50"/>
 
             <Border HeightRequest="30"
                     Grid.Row="1"
