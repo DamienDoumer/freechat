@@ -16,13 +16,13 @@
     <Color x:Key="SecondaryTextColor">#979DAB</Color>
     <Color x:Key="ConnectedColor">#4fc84a</Color>
 
-    <LinearGradientBrush x:Key="ShadowColor">
+    <LinearGradientBrush StartPoint="1,0" x:Key="ShadowColor">
         <GradientStop Color="Gray"
                       Offset="0.1" />
         <GradientStop Color="LightGray"
                       Offset="1.0" />
     </LinearGradientBrush>
-
+    
     <LinearGradientBrush x:Key="LightShadowColor">
         <GradientStop Color="Transparent"
                                       Offset="0.1" />

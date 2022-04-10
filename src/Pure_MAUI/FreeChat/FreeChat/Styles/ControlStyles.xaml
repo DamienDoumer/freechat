@@ -7,6 +7,13 @@
     <ResourceDictionary Source="Fonts.xaml" />
     <ResourceDictionary Source="Colors.xaml" />
 
+    <!--<Style x:Key="BaseEntryStyle"
+           TargetType="Entry">
+        <Setter Property="FontFamily" Value="{StaticResource QuickSandBold}"/>
+    </Style>
+    <Style TargetType="Entry"
+           BasedOn="{StaticResource BaseEntryStyle}">
+    </Style>-->
 
     <!--Labels-->
     <Style x:Key="BaseLabelStyle"

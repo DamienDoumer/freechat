@@ -1,4 +1,8 @@
-﻿namespace FreeChat;
+﻿using Android.Content.Res;
+using FreeChat.Views.CustomControls;
+using Microsoft.Maui.Platform;
+
+namespace FreeChat;
 
 public static class MauiProgram
 {
@@ -15,6 +19,18 @@ public static class MauiProgram
 				fonts.AddFont("Font Awesome 5 Brands-Regular-400.otf", "FontAwesomeBrandsRegular");
 				fonts.AddFont("Font Awesome 5 Free-Solid-900.otf", "FontAwesome");
 			});
+
+		Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(IView.Background), (handler, view) =>
+		{
+			if (view is BorderlessEntry)
+			{
+#if ANDROID
+				handler.PlatformView.BackgroundTintList = ColorStateList.ValueOf(Colors.Transparent.ToPlatform());
+#elif IOS
+                  handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
+#endif
+			}
+		});
 
 		return builder.Build();
 	}

@@ -13,7 +13,7 @@
                 <Label Text="{Binding Title, Source={x:Reference SimpleTabbedPage}}"
                        Style="{StaticResource PageTitleLabel}"
                        VerticalOptions="Start"
-                       Margin="10,15,0,00"/>
+                       Margin="12,15,0,00"/>
             </Grid>
 
             <ContentView Content="{Binding ViewContent, Source={x:Reference SimpleTabbedPage}}"

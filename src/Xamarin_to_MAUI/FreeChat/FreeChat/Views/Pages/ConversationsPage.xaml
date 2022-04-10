@@ -4,19 +4,19 @@
                       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       mc:Ignorable="d" xmlns:textRes="clr-namespace:FreeChat.Resources"
-            x:Class="FreeChat.Views.Pages.ConversationsPage"
-            xmlns:local="clr-namespace:FreeChat.Views.Pages"
-            xmlns:root="clr-namespace:FreeChat"
-            xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-            BindingContext="{x:Static root:AppLocator.ConversationsViewModel}"
-            Title="{x:Static textRes:TextResources.Messages}"
-            x:Name="conversationsPage"
-            xmlns:effects="clr-namespace:FreeChat.Views.Effects"
-            BackgroundColor="{StaticResource PrimaryColor}"
-            xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
-            xmlns:customControls="clr-namespace:FreeChat.Views.CustomControls"
-                xmlns:dataTemplates="clr-namespace:FreeChat.Views.DataTemplates"
-                    TabSelectedIndex="0">
+                      x:Class="FreeChat.Views.Pages.ConversationsPage"
+                      xmlns:local="clr-namespace:FreeChat.Views.Pages"
+                      xmlns:root="clr-namespace:FreeChat"
+                      xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                      BindingContext="{x:Static root:AppLocator.ConversationsViewModel}"
+                      Title="{x:Static textRes:TextResources.Messages}"
+                      x:Name="conversationsPage"
+                      xmlns:effects="clr-namespace:FreeChat.Views.Effects"
+                      BackgroundColor="{StaticResource PrimaryColor}"
+                      xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
+                      xmlns:customControls="clr-namespace:FreeChat.Views.CustomControls"
+                      xmlns:dataTemplates="clr-namespace:FreeChat.Views.DataTemplates"
+                      TabSelectedIndex="0">
 
     <!--BackgroundColor="{StaticResource PrimaryColor}"-->
     <Shell.TitleView>
@@ -83,8 +83,8 @@
                         </Entry>
 
                         <Label Style="{StaticResource FontAwesomeLabel}"
-                            Text="{StaticResource FontAwesomeSearch}"
-                            Grid.Column="1"
+                               Text="{StaticResource FontAwesomeSearch}"
+                               Grid.Column="1"
                             FontSize="Large"
                             TextColor="LightGray"
                             HorizontalOptions="Center"

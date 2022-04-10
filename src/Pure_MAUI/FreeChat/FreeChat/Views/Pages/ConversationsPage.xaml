@@ -7,7 +7,8 @@
                       xmlns:textRes="clr-namespace:FreeChat.Resources.Texts"
                       Title="{x:Static textRes:TextResources.Messages}"
                       BackgroundColor="{StaticResource PrimaryColor}"
-                      x:Name="conversationsPage">
+                      x:Name="conversationsPage"
+                      xmlns:customControls="clr-namespace:FreeChat.Views.CustomControls">
 
     <local:BaseTabbedPage.ViewContent>
         <Grid>
@@ -18,7 +19,7 @@
             
             <Grid Grid.RowSpan="2"
                   Grid.Row="0"
-                  RowDefinitions="Auto,Auto">
+                  RowDefinitions="Auto,Auto,*">
 
               <!-- <pancakeView:PancakeView CornerRadius="30" IsVisible="{OnPlatform iOS=False}"
                                          HeightRequest="60">
@@ -29,19 +30,21 @@
                         </OnPlatform>
                     </pancakeView:PancakeView.Margin>
                 </pancakeView:PancakeView>
---> 
+              --> 
                 
                 <Border Margin="15,10,15,10"
-                        HeightRequest="60"
-                        Style="{StaticResource LightShadowPancakeViewStyle}"
-                        BackgroundColor="White">
+                        HeightRequest="70"
+                        BackgroundColor="White"
+                        Stroke="{StaticResource LightShadowColor}">
 
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="20" />
+                        <RoundRectangle CornerRadius="60" />
                     </Border.StrokeShape>
 
                     <Border.Shadow>
-                        <Shadow Brush="{StaticResource ShadowColor}"/>
+                        <Shadow Brush="{StaticResource ShadowColor}"
+                                Offset="0,50"
+                                Radius="40"/>
                     </Border.Shadow>
 
                     <Grid Margin="20,10">
@@ -50,23 +53,20 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <Entry Placeholder="Search"
-                            Text="{Binding SearchText}"
-                            VerticalOptions="Center"
-                            FontFamily="{StaticResource QuickSandBold}"
-                            FontAttributes="Bold">
-                            <Entry.Effects>
-                                <!--       <effects:BorderlessEntryEffect />-->
-                            </Entry.Effects>
-                        </Entry>
+                        <customControls:BorderlessEntry Placeholder="Search"
+                                                        Text="{Binding SearchText}"
+                                                        VerticalOptions="Center"
+                                                        FontFamily="{StaticResource QuickSandBold}"
+                                                        FontSize="Large"
+                                                        x:Name="SearchEntry"/>
 
                         <Label Style="{StaticResource FontAwesomeLabel}"
-                            Text="{StaticResource FontAwesomeSearch}"
-                            Grid.Column="1"
-                            FontSize="Large"
-                            TextColor="LightGray"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center" />
+                                Text="{StaticResource FontAwesomeSearch}"
+                                Grid.Column="1"
+                                FontSize="Large"
+                                TextColor="LightGray"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
                     </Grid>
                 </Border>
 
@@ -94,11 +94,12 @@
                                                           CommandParameter="{Binding}"/>
                                 </Grid.GestureRecognizers>
                                 
-                              <!--  <dataTemplates:SimpleUserProfileTemplate HeightRequest="{OnPlatform Android=100, iOS=80}"/>
+                                <!--  <dataTemplates:SimpleUserProfileTemplate HeightRequest="{OnPlatform Android=100, iOS=80}"/>
                                 <pancakeView:PancakeView 
                                                         HeightRequest="1"
                                                         Grid.Row="1"/>
--->
+                              -->
+                                
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -118,9 +119,11 @@
                             WidthRequest="50"/>
 
             <Border HeightRequest="30"
-                                    Grid.Row="1"
-                                    IsVisible="False"
-                                    BackgroundColor="White" >
+                    Grid.Row="1"
+                    IsVisible="False"
+                    BackgroundColor="White" 
+                    Margin="{OnPlatform Android='0,0,0,-15', iOS='0,0,0,-1'}"
+                    Stroke="{StaticResource LightShadowColor}">
 
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="50" />
@@ -129,13 +132,6 @@
                 <Border.Shadow>
                     <Shadow Brush="{StaticResource ShadowColor}"/>
                 </Border.Shadow>
-
-                <Border.Margin>
-                    <OnPlatform x:TypeArguments="Thickness">
-                        <On Platform="Android" Value="0,0,0,-15"/>
-                        <On Platform="iOS" Value="0,0,0,-1"/>
-                    </OnPlatform>
-                </Border.Margin>
             </Border>
         </Grid>
     </local:BaseTabbedPage.ViewContent>
