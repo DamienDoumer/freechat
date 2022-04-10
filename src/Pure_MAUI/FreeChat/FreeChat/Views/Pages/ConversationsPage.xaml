@@ -35,17 +35,12 @@
                 <Border Margin="15,10,15,10"
                         HeightRequest="70"
                         BackgroundColor="White"
-                        Stroke="{StaticResource LightShadowColor}">
+                        Stroke="{StaticResource LightShadowColor}"
+                        Shadow="{StaticResource LightShadow}">
 
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="60" />
                     </Border.StrokeShape>
-
-                    <Border.Shadow>
-                        <Shadow Brush="{StaticResource ShadowColor}"
-                                Offset="0,50"
-                                Radius="40"/>
-                    </Border.Shadow>
 
                     <Grid Margin="20,10">
                         <Grid.ColumnDefinitions>
@@ -62,12 +57,12 @@
                                                         x:Name="SearchEntry"/>
 
                         <Label Style="{StaticResource FontAwesomeLabel}"
-                                Text="{StaticResource FontAwesomeSearch}"
-                                Grid.Column="1"
-                                FontSize="Large"
-                                TextColor="LightGray"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center" />
+                               Text="{StaticResource FontAwesomeSearch}"
+                               Grid.Column="1"
+                               FontSize="Large"
+                               TextColor="LightGray"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
                     </Grid>
                 </Border>
 

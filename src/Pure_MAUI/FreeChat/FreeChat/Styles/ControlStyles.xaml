@@ -65,6 +65,12 @@
     </Style>
 
 
+    <Shadow Brush="{StaticResource ShadowColor}"
+            x:Key="LightShadow"
+            Offset="0,50"
+            Radius="40"/>
+
+
     <!--Swipeviews-->
 
     <Style TargetType="SwipeView" x:Key="MessageBubbleSwipeViewStyle">
