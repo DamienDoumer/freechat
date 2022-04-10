@@ -7,6 +7,8 @@
     <Application.Resources>
         <ResourceDictionary>
 
+            <valueConverters:GreaterThan0Converter x:Key="GreaterThanZeroConverter"/>
+
             <ResourceDictionary Source="Styles/Colors.xaml" />
             <ResourceDictionary Source="Styles/Fonts.xaml" />
             <ResourceDictionary Source="Styles/ControlStyles.xaml" />

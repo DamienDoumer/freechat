@@ -31,8 +31,8 @@
     <Grid ColumnDefinitions="Auto,Auto">
 
         <Border BackgroundColor="{StaticResource AccentColor}"
-                HeightRequest="{Binding HeightRequest,Source={x:Reference isToggledOption}}"
-                WidthRequest="{Binding WidthRequest, Source={x:Reference isToggledOption}}"
+                HeightRequest="{Binding HeightRequest,Source={x:Reference isToggledOption}, Converter={StaticResource GreaterThanZeroConverter}}"
+                WidthRequest="{Binding WidthRequest, Source={x:Reference isToggledOption}, Converter={StaticResource GreaterThanZeroConverter}}"
                 Margin="1,5,1,-3"
                 Shadow="{StaticResource LightShadow}"
                 Stroke="{StaticResource LightShadowColor}"
@@ -86,13 +86,12 @@
 
         </Border>
 
-
         <Border BackgroundColor="{StaticResource AccentColor}"
-                                     Shadow="{StaticResource LightShadow}"
-                                     HeightRequest="{Binding HeightRequest,Source={x:Reference notToggledOption}}"
-                                     WidthRequest="{Binding WidthRequest, Source={x:Reference notToggledOption}}"
-                                     Margin="1,5,1,-3"
-                                     Grid.Column="1"
+                Shadow="{StaticResource LightShadow}"
+                HeightRequest="{Binding HeightRequest,Source={x:Reference notToggledOption}, Converter={StaticResource GreaterThanZeroConverter}}"
+                WidthRequest="{Binding WidthRequest, Source={x:Reference notToggledOption}, Converter={StaticResource GreaterThanZeroConverter}}"
+                Margin="1,5,1,-3"
+                Grid.Column="1"
                 Stroke="{StaticResource LightShadowColor}"
                 StrokeShape="{StaticResource RectangularShape}">
             <Border.Triggers>
@@ -106,8 +105,8 @@
         </Border>
 
         <Border x:Name="notToggledOption"
-                                     Grid.Column="1"
-                                     Margin="5"
+                Grid.Column="1"
+                Margin="5"
                 Stroke="{StaticResource LightShadowColor}"
                 StrokeShape="{StaticResource RectangularShape}">
             <Border.Triggers>
