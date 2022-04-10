@@ -23,4 +23,11 @@
                       Offset="1.0" />
     </LinearGradientBrush>
 
+    <LinearGradientBrush x:Key="LightShadowColor">
+        <GradientStop Color="Transparent"
+                                      Offset="0.1" />
+        <GradientStop Color="LightGray"
+                                      Offset="1.0" />
+    </LinearGradientBrush>
+
 </ResourceDictionary>

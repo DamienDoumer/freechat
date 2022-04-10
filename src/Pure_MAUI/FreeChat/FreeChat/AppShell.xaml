@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FreeChat.AppShell"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="FreeChat.AppShell"
        xmlns:pages="clr-namespace:FreeChat.Views.Pages"
        xmlns:textRes="clr-namespace:FreeChat.Resources.Texts">
 
-   <!-- -->
     <TabBar Route="freechat">
         <Tab Icon="{FontImage Glyph={StaticResource FontAwesomeComment}, FontFamily='FontAwesome'}"
-             Title="{x:Static textRes:TextResources.Messages}" Route="conversations">
+             Title="{x:Static textRes:TextResources.Messages}"
+             Route="conversations">
             <ShellContent ContentTemplate="{DataTemplate pages:ConversationsPage}" />
         </Tab>
         <Tab Icon="{FontImage Glyph={StaticResource FontAwesomeCog}, FontFamily='FontAwesome'}"
-             Title="{x:Static textRes:TextResources.Settings}" Route="settings">
+             Title="{x:Static textRes:TextResources.Settings}"
+             Route="settings">
             <ShellContent ContentTemplate="{DataTemplate pages:SettingsPage}" />
         </Tab>
     </TabBar>
-
 
 </Shell>

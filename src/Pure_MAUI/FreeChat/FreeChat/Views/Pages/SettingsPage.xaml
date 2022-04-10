@@ -9,15 +9,6 @@
                       xmlns:textRes="clr-namespace:FreeChat.Resources.Texts"
                       Title="{x:Static textRes:TextResources.Settings}">
 
-    <Shell.TitleView>
-        <Grid>
-            <Label Text="{Binding Title, Source={x:Reference settingsPage}}"
-                   Style="{StaticResource PageTitleLabel}"
-                   VerticalOptions="Start"
-                   Margin="0,0,0,10"/>
-        </Grid>
-    </Shell.TitleView>
-
     <local:BaseTabbedPage.ViewContent>
         <Grid>
             <Label Text="Welcome to Free Chat!"

@@ -6,17 +6,8 @@
                       TabSelectedIndex="0"
                       xmlns:textRes="clr-namespace:FreeChat.Resources.Texts"
                       Title="{x:Static textRes:TextResources.Messages}"
-            BackgroundColor="{StaticResource PrimaryColor}"
+                      BackgroundColor="{StaticResource PrimaryColor}"
                       x:Name="conversationsPage">
-
-    <Shell.TitleView>
-        <Grid>
-            <Label Text="{Binding Title, Source={x:Reference conversationsPage}}"
-                    Style="{StaticResource PageTitleLabel}"
-                    VerticalOptions="Start"
-                    Margin="0,0,0,10"/>
-        </Grid>
-    </Shell.TitleView>
 
     <local:BaseTabbedPage.ViewContent>
         <Grid>

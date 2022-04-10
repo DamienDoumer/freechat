@@ -3,40 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FreeChat.Views.Pages.BaseTabbedPage"
              xmlns:pages="clr-namespace:FreeChat.Views.Pages"
-                x:Name="SimpleTabbedPage">
+                x:Name="SimpleTabbedPage"
+             Shell.NavBarIsVisible="False">
 
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+        <Grid RowDefinitions="50,*,Auto">
 
-            <ContentView Content="{Binding ViewContent, Source={x:Reference SimpleTabbedPage}}" >
-                <ContentView.Margin>
-                    <OnPlatform x:TypeArguments="Thickness">
-                        <On Platform="Android" Value="0,0,0,-15"/>
-                    </OnPlatform>
-                </ContentView.Margin>
+            <Grid x:Name="TitleView">
+                <Label Text="{Binding Title, Source={x:Reference SimpleTabbedPage}}"
+                       Style="{StaticResource PageTitleLabel}"
+                       VerticalOptions="Start"
+                       Margin="10,15,0,00"/>
+            </Grid>
+
+            <ContentView Content="{Binding ViewContent, Source={x:Reference SimpleTabbedPage}}"
+                         Grid.Row="1"
+                         Margin="{OnPlatform Android='0,0,0,-15', iOS='0'}">
             </ContentView>
 
-            <Border Grid.Row="1"
+            <Border Grid.Row="2"
                     HeightRequest="60"
-                    Margin="0,0,0,-5">
+                    Margin="0,0,0,-5"
+                    Stroke="{StaticResource LightShadowColor}">
 
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="30,30,0,0" />
                 </Border.StrokeShape>
-                
-                <Border.Stroke>
-                    <LinearGradientBrush>
-                        <GradientStop Color="Transparent"
-                      Offset="0.1" />
-                        <GradientStop Color="LightGray"
-                      Offset="1.0" />
-                    </LinearGradientBrush>
-                </Border.Stroke>
-                
+                                
                 <Border.Shadow>
                     <Shadow Brush="{StaticResource ShadowColor}"/>
                 </Border.Shadow>
