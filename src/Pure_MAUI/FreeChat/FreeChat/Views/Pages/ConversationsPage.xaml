@@ -48,11 +48,10 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <!--NOTE: For some reason, font family doesn't apply to entries. Checkout what you can do about it.-->
                         <customControls:BorderlessEntry Placeholder="Search"
                                                         Text="{Binding SearchText}"
                                                         VerticalOptions="Center"
-                                                        FontFamily="{StaticResource QuickSandBold}"
+                                                        FontFamily="QuickSandBold"
                                                         FontSize="Large"
                                                         x:Name="SearchEntry"/>
 
