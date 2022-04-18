@@ -1,6 +1,7 @@
 ﻿using FreeChat.Helpers;
 using FreeChat.Helpers.MyEventArgs;
 using FreeChat.Resources;
+using FreeChat.Resources.Texts;
 using FreeChat.Services;
 using FreeChat.ViewModels.Helpers;
 using Humanizer;
@@ -13,7 +14,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Forms;
 
 namespace FreeChat.ViewModels
 {
@@ -138,11 +138,11 @@ namespace FreeChat.ViewModels
                 Content = CurrentMessage,
                 ReplyTo = ReplyMessage,
                 CreationDate = DateTime.Now,
-                Sender = AppLocator.CurrentUser,
+                Sender = MauiProgram.CurrentUser,
                 ISentPreviousMessage = (bool)Messages?.Last()?.Last()?.ISent,
                 ISent = true,
                 ConversationId = CurrentConversation.Id,
-                SenderId = AppLocator.CurrentUserId
+                SenderId = MauiProgram.CurrentUserId
             };
 
             CurrentConversation.LastMessage = message;

@@ -1,11 +1,15 @@
 ﻿using Android.Content.Res;
 using FreeChat.Views.CustomControls;
 using Microsoft.Maui.Platform;
+using Models;
 
 namespace FreeChat;
 
 public static class MauiProgram
 {
+	public static string CurrentUserId { get; set; }
+	public static User CurrentUser { get; set; }
+
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
