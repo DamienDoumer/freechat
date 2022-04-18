@@ -30,26 +30,6 @@
 
     <Grid ColumnDefinitions="60,120">
 
-        <!--<Border BackgroundColor="{StaticResource AccentColor}"
-                HeightRequest="{Binding HeightRequest,Source={x:Reference isToggledOption}, Converter={StaticResource GreaterThanZeroConverter}}"
-                WidthRequest="{Binding WidthRequest, Source={x:Reference isToggledOption}, Converter={StaticResource GreaterThanZeroConverter}}"
-                Margin="1,5,1,-3"
-                Shadow="{StaticResource LightShadow}"
-                Stroke="{StaticResource LightShadowColor}"
-                StrokeShape="{StaticResource RectangularShape}">
-            <Border.Triggers>
-                <DataTrigger TargetType="Border"
-                             Value="False"
-                             Binding="{Binding Source={x:Reference ToggleButton_892}, Path=IsToggled}">
-                    <Setter Property="IsVisible"
-                            Value="False" />
-                </DataTrigger>
-            </Border.Triggers>
-        </Border>
-        
-                StrokeShape="{StaticResource RectangularShape}"
-                Stroke="{StaticResource LightShadowColor}"-->
-
         <BoxView BackgroundColor="{StaticResource AccentColor}"
                  CornerRadius="60"
                  Margin="1,1,1,-3">

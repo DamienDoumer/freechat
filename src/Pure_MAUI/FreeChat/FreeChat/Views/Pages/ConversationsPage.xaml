@@ -76,9 +76,9 @@
                                              NotToggledOptionTitle="Online (1)" />
 
                 <CollectionView ItemsSource="{Binding Conversations}"
-                            Grid.Row="2"
-                            VerticalOptions="FillAndExpand"
-                            HorizontalOptions="FillAndExpand">
+                                Grid.Row="2"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand">
 
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
