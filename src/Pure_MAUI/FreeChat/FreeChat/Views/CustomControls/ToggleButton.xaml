@@ -14,7 +14,7 @@
             <Style TargetType="Label"
                    BasedOn="{StaticResource BaseLabelStyle}">
                 <Setter Property="FontFamily"
-                        Value="{StaticResource QuickSandRegular}" />
+                        Value="QuickSandRegular" />
                 <Setter Property="Margin"
                         Value="12,5" />
             </Style>
@@ -28,9 +28,9 @@
         </ResourceDictionary>
     </ContentView.Resources>
 
-    <Grid ColumnDefinitions="Auto,Auto">
+    <Grid ColumnDefinitions="60,120">
 
-        <Border BackgroundColor="{StaticResource AccentColor}"
+        <!--<Border BackgroundColor="{StaticResource AccentColor}"
                 HeightRequest="{Binding HeightRequest,Source={x:Reference isToggledOption}, Converter={StaticResource GreaterThanZeroConverter}}"
                 WidthRequest="{Binding WidthRequest, Source={x:Reference isToggledOption}, Converter={StaticResource GreaterThanZeroConverter}}"
                 Margin="1,5,1,-3"
@@ -46,101 +46,125 @@
                 </DataTrigger>
             </Border.Triggers>
         </Border>
+        
+                StrokeShape="{StaticResource RectangularShape}"
+                Stroke="{StaticResource LightShadowColor}"-->
 
-        <Border x:Name="isToggledOption"
-                Margin="5"
-                Stroke="{StaticResource LightShadowColor}"
-                BackgroundColor="{StaticResource PrimaryColor}"
-                StrokeShape="{StaticResource RectangularShape}">
-            <Border.Triggers>
-                <DataTrigger TargetType="Border"
+        <BoxView BackgroundColor="{StaticResource AccentColor}"
+                 CornerRadius="60"
+                 Margin="1,1,1,-3">
+            <BoxView.Triggers>
+                <DataTrigger TargetType="BoxView"
+                             Value="False"
+                             Binding="{Binding Source={x:Reference ToggleButton_892}, Path=IsToggled}">
+                    <Setter Property="IsVisible"
+                            Value="False" />
+                </DataTrigger>
+            </BoxView.Triggers>
+        </BoxView>
+        
+        <ContentView x:Name="isToggledOption"
+                     Margin="5">
+
+            <ContentView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+            </ContentView.GestureRecognizers>
+
+            <Grid>
+
+                <BoxView BackgroundColor="{StaticResource PrimaryColor}"
+                         CornerRadius="60">
+                    <BoxView.Triggers>
+                        <DataTrigger TargetType="BoxView"
                                  Value="True"
                                  Binding="{Binding Source={x:Reference ToggleButton_892}, Path=IsToggled}">
-                    <Setter Property="Scale"
+                            <Setter Property="Scale"
                                 Value="1.2" />
-                    <Setter Property="BackgroundColor"
+                            <Setter Property="BackgroundColor"
                                 Value="White" />
-                    <!--<Setter Property="HasShadow" Value="{OnPlatform iOS=False}"/>-->
-                </DataTrigger>
-            </Border.Triggers>
-
-            <Border.GestureRecognizers>
-                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-            </Border.GestureRecognizers>
-
-            <Label x:Name="toggledLabel"
+                            <!--<Setter Property="HasShadow" Value="{OnPlatform iOS=False}"/>-->
+                        </DataTrigger>
+                    </BoxView.Triggers>
+                </BoxView>
+                <Label x:Name="toggledLabel"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
                        Text="{Binding Source={x:Reference ToggleButton_892}, Path=ToggleOptionTitle}">
-                <Label.Triggers>
-                    <DataTrigger TargetType="Label"
-                                     Value="True" 
-                                     Binding="{Binding Source={x:Reference ToggleButton_892}, Path=IsToggled}">
-                        <Setter Property="FontFamily" Value="{StaticResource QuickSandBold}"/>
-                    </DataTrigger>
-                    <DataTrigger TargetType="Label"
+                    <Label.Triggers>
+                        <DataTrigger TargetType="Label"
+                                 Value="True" 
+                                 Binding="{Binding Source={x:Reference ToggleButton_892}, Path=IsToggled}">
+                            <Setter Property="FontFamily" Value="QuickSandBold"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Label"
                                      Value="False" 
                                      Binding="{Binding Source={x:Reference ToggleButton_892}, Path=IsToggled}">
-                        <Setter Property="FontFamily" Value="{StaticResource QuickSandRegular}"/>
-                    </DataTrigger>
-                </Label.Triggers>
-            </Label>
+                            <Setter Property="FontFamily" Value="QuickSandRegular"/>
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+            </Grid>
+        </ContentView>
 
-        </Border>
-
-        <Border BackgroundColor="{StaticResource AccentColor}"
-                Shadow="{StaticResource LightShadow}"
-                HeightRequest="{Binding HeightRequest,Source={x:Reference notToggledOption}, Converter={StaticResource GreaterThanZeroConverter}}"
-                WidthRequest="{Binding WidthRequest, Source={x:Reference notToggledOption}, Converter={StaticResource GreaterThanZeroConverter}}"
-                Margin="1,5,1,-3"
-                Grid.Column="1"
-                Stroke="{StaticResource LightShadowColor}"
-                StrokeShape="{StaticResource RectangularShape}">
-            <Border.Triggers>
-                <DataTrigger TargetType="Border"
-                                 Value="True"
-                                 Binding="{Binding Source={x:Reference ToggleButton_892}, Path=IsToggled}">
+        <BoxView BackgroundColor="{StaticResource AccentColor}"
+                 Shadow="{StaticResource LightShadow}"
+                 HeightRequest="{Binding HeightRequest,Source={x:Reference notToggledOption}, Converter={StaticResource GreaterThanZeroConverter}}"
+                 WidthRequest="{Binding WidthRequest, Source={x:Reference notToggledOption}, Converter={StaticResource GreaterThanZeroConverter}}"
+                 HorizontalOptions="Start"
+                 Margin="1,5,1,-3"
+                 Grid.Column="1">
+            <BoxView.Triggers>
+                <DataTrigger TargetType="BoxView"
+                             Value="True"
+                             Binding="{Binding Source={x:Reference ToggleButton_892}, Path=IsToggled}">
                     <Setter Property="IsVisible"
-                                Value="False" />
+                            Value="False" />
                 </DataTrigger>
-            </Border.Triggers>
-        </Border>
+            </BoxView.Triggers>
+        </BoxView>
 
-        <Border x:Name="notToggledOption"
-                Grid.Column="1"
-                Margin="5"
-                Stroke="{StaticResource LightShadowColor}"
-                StrokeShape="{StaticResource RectangularShape}">
-            <Border.Triggers>
-                <DataTrigger TargetType="Border"
+        <ContentView x:Name="notToggledOption"
+                     Grid.Column="1"
+                     HorizontalOptions="Start"
+                     Margin="5">
+
+            <ContentView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+            </ContentView.GestureRecognizers>
+
+            <Grid>
+                <BoxView CornerRadius="60">
+                    <BoxView.Triggers>
+                        <DataTrigger TargetType="BoxView"
                                  Value="False"
                                  Binding="{Binding Source={x:Reference ToggleButton_892}, Path=IsToggled}">
-                    <Setter Property="Scale"
+                            <Setter Property="Scale"
                                 Value="1.2" />
-                    <Setter Property="BackgroundColor"
+                            <Setter Property="BackgroundColor"
                                 Value="White" />
-                    <!--<Setter Property="HasShadow" Value="{OnPlatform Android=True}"/>-->
-                </DataTrigger>
-            </Border.Triggers>
-
-            <Border.GestureRecognizers>
-                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
-            </Border.GestureRecognizers>
-
-            <Label x:Name="notToggledLabel"
-                       Text="{Binding Source={x:Reference ToggleButton_892}, Path=NotToggledOptionTitle}" >
-                <Label.Triggers>
-                    <DataTrigger TargetType="Label"
+                            <!--<Setter Property="HasShadow" Value="{OnPlatform Android=True}"/>-->
+                        </DataTrigger>
+                    </BoxView.Triggers>
+                </BoxView>
+                
+                <Label x:Name="notToggledLabel"
+                       Text="{Binding Source={x:Reference ToggleButton_892}, Path=NotToggledOptionTitle}" 
+                       HorizontalOptions="Center">
+                    <Label.Triggers>
+                        <DataTrigger TargetType="Label"
                                      Value="False" 
                                      Binding="{Binding Source={x:Reference ToggleButton_892}, Path=IsToggled}">
-                        <Setter Property="FontFamily" Value="{StaticResource QuickSandBold}"/>
-                    </DataTrigger>
-                    <DataTrigger TargetType="Label"
+                            <Setter Property="FontFamily" Value="QuickSandBold"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Label"
                                      Value="True" 
                                      Binding="{Binding Source={x:Reference ToggleButton_892}, Path=IsToggled}">
-                        <Setter Property="FontFamily" Value="{StaticResource QuickSandRegular}"/>
-                    </DataTrigger>
-                </Label.Triggers>
-            </Label>
-        </Border>
+                            <Setter Property="FontFamily" Value="QuickSandRegular"/>
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+            </Grid>
+        </ContentView>
     </Grid>
 
 </ContentView>

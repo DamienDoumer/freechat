@@ -7,13 +7,50 @@
                       BackgroundColor="{StaticResource PrimaryColor}"
                       TabSelectedIndex="1"
                       xmlns:textRes="clr-namespace:FreeChat.Resources.Texts"
-                      Title="{x:Static textRes:TextResources.Settings}">
+                      Title="{x:Static textRes:TextResources.Settings}"
+                      xmlns:customControls="clr-namespace:FreeChat.Views.CustomControls">
 
     <local:BaseTabbedPage.ViewContent>
-        <Grid>
+        <Grid BackgroundColor="Transparent">
+           <!--
             <Label Text="Welcome to Free Chat!"
                    VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand" />
+
+            <customControls:ToggleButton HorizontalOptions="Center"
+                                         VerticalOptions="Center"
+                                         Margin="15,10,15,10"
+                                        ToggleOptionTitle="All"
+                                        Grid.Row="1"
+                                        HeightRequest="50"
+                                        ToggleCommand="{Binding FilterOptionChangedCommand}"
+                                        NotToggledOptionTitle="Online (1)" />
+            -->
+
+            <Grid HorizontalOptions="Center"
+                  VerticalOptions="Center"
+                  ColumnDefinitions="Auto,Auto"
+                  BackgroundColor="Transparent"
+                  HeightRequest="60">
+
+                <BoxView CornerRadius="60"
+                         BackgroundColor="{StaticResource AccentColor}"
+                         Margin="1,1,1,-3"
+                         HeightRequest="{Binding Height, Source={x:Reference isToggledOption}, Converter={StaticResource GreaterThanZeroConverter}, Mode=OneWay}"
+                         WidthRequest="{Binding Width, Source={x:Reference isToggledOption}, Converter={StaticResource GreaterThanZeroConverter}, Mode=OneWay}"/>
+                <BoxView x:Name="isToggledOption"
+                         CornerRadius="60"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Start"
+                        Shadow="{StaticResource LightShadow}"
+                        BackgroundColor="White">
+                </BoxView>
+
+                <Label Text="All"
+                       Margin="15,10"
+                       FontFamily="QuickSandRegular"/>
+
+            </Grid>
         </Grid>
     </local:BaseTabbedPage.ViewContent>
 

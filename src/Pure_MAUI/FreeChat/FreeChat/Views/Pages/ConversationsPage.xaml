@@ -67,14 +67,13 @@
 
                 <!---->
                 <customControls:ToggleButton HorizontalOptions="Start"
-                                            Margin="15,10,15,10"
-                                            VerticalOptions="Center"
-                                            ToggleOptionTitle="All"
-                                            Grid.Row="1"
-                                             HeightRequest="30"
-                                            ToggleCommand="{Binding FilterOptionChangedCommand}"
-                                            NotToggledOptionTitle="Online (1)" />
-
+                                             Margin="15,10,15,10"
+                                             VerticalOptions="Center"
+                                             ToggleOptionTitle="All"
+                                             Grid.Row="1"
+                                             HeightRequest="50"
+                                             ToggleCommand="{Binding FilterOptionChangedCommand}"
+                                             NotToggledOptionTitle="Online (1)" />
 
                 <CollectionView ItemsSource="{Binding Conversations}"
                             Grid.Row="2"

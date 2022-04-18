@@ -100,7 +100,8 @@
                     </Label.Triggers>
                 </Label>
 
-  <!-- <pancakeView:PancakeView CornerRadius="90"
+  <!-- 
+                <pancakeView:PancakeView CornerRadius="90"
                                 BackgroundColor="{StaticResource ConnectedColor}"
                                          Grid.Column="1" Grid.Row="1"
                                          HeightRequest="12" WidthRequest="12"
