@@ -125,18 +125,18 @@ namespace FreeChat.Views.CustomControls
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
+            IsToggled = true;
             if (ToggleCommand != null && (bool)ToggleCommand.CanExecute(IsToggled))
             {
-                IsToggled = true;
                 ToggleCommand.Execute(IsToggled);
             }
         }
 
         private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
+            IsToggled = false;
             if (ToggleCommand != null && (bool)ToggleCommand.CanExecute(IsToggled))
             {
-                IsToggled = false;
                 ToggleCommand.Execute(IsToggled);
             }
         }
