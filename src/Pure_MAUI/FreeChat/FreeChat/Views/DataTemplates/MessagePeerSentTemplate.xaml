@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<dataTemplates:BaseTemplate xmlns="http://xamarin.com/schemas/2014/forms" 
+                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            mc:Ignorable="d"
+                            xmlns:dataTemplates="clr-namespace:FreeChat.Views.DataTemplates"
+                            xmlns:customViews="clr-namespace:FreeChat.Views.CustomControls"
+                            x:Class="FreeChat.Views.DataTemplates.MessagePeerSentTemplate"
+                            xmlns:models="clr-namespace:Models;assembly=Models"
+                            xmlns:ffimageTransform="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+                            xmlns:ffimageLoader="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                            x:Name="msgTemplate329ew"
+                            xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                            BackgroundColor="{StaticResource PrimaryColor}"
+                            Scale="{OnPlatform Android=0.7}">
+
+    <!--Scale="0.7"-->
+
+    <ContentView.Content>
+        <SwipeView BackgroundColor="{StaticResource PrimaryColor}" x:DataType="models:Message">
+
+            <SwipeView.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="Android" Value="0,0,0,2"/>
+                    <On Platform="iOS" Value="5,2,0,5"/>
+                </OnPlatform>
+            </SwipeView.Margin>
+
+            <SwipeView.Triggers>
+                <DataTrigger TargetType="SwipeView"
+                             Binding="{Binding ISentPreviousMessage}"
+                             Value="True">
+                    <Setter Property="Margin">
+                        <Setter.Value>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="iOS" Value="5, 15, 0, 5"/>
+                                <On Platform="Android" Value="0, 10, 0, 0"/>
+                            </OnPlatform>
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
+            </SwipeView.Triggers>
+
+            <SwipeView.LeftItems>
+                <SwipeItems SwipeBehaviorOnInvoked="Close"
+                            Mode="Execute">
+                    <SwipeItemView Command="{Binding Source={x:Reference msgTemplate329ew}, Path=ParentContext.MessageSwippedCommand}"
+                                   CommandParameter="{Binding}">
+                        <pancakeView:PancakeView BackgroundColor="{StaticResource PrimaryColor}">
+                            <Label Style="{StaticResource FontAwesomeLabel}"
+                               Text="{StaticResource FontAwesomeReply}"
+                               TextColor="LightGray"
+                               Margin="20"
+                               FontSize="Large"/>
+                        </pancakeView:PancakeView>
+                    </SwipeItemView>
+                </SwipeItems>
+            </SwipeView.LeftItems>
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <ffimageLoader:CachedImage HeightRequest="40"
+                                           WidthRequest="40"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Center"
+                                           Source="{Binding Sender.ProfilePic, Converter={StaticResource ImageResourceConverter}}">
+                        <ffimageLoader:CachedImage.Transformations>
+                            <ffimageTransform:CircleTransformation />
+                        </ffimageLoader:CachedImage.Transformations>
+
+                        <ffimageLoader:CachedImage.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="7,0,0,0"/>
+                                <On Platform="iOS" Value="5"/>
+                            </OnPlatform>
+                        </ffimageLoader:CachedImage.Margin>
+                    </ffimageLoader:CachedImage>
+
+                    <customViews:MessageBubble Text="{Binding Content}"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Center"
+                                               BackgroundColor="White"
+                                               Grid.Column="1"
+                                               ReplyTappedCommand="{Binding ParentContext.ReplyMessageSelectedCommand, Source={x:Reference msgTemplate329ew}}"
+                                               >
+
+                        <customViews:MessageBubble.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="0,10"/>
+                                <On Platform="iOS" Value="0,2,0,10"/>
+                            </OnPlatform>
+                        </customViews:MessageBubble.Margin>
+
+                        <customViews:MessageBubble.Triggers>
+                            <DataTrigger TargetType="customViews:MessageBubble"
+                                     Binding="{Binding ISentPreviousMessage}"
+                                     Value="True">
+                                <Setter Property="Margin">
+                                    <Setter.Value>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS" Value="0, 10,0,5"/>
+                                            <On Platform="Android" Value="0, 5"/>
+                                        </OnPlatform>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </customViews:MessageBubble.Triggers>
+
+                    </customViews:MessageBubble>
+                </Grid>
+
+            </Grid>
+        </SwipeView>
+    </ContentView.Content>
+</dataTemplates:BaseTemplate>

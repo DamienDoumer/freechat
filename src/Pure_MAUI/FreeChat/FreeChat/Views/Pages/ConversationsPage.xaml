@@ -8,7 +8,9 @@
                       Title="{x:Static textRes:TextResources.Messages}"
                       BackgroundColor="{StaticResource PrimaryColor}"
                       x:Name="conversationsPage"
-                      xmlns:customControls="clr-namespace:FreeChat.Views.CustomControls">
+                      xmlns:customControls="clr-namespace:FreeChat.Views.CustomControls"
+                      xmlns:viewModels="clr-namespace:FreeChat.ViewModels"
+                      x:DataType="viewModels:ConversationsViewModel">
 
     <local:BaseTabbedPage.ViewContent>
         <Grid>
@@ -89,12 +91,13 @@
                                                           CommandParameter="{Binding}"/>
                                 </Grid.GestureRecognizers>
 
-                                <!--  
+                              
                                 
                                 <dataTemplates:SimpleUserProfileTemplate HeightRequest="{OnPlatform Android=100, iOS=80}"/>
-                                    <pancakeView:PancakeView HeightRequest="1"
+                                
+                                     <!--   <pancakeView:PancakeView HeightRequest="1"
                                                              Grid.Row="1"/>
-                              -->
+                                     --> 
 
                             </Grid>
                         </DataTemplate>

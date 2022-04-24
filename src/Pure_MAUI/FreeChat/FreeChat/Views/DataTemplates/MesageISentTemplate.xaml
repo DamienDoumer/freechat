@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<datatemplates:BaseTemplate xmlns="http://xamarin.com/schemas/2014/forms" 
+                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            mc:Ignorable="d"
+                            xmlns:customViews="clr-namespace:FreeChat.Views.CustomControls"
+                            xmlns:datatemplates="clr-namespace:FreeChat.Views.DataTemplates"
+                            xmlns:models="clr-namespace:Models;assembly=Models"
+                            xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                            x:Class="FreeChat.Views.DataTemplates.MesageISentTemplate"
+                            x:Name="msgTemplate3290"
+                            Scale="{OnPlatform Android=0.7}">
+
+    <!--Scale="0.7"-->
+
+  <ContentView.Content>
+        <SwipeView  BackgroundColor="{StaticResource PrimaryColor}" x:DataType="models:Message">
+            <!--Style="{StaticResource MessageBubbleSwipeViewStyle}"-->
+
+            <SwipeView.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="Android" Value="0,0,10,2"/>
+                    <On Platform="iOS" Value="0,2,10,5"/>
+                </OnPlatform>
+            </SwipeView.Margin>
+            
+            <SwipeView.Triggers>
+                <DataTrigger TargetType="SwipeView"
+                             Binding="{Binding ISentPreviousMessage}"
+                             Value="False">
+                    <Setter Property="Margin">
+                        <Setter.Value>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="iOS" Value="0, 15, 10, 5"/>
+                                <On Platform="Android" Value="0, 15, 10, 0"/>
+                            </OnPlatform>
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
+            </SwipeView.Triggers>
+            
+            <SwipeView.RightItems>
+                <SwipeItems SwipeBehaviorOnInvoked="Close"
+                            Mode="Execute">
+                    <SwipeItemView Command="{Binding Source={x:Reference msgTemplate3290}, Path=ParentContext.MessageSwippedCommand}"
+                                   CommandParameter="{Binding}">
+                        <pancakeView:PancakeView BackgroundColor="{StaticResource PrimaryColor}">
+                            <Label Style="{StaticResource FontAwesomeLabel}"
+                               Text="{StaticResource FontAwesomeReply}"
+                               TextColor="LightGray"
+                               Margin="20"
+                               FontSize="Large"/>
+                        </pancakeView:PancakeView>
+                    </SwipeItemView>
+                </SwipeItems>
+            </SwipeView.RightItems>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <customViews:MessageBubble Text="{Binding Content}"
+                                           Grid.Column="1"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="Center"
+                                           TextColor="White"
+                                           BackgroundColor="{StaticResource AccentColor}"
+                                           ReplyTappedCommand="{Binding ParentContext.ReplyMessageSelectedCommand, Source={x:Reference msgTemplate3290}}">
+                    
+                        <customViews:MessageBubble.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="0,10"/>
+                                <On Platform="iOS" Value="0,0,0,10"/>
+                            </OnPlatform>
+                        </customViews:MessageBubble.Margin>
+
+                    <customViews:MessageBubble.Triggers>
+                        <DataTrigger TargetType="customViews:MessageBubble"
+                                     Binding="{Binding ISentPreviousMessage}"
+                                     Value="False">
+                            <Setter Property="Margin">
+                                <Setter.Value>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="iOS" Value="0, 10,0,0"/>
+                                        <On Platform="Android" Value="0, 5"/>
+                                    </OnPlatform>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </customViews:MessageBubble.Triggers>
+                </customViews:MessageBubble>
+                
+            </Grid>
+        </SwipeView>
+  </ContentView.Content>
+</datatemplates:BaseTemplate>

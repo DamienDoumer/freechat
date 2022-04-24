@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:ffimageTransform="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:ffimageLoader="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:models="clr-namespace:Models;assembly=Models"
+                xmlns:markupExtensions="clr-namespace:FreeChat.Styles.MarkupExtensions"
+                x:Class="FreeChat.Views.DataTemplates.SimpleUserProfileTemplate"
+                x:Name="simpleUserProfileTemplate_srew"
+                xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms">
+    
+  <ContentView.Content>
+        <Grid>
+            <Grid.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="Android" Value="0,15"/>
+                    <On Platform="iOS" Value="0,5"/>
+                </OnPlatform>
+            </Grid.Margin>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto"/>                                        
+            </Grid.ColumnDefinitions>
+
+            <Grid WidthRequest="70"
+                  Margin="10,0,5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <ffimageLoader:CachedImage Grid.ColumnSpan="2"
+                                           Grid.RowSpan="2"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           HeightRequest="{OnPlatform Android=60, iOS=50}"
+                                           WidthRequest="{OnPlatform Android=60, iOS=50}"
+                                           Source="{Binding Peer.ProfilePic, Converter={StaticResource ImageResourceConverter}}">
+
+                    <!--
+                                           d:Source="{markupExtensions:ImageResourceMarkupExtension Source=FreeChat.Resources.Images.john.jpg}"
+                    -->
+
+                    <ffimageLoader:CachedImage.Triggers>
+                        <DataTrigger TargetType="ffimageLoader:CachedImage"
+                                     Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                     Value="True">
+                            <Setter Property="HeightRequest" Value="45"/>
+                            <Setter Property="WidthRequest" Value="45"/>
+                        </DataTrigger>
+                    </ffimageLoader:CachedImage.Triggers>
+                    
+                    <ffimageLoader:CachedImage.Transformations>
+                        <ffimageTransform:CircleTransformation />
+                    </ffimageLoader:CachedImage.Transformations>
+                </ffimageLoader:CachedImage>
+
+                <Label Text="{StaticResource FontAwesomeCircle}"
+                       FontFamily="{StaticResource FontAwesome}"
+                       Grid.Column="1" Grid.Row="1"
+                       IsVisible="{Binding Peer.IsOnline}"
+                       FontSize="Caption"
+                       TextColor="{StaticResource ConnectedColor}">
+
+                    <Label.Triggers>
+                        <DataTrigger TargetType="Label"
+                                     Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                     Value="True">
+                            <Setter Property="Margin">
+                                <Setter.Value>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android" Value="0,0,9,7"/>
+                                        <On Platform="iOS" Value="0,0,8,7"/>
+                                    </OnPlatform>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Label"
+                                     Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                     Value="False">
+                            <Setter Property="Margin">
+                                <Setter.Value>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android" Value="0,0,8,8"/>
+                                        <On Platform="iOS" Value="0,0,10,12"/>
+                                    </OnPlatform>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+
+  <!-- 
+                <pancakeView:PancakeView CornerRadius="90"
+                                BackgroundColor="{StaticResource ConnectedColor}"
+                                         Grid.Column="1" Grid.Row="1"
+                                         HeightRequest="12" WidthRequest="12"
+                                         IsVisible="{Binding Peer.IsOnline}">
+
+                    <pancakeView:PancakeView.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="0,0,8,8"/>
+                            <On Platform="iOS" Value="0,0,10,20"/>
+                        </OnPlatform>
+                    </pancakeView:PancakeView.Margin>
+
+                    <pancakeView:PancakeView.Triggers>
+                        <DataTrigger TargetType="pancakeView:PancakeView"
+                                     Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                     Value="True">
+                            <Setter Property="Margin" Value="0,0,15,15"/>
+                            <Setter Property="HeightRequest" Value="10"/>
+                            <Setter Property="WidthRequest" Value="10"/>
+                        </DataTrigger>
+                    </pancakeView:PancakeView.Triggers>
+                </pancakeView:PancakeView>
+  -->
+
+            </Grid>
+            
+            <StackLayout Grid.Column="1" Spacing="5"
+                         VerticalOptions="Center">
+                <StackLayout.Triggers>
+                    <MultiTrigger TargetType="StackLayout">
+                        <MultiTrigger.Conditions>
+                            <BindingCondition Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                              Value="True"/>
+                            <BindingCondition Binding="{Binding Peer.IsOnline}" Value="False"/>
+                        </MultiTrigger.Conditions>
+                        <MultiTrigger.Setters>
+                            <Setter Property="VerticalOptions" Value="End"/>
+                        </MultiTrigger.Setters>
+                    </MultiTrigger>
+                    <DataTrigger TargetType="StackLayout"
+                                 Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                 Value="True">
+                        <Setter Property="Margin" Value="-10,0,0,0"/>
+                    </DataTrigger>
+                </StackLayout.Triggers>
+                
+                <Label FontFamily="{StaticResource QuickSandBold}"
+                       LineBreakMode="TailTruncation">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding Peer.FirstName}" />
+                            <Span Text=" " />
+                            <Span Text="{Binding Peer.LastName}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                
+                <ContentView>
+                    <ContentView.Triggers>
+                        <MultiTrigger TargetType="ContentView">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                                  Value="True"/>
+                                <BindingCondition Binding="{Binding IsUserTyping, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                                  Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Label TextColor="{StaticResource SecondaryTextColor}"
+                                               FontFamily="{StaticResource QuickSandRegular}">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label" 
+                                                             Binding="{Binding Peer.IsOnline}"
+                                                             Value="True">
+                                                    <Setter Property="Text" Value="Online"/>
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                    </Setter.Value>
+                                </Setter>
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        
+                        <MultiTrigger TargetType="ContentView">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                                  Value="True"/>
+                                <BindingCondition Binding="{Binding IsUserTyping, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                                  Value="True"/>
+                            </MultiTrigger.Conditions>
+
+                            <MultiTrigger.Setters>
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <lottie:AnimationView Grid.Row="1"
+                                                          HorizontalOptions="Start" 
+                                                          VerticalOptions="Center"
+                                                          IsVisible="{Binding IsUserTyping, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                                          AutoPlay="True"
+                                                          HeightRequest="20"
+                                                          WidthRequest="70"
+                                                          Animation="typing.json"
+                                                          BackgroundColor="Transparent"/>
+
+                                        <!--IsPlaying="{Binding IsUserTyping, Source={x:Reference simpleUserProfileTemplate_srew}}"-->
+
+                                    </Setter.Value>
+                                </Setter>
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        
+                    </ContentView.Triggers>
+                    
+                    <Label Text="{Binding LastMessage.Content}"
+                           TextColor="{StaticResource SecondaryTextColor}"
+                           LineBreakMode="TailTruncation"
+                           FontFamily="{StaticResource QuickSandRegular}"/>
+                    
+                </ContentView>
+            </StackLayout>
+
+            <Label Text="{Binding LastMessage.CreationDate, Converter={StaticResource DatehumanizerConverter}}" 
+                   Grid.Column="2"
+                   HorizontalTextAlignment="End"
+                   VerticalOptions="Center"
+                   FontSize="Caption"
+                   TextColor="{StaticResource SecondaryTextColor}"
+                   FontFamily="{StaticResource QuickSandRegular}"
+                   HorizontalOptions="Center"
+                   Margin="10">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" 
+                                 Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                 Value="True">
+                        <Setter Property="IsVisible" Value="False"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            
+        </Grid>
+  </ContentView.Content>
+</ContentView>
