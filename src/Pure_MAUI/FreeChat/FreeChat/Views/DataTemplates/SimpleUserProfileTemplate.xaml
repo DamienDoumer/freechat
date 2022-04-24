@@ -10,24 +10,14 @@
              x:Name="simpleUserProfileTemplate_srew">
 
   <ContentView.Content>
-        <Grid Margin="{OnPlatform Android='0,15', iOS='0,5'}">
-            
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition />
-                <ColumnDefinition Width="Auto"/>                                        
-            </Grid.ColumnDefinitions>
+
+        <Grid Margin="{OnPlatform Android='0,15', iOS='0,5'}"
+              ColumnDefinitions="Auto,*,Auto">
 
             <Grid WidthRequest="70"
-                  Margin="10,0,5,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+                  Margin="10,0,5,0"
+                  ColumnDefinitions="*,Auto"
+                  RowDefinitions="*,Auto">
 
                 <Image Grid.ColumnSpan="2"
                        Grid.RowSpan="2"
@@ -35,8 +25,9 @@
                        VerticalOptions="Center"
                        HeightRequest="{OnPlatform Android=60, iOS=50}"
                        WidthRequest="{OnPlatform Android=60, iOS=50}"
-                       Source="{Binding Peer.ProfilePic}">
-                    
+                       Source="{Binding Peer.ProfilePic}"
+                       Aspect="AspectFill">
+
                     <Image.Triggers>
                         <DataTrigger TargetType="Image"
                                      Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
@@ -45,36 +36,17 @@
                             <Setter Property="WidthRequest" Value="45"/>
                         </DataTrigger>
                     </Image.Triggers>
-                    
+
+                    <!-- -->
                     <Image.Clip>
-                        <EllipseGeometry Center="75,75"
-                                         RadiusX="75"
-                                         RadiusY="75"/>
+                        <EllipseGeometry Center="80,80"
+                                         RadiusX="80"
+                                         RadiusY="80"/>
                     </Image.Clip>
+                   
                 </Image>
-
-                <Label Text="{StaticResource FontAwesomeCircle}"
-                       FontFamily="{StaticResource FontAwesome}"
-                       Grid.Column="1" Grid.Row="1"
-                       IsVisible="{Binding Peer.IsOnline}"
-                       FontSize="Caption"
-                       TextColor="{StaticResource ConnectedColor}">
-
-                    <Label.Triggers>
-                        <DataTrigger TargetType="Label"
-                                     Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
-                                     Value="True">
-                            <Setter Property="Margin" Value="{OnPlatform Android='0,0,9,7', iOS='0,0,8,7'}"/>
-                        </DataTrigger>
-                        <DataTrigger TargetType="Label"
-                                     Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
-                                     Value="False">
-                            <Setter Property="Margin" Value="{OnPlatform Android='0,0,8,8', iOS='0,0,10,12'}"/>
-                        </DataTrigger>
-                    </Label.Triggers>
-                </Label>
             </Grid>
-            
+
             <StackLayout Grid.Column="1" Spacing="5"
                          VerticalOptions="Center">
                 <StackLayout.Triggers>
@@ -94,8 +66,8 @@
                         <Setter Property="Margin" Value="-10,0,0,0"/>
                     </DataTrigger>
                 </StackLayout.Triggers>
-                
-                <Label FontFamily="{StaticResource QuickSandBold}"
+
+                <Label FontFamily="QuickSandBold"
                        LineBreakMode="TailTruncation">
                     <Label.FormattedText>
                         <FormattedString>
@@ -105,7 +77,7 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                
+
                 <ContentView>
                     <ContentView.Triggers>
                         <MultiTrigger TargetType="ContentView">
@@ -119,7 +91,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <Label TextColor="{StaticResource SecondaryTextColor}"
-                                               FontFamily="{StaticResource QuickSandRegular}">
+                                               FontFamily="QuickSandRegular">
                                             <Label.Triggers>
                                                 <DataTrigger TargetType="Label" 
                                                              Binding="{Binding Peer.IsOnline}"
@@ -132,7 +104,7 @@
                                 </Setter>
                             </MultiTrigger.Setters>
                         </MultiTrigger>
-                        
+
                         <MultiTrigger TargetType="ContentView">
                             <MultiTrigger.Conditions>
                                 <BindingCondition Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
@@ -160,24 +132,24 @@
                                 </Setter>
                             </MultiTrigger.Setters>
                         </MultiTrigger>
-                        
+
                     </ContentView.Triggers>
-                    
+
                     <Label Text="{Binding LastMessage.Content}"
                            TextColor="{StaticResource SecondaryTextColor}"
                            LineBreakMode="TailTruncation"
-                           FontFamily="{StaticResource QuickSandRegular}"/>
-                    
+                           FontFamily="QuickSandRegular"/>
+
                 </ContentView>
             </StackLayout>
-
+            
             <Label Text="{Binding LastMessage.CreationDate, Converter={StaticResource DatehumanizerConverter}}" 
                    Grid.Column="2"
                    HorizontalTextAlignment="End"
                    VerticalOptions="Center"
                    FontSize="Caption"
                    TextColor="{StaticResource SecondaryTextColor}"
-                   FontFamily="{StaticResource QuickSandRegular}"
+                   FontFamily="QuickSandRegular"
                    HorizontalOptions="Center"
                    Margin="10">
                 <Label.Triggers>
@@ -190,5 +162,5 @@
             </Label>
             
         </Grid>
-  </ContentView.Content>
+    </ContentView.Content>
 </ContentView>
