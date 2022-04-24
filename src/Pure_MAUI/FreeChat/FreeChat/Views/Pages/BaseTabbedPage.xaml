@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FreeChat.Views.Pages.BaseTabbedPage"
-             xmlns:pages="clr-namespace:FreeChat.Views.Pages"
-                x:Name="SimpleTabbedPage"
-             Shell.NavBarIsVisible="False">
+<base:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               x:Class="FreeChat.Views.Pages.BaseTabbedPage"
+               xmlns:pages="clr-namespace:FreeChat.Views.Pages"
+               x:Name="SimpleTabbedPage"
+               Shell.NavBarIsVisible="False"
+               xmlns:base="clr-namespace:FreeChat.Views.Pages">
 
     <ContentPage.Content>
         <Grid RowDefinitions="50,*,Auto">
@@ -111,4 +112,4 @@
             </Border>
         </Grid>
     </ContentPage.Content>
-</ContentPage>
+</base:BasePage>

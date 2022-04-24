@@ -8,7 +8,7 @@ using System.Windows.Input;
 namespace FreeChat.Views.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BaseTabbedPage : ContentPage
+    public partial class BaseTabbedPage : BasePage
     {
         #region TabSelectedIndex
         public static readonly BindableProperty TabSelectedIndexProperty = BindableProperty.Create(nameof(TabSelectedIndex), typeof(int), typeof(BaseTabbedPage), propertyChanged: (obj, old, newV) =>
