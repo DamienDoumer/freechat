@@ -1,27 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:ffimageTransform="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-             xmlns:ffimageLoader="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:models="clr-namespace:Models;assembly=Models"
-                xmlns:markupExtensions="clr-namespace:FreeChat.Styles.MarkupExtensions"
-                x:Class="FreeChat.Views.DataTemplates.SimpleUserProfileTemplate"
-                x:Name="simpleUserProfileTemplate_srew"
-                xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms">
-    
-  <ContentView.Content>
-        <Grid>
-            <Grid.Margin>
-                <OnPlatform x:TypeArguments="Thickness">
-                    <On Platform="Android" Value="0,15"/>
-                    <On Platform="iOS" Value="0,5"/>
-                </OnPlatform>
-            </Grid.Margin>
+             xmlns:markupExtensions="clr-namespace:FreeChat.Styles.MarkupExtensions"
+             x:Class="FreeChat.Views.DataTemplates.SimpleUserProfileTemplate"
+             x:Name="simpleUserProfileTemplate_srew">
 
+  <ContentView.Content>
+        <Grid Margin="{OnPlatform Android='0,15', iOS='0,5'}">
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition />
@@ -39,31 +29,29 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <ffimageLoader:CachedImage Grid.ColumnSpan="2"
-                                           Grid.RowSpan="2"
-                                           HorizontalOptions="Center"
-                                           VerticalOptions="Center"
-                                           HeightRequest="{OnPlatform Android=60, iOS=50}"
-                                           WidthRequest="{OnPlatform Android=60, iOS=50}"
-                                           Source="{Binding Peer.ProfilePic, Converter={StaticResource ImageResourceConverter}}">
-
-                    <!--
-                                           d:Source="{markupExtensions:ImageResourceMarkupExtension Source=FreeChat.Resources.Images.john.jpg}"
-                    -->
-
-                    <ffimageLoader:CachedImage.Triggers>
-                        <DataTrigger TargetType="ffimageLoader:CachedImage"
+                <Image Grid.ColumnSpan="2"
+                       Grid.RowSpan="2"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       HeightRequest="{OnPlatform Android=60, iOS=50}"
+                       WidthRequest="{OnPlatform Android=60, iOS=50}"
+                       Source="{Binding Peer.ProfilePic}">
+                    
+                    <Image.Triggers>
+                        <DataTrigger TargetType="Image"
                                      Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
                                      Value="True">
                             <Setter Property="HeightRequest" Value="45"/>
                             <Setter Property="WidthRequest" Value="45"/>
                         </DataTrigger>
-                    </ffimageLoader:CachedImage.Triggers>
+                    </Image.Triggers>
                     
-                    <ffimageLoader:CachedImage.Transformations>
-                        <ffimageTransform:CircleTransformation />
-                    </ffimageLoader:CachedImage.Transformations>
-                </ffimageLoader:CachedImage>
+                    <Image.Clip>
+                        <EllipseGeometry Center="75,75"
+                                         RadiusX="75"
+                                         RadiusY="75"/>
+                    </Image.Clip>
+                </Image>
 
                 <Label Text="{StaticResource FontAwesomeCircle}"
                        FontFamily="{StaticResource FontAwesome}"
@@ -76,56 +64,15 @@
                         <DataTrigger TargetType="Label"
                                      Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
                                      Value="True">
-                            <Setter Property="Margin">
-                                <Setter.Value>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android" Value="0,0,9,7"/>
-                                        <On Platform="iOS" Value="0,0,8,7"/>
-                                    </OnPlatform>
-                                </Setter.Value>
-                            </Setter>
+                            <Setter Property="Margin" Value="{OnPlatform Android='0,0,9,7', iOS='0,0,8,7'}"/>
                         </DataTrigger>
                         <DataTrigger TargetType="Label"
                                      Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
                                      Value="False">
-                            <Setter Property="Margin">
-                                <Setter.Value>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android" Value="0,0,8,8"/>
-                                        <On Platform="iOS" Value="0,0,10,12"/>
-                                    </OnPlatform>
-                                </Setter.Value>
-                            </Setter>
+                            <Setter Property="Margin" Value="{OnPlatform Android='0,0,8,8', iOS='0,0,10,12'}"/>
                         </DataTrigger>
                     </Label.Triggers>
                 </Label>
-
-  <!-- 
-                <pancakeView:PancakeView CornerRadius="90"
-                                BackgroundColor="{StaticResource ConnectedColor}"
-                                         Grid.Column="1" Grid.Row="1"
-                                         HeightRequest="12" WidthRequest="12"
-                                         IsVisible="{Binding Peer.IsOnline}">
-
-                    <pancakeView:PancakeView.Margin>
-                        <OnPlatform x:TypeArguments="Thickness">
-                            <On Platform="Android" Value="0,0,8,8"/>
-                            <On Platform="iOS" Value="0,0,10,20"/>
-                        </OnPlatform>
-                    </pancakeView:PancakeView.Margin>
-
-                    <pancakeView:PancakeView.Triggers>
-                        <DataTrigger TargetType="pancakeView:PancakeView"
-                                     Binding="{Binding IsInTitle, Source={x:Reference simpleUserProfileTemplate_srew}}"
-                                     Value="True">
-                            <Setter Property="Margin" Value="0,0,15,15"/>
-                            <Setter Property="HeightRequest" Value="10"/>
-                            <Setter Property="WidthRequest" Value="10"/>
-                        </DataTrigger>
-                    </pancakeView:PancakeView.Triggers>
-                </pancakeView:PancakeView>
-  -->
-
             </Grid>
             
             <StackLayout Grid.Column="1" Spacing="5"
@@ -197,18 +144,18 @@
                             <MultiTrigger.Setters>
                                 <Setter Property="Content">
                                     <Setter.Value>
+                                        <Label Text="Lottie's place"/>
+                                        <!--
                                         <lottie:AnimationView Grid.Row="1"
-                                                          HorizontalOptions="Start" 
-                                                          VerticalOptions="Center"
-                                                          IsVisible="{Binding IsUserTyping, Source={x:Reference simpleUserProfileTemplate_srew}}"
-                                                          AutoPlay="True"
-                                                          HeightRequest="20"
-                                                          WidthRequest="70"
-                                                          Animation="typing.json"
-                                                          BackgroundColor="Transparent"/>
-
-                                        <!--IsPlaying="{Binding IsUserTyping, Source={x:Reference simpleUserProfileTemplate_srew}}"-->
-
+                                                              HorizontalOptions="Start" 
+                                                              VerticalOptions="Center"
+                                                              IsVisible="{Binding IsUserTyping, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                                              AutoPlay="True"
+                                                              HeightRequest="20"
+                                                              WidthRequest="70"
+                                                              Animation="typing.json"
+                                                              BackgroundColor="Transparent"/>
+                                        -->
                                     </Setter.Value>
                                 </Setter>
                             </MultiTrigger.Setters>

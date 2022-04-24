@@ -10,7 +10,8 @@
                       x:Name="conversationsPage"
                       xmlns:customControls="clr-namespace:FreeChat.Views.CustomControls"
                       xmlns:viewModels="clr-namespace:FreeChat.ViewModels"
-                      x:DataType="viewModels:ConversationsViewModel">
+                      x:DataType="viewModels:ConversationsViewModel"
+                      xmlns:dataTemplates="clr-namespace:FreeChat.Views.DataTemplates">
 
     <local:BaseTabbedPage.ViewContent>
         <Grid>

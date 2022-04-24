@@ -8,6 +8,9 @@
         <ResourceDictionary>
 
             <valueConverters:GreaterThan0Converter x:Key="GreaterThanZeroConverter"/>
+            <valueConverters:DateHUmanizerConverter x:Key="DatehumanizerConverter"/>
+            <valueConverters:ImageResourceValueConverter x:Key="ImageResourceConverter" />
+            <valueConverters:IsNullConverter x:Key="IsNullValueConverter"/>
 
             <ResourceDictionary Source="Styles/Colors.xaml" />
             <ResourceDictionary Source="Styles/Fonts.xaml" />
