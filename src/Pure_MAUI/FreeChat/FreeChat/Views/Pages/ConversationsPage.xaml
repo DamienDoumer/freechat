@@ -19,22 +19,11 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            
+
             <Grid Grid.RowSpan="2"
                   Grid.Row="0"
                   RowDefinitions="Auto,Auto,*">
 
-              <!-- <pancakeView:PancakeView CornerRadius="30" IsVisible="{OnPlatform iOS=False}"
-                                         HeightRequest="60">
-                    <pancakeView:PancakeView.Margin>
-                        <OnPlatform x:TypeArguments="Thickness">
-                            <On Platform="Android" Value="15,20,15,-10"/>
-                            <On Platform="iOS" Value="15,25,15,-15"/>
-                        </OnPlatform>
-                    </pancakeView:PancakeView.Margin>
-                </pancakeView:PancakeView>
-              --> 
-                
                 <Border Margin="15,10,15,10"
                         HeightRequest="70"
                         BackgroundColor="White"
@@ -68,7 +57,6 @@
                     </Grid>
                 </Border>
 
-                <!---->
                 <customControls:ToggleButton HorizontalOptions="Start"
                                              Margin="15,10,15,10"
                                              VerticalOptions="Center"
@@ -92,13 +80,9 @@
                                                           CommandParameter="{Binding}"/>
                                 </Grid.GestureRecognizers>
 
-                              
-                                
+
+
                                 <dataTemplates:SimpleUserProfileTemplate HeightRequest="{OnPlatform Android=100, iOS=80}"/>
-                                
-                                     <!--   <pancakeView:PancakeView HeightRequest="1"
-                                                             Grid.Row="1"/>
-                                     --> 
 
                             </Grid>
                         </DataTemplate>

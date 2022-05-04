@@ -1,12 +1,78 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<local:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FreeChat.Views.Pages.MessagesPage">
+             x:Class="FreeChat.Views.Pages.MessagesPage"
+                xmlns:customControls="clr-namespace:FreeChat.Views.CustomControls"
+                xmlns:dataTemplates="clr-namespace:FreeChat.Views.DataTemplates"
+                xmlns:root="clr-namespace:FreeChat"
+                xmlns:local="clr-namespace:FreeChat.Views.Pages"
+                xmlns:dataTemplateSelector="clr-namespace:FreeChat.Views.TemplateSelectors"
+                BackgroundColor="{StaticResource PrimaryColor}">
+    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+
+        <Grid x:Name="ContainerGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+
+            <Grid VerticalOptions="Start"
+                  Margin="{OnPlatform Android='0,-10 ,0,0', iOS='0,0'}">
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+            </Grid>
+
+
+            <Grid Grid.Row="1" x:Name="MessagesGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <CollectionView ItemsSource="{Binding Messages}"
+                                IsGrouped="True" Grid.Row="0"
+                                BackgroundColor="{StaticResource PrimaryColor}"
+                                x:Name="MessagesCollectionView">
+
+                    <CollectionView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Label Text="{Binding GroupHeader}"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       Margin="15"
+                                       FontFamily="QuickSandRegular"
+                                       TextColor="{StaticResource SecondaryTextColor}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.GroupHeaderTemplate>
+
+                    <CollectionView.ItemTemplate>
+                        <dataTemplateSelector:ChatBubbleTemplateSelctor />
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+
+                <Grid Grid.Row="2"
+                      x:Name="WriteContainerGrid">
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    
+                    
+                </Grid>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
-</ContentPage>
+</local:BasePage>

@@ -17,6 +17,16 @@
                    VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand" />
 
+            <customControls:FloatingButton Grid.Column="1" 
+                                                   WidthRequest="60" 
+                                                   HeightRequest="60"
+                                                   HorizontalOptions="Center" VerticalOptions="Center"
+                                                   BackgroundColor="{StaticResource AccentColor}"
+                                                   Icon="{StaticResource FontAwesomePaperPlane}"
+                                                   IconColor="{StaticResource PrimaryColor}">
+               
+            </customControls:FloatingButton>
+
         </Grid>
     </local:BaseTabbedPage.ViewContent>
 

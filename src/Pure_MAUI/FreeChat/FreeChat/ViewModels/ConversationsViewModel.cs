@@ -41,9 +41,16 @@ namespace FreeChat.ViewModels
             FilterOptionChangedCommand = ReactiveCommand.CreateFromTask<bool>(FilterOptionChanged, _notBusyObservable);
         }
 
-        Task ConversationSelected(Conversation conversation)
+        async Task ConversationSelected(Conversation conversation)
         {
-            return _navigationService.GotoPage($"{Constants.MessagesPageUrl}?conversation_id={conversation.Id}");
+            try
+            {
+                await _navigationService.GotoPage($"{Constants.MessagesPageUrl}?conversation_id={conversation.Id}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         async Task FilterOptionChanged(bool notOnline)

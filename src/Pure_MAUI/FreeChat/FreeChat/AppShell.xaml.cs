@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FreeChat.Services.Navigation;
+using FreeChat.Views.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +15,7 @@ namespace FreeChat
         {
             InitializeComponent();
             Shell.SetTabBarIsVisible(this, false);
+            Routing.RegisterRoute(Constants.MessagesPageUrl, typeof(MessagesPage));
         }
     }
 }

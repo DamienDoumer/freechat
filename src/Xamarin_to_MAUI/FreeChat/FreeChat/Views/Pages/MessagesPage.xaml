@@ -140,8 +140,8 @@
 
                 </CollectionView>
 
-
-                <Grid Grid.Row="2" x:Name="WriteContainerGrid">
+                <Grid Grid.Row="2"
+                      x:Name="WriteContainerGrid">
                     <Grid.Margin>
                         <OnPlatform x:TypeArguments="Thickness">
                             <On Platform="iOS" Value="0"/>
@@ -154,7 +154,7 @@
 
                     <pancakeView:PancakeView 
                                              CornerRadius="20"
-                                         Style="{StaticResource LightShadowPancakeViewStyle}"
+                                             Style="{StaticResource LightShadowPancakeViewStyle}"
                                              BackgroundColor="White">
 
                         <pancakeView:PancakeView.Margin>
@@ -292,7 +292,9 @@
                         </Grid>
                     </pancakeView:PancakeView>
 
-                    <customControls:FloatingButton Grid.Column="1" WidthRequest="60" HeightRequest="60"
+                    <customControls:FloatingButton Grid.Column="1" 
+                                                   WidthRequest="60" 
+                                                   HeightRequest="60"
                                                    HorizontalOptions="Center" VerticalOptions="Center"
                                                    BackgroundColor="{StaticResource AccentColor}"
                                                    PressedCommand="{Binding SendMessageCommand}"

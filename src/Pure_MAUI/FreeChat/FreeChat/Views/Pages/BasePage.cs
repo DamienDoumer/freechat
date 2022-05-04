@@ -17,13 +17,15 @@ namespace FreeChat.Views.Pages
 
         protected async override void OnAppearing()
         {
-            await ViewModel.Initialize();
+            if (ViewModel != null)
+                await ViewModel.Initialize();
             base.OnAppearing();
         }
 
         protected async override void OnDisappearing()
         {
-            await ViewModel.Stop();
+            if (ViewModel != null)
+                await ViewModel?.Stop();
             base.OnDisappearing();
         }
     }

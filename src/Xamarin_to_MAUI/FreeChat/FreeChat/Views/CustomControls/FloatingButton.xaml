@@ -21,11 +21,11 @@
 
     <pancakeView:PancakeView.Content>
         <Label HorizontalOptions="Center"
-                   VerticalOptions="Center"  
-                   FontSize="{Binding IconSize, Source={x:Reference floatingButton}}"
-                   TextColor="{Binding IconColor, Source={x:Reference floatingButton}}"
-                   Style="{StaticResource FontAwesomeLabel}"
-                   Text="{Binding Icon, Source={x:Reference floatingButton}}"/>
+               VerticalOptions="Center"  
+               FontSize="{Binding IconSize, Source={x:Reference floatingButton}}"
+               TextColor="{Binding IconColor, Source={x:Reference floatingButton}}"
+               Style="{StaticResource FontAwesomeLabel}"
+               Text="{Binding Icon, Source={x:Reference floatingButton}}"/>
     </pancakeView:PancakeView.Content>
     
 </pancakeView:PancakeView>
