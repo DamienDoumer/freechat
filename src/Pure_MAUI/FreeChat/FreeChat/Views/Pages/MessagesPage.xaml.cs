@@ -1,4 +1,6 @@
-﻿using FreeChat.ViewModels;
+﻿using FreeChat.Helpers;
+using FreeChat.Helpers.MyEventArgs;
+using FreeChat.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,52 +44,52 @@ namespace FreeChat.Views.Pages
             BindingContext = messagesViewModel;
             BackCommand = new Command(async _ =>
                 await AppShell.Current.Navigation.PopModalAsync());
-            //TextInput.Focused += TextInput_Focused;
+            TextInput.Focused += TextInput_Focused;
         }
 
         private void TextInput_Focused(object sender, FocusEventArgs e)
         {
-            //if (!e.IsFocused)
-            //    VisualStateManager.GoToState(TextInput, "Unfocused");
+            if (!e.IsFocused)
+                VisualStateManager.GoToState(TextInput, "Unfocused");
         }
 
-        //void IsFocusOnKeyBoardChanged(bool newIsFocusOnKeyBoard)
-        //{
-        //    if (newIsFocusOnKeyBoard)
-        //        TextInput.Focus();
-        //    else
-        //        TextInput.Unfocus();
-        //}
+        void IsFocusOnKeyBoardChanged(bool newIsFocusOnKeyBoard)
+        {
+            if (newIsFocusOnKeyBoard)
+                TextInput.Focus();
+            else
+                TextInput.Unfocus();
+        }
 
-        //protected override void OnAppearing()
-        //{
-        //    MessagingCenter.Subscribe<IViewModel, MyFocusEventArgs>(this, Constants.ShowKeyboard, (s, args) =>
-        //        IsFocusOnKeyBoardChanged(args.IsFocused));
+        protected override void OnAppearing()
+        {
+            MessagingCenter.Subscribe<IViewModel, MyFocusEventArgs>(this, Constants.ShowKeyboard, (s, args) =>
+                IsFocusOnKeyBoardChanged(args.IsFocused));
 
-        //    MessagingCenter.Subscribe<IViewModel, ScrollToItemEventArgs>(this, Constants.ScrollToItem, (s, eargs) =>
-        //    {
-        //        MessagesCollectionView.ScrollTo(eargs.Item);
-        //    });
-        //    MessagingCenter.Subscribe<object, KeyboardAppearEventArgs>(this, Constants.iOSKeyboardAppears, (sender, eargs) =>
-        //    {
-        //        if (MessagesGrid.TranslationY == 0)
-        //        {
-        //            MessagesGrid.TranslationY -= eargs.KeyboardSize;
-        //        }
-        //    });
-        //    MessagingCenter.Subscribe<object, string>(this, Constants.iOSKeyboardDisappears, (sender, eargs) =>
-        //    {
-        //        MessagesGrid.TranslationY = 0;
-        //    });
-        //    base.OnAppearing();
-        //}
+            MessagingCenter.Subscribe<IViewModel, ScrollToItemEventArgs>(this, Constants.ScrollToItem, (s, eargs) =>
+            {
+                MessagesCollectionView.ScrollTo(eargs.Item);
+            });
+            MessagingCenter.Subscribe<object, KeyboardAppearEventArgs>(this, Constants.iOSKeyboardAppears, (sender, eargs) =>
+            {
+                if (MessagesGrid.TranslationY == 0)
+                {
+                    MessagesGrid.TranslationY -= eargs.KeyboardSize;
+                }
+            });
+            MessagingCenter.Subscribe<object, string>(this, Constants.iOSKeyboardDisappears, (sender, eargs) =>
+            {
+                MessagesGrid.TranslationY = 0;
+            });
+            base.OnAppearing();
+        }
 
-        //protected override void OnDisappearing()
-        //{
-        //    MessagingCenter.Unsubscribe<IViewModel, MyFocusEventArgs>(this, Constants.ShowKeyboard);
-        //    MessagingCenter.Unsubscribe<IViewModel, ScrollToItemEventArgs>(this, Constants.ScrollToItem);
-        //    MessagingCenter.Unsubscribe<object, KeyboardAppearEventArgs>(this, Constants.iOSKeyboardAppears);
-        //    base.OnDisappearing();
-        //}
+        protected override void OnDisappearing()
+        {
+            MessagingCenter.Unsubscribe<IViewModel, MyFocusEventArgs>(this, Constants.ShowKeyboard);
+            MessagingCenter.Unsubscribe<IViewModel, ScrollToItemEventArgs>(this, Constants.ScrollToItem);
+            MessagingCenter.Unsubscribe<object, KeyboardAppearEventArgs>(this, Constants.iOSKeyboardAppears);
+            base.OnDisappearing();
+        }
     }
 }

@@ -29,7 +29,6 @@
 
             </Grid>
 
-
             <Grid Grid.Row="1" x:Name="MessagesGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -68,9 +67,110 @@
                         <ColumnDefinition />
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    
-                    
-                    
+
+                    <Border Stroke="{StaticResource LightShadowColor}"
+                            Shadow="{StaticResource LightShadow}"
+                                             BackgroundColor="White"
+                            Margin="{OnPlatform Android='10,0,0,10', iOS='10,0,0,0'}">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20" />
+                        </Border.StrokeShape>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Border Margin="10,10,10,0" IsVisible="{Binding Converter={StaticResource IsNullValueConverter}}"
+                                    BindingContext="{Binding ReplyMessage}"
+                                    Stroke="{StaticResource LightShadowColor}"
+                                    Shadow="{StaticResource LightShadow}">
+                                <Grid HeightRequest="70">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <BoxView BackgroundColor="{StaticResource PrimaryColor}" Grid.ColumnSpan="3" />
+                                    <BoxView WidthRequest="2" BackgroundColor="{StaticResource AccentColor}"/>
+
+                                    <StackLayout Grid.Column="1"
+                                                 Grid.ColumnSpan="2"
+                                                 Margin="1">
+                                        <Label FontFamily="{StaticResource QuickSandBold}"
+                                               LineBreakMode="TailTruncation"
+                                               Margin="0,0,0,5">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Sender.FirstName}" />
+                                                    <Span Text=" " />
+                                                    <Span Text="{Binding Sender.LastName}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Text="{Binding Content}"
+                                           LineBreakMode="TailTruncation"
+                                           Grid.Column="1"/>
+                                    </StackLayout>
+
+                                    <customControls:FloatingButton Grid.Column="2"
+                                                               IconSize="15"
+                                                               HeightRequest="30"
+                                                               WidthRequest="30"
+                                                               HorizontalOptions="End"
+                                                               VerticalOptions="Start"
+                                                               BackgroundColor="Transparent"
+                                                               PressedCommand="{Binding BindingContext.CancelReplyCommand, Source={x:Reference MessagePagecmdeio}}"
+                                                               Icon="{StaticResource FontAwesomeTimes}"
+                                                               IconColor="{StaticResource PrimaryTextColor}"/>
+                                </Grid>
+                            </Border>
+                            
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Editor Placeholder="Message"
+                                        Margin="10,5,5,10"
+                                        AutoSize="TextChanges"
+                                        Text="{Binding CurrentMessage}"
+                                        VerticalOptions="Center"
+                                        FontFamily="{StaticResource QuickSandRegular}"
+                                        FontAttributes="Bold"
+                                        x:Name="TextInput" />
+
+                                <customControls:FloatingButton Grid.Column="1"
+                                                               HeightRequest="50"
+                                                               WidthRequest="50"
+                                                               Margin="5"
+                                                               Icon="{StaticResource FontAwesomePaperClip}"
+                                                               IconColor="{StaticResource PrimaryTextColor}"
+                                                               BackgroundColor="White">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="90" />
+                                    </Border.StrokeShape>
+                                </customControls:FloatingButton>
+                            </Grid>
+                        </Grid>
+                        
+                    </Border>
+
+                    <customControls:FloatingButton Grid.Column="1" 
+                                                   WidthRequest="60" 
+                                                   HeightRequest="60"
+                                                   HorizontalOptions="Center" VerticalOptions="Center"
+                                                   BackgroundColor="{StaticResource AccentColor}"
+                                                   PressedCommand="{Binding SendMessageCommand}"
+                                                   Icon="{StaticResource FontAwesomePaperPlane}"
+                                                   IconColor="{StaticResource PrimaryColor}"
+                                         Style="{StaticResource LightShadowPancakeViewStyle}"
+                                                   Margin="{OnPlatform iOS='5,0,10,0', Android='5,0,10,5'}"/>
+
                 </Grid>
             </Grid>
         </Grid>
