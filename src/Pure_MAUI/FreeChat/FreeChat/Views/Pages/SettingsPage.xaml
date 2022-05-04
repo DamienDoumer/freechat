@@ -17,15 +17,6 @@
                    VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand" />
 
-            <customControls:ToggleButton HorizontalOptions="Center"
-                                         VerticalOptions="Center"
-                                         Margin="15,10,15,10"
-                                        ToggleOptionTitle="All"
-                                        Grid.Row="1"
-                                        HeightRequest="50"
-                                        ToggleCommand="{Binding FilterOptionChangedCommand}"
-                                        NotToggledOptionTitle="Online (1)" />
-            
         </Grid>
     </local:BaseTabbedPage.ViewContent>
 

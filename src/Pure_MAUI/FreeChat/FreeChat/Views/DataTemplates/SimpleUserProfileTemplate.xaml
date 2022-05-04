@@ -26,7 +26,7 @@
                        HeightRequest="{OnPlatform Android=60, iOS=50}"
                        WidthRequest="{OnPlatform Android=60, iOS=50}"
                        Source="{Binding Peer.ProfilePic}"
-                       Aspect="AspectFill">
+                       Aspect="Fill">
 
                     <Image.Triggers>
                         <DataTrigger TargetType="Image"
@@ -39,9 +39,9 @@
 
                     <!-- -->
                     <Image.Clip>
-                        <EllipseGeometry Center="80,80"
-                                         RadiusX="80"
-                                         RadiusY="80"/>
+                        <EllipseGeometry Center="20,20"
+                                         RadiusX="30"
+                                         RadiusY="30"/>
                     </Image.Clip>
                    
                 </Image>
