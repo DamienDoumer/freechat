@@ -55,6 +55,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\typing.gif" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <PackageReference Include="Humanizer.Core" Version="2.14.1" />
 	  <PackageReference Include="ReactiveUI" Version="18.0.7" />
 	</ItemGroup>

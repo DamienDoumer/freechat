@@ -56,7 +56,7 @@
                                                          Grid.Column="1" 
                                                          IsInTitle="True"
                                                          IsUserTyping="{Binding BindingContext.IsTyping, Source={x:Reference MessagePagecmdeio}}"
-                                                         Margin="-25,0,0,0}"/>
+                                                         Margin="-25,0,0,0"/>
 
                 <StackLayout Orientation="Horizontal"
                              Grid.Column="2"
@@ -78,7 +78,7 @@
                                                    WidthRequest="40"
                                                    HeightRequest="40"
                                                    Margin="0,0,10,0"
-                                                   Style="{StaticResource RoundFAB}"/>/>
+                                                   Style="{StaticResource RoundFAB}"/>
                 </StackLayout>
 
             </Grid>

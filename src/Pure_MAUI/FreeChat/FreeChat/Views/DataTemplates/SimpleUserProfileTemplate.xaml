@@ -5,7 +5,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:models="clr-namespace:Models;assembly=Models"
-             xmlns:markupExtensions="clr-namespace:FreeChat.Styles.MarkupExtensions"
              x:Class="FreeChat.Views.DataTemplates.SimpleUserProfileTemplate"
              x:Name="simpleUserProfileTemplate_srew">
 
@@ -45,6 +44,8 @@
                     </Image.Clip>
                    
                 </Image>
+                
+                
             </Grid>
 
             <StackLayout Grid.Column="1" Spacing="5"
@@ -116,18 +117,17 @@
                             <MultiTrigger.Setters>
                                 <Setter Property="Content">
                                     <Setter.Value>
-                                        <Label Text="Lottie's place"/>
                                         <!--
-                                        <lottie:AnimationView Grid.Row="1"
-                                                              HorizontalOptions="Start" 
-                                                              VerticalOptions="Center"
-                                                              IsVisible="{Binding IsUserTyping, Source={x:Reference simpleUserProfileTemplate_srew}}"
-                                                              AutoPlay="True"
-                                                              HeightRequest="20"
-                                                              WidthRequest="70"
-                                                              Animation="typing.json"
-                                                              BackgroundColor="Transparent"/>
                                         -->
+                                        <Image Grid.Row="1"
+                                               HorizontalOptions="Start" 
+                                               VerticalOptions="Center"
+                                               IsVisible="{Binding IsUserTyping, Source={x:Reference simpleUserProfileTemplate_srew}}"
+                                               IsAnimationPlaying="True"
+                                               HeightRequest="20"
+                                               WidthRequest="70"
+                                               Source="typing.gif"
+                                               BackgroundColor="Transparent"/>
                                     </Setter.Value>
                                 </Setter>
                             </MultiTrigger.Setters>
