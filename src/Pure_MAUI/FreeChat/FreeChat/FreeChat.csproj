@@ -73,6 +73,9 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>TextResources.resx</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\CustomControls\MessageBubble.xaml.cs">
+	    <DependentUpon>MessageBubble.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\CustomControls\FloatingButton.xaml.cs">
 	    <DependentUpon>FloatingButton.xaml</DependentUpon>
 	  </Compile>
@@ -89,6 +92,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\CustomControls\MessageBubble.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\CustomControls\FloatingButton.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

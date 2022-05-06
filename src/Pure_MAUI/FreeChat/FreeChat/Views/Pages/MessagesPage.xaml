@@ -121,8 +121,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <Border Stroke="{StaticResource LightShadowColor}"
-                            Shadow="{StaticResource LightShadow}"
+                    <Border Style="{StaticResource LightShadowBorder}"
                             BackgroundColor="White"
                             Margin="{OnPlatform Android='10,0,0,10', iOS='10,0,0,0'}">
                         
@@ -138,8 +137,7 @@
 
                             <Border Margin="10,10,10,0" IsVisible="{Binding Converter={StaticResource IsNullValueConverter}}"
                                     BindingContext="{Binding ReplyMessage}"
-                                    Stroke="{StaticResource LightShadowColor}"
-                                    Shadow="{StaticResource LightShadow}">
+                                    Style="{StaticResource LightShadowBorder}">
                                 <Grid HeightRequest="70">
 
                                     <Grid.ColumnDefinitions>
@@ -221,7 +219,6 @@
                                                    PressedCommand="{Binding SendMessageCommand}"
                                                    Icon="{StaticResource FontAwesomePaperPlane}"
                                                    IconColor="{StaticResource PrimaryColor}"
-                                                   Style="{StaticResource LightShadowPancakeViewStyle}"
                                                    Margin="{OnPlatform iOS='5,0,10,0', Android='5,0,10,5'}"/>
 
                 </Grid>
