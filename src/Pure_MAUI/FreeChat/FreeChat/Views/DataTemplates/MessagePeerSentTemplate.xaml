@@ -12,4 +12,74 @@
                             BackgroundColor="{StaticResource PrimaryColor}"
                             Scale="{OnPlatform Android=0.7}">
 
+    <SwipeView BackgroundColor="{StaticResource PrimaryColor}" 
+               x:DataType="models:Message"
+               Margin="{OnPlatform Android='0,0,0,2', iOS='5,2,0,5'}">
+
+        <SwipeView.Triggers>
+            <DataTrigger TargetType="SwipeView"
+                             Binding="{Binding ISentPreviousMessage}"
+                             Value="True">
+                <Setter Property="Margin"
+                        Value="{OnPlatform Android='0, 10, 0, 0', iOS='5, 15, 0, 5'}"/>
+            </DataTrigger>
+        </SwipeView.Triggers>
+
+        <SwipeView.LeftItems>
+            <SwipeItems SwipeBehaviorOnInvoked="Close"
+                            Mode="Execute">
+                <SwipeItemView Command="{Binding Source={x:Reference msgTemplate329ew}, Path=ParentContext.MessageSwippedCommand}"
+                               CommandParameter="{Binding}">
+                    <Border BackgroundColor="{StaticResource PrimaryColor}"
+                            Style="{StaticResource LightShadowBorder}">
+                        <Label Style="{StaticResource FontAwesomeLabel}"
+                               Text="{StaticResource FontAwesomeReply}"
+                               TextColor="LightGray"
+                               Margin="20"
+                               FontSize="Large"/>
+                    </Border>
+                </SwipeItemView>
+            </SwipeItems>
+        </SwipeView.LeftItems>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Image HeightRequest="40"
+                       WidthRequest="40"
+                       Margin="{OnPlatform Android='7,0,0,0', iOS='5'}"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        Source="{Binding Sender.ProfilePic, Converter={StaticResource ImageResourceConverter}}"/>
+
+                <customViews:MessageBubble Text="{Binding Content}"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Center"
+                                               BackgroundColor="White"
+                                               Grid.Column="1"
+                                               ReplyTappedCommand="{Binding ParentContext.ReplyMessageSelectedCommand, Source={x:Reference msgTemplate329ew}}"
+                                               Margin="{OnPlatform Android='0,10', iOS='0,2,0,10'}">
+
+                    <customViews:MessageBubble.Triggers>
+                        <DataTrigger TargetType="customViews:MessageBubble"
+                                     Binding="{Binding ISentPreviousMessage}"
+                                     Value="True">
+                            <Setter Property="Margin" Value="{OnPlatform Android='0,5', iOS='0,10,0,5'}"/>
+                        </DataTrigger>
+                    </customViews:MessageBubble.Triggers>
+
+                </customViews:MessageBubble>
+            </Grid>
+
+        </Grid>
+    </SwipeView>
 </dataTemplates:BaseTemplate>
