@@ -7,13 +7,6 @@
     <ResourceDictionary Source="Fonts.xaml" />
     <ResourceDictionary Source="Colors.xaml" />
 
-    <!--Borders-->
-    <Style TargetType="Border"
-           x:Key="LightShadowBorder">
-        <Setter Property="Stroke" Value="{StaticResource LightShadowColor}"/>
-        <Setter Property="Shadow" Value="{StaticResource LightShadow}"/>
-    </Style>
-
     <!--Labels-->
     <Style x:Key="BaseLabelStyle"
            TargetType="{x:Type Label}">
@@ -68,6 +61,13 @@
             x:Key="LightShadow"
             Offset="0,50"
             Radius="40"/>
+
+    <!--Borders-->
+    <Style TargetType="Border"
+           x:Key="LightShadowBorder">
+        <Setter Property="Stroke" Value="{StaticResource LightShadowColor}"/>
+        <Setter Property="Shadow" Value="{StaticResource LightShadow}"/>
+    </Style>
 
 
     <!--Swipeviews-->
