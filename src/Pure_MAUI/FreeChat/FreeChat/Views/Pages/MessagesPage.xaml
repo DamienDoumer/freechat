@@ -40,17 +40,18 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-
                 <customControls:FloatingButton HorizontalOptions="Start"
                                                VerticalOptions="Center"
-                                               HeightRequest="40" WidthRequest="40"
+                                               HeightRequest="40" 
+                                               WidthRequest="40"
                                                IconSize="25"
                                                Style="{StaticResource RoundFAB}"
                                                PressedCommand="{Binding Source={x:Reference MessagePagecmdeio}, Path=BackCommand}"
                                                Icon="{StaticResource FontAwesomeChevronLeft}"
                                                BackgroundColor="{StaticResource PrimaryColor}" 
                                                IconColor="{StaticResource AccentColor}"
-                                               Margin="{OnPlatform Android='5,0 ,0,0', iOS='0,0'}"/>
+                                               Margin="{OnPlatform Android='5,0 ,5,0', iOS='0,0'}"
+                                               HasShadow="False"/>
 
                 <dataTemplates:SimpleUserProfileTemplate BindingContext="{Binding CurrentConversation}"
                                                          Grid.Column="1" 
@@ -69,7 +70,8 @@
                                                    IconSize="25"
                                                    WidthRequest="40"
                                                    HeightRequest="40"
-                                                   Style="{StaticResource RoundFAB}"/>
+                                                   Style="{StaticResource RoundFAB}"
+                                                   HasShadow="False"/>
 
                     <customControls:FloatingButton Icon="{StaticResource FontAwesomeVideo}"
                                                    IconColor="{StaticResource AccentColor}"
@@ -78,7 +80,8 @@
                                                    WidthRequest="40"
                                                    HeightRequest="40"
                                                    Margin="0,0,10,0"
-                                                   Style="{StaticResource RoundFAB}"/>
+                                                   Style="{StaticResource RoundFAB}"
+                                                   HasShadow="False"/>
                 </StackLayout>
 
             </Grid>
@@ -116,8 +119,8 @@
                 </CollectionView>
 
                 <!---->
-                
                 <Grid Grid.Row="2"
+                      Margin="{OnPlatform Android='5,0,0,30', iOS='0'}"
                       x:Name="WriteContainerGrid">
                     <Grid.ColumnDefinitions >
                         <ColumnDefinition />
@@ -125,11 +128,10 @@
                     </Grid.ColumnDefinitions>
 
                     <Border Style="{StaticResource LightShadowBorder}"
-                            BackgroundColor="White"
-                            Margin="{OnPlatform Android='10,0,0,10', iOS='10,0,0,0'}">
+                            BackgroundColor="White">
 
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="20" />
+                            <RoundRectangle CornerRadius="30" />
                         </Border.StrokeShape>
 
                         <Grid>
@@ -138,7 +140,8 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <Border Margin="10,10,10,0" IsVisible="{Binding Converter={StaticResource IsNullValueConverter}}"
+                            <Border Margin="10,10,10,0" 
+                                    IsVisible="{Binding Converter={StaticResource IsNullValueConverter}}"
                                     BindingContext="{Binding ReplyMessage}"
                                     Style="{StaticResource LightShadowBorder}">
                                 <Grid HeightRequest="70">
@@ -192,23 +195,26 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
-                                <Editor Placeholder="Message"
-                                        Margin="10,5,5,10"
-                                        AutoSize="TextChanges"
-                                        Text="{Binding CurrentMessage}"
-                                        VerticalOptions="Center"
-                                        FontFamily="QuickSandRegular"
-                                        FontAttributes="Bold"
-                                        x:Name="TextInput" />
+                                <customControls:BorderlessEntry Placeholder="Message"
+                                                                Margin="5"
+                                                                Text="{Binding CurrentMessage}"
+                                                                VerticalOptions="Center"
+                                                                FontFamily="QuickSandRegular"
+                                                                FontAttributes="Bold"
+                                                                x:Name="TextInput" />
 
                                 <customControls:FloatingButton Grid.Column="1"
                                                                HeightRequest="50"
                                                                WidthRequest="50"
-                                                               Margin="5"
+                                                               Margin="3"
                                                                Icon="{StaticResource FontAwesomePaperClip}"
                                                                IconColor="{StaticResource PrimaryTextColor}"
                                                                BackgroundColor="White"
-                                                               Style="{StaticResource RoundFAB}"/>
+                                                               Style="{StaticResource RoundFAB}">
+                                    <customControls:FloatingButton.Shadow>
+                                        <Shadow/>
+                                    </customControls:FloatingButton.Shadow>
+                                </customControls:FloatingButton>
                             </Grid>
                         </Grid>
 
@@ -222,7 +228,7 @@
                                                    PressedCommand="{Binding SendMessageCommand}"
                                                    Icon="{StaticResource FontAwesomePaperPlane}"
                                                    IconColor="{StaticResource PrimaryColor}"
-                                                   Margin="{OnPlatform iOS='5,0,10,0', Android='5,0,10,5'}"/>
+                                                   Margin="{OnPlatform iOS='5,0,10,0', Android='5,0,5,0'}"/>
 
                 </Grid>
             </Grid>

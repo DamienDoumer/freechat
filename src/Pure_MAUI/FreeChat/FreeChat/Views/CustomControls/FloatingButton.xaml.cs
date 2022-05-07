@@ -10,6 +10,35 @@ namespace FreeChat.Views.CustomControls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FloatingButton : Border
     {
+        #region HasShadow
+        public static readonly BindableProperty HasShadowProperty = BindableProperty.Create(nameof(HasShadow), typeof(bool), typeof(FloatingButton), defaultValue: true, propertyChanged: (obj, old, newV) =>
+        {
+            var me = obj as FloatingButton;
+            if (newV != null && !(newV is bool)) return;
+            var oldPressedCommand = (bool)old;
+            var newPressedCommand = (bool)newV;
+            me?.HasShadowChanged(oldPressedCommand, newPressedCommand);
+        });
+
+        private void HasShadowChanged(bool oldPressedCommand, bool newPressedCommand)
+        {
+            if (!newPressedCommand)
+            {
+                Shadow = null;
+                Stroke = null;
+            }
+        }
+
+        /// <summary>
+        /// A bindable property
+        /// </summary>
+        public bool HasShadow
+        {
+            get => (bool)GetValue(HasShadowProperty);
+            set => SetValue(HasShadowProperty, value);
+        }
+        #endregion
+
         #region PressedCommand
         public static readonly BindableProperty PressedCommandProperty = BindableProperty.Create(nameof(PressedCommand), typeof(ICommand), typeof(FloatingButton), propertyChanged: (obj, old, newV) =>
         {
