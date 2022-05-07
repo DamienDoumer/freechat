@@ -16,11 +16,10 @@
     <!-- 
     <Label Text="Peer Sent"/>
     -->
-    
+
     <SwipeView BackgroundColor="{StaticResource PrimaryColor}" 
                x:DataType="models:Message"
                Margin="{OnPlatform Android='0,0,0,2', iOS='5,2,0,5'}">
-
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -35,20 +34,18 @@
                 </Grid.ColumnDefinitions>
 
                 <!---->
-                <Image HeightRequest="40"
-                       WidthRequest="50"
-                       Aspect="AspectFit"
-                       Margin="{OnPlatform Android='7,0,0,0', iOS='5'}"
-                        HorizontalOptions="Start"
-                        VerticalOptions="Center"
-                        Source="{Binding Sender.ProfilePic}">
-
-                    <Image.Clip>
-                        <EllipseGeometry Center="25,25"
-                                         RadiusX="25"
-                                         RadiusY="25"/>
-                    </Image.Clip>
-                </Image>
+                <Border Margin="{OnPlatform Android='7,0,0,0', iOS='5'}"
+                        Stroke="{StaticResource LightShadowColor}"
+                        HeightRequest="40"
+                        WidthRequest="40">
+                    <Border.StrokeShape>
+                        <Ellipse />
+                    </Border.StrokeShape>
+                    <Image Aspect="Fill"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"
+                           Source="{Binding Sender.ProfilePic}"/>
+                </Border>
 
                 <customViews:MessageBubble Text="{Binding Content}"
                                            TextColor="{StaticResource PrimaryTextColor}"
