@@ -63,6 +63,7 @@ namespace FreeChat.ViewModels
         public MessagesViewModel(IDataStore<User> userDataStore, IConversationsDataStore convDataStore, 
             IMessageDataStore messageDataStore) : base(userDataStore, convDataStore, messageDataStore)
         {
+            Messages = new ObservableCollection<MessagesGroup>();
             ReplyMessageSelectedCommand = ReactiveCommand.Create<Message>(ReplyMessageSelected);
             MessageSwippedCommand = ReactiveCommand.Create<Message>(MessageSwiped);
             SendMessageCommand = ReactiveCommand.CreateFromTask(SendMeessage, this.WhenAnyValue(vm => vm.CurrentMessage, curm => !String.IsNullOrEmpty(curm)));
@@ -113,7 +114,11 @@ namespace FreeChat.ViewModels
                 .ToList();
 
             await Task.Delay(TimeSpan.FromSeconds(1));
-            Messages = new ObservableCollection<MessagesGroup>(messagesGroups);
+
+            foreach (var item in messagesGroups)
+            {
+                Messages.Add(item);
+            }
 
             //await Task.Delay(TimeSpan.FromSeconds(0.5));
             if (Messages.Any())

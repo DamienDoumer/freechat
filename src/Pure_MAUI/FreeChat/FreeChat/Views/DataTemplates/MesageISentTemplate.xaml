@@ -6,8 +6,9 @@
                             xmlns:models="clr-namespace:Models;assembly=Models"
                             x:Class="FreeChat.Views.DataTemplates.MesageISentTemplate"
                             x:Name="msgTemplate3290"
-                            Scale="{OnPlatform Android=0.7}">
+                            x:DataType="{x:Type models:Message}">
 
+    <!-- <Label Text="I Sent"/>-->
     <SwipeView  BackgroundColor="{StaticResource PrimaryColor}" 
                 x:DataType="models:Message"
                 Margin="{OnPlatform Android='0,0,10,2', iOS='0,2,10,5'}">

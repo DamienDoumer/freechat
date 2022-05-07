@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <local:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FreeChat.Views.Pages.MessagesPage"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                x:Class="FreeChat.Views.Pages.MessagesPage"
                 xmlns:customControls="clr-namespace:FreeChat.Views.CustomControls"
                 xmlns:dataTemplates="clr-namespace:FreeChat.Views.DataTemplates"
                 xmlns:root="clr-namespace:FreeChat"
                 xmlns:local="clr-namespace:FreeChat.Views.Pages"
                 xmlns:dataTemplateSelector="clr-namespace:FreeChat.Views.TemplateSelectors"
+                Shell.PresentationMode="ModalAnimated"
                 BackgroundColor="{StaticResource PrimaryColor}">
 
     <local:BasePage.Resources>
@@ -30,10 +31,9 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-
             <Grid VerticalOptions="Start"
                   Margin="{OnPlatform Android='0,-10 ,0,0', iOS='0,0'}">
-                
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition />
@@ -83,6 +83,7 @@
 
             </Grid>
 
+
             <Grid Grid.Row="1" x:Name="MessagesGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -114,6 +115,8 @@
 
                 </CollectionView>
 
+                <!---->
+                
                 <Grid Grid.Row="2"
                       x:Name="WriteContainerGrid">
                     <Grid.ColumnDefinitions >
@@ -124,7 +127,7 @@
                     <Border Style="{StaticResource LightShadowBorder}"
                             BackgroundColor="White"
                             Margin="{OnPlatform Android='10,0,0,10', iOS='10,0,0,0'}">
-                        
+
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="20" />
                         </Border.StrokeShape>
@@ -154,7 +157,7 @@
                                     <StackLayout Grid.Column="1"
                                                  Grid.ColumnSpan="2"
                                                  Margin="1">
-                                        <Label FontFamily="{StaticResource QuickSandBold}"
+                                        <Label FontFamily="QuickSandBold"
                                                LineBreakMode="TailTruncation"
                                                Margin="0,0,0,5">
                                             <Label.FormattedText>
@@ -182,7 +185,7 @@
                                                                IconColor="{StaticResource PrimaryTextColor}"/>
                                 </Grid>
                             </Border>
-                            
+
                             <Grid Grid.Row="1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
@@ -194,7 +197,7 @@
                                         AutoSize="TextChanges"
                                         Text="{Binding CurrentMessage}"
                                         VerticalOptions="Center"
-                                        FontFamily="{StaticResource QuickSandRegular}"
+                                        FontFamily="QuickSandRegular"
                                         FontAttributes="Bold"
                                         x:Name="TextInput" />
 
@@ -208,7 +211,7 @@
                                                                Style="{StaticResource RoundFAB}"/>
                             </Grid>
                         </Grid>
-                        
+
                     </Border>
 
                     <customControls:FloatingButton Grid.Column="1" 
@@ -223,6 +226,7 @@
 
                 </Grid>
             </Grid>
+
         </Grid>
     </ContentPage.Content>
 </local:BasePage>
