@@ -91,7 +91,7 @@
                         </OnPlatform>
                     </StackLayout.Margin>
 
-                    <customControls:FloatingButton Icon="{StaticResource FontAwesomePhone}"
+                    <customControls:FloatingButton Icon=""
                                                    IconColor="{StaticResource AccentColor}"
                                                    HasShadow="False"
                                                    BackgroundColor="{StaticResource PrimaryColor}"
@@ -100,7 +100,7 @@
                                                    WidthRequest="40"
                                                    HeightRequest="40"/>
 
-                    <customControls:FloatingButton Icon="{StaticResource FontAwesomeVideo}"
+                    <customControls:FloatingButton Icon=""
                                                    IconColor="{StaticResource AccentColor}"
                                                    HasShadow="False" 
                                                    CornerRadius="90"

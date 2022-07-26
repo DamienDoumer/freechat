@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "575892198197",
+    "firebase_url": "https://chatcosmospro-default-rtdb.firebaseio.com",
+    "project_id": "chatcosmospro",
+    "storage_bucket": "chatcosmospro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575892198197:android:8d24799589511b0a29727c",
+        "android_client_info": {
+          "package_name": "com.companyname.freechat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "575892198197-fcn17v8fppulcpo3rnbjv87la10pmrou.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.companyname.freechat",
+            "certificate_hash": "0af3cafd3beedf29c2f60fbe09f3ad058ef642a6"
+          }
+        },
+        {
+          "client_id": "575892198197-rid3n8lr0uapr2766qls7fni8qfqqck7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZmY9mAqGUnN6wntM__5U9hqmcMlqCAZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "575892198197-rid3n8lr0uapr2766qls7fni8qfqqck7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
