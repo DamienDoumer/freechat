@@ -9,7 +9,7 @@
             xmlns:root="clr-namespace:FreeChat"
             xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
             BindingContext="{x:Static root:AppLocator.ConversationsViewModel}"
-            Title="{x:Static textRes:TextResources.Messages}"
+            Title=""
             x:Name="conversationsPage"
             xmlns:effects="clr-namespace:FreeChat.Views.Effects"
             BackgroundColor="{StaticResource PrimaryColor}"
@@ -71,7 +71,7 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <Entry Placeholder="Search"
+                        <Entry Placeholder="Pesquisar"
                             Text="{Binding SearchText}"
                             VerticalOptions="Center"
                             FontFamily="{StaticResource QuickSandBold}"
@@ -94,11 +94,9 @@
                 <customControls:ToggleButton HorizontalOptions="Start"
                                             Margin="15,10,15,10"
                                             VerticalOptions="Center"
-                                            ToggleOptionTitle="All"
+                                            ToggleOptionTitle="Conversas"
                                             Grid.Row="1"
-                                            ToggleCommand="{Binding FilterOptionChangedCommand}"
-                                            NotToggledOptionTitle="Online (1)" />
-
+                                            ToggleCommand="{Binding FilterOptionChangedCommand}" />
 
                 <CollectionView ItemsSource="{Binding Conversations}"
                             Grid.Row="2"
