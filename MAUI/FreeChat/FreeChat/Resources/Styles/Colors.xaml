@@ -5,7 +5,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <!-- Note: For Android please see also Platforms\Android\Resources\values\colors.xml -->
+    
+    <Color x:Key="AccentColor">#5A89FF</Color>
+    <Color x:Key="SecondaryAccentColor">#BFD0FB</Color>
+    <!--<Color x:Key="PrimaryColor">White</Color>-->
+    <OnPlatform x:TypeArguments="Color" x:Key="PrimaryColor">
+        <On Platform="iOS" Value="White"/>
+        <On Platform="Android" Value="#F4F5F9"/>
+    </OnPlatform>
+    <!--<Color x:Key="PrimaryColor">#F4F5F9</Color>-->
+    <Color x:Key="LightDarkWhite">#F4F5F9</Color>
+    <Color x:Key="PrimaryTextColor">#303C5E</Color>
+    <Color x:Key="SecondaryTextColor">#979DAB</Color>
+    <Color x:Key="ConnectedColor">#4fc84a</Color>
 
+    <!--
     <Color x:Key="Primary">#512BD4</Color>
     <Color x:Key="PrimaryDark">#ac99ea</Color>
     <Color x:Key="PrimaryDarkText">#242424</Color>
@@ -42,4 +56,5 @@
     <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}"/>
     <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
     <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
+    -->
 </ResourceDictionary>

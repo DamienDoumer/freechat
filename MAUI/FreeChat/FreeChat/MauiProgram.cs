@@ -11,9 +11,11 @@ public static class MauiProgram
             .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
             {
-                fonts.AddFont("Quicksand-Light.ttf", "QuicksandLight");
-                fonts.AddFont("Quicksand-Bold.ttf", "QuicksandBold");
-                fonts.AddFont("Quicksand-Regular.ttf", "QuicksandRegular");
+                fonts.AddFont("Font Awesome 5 Brands-Regular-400.otf", "FontAwesomeBrandsRegular");
+                fonts.AddFont("Font Awesome 5 Free-Solid-900.otf", "FontAwesome");
+                fonts.AddFont("Quicksand-Light.ttf", "QuickSandLight");
+                fonts.AddFont("Quicksand-Bold.ttf", "QuickSandBold");
+                fonts.AddFont("Quicksand-Regular.ttf", "QuickSandRegular");
             });
 
 #if DEBUG
