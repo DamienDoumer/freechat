@@ -4,6 +4,46 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
+    
+    <Style TargetType="Label" x:Key="TabLabelStyle">
+        <Setter Property="FontFamily" Value="FontAwesome"/>
+        <Setter Property="TextColor" Value="{StaticResource SecondaryAccentColor}"/>
+        <Setter Property="Scale" Value="0.9"/>
+        <Setter Property="FontSize" Value="{OnPlatform Android=25, iOS=25}"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="Margin" Value="0,15,0,0"/>
+    </Style>
+
+    <Style x:Key="BaseStyle"
+           TargetType="Element">
+        <Setter Property="Shell.BackgroundColor"
+                Value="{StaticResource PrimaryColor}" />
+        <Setter Property="Shell.ForegroundColor"
+                Value="White" />
+        <Setter Property="Shell.NavBarHasShadow"
+                Value="False" />
+        <Setter Property="Shell.TitleColor"
+                Value="{StaticResource PrimaryTextColor}" />
+        <Setter Property="Shell.DisabledColor"
+                Value="#B4FFFFFF" />
+        <Setter Property="Shell.UnselectedColor"
+                Value="#95FFFFFF" />
+        <Setter Property="Shell.TabBarBackgroundColor"
+                Value="#FFFFFF" />
+        <Setter Property="Shell.TabBarForegroundColor"
+                Value="{StaticResource AccentColor}" />
+        <Setter Property="Shell.TabBarUnselectedColor"
+                Value="{StaticResource SecondaryAccentColor}" />
+        <Setter Property="Shell.TabBarTitleColor"
+                Value="{StaticResource AccentColor}" />
+    </Style>
+    <Style TargetType="TabBar"
+           BasedOn="{StaticResource BaseStyle}" />
+    
+    <Shadow Brush="LightGray" Opacity="0.6" 
+            x:Key="DefaultShadow"/>
+    
     <!--Labels-->
     <Style x:Key="BaseLabelStyle"
            TargetType="{x:Type Label}">

@@ -5,11 +5,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:FreeChat"
     Shell.FlyoutBehavior="Flyout"
+    xmlns:textRes="clr-namespace:FreeChat.Resources"
+    xmlns:routes="clr-namespace:FreeChat"
+    xmlns:conversationsScene="clr-namespace:FreeChat.Scenes.Conversations"
+    xmlns:settingsScene="clr-namespace:FreeChat.Scenes.Settings"
     Title="FreeChat">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <Tab Icon="{FontImage Glyph={StaticResource FontAwesomeComment}, FontFamily=FontAwesome}"
+             Title="{x:Static textRes:TextResources.Messages}"
+             Route="{x:Static routes:Routes.ConversationsRoute}">
+            <ShellContent ContentTemplate="{DataTemplate conversationsScene:ConversationsPage}"/>
+        </Tab>
+        <Tab Icon="{FontImage Glyph={StaticResource FontAwesomeCog}, FontFamily=FontAwesome}"
+             Title="{x:Static textRes:TextResources.Settings}"
+             Route="{x:Static routes:Routes.SettingsRoute}">
+            <ShellContent ContentTemplate="{DataTemplate settingsScene:SettingsPage}"/>
+        </Tab>
+    </TabBar>
 
 </Shell>

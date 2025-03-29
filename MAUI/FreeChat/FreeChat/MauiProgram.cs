@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 
 namespace FreeChat;
 
@@ -16,8 +17,9 @@ public static class MauiProgram
                 fonts.AddFont("Quicksand-Light.ttf", "QuickSandLight");
                 fonts.AddFont("Quicksand-Bold.ttf", "QuickSandBold");
                 fonts.AddFont("Quicksand-Regular.ttf", "QuickSandRegular");
-            });
-
+            })
+            .UseMauiCommunityToolkit();
+        
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
