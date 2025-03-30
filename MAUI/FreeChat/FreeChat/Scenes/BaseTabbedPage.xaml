@@ -4,7 +4,7 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="FreeChat.Scenes.BaseTabbedPage"
              x:Name="Base">
-    <Grid RowDefinitions="*,50">
+    <Grid RowDefinitions="*,60">
         <ContentView Content="{Binding ViewContent, Source={x:Reference Base}}" >
             <ContentView.Margin>
                 <OnPlatform x:TypeArguments="Thickness">
