@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FreeChat.Scenes.Settings;
 
-public partial class SettingsPage : ContentPage
+public partial class SettingsPage : BaseTabbedPage
 {
     public SettingsPage()
     {

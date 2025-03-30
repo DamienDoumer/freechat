@@ -3,6 +3,7 @@
 <scenes:BaseTabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:scenes="clr-namespace:FreeChat.Scenes"
+             TabSelectedIndex="0"
              x:Class="FreeChat.Scenes.Conversations.ConversationsPage">
     
     <scenes:BaseTabbedPage.ViewContent>

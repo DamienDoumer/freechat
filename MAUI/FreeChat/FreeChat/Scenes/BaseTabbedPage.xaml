@@ -4,7 +4,7 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="FreeChat.Scenes.BaseTabbedPage"
              x:Name="Base">
-    <Grid RowDefinitions="*,200">
+    <Grid RowDefinitions="*,50">
         <ContentView Content="{Binding ViewContent, Source={x:Reference Base}}" >
             <ContentView.Margin>
                 <OnPlatform x:TypeArguments="Thickness">
@@ -13,32 +13,37 @@
             </ContentView.Margin>
         </ContentView>
         
-        <Border Shadow="{StaticResource DefaultShadow}"
-                StrokeThickness="0"
+        <Border BackgroundColor="{StaticResource PrimaryColor}"
                 Grid.Row="1"
-                StrokeShape="RoundRectangle 25"
-                Padding="20"
-                Margin="20">
+                Padding="0"
+                StrokeShape="RoundRectangle 30,30,0,0">
     
+           <!-- Shadow="{StaticResource DefaultShadow}"
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <GradientStop Color="#FF8C00" Offset="0.0" />
                     <GradientStop Color="#FF6347" Offset="1.0" />
                 </LinearGradientBrush>
             </Border.Background>
-
-           <!-- <Border.Shadow>
-                <Shadow Brush="LightGray" Opacity="0.6" />
+-->
+           <Border.Shadow>
+                <Shadow Brush="Gray" Opacity="0.6" />
             </Border.Shadow>
-           -->
+           
+           <Border.Margin>
+               <OnPlatform x:TypeArguments="Thickness">
+                   <On Platform="iOS" Value="0,0,0,-35"/>
+               </OnPlatform>
+           </Border.Margin>
 
            <Grid ColumnDefinitions="*,*">
                
-               <VerticalStackLayout>
+              <VerticalStackLayout Margin="-5,0,0,0">
                     <VerticalStackLayout.Behaviors>
                         <toolkit:TouchBehavior
                             PressedBackgroundColor="LightGray"
                             PressedScale="0.95"
+                            DefaultBackgroundColor="{StaticResource PrimaryColor}"
                             Command="{Binding MessagesTappedCommand, Source={x:Reference Base}}" />
                     </VerticalStackLayout.Behaviors>
                     
@@ -55,7 +60,8 @@
                     </Label>
 
                     <Label TextColor="{StaticResource AccentColor}"
-                           Scale="1" Margin="0"
+                           Scale="1" 
+                           Margin="0,5,0,0"
                            Style="{StaticResource TabLabelStyle}"
                            Text="{StaticResource FontAwesomeCircle}"
                            FontSize="7"
@@ -70,12 +76,12 @@
                         </Label.Triggers>
                     </Label>
                 </VerticalStackLayout>
-               
-               
-              <VerticalStackLayout>
+              
+              <VerticalStackLayout Grid.Column="1"  Margin="0,0,-5,0">
                     <VerticalStackLayout.Behaviors>
                         <toolkit:TouchBehavior
                             PressedBackgroundColor="LightGray"
+                            DefaultBackgroundColor="{StaticResource PrimaryColor}"
                             PressedScale="0.95"
                             Command="{Binding SettingsTappedCommand, Source={x:Reference Base}}" />
                     </VerticalStackLayout.Behaviors>
@@ -96,7 +102,7 @@
                           Style="{StaticResource TabLabelStyle}"
                           Text="{StaticResource FontAwesomeCircle}"
                           IsVisible="False" Scale="1"
-                          Margin="0"
+                          Margin="0,5,0,0"
                           VerticalOptions="End"
                           FontSize="7">
                        <Label.Triggers>

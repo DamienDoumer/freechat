@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<scenes:BaseTabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:scenes="clr-namespace:FreeChat.Scenes"
+             TabSelectedIndex="1"
              x:Class="FreeChat.Scenes.Settings.SettingsPage">
-    <ContentPage.Content>
-        
-    </ContentPage.Content>
-</ContentPage>
+    <scenes:BaseTabbedPage.ViewContent>
+        <Label Text="Settings"/>
+    </scenes:BaseTabbedPage.ViewContent>
+</scenes:BaseTabbedPage>
