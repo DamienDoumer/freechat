@@ -17,14 +17,6 @@
                 Padding="0"
                 StrokeShape="RoundRectangle 30,30,0,0">
     
-           <!-- Shadow="{StaticResource DefaultShadow}"
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#FF8C00" Offset="0.0" />
-                    <GradientStop Color="#FF6347" Offset="1.0" />
-                </LinearGradientBrush>
-            </Border.Background>
--->
            <Border.Margin>
                <OnPlatform x:TypeArguments="Thickness">
                    <On Platform="iOS" Value="0,0,0,-35"/>
