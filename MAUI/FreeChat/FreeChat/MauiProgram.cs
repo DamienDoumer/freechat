@@ -18,7 +18,8 @@ public static class MauiProgram
                 fonts.AddFont("Quicksand-Bold.ttf", "QuickSandBold");
                 fonts.AddFont("Quicksand-Regular.ttf", "QuickSandRegular");
             })
-            .UseMauiCommunityToolkit();
+            .UseMauiCommunityToolkit()
+            .UseCustomHandlers();
         
 #if DEBUG
         builder.Logging.AddDebug();

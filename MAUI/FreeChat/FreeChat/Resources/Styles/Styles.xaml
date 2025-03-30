@@ -3,7 +3,13 @@
 <ResourceDictionary 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-
+    
+    <Style x:Key="FontAwesomeLabel"
+           TargetType="{x:Type Label}">
+        <Setter Property="FontFamily"
+                Value="FontAwesome" />
+        <Setter Property="TextColor" Value="{StaticResource AccentColor}"/>
+    </Style>
     
     <Style TargetType="Label" x:Key="TabLabelStyle">
         <Setter Property="FontFamily" Value="FontAwesome"/>
@@ -41,8 +47,13 @@
     <Style TargetType="TabBar"
            BasedOn="{StaticResource BaseStyle}" />
     
-    <Shadow Brush="LightGray" Opacity="0.6" 
+    <Shadow Brush="Gray" Opacity="0.7" 
             x:Key="DefaultShadow"/>
+    
+    <Style TargetType="Border">
+        <Setter Property="Shadow" Value="{StaticResource DefaultShadow}"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+    </Style>
     
     <!--Labels-->
     <Style x:Key="BaseLabelStyle"

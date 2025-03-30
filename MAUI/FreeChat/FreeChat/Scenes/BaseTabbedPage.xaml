@@ -13,8 +13,7 @@
             </ContentView.Margin>
         </ContentView>
         
-        <Border BackgroundColor="{StaticResource PrimaryColor}"
-                Grid.Row="1"
+        <Border Grid.Row="1"
                 Padding="0"
                 StrokeShape="RoundRectangle 30,30,0,0">
     
@@ -26,10 +25,6 @@
                 </LinearGradientBrush>
             </Border.Background>
 -->
-           <Border.Shadow>
-                <Shadow Brush="Gray" Opacity="0.6" />
-            </Border.Shadow>
-           
            <Border.Margin>
                <OnPlatform x:TypeArguments="Thickness">
                    <On Platform="iOS" Value="0,0,0,-35"/>
