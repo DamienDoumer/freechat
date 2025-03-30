@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:FreeChat"
-    Shell.FlyoutBehavior="Flyout"
+    NavBarHasShadow="False"
     xmlns:textRes="clr-namespace:FreeChat.Resources"
     xmlns:routes="clr-namespace:FreeChat"
     xmlns:conversationsScene="clr-namespace:FreeChat.Scenes.Conversations"
