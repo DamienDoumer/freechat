@@ -78,6 +78,16 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>TextResources.resx</DependentUpon>
       </Compile>
+      <Compile Update="Scenes\Conversations\Views\ToggleButton.xaml.cs">
+        <DependentUpon>ToggleButton.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <MauiXaml Update="Scenes\Conversations\Views\ToggleButton.xaml">
+        <SubType>Designer</SubType>
+      </MauiXaml>
     </ItemGroup>
 
 </Project>

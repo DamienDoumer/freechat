@@ -1,4 +1,5 @@
 using FreeChat.Scenes.Conversations;
+using FreeChat.Scenes.Conversations.Views;
 using FreeChat.Scenes.Messages;
 
 namespace FreeChat;

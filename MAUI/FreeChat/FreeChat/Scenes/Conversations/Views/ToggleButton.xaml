@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FreeChat.Scenes.Conversations.Views.ToggleButton"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Name="ToggleButton_892">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <toolkit:InvertedBoolConverter x:Key="InvertBool" />
+            <Style TargetType="Border">
+                <Setter Property="StrokeShape" Value="RoundRectangle 12"/>
+            </Style>
+            <Style TargetType="Label"
+                   BasedOn="{StaticResource BaseLabelStyle}">
+                <Setter Property="Margin"
+                        Value="12,5" />
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    
+    <Grid ColumnDefinitions="Auto, Auto">
+        
+        <Border BackgroundColor="{StaticResource AccentColor}"
+                Margin="0,0,0,-13"
+                IsVisible="{Binding Source={x:Reference ToggleButton_892}, Path=IsToggled}"
+                WidthRequest="{Binding Width, Source={x:Reference ToggleBorder}}"
+                HeightRequest="{Binding Height, Source={x:Reference ToggleBorder}}"/>
+        <Border Margin="5"
+                x:Name="ToggleBorder"
+                HorizontalOptions="Start">
+            <Border.Triggers>
+                <DataTrigger TargetType="Border"
+                             Value="True"
+                             Binding="{Binding Source={x:Reference ToggleButton_892}, Path=IsToggled}">
+                    <Setter Property="BackgroundColor" Value="White"/>
+                    <Setter Property="Scale" Value="1.03"/>
+                    <Setter Property="Shadow">
+                        <Setter.Value>
+                            <Shadow
+                                Brush="{StaticResource AccentColor}"
+                                Opacity="1"
+                                Radius="6"
+                                Offset="0,4" />
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
+            </Border.Triggers>
+            
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+            </Border.GestureRecognizers>
+
+            <Label Text="{Binding Source={x:Reference ToggleButton_892}, Path=ToggleOptionTitle}">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label"
+                                 Value="True" 
+                                 Binding="{Binding Source={x:Reference ToggleButton_892}, Path=IsToggled}">
+                        <Setter Property="FontFamily" Value="QuickSandBold"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label"
+                                 Value="False" 
+                                 Binding="{Binding Source={x:Reference ToggleButton_892}, Path=IsToggled}">
+                        <Setter Property="FontFamily" Value="QuickSandRegular"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+        </Border>
+        
+        
+        <Border BackgroundColor="{StaticResource AccentColor}"
+                Margin="0,0,0,-13"
+                Grid.Column="1"
+                IsVisible="{Binding Source={x:Reference ToggleButton_892}, Path=IsToggled, Converter={StaticResource InvertBool}}"
+                WidthRequest="{Binding Width, Source={x:Reference NotToggledBorder}}"
+                HeightRequest="{Binding Height, Source={x:Reference NotToggledBorder}}"/>
+        <Border Margin="5"
+                x:Name="NotToggledBorder"
+                HorizontalOptions="Start"
+                Grid.Column="1">
+            <Border.Triggers>
+                <DataTrigger TargetType="Border"
+                             Value="False"
+                             Binding="{Binding Source={x:Reference ToggleButton_892}, Path=IsToggled}">
+                    <Setter Property="BackgroundColor" Value="White"/>
+                    <Setter Property="Scale" Value="1.03"/>
+                    <Setter Property="Shadow">
+                        <Setter.Value>
+                            <Shadow
+                                Brush="{StaticResource AccentColor}"
+                                Opacity="1"
+                                Radius="6"
+                                Offset="0,4" />
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
+            </Border.Triggers>
+            
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+            </Border.GestureRecognizers>
+
+            <Label Text="{Binding Source={x:Reference ToggleButton_892}, Path=NotToggledOptionTitle}">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label"
+                                 Value="False" 
+                                 Binding="{Binding Source={x:Reference ToggleButton_892}, Path=IsToggled}">
+                        <Setter Property="FontFamily" Value="QuickSandBold"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label"
+                                 Value="True" 
+                                 Binding="{Binding Source={x:Reference ToggleButton_892}, Path=IsToggled}">
+                        <Setter Property="FontFamily" Value="QuickSandRegular"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+        </Border>
+    </Grid>
+</ContentView>
