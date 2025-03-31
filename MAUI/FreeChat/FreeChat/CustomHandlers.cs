@@ -22,7 +22,7 @@ public static class CustomHandlers
             {
 #if ANDROID
         handler.PlatformView.Background = null;
-        handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
+        //handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
 #elif IOS
                 handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
 #elif WINDOWS

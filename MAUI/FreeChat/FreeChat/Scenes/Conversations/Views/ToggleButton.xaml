@@ -76,6 +76,7 @@
         <Border Margin="5"
                 x:Name="NotToggledBorder"
                 HorizontalOptions="Start"
+                StrokeThickness="0"
                 Grid.Column="1">
             <Border.Triggers>
                 <DataTrigger TargetType="Border"
