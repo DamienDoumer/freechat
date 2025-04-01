@@ -37,14 +37,6 @@ public partial class ConversationsViewModel : BaseViewModel
     [ObservableProperty]
     private ObservableCollection<Conversation> _conversations = new();
 
-    [RelayCommand]
-    private async Task ConversationSelected(Conversation conversation)
-    {
-        if (conversation is null) return;
-
-        await _navigationService.GotoPage($"{Routes.MessagesRoute}?conversation_id={conversation.Id}");
-    }
-
     [RelayCommand(CanExecute = nameof(CanExecuteCommandsWhenNotBusy))]
     private async Task FilterOptionChanged(bool notOnline)
     {

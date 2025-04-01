@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FreeChat.Scenes.Conversations.Components"
+             x:DataType="local:ConversationItemViewModel"
+             x:Class="FreeChat.Scenes.Conversations.Components.ConversationItemView">
+    <!-- TODO: Use a value converter to convert conversation to conversation item viewmodel-->
+</ContentView>

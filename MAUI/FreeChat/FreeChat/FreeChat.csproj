@@ -64,6 +64,7 @@
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)"/>
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0"/>
+        <PackageReference Include="Microsoft.Maui.Core" Version="9.0.14" />
     </ItemGroup>
 
     <ItemGroup>
@@ -93,10 +94,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Models\Models.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Scenes\Conversations\ViewModels\" />
     </ItemGroup>
 
 </Project>
