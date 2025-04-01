@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeChat", "FreeChat\FreeChat.csproj", "{DE075143-07B0-4071-AA79-5F581D7CCAEF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "..\..\Models\Models.csproj", "{412ABC0D-7C9C-413B-A891-6F10A8104F19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{DE075143-07B0-4071-AA79-5F581D7CCAEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE075143-07B0-4071-AA79-5F581D7CCAEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE075143-07B0-4071-AA79-5F581D7CCAEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{412ABC0D-7C9C-413B-A891-6F10A8104F19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{412ABC0D-7C9C-413B-A891-6F10A8104F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{412ABC0D-7C9C-413B-A891-6F10A8104F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{412ABC0D-7C9C-413B-A891-6F10A8104F19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

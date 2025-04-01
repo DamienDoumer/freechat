@@ -1,4 +1,6 @@
 ﻿using CommunityToolkit.Maui;
+using FreeChat.Infrastructure.Persistence;
+using FreeChat.Scenes.Conversations.ViewModels;
 using Microsoft.Extensions.Logging;
 
 namespace FreeChat;
@@ -25,6 +27,9 @@ public static class MauiProgram
         builder.Logging.AddDebug();
 #endif
 
+        builder
+            .AddPersistence();
+        
         return builder.Build();
     }
 }
