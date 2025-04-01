@@ -1,4 +1,6 @@
-﻿namespace FreeChat;
+﻿using System.Diagnostics;
+
+namespace FreeChat;
 
 public partial class App : Application
 {
@@ -10,5 +12,18 @@ public partial class App : Application
     protected override Window CreateWindow(IActivationState? activationState)
     {
         return new Window(new AppShell());
+    }
+    
+    private async void InitializeAsyncSafe(Session session)
+    {
+        try
+        {
+            await session.InitializeAsync();
+        }
+        catch (Exception ex)
+        {
+            // log or handle
+            Debug.WriteLine($"[Init Error] {ex.Message}");
+        }
     }
 }

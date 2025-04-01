@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
+using FreeChat.Infrastructure.Navigation;
 using FreeChat.Infrastructure.Persistence;
-using FreeChat.Scenes.Conversations.ViewModels;
+using FreeChat.Scenes;
 using Microsoft.Extensions.Logging;
 
 namespace FreeChat;
@@ -27,8 +28,11 @@ public static class MauiProgram
         builder.Logging.AddDebug();
 #endif
 
+        builder.Services.AddSingleton<Session>();
         builder
-            .AddPersistence();
+            .AddPersistence()
+            .AddNavitation()
+            .AddScenes();
         
         return builder.Build();
     }

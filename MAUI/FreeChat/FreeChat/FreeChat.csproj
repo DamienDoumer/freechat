@@ -95,4 +95,8 @@
       <ProjectReference Include="..\..\..\Models\Models.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Scenes\Conversations\ViewModels\" />
+    </ItemGroup>
+
 </Project>

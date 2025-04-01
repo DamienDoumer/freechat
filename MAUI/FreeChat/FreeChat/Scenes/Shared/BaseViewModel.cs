@@ -27,11 +27,11 @@ public abstract partial class BaseViewModel : ObservableObject, IViewModel
         _conversationDataStore = convDataStore;
         _messageDataStore = messageDataStore;
         
-        var notBusyDelegate = () => !_isBusy;
-        InitializeCommand = new AsyncRelayCommand(Initialize, notBusyDelegate);
-        StopCommand = new AsyncRelayCommand(Stop, notBusyDelegate);
+        InitializeCommand = new AsyncRelayCommand(Initialize, CanExecuteCommandsWhenNotBusy);
+        StopCommand = new AsyncRelayCommand(Stop, CanExecuteCommandsWhenNotBusy);
     }
 
+    protected bool CanExecuteCommandsWhenNotBusy() => !IsBusy;
     /// <summary>
     /// Override to handle view model setup
     /// </summary>
