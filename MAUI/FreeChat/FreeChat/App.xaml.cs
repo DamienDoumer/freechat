@@ -4,8 +4,10 @@ namespace FreeChat;
 
 public partial class App : Application
 {
-    public App()
+    Session _session;
+    public App(Session session)
     {
+        _session = session;
         InitializeComponent();
     }
 
@@ -13,8 +15,14 @@ public partial class App : Application
     {
         return new Window(new AppShell());
     }
-    
-    private async void InitializeAsyncSafe(Session session)
+
+    protected override void OnStart()
+    {
+        base.OnStart();
+        Initialize(_session);
+    }
+
+    private async void Initialize(Session session)
     {
         try
         {
