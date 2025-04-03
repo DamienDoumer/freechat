@@ -8,20 +8,21 @@ namespace FreeChat.Scenes.Conversations.Components;
 public partial class ConversationItemViewModel : ObservableObject
 {
     private INavigationService _navigationService;
-    public Conversation Conversation { get; }
+    [ObservableProperty] 
+    private Conversation _conversation;
 
-    public ConversationItemViewModel(Conversation conversation)
+    public ConversationItemViewModel(Conversation conversation, INavigationService navigationService)
     {
-        Conversation = conversation;
-        _navigationService = MauiApplication.Current.Services.GetService<INavigationService>();
+        _navigationService = navigationService;
+        _conversation = conversation;
     }
 
     public string Title => $"{Conversation.Peer?.FirstName} {Conversation?.Peer?.LastName}";
     public string? LastMessage => Conversation.LastMessage?.Content;
-    public string Picture => Conversation.Peer.ProfilePic;
+    public User Peer => Conversation.Peer;
 
     [RelayCommand]
-    private Task Open()
+    private Task OpenConversation()
     {
         return _navigationService.GotoPage($"{Routes.MessagesRoute}?conversation_id={Conversation.Id}");
     }

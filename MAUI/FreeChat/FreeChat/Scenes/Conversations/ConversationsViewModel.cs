@@ -16,6 +16,8 @@ public partial class ConversationsViewModel : BaseViewModel
     private readonly IMessagesDataStore _messageDataStore;
     private readonly Session _session;
     
+    public INavigationService NavigationService => _navigationService;
+    
     public ConversationsViewModel(
         Session session,
         IUsersDataStore userDataStore,
@@ -67,6 +69,7 @@ public partial class ConversationsViewModel : BaseViewModel
 
     private async Task LoadConversations()
     {
+        await _conversationDataStore.Init(_session.CurrentUser!, await _userDataStore.GetAllUsers());
         var conversations = await _conversationDataStore.GetConversationsForUser(_session.CurrentUser!.Id);
         var sorted = conversations.OrderByDescending(c => c.LastMessage?.CreationDate);
         this.Conversations = new ObservableCollection<Conversation>(sorted);

@@ -8,8 +8,9 @@ namespace FreeChat.Scenes.Conversations;
 
 public partial class ConversationsPage : BaseTabbedPage
 {
-    public ConversationsPage()
+    public ConversationsPage(ConversationsViewModel conversationsViewModel)
     {
+        BindingContext = conversationsViewModel;
         InitializeComponent();
     }
 }

@@ -56,6 +56,11 @@ public class UsersDataStore : IUsersDataStore
             return Task.FromResult(_users.Last());
         }
 
+        public Task<List<User>> GetAllUsers()
+        {
+            return Task.FromResult(_users);
+        }
+
         public Task<bool> UpdateItemAsync(User item)
         {
             var user = _users.Where(u => u.Id == item.Id);

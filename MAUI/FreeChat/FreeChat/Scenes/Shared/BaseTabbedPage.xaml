@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="FreeChat.Scenes.BaseTabbedPage"
-             x:Name="Base">
+<shared:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+          xmlns:shared="clr-namespace:FreeChat.Scenes.Shared"
+          x:Class="FreeChat.Scenes.BaseTabbedPage"
+          x:Name="Base">
     <Grid RowDefinitions="*,60">
         <ContentView Content="{Binding ViewContent, Source={x:Reference Base}}" >
             <ContentView.Margin>
@@ -107,4 +108,4 @@
         </Border>
 
     </Grid>
-</ContentPage>
+</shared:BasePage>

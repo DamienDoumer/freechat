@@ -4,10 +4,51 @@ namespace FreeChat.Infrastructure.Persistence.FakeDataStores;
 
 public class MessagesDataStore: IMessagesDataStore
     {
-        readonly List<Message> _messages;
-
-        public MessagesDataStore(Conversation conversation)
+        private List<Message> _messages;
+        private bool _initialized;
+        
+        public MessagesDataStore()
         {
+            _messages = new List<Message>();
+        }
+        
+        public Task<bool> AddItemAsync(Message item)
+        {
+            item.Id = Guid.NewGuid().ToString();
+            _messages.Add(item);
+            return Task.FromResult(true);
+        }
+
+        public Task<bool> DeleteItemAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Message> GetItemAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Message>> GetItemsAsync(bool forceRefresh = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Message>> GetMessagesForConversation(string conversationId)
+        {
+            return Task.FromResult(_messages.Where(m => m.ConversationId == conversationId));
+        }
+
+        public void Initialize(List<Conversation> conversations)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Initialize(Conversation conversation)
+        {
+            if (_initialized)
+                return;
+            
             _messages = new List<Message>();
 
             _messages.Add(new Message
@@ -89,33 +130,6 @@ public class MessagesDataStore: IMessagesDataStore
                 ReplyTo = _messages[_messages.Count - 2]
             });
             conversation.LastMessage = _messages.Last();
-        }
-
-        public Task<bool> AddItemAsync(Message item)
-        {
-            item.Id = Guid.NewGuid().ToString();
-            _messages.Add(item);
-            return Task.FromResult(true);
-        }
-
-        public Task<bool> DeleteItemAsync(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Message> GetItemAsync(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Message>> GetItemsAsync(bool forceRefresh = false)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Message>> GetMessagesForConversation(string conversationId)
-        {
-            return Task.FromResult(_messages.Where(m => m.ConversationId == conversationId));
         }
 
         public Task<bool> UpdateItemAsync(Message item)
