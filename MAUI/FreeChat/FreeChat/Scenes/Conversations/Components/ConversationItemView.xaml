@@ -3,8 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:FreeChat.Scenes.Conversations.Components"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:converters="clr-namespace:FreeChat.Scenes.Converters"
              x:DataType="local:ConversationItemViewModel"
              x:Class="FreeChat.Scenes.Conversations.Components.ConversationItemView">
+    
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:DateToHumanFormConverter x:Key="DatehumanizerConverter"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
     
     <ContentView.Behaviors>
         <toolkit:TouchBehavior PressedBackgroundColor="LightGray"
@@ -13,14 +20,19 @@
                                Command="{Binding OpenConversationCommand}" />
     </ContentView.Behaviors>
 
-    <Grid ColumnDefinitions="80,*,50"
-          RowDefinitions="*,*,1">
+    <Grid ColumnDefinitions="70,*,90"
+          HeightRequest="80"
+          RowDefinitions="*,1">
         
-        <local:SimpleUserProfile Grid.RowSpan="3"
+        <local:SimpleUserProfile HorizontalOptions="Start"
+                                 VerticalOptions="Center"
+                                 Margin="0,10,0,0"
                                  BindingContext="{Binding Peer}"/>
         
-        <VerticalStackLayout Grid.Column="1" BackgroundColor="Aqua"
-                             Spacing="5">
+        <VerticalStackLayout Grid.Column="1" 
+                             Margin="0,10,0,0"
+                             HorizontalOptions="Start"
+                             VerticalOptions="Center">
             <Label FontFamily="QuickSandBold"
                    LineBreakMode="TailTruncation">
                 <Label.FormattedText>
@@ -35,12 +47,36 @@
             <Label Text="{Binding LastMessage}"
                    TextColor="{StaticResource SecondaryTextColor}"
                    LineBreakMode="TailTruncation"
+                   Padding="0,0,0,0"
                    FontFamily="QuickSandRegular"/>
         </VerticalStackLayout>
         
+        <Label Text="{Binding LastMessageDate, Converter={StaticResource DatehumanizerConverter}}" 
+               Grid.Column="2"
+               HorizontalTextAlignment="End"
+               VerticalOptions="Center"
+               FontSize="Caption"
+               TextColor="{StaticResource SecondaryTextColor}"
+               FontFamily="QuickSandRegular"
+               HorizontalOptions="Center"
+               Margin="10"/>
+        
         <BoxView Height="1"
                  Grid.Row="2"
-                 BackgroundColor="LightGray"/>
+                 Grid.ColumnSpan="3">
+            <BoxView.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#F2F2F2" Offset="0.0" />
+                    <GradientStop Color="LightGray" Offset="0.5" />
+                    <GradientStop Color="#F2F2F2" Offset="1.0" />
+                </LinearGradientBrush>
+                <!-- <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="LightGray" Offset="0.0" />
+                    <GradientStop Color="#F2F2F2" Offset="1.0" />
+                </LinearGradientBrush>
+                -->
+            </BoxView.Background>
+        </BoxView>
     </Grid>
     
 </ContentView>

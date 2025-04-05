@@ -8,7 +8,7 @@
                        shell:Shell.NavBarIsVisible="False"
                        Title="{x:Static textRes:TextResources.Messages}"
                        xmlns:shell="http://schemas.microsoft.com/dotnet/2021/maui"
-                     xmlns:textRes="clr-namespace:FreeChat.Resources"
+                       xmlns:textRes="clr-namespace:FreeChat.Resources"
                      xmlns:conversations="clr-namespace:FreeChat.Scenes.Conversations"
                      xmlns:components="clr-namespace:FreeChat.Scenes.Conversations.Components"
                      xmlns:views="clr-namespace:FreeChat.Scenes.Conversations.Views"
@@ -27,7 +27,7 @@
                   Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="{OnPlatform Android='80', Default='70'}" />
-                    <RowDefinition Height="{OnPlatform Android='100', Default='100'}" />
+                    <RowDefinition Height="{OnPlatform Android='100', Default='65'}" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 
@@ -60,10 +60,10 @@
                 
                 
                 <views:ToggleButton HorizontalOptions="Fill"
-                                    Margin="15,10,15,10"
+                                    Margin="0,10,15,10"
                                     VerticalOptions="Center"
                                     ToggleOptionTitle="All"
-                                    Grid.Row="1"
+                                    Grid.Row="1" 
                                     NotToggledOptionTitle="Online (1)" 
                                     ToggleCommand="{Binding FilterOptionChangedCommand}"/>
                

@@ -12,9 +12,11 @@ public partial class ConversationItemViewModel : ObservableObject
     private Conversation _conversation;
 
     [ObservableProperty]
-    public string? _lastMessage;
+    private string? _lastMessage;
     [ObservableProperty]
-    public User _peer;
+    private DateTime? _lastMessageDate;
+    [ObservableProperty]
+    private User _peer;
 
     public ConversationItemViewModel(Conversation conversation)
     {
@@ -22,6 +24,7 @@ public partial class ConversationItemViewModel : ObservableObject
         _conversation = conversation;
         
         LastMessage = conversation.LastMessage.Content;
+        LastMessageDate = conversation.LastMessage.CreationDate;
         Peer = conversation.Peer;
     }
 

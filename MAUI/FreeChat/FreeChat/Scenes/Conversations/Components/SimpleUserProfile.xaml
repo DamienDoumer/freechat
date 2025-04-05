@@ -5,23 +5,27 @@
              xmlns:models="clr-namespace:Models;assembly=Models"
              x:Class="FreeChat.Scenes.Conversations.Components.SimpleUserProfile"
              x:DataType="models:User">
-    <Grid>
+    
+    <Grid RowDefinitions="*,20"
+          HeightRequest="55"
+          WidthRequest="55"
+          ColumnDefinitions="*,20">
         <Image Source="{Binding ProfilePic}"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"
-               HeightRequest="{OnPlatform Android=60, iOS=50}"
-               WidthRequest="{OnPlatform Android=60, iOS=50}"
+               Grid.ColumnSpan="2" Grid.RowSpan="2"
+               HeightRequest="{OnPlatform Android=55, iOS=55}"
+               WidthRequest="{OnPlatform Android=55, iOS=55}"
                 Aspect="AspectFill">
             <Image.Clip>
                 <EllipseGeometry
-                    Center="50,50"
-                    RadiusX="50"
-                    RadiusY="50" />
+                    Center="25.5,25.5"
+                    RadiusX="25.5"
+                    RadiusY="25.5" />
             </Image.Clip>
         </Image>
         
         <Label Text="{StaticResource FontAwesomeCircle}"
                FontFamily="FontAwesome"
+               Grid.Column="1" Grid.Row="1"
                IsVisible="{Binding IsOnline}"
                FontSize="Caption"
                HorizontalOptions="End"
@@ -30,7 +34,7 @@
             <Label.Margin>
                 <OnPlatform x:TypeArguments="Thickness">
                     <On Platform="Android" Value="0,0,8,8"/>
-                    <On Platform="iOS" Value="0,0,10,12"/>
+                    <On Platform="iOS" Value="0,0, 5,5"/>
                 </OnPlatform>
             </Label.Margin>
         </Label>
