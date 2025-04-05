@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <scenes:BaseTabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:scenes="clr-namespace:FreeChat.Scenes"
-             TabSelectedIndex="0"
-             x:Name="conversationsPage"
-             shell:Shell.NavBarHasShadow="False"
-             shell:Shell.NavBarIsVisible="False"
-             Title="{x:Static textRes:TextResources.Messages}"
-             xmlns:shell="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:textRes="clr-namespace:FreeChat.Resources"
-             xmlns:conversations="clr-namespace:FreeChat.Scenes.Conversations"
-             xmlns:converters="clr-namespace:FreeChat.Scenes.Conversations.Converters"
-             xmlns:components="clr-namespace:FreeChat.Scenes.Conversations.Components"
-             xmlns:views="clr-namespace:FreeChat.Scenes.Conversations.Views"
-             xmlns:local="clr-namespace:FreeChat.Scenes.Conversations"
-             x:Class="FreeChat.Scenes.Conversations.ConversationsPage"
-             x:DataType="conversations:ConversationsViewModel">
-    
-    <scenes:BaseTabbedPage.Resources>
-        <ResourceDictionary>
-            <converters:ConversationItemToViewModelConverter x:Key="ConversationItemConverter"/>
-        </ResourceDictionary>
-    </scenes:BaseTabbedPage.Resources>
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:scenes="clr-namespace:FreeChat.Scenes"
+                       TabSelectedIndex="0"
+                       x:Name="conversationsPage"
+                       shell:Shell.NavBarHasShadow="False"
+                       shell:Shell.NavBarIsVisible="False"
+                       Title="{x:Static textRes:TextResources.Messages}"
+                       xmlns:shell="http://schemas.microsoft.com/dotnet/2021/maui"
+                     xmlns:textRes="clr-namespace:FreeChat.Resources"
+                     xmlns:conversations="clr-namespace:FreeChat.Scenes.Conversations"
+                     xmlns:components="clr-namespace:FreeChat.Scenes.Conversations.Components"
+                     xmlns:views="clr-namespace:FreeChat.Scenes.Conversations.Views"
+                     xmlns:models="clr-namespace:Models;assembly=Models"
+                     x:Class="FreeChat.Scenes.Conversations.ConversationsPage"
+                     x:DataType="conversations:ConversationsViewModel">
     
     <scenes:BaseTabbedPage.ViewContent>
         <Grid Margin="10,0"
@@ -79,8 +72,8 @@
                                 VerticalOptions="FillAndExpand"
                                 HorizontalOptions="FillAndExpand">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <components:ConversationItemView BindingContext="{Binding ., Converter={StaticResource ConversationItemConverter}, ConverterParameter={Binding BindingContext, Source={x:Reference conversationsPage}}}"/>
+                        <DataTemplate x:DataType="models:Conversation">
+                            <components:ConversationItemView Conversation="{Binding }"/>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

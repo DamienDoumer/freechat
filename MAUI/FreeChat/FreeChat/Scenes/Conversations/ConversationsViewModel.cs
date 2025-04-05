@@ -8,37 +8,20 @@ using Models;
 
 namespace FreeChat.Scenes.Conversations;
 
-public partial class ConversationsViewModel : BaseViewModel
+public partial class ConversationsViewModel(
+    Session session,
+    IUsersDataStore userDataStore,
+    IConversationsDataStore convDataStore,
+    IMessagesDataStore messageDataStore,
+    INavigationService navigationService)
+    : BaseViewModel(userDataStore, convDataStore, messageDataStore)
 {
-    private readonly INavigationService _navigationService;
-    private readonly IUsersDataStore _userDataStore;
-    private readonly IConversationsDataStore _conversationDataStore;
-    private readonly IMessagesDataStore _messageDataStore;
-    private readonly Session _session;
-    
-    public INavigationService NavigationService => _navigationService;
-    
-    public ConversationsViewModel(
-        Session session,
-        IUsersDataStore userDataStore,
-        IConversationsDataStore convDataStore,
-        IMessagesDataStore messageDataStore,
-        INavigationService navigationService)
-        : base(userDataStore, convDataStore, messageDataStore)
-    {
-        _session = session;
-        _navigationService = navigationService;
-        _userDataStore = userDataStore;
-        _conversationDataStore = convDataStore;
-        _messageDataStore = messageDataStore;
-    }
-
     [ObservableProperty]
-    private string _searchText;
-
+    private string _searchText = string.Empty;
+    public INavigationService NavigationService => navigationService;
     [ObservableProperty]
     private ObservableCollection<Conversation> _conversations = new();
-
+    
     [RelayCommand(CanExecute = nameof(CanExecuteCommandsWhenNotBusy))]
     private async Task FilterOptionChanged(bool notOnline)
     {
@@ -46,7 +29,7 @@ public partial class ConversationsViewModel : BaseViewModel
 
         if (!notOnline)
         {
-            var conversations = await _conversationDataStore.GetConversationsForUser(_session.CurrentUser!.Id);
+            var conversations = await _conversationDataStore.GetConversationsForUser(session.CurrentUser!.Id);
             Conversations = new ObservableCollection<Conversation>(conversations.Where(c => c.Peer.IsOnline));
         }
         else
@@ -69,8 +52,8 @@ public partial class ConversationsViewModel : BaseViewModel
 
     private async Task LoadConversations()
     {
-        await _conversationDataStore.Init(_session.CurrentUser!, await _userDataStore.GetAllUsers());
-        var conversations = await _conversationDataStore.GetConversationsForUser(_session.CurrentUser!.Id);
+        await _conversationDataStore.Init(session.CurrentUser!, await _userDataStore.GetAllUsers());
+        var conversations = await _conversationDataStore.GetConversationsForUser(session.CurrentUser!.Id);
         var sorted = conversations.OrderByDescending(c => c.LastMessage?.CreationDate);
         this.Conversations = new ObservableCollection<Conversation>(sorted);
     }

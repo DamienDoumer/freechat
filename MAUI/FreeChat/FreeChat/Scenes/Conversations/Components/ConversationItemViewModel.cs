@@ -11,15 +11,19 @@ public partial class ConversationItemViewModel : ObservableObject
     [ObservableProperty] 
     private Conversation _conversation;
 
-    public ConversationItemViewModel(Conversation conversation, INavigationService navigationService)
-    {
-        _navigationService = navigationService;
-        _conversation = conversation;
-    }
+    [ObservableProperty]
+    public string? _lastMessage;
+    [ObservableProperty]
+    public User _peer;
 
-    public string Title => $"{Conversation.Peer?.FirstName} {Conversation?.Peer?.LastName}";
-    public string? LastMessage => Conversation.LastMessage?.Content;
-    public User Peer => Conversation.Peer;
+    public ConversationItemViewModel(Conversation conversation)
+    {
+        _navigationService = Application.Current.Windows[0].Page.Handler.MauiContext.Services.GetService<INavigationService>();
+        _conversation = conversation;
+        
+        LastMessage = conversation.LastMessage.Content;
+        Peer = conversation.Peer;
+    }
 
     [RelayCommand]
     private Task OpenConversation()

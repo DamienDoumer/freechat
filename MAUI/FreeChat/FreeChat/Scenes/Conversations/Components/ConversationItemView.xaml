@@ -19,7 +19,7 @@
         <local:SimpleUserProfile Grid.RowSpan="3"
                                  BindingContext="{Binding Peer}"/>
         
-        <VerticalStackLayout Grid.Column="1"
+        <VerticalStackLayout Grid.Column="1" BackgroundColor="Aqua"
                              Spacing="5">
             <Label FontFamily="QuickSandBold"
                    LineBreakMode="TailTruncation">
