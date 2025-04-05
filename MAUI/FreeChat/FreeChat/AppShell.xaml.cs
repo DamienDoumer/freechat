@@ -1,4 +1,6 @@
-﻿namespace FreeChat;
+﻿using FreeChat.Scenes.Messages;
+
+namespace FreeChat;
 
 public partial class AppShell : Shell
 {
@@ -6,5 +8,6 @@ public partial class AppShell : Shell
     {
         InitializeComponent();
         SetTabBarIsVisible(this, false);
+        Routing.RegisterRoute(Routes.MessagesRoute, typeof(MessagesPage));
     }
 }
