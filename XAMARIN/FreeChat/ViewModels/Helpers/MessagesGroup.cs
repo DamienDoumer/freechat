@@ -17,4 +17,5 @@ namespace FreeChat.ViewModels.Helpers
             GroupHeader = groupHeader;
         }
     }
+    
 }

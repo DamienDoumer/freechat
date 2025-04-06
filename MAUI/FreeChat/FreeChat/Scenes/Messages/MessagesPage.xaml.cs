@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using FreeChat.Scenes.Messages.Helpers;
 using FreeChat.Scenes.Shared;
 
 namespace FreeChat.Scenes.Messages;
@@ -34,9 +36,7 @@ public partial class MessagesPage : BasePage
             set => SetValue(BackCommandProperty, value);
         }
         #endregion
-
-        /*
-         
+        
         void IsFocusOnKeyBoardChanged(bool newIsFocusOnKeyBoard)
         {
             if (newIsFocusOnKeyBoard)
@@ -44,37 +44,37 @@ public partial class MessagesPage : BasePage
             else
                 TextInput.Unfocus();
         }
-*/
+        
         public MessagesPage(MessagesViewModel ViewModel)
         {
             InitializeComponent();
             BindingContext = ViewModel;
         }
 
-        /*
         private void TextInput_Focused(object sender, FocusEventArgs e)
         {
             if (!e.IsFocused)
                 VisualStateManager.GoToState(TextInput, "Unfocused");
         }
-
+        
         protected override void OnAppearing()
         {
-            MessagingCenter.Subscribe<IViewModel, MyFocusEventArgs>(this, Constants.ShowKeyboard, (s, args) =>
+            WeakReferenceMessenger.Default.Register<MyFocusEventArgs>(this, (s, args) =>
                 IsFocusOnKeyBoardChanged(args.IsFocused));
 
-            MessagingCenter.Subscribe<IViewModel, ScrollToItemEventArgs>(this, Constants.ScrollToItem, (s, eargs) =>
+            WeakReferenceMessenger.Default.Register<ScrollToItemEventArgs>(this, (s, eargs) =>
             {
                 MessagesCollectionView.ScrollTo(eargs.Item);
             });
-            MessagingCenter.Subscribe<object, KeyboardAppearEventArgs>(this, Constants.iOSKeyboardAppears, (sender, eargs) =>
+            
+            WeakReferenceMessenger.Default.Register<KeyboardAppearEventArgs>(this, (sender, eargs) =>
             {
                 if (MessagesGrid.TranslationY == 0)
                 {
                     MessagesGrid.TranslationY -= eargs.KeyboardSize;
                 }
             });
-            MessagingCenter.Subscribe<object, string>(this, Constants.iOSKeyboardDisappears, (sender, eargs) =>
+            WeakReferenceMessenger.Default.Register<string>(this, (sender, eargs) =>
             {
                 MessagesGrid.TranslationY = 0;
             });
@@ -83,10 +83,7 @@ public partial class MessagesPage : BasePage
 
         protected override void OnDisappearing()
         {
-            MessagingCenter.Unsubscribe<IViewModel, MyFocusEventArgs>(this, Constants.ShowKeyboard);
-            MessagingCenter.Unsubscribe<IViewModel, ScrollToItemEventArgs>(this, Constants.ScrollToItem);
-            MessagingCenter.Unsubscribe<object, KeyboardAppearEventArgs>(this, Constants.iOSKeyboardAppears);
             base.OnDisappearing();
+            WeakReferenceMessenger.Default.UnregisterAll(this);
         }
-        */
 }

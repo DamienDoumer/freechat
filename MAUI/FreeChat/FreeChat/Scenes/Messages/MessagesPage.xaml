@@ -1,13 +1,265 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <shared:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:scenes="clr-namespace:FreeChat.Scenes"
-             xmlns:shared="clr-namespace:FreeChat.Scenes.Shared"
-             x:Class="FreeChat.Scenes.Messages.MessagesPage">
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:scenes="clr-namespace:FreeChat.Scenes"
+                 xmlns:shared="clr-namespace:FreeChat.Scenes.Shared"
+                 xmlns:views="clr-namespace:FreeChat.Scenes.Messages.Views"
+                 xmlns:messages="clr-namespace:FreeChat.Scenes.Messages"
+                 xmlns:converters="clr-namespace:FreeChat.Scenes.Converters"
+                 x:Class="FreeChat.Scenes.Messages.MessagesPage">
     
-    <Grid>
-        
-    </Grid>
+    <shared:BasePage.Resources>
+        <ResourceDictionary>
+            <converters:IsNullConverter x:Key="IsNullValueConverter"/>
+        </ResourceDictionary>
+    </shared:BasePage.Resources>
+    
+        <Grid x:Name="ContainerGrid">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid VerticalOptions="Start">
+
+                <Grid.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="0,0"/>
+                        <On Platform="Android" Value="0,-10 ,0,0"/>
+                    </OnPlatform>
+                </Grid.Margin>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!--<xe:BorderView BackgroundColor="Red" xe:TouchEffect.Color="AliceBlue"
+                               xe:Commands.Tap="{Binding Source={x:Reference MessagePagecmdeio}, Path=BackCommand}">
+                    <Label Text="what !!"/>
+                </xe:BorderView>-->
+
+                <views:FloatingButton Margin="5,0,0,0"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Center" 
+                                               StrokeShape="RoundRectangle 90"
+                                               HeightRequest="40" WidthRequest="40"
+                                               IconSize="25"
+                                               PressedCommand="{Binding Source={x:Reference MessagePagecmdeio}, Path=BackCommand}"
+                                               Icon="{StaticResource FontAwesomeChevronLeft}"
+                                               BackgroundColor="{StaticResource PrimaryColor}" 
+                                               Shadow="{x:Null}"
+                                               IconColor="{StaticResource AccentColor}">
+                    <views:FloatingButton.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS" Value="0"/>
+                            <On Platform="Android" Value="5,0 ,0,0"/>
+                        </OnPlatform>
+                    </views:FloatingButton.Margin>
+                </views:FloatingButton>
+
+                <!-- <dataTemplates:SimpleUserProfileTemplate BindingContext="{Binding CurrentConversation}"
+                                                         Grid.Column="1" 
+                                                         IsInTitle="True"
+                                                         IsUserTyping="{Binding BindingContext.IsTyping, Source={x:Reference MessagePagecmdeio}}">
+                    <dataTemplates:SimpleUserProfileTemplate.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="-25,0,0,0"/>
+                        <On Platform="Android" Value="-25,0,0,0"/>
+                    </OnPlatform>
+                    </dataTemplates:SimpleUserProfileTemplate.Margin>
+                </dataTemplates:SimpleUserProfileTemplate>
+                -->
+
+                <StackLayout Orientation="Horizontal" Grid.Column="2"
+                             VerticalOptions="Center"
+                             HorizontalOptions="End">
+                    <StackLayout.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS" Value="0,0,0,0"/>
+                            <On Platform="Android" Value="0,0,0,0"/>
+                        </OnPlatform>
+                    </StackLayout.Margin>
+
+                    <views:FloatingButton Icon="{StaticResource FontAwesomePhone}"
+                                                   IconColor="{StaticResource AccentColor}"
+                                                   Shadow="{x:Null}"
+                                                   BackgroundColor="{StaticResource PrimaryColor}"
+                                                   IconSize="25" 
+                                                   StrokeShape="RoundRectangle 90"
+                                                   WidthRequest="40"
+                                                   HeightRequest="40"/>
+
+                    <views:FloatingButton Icon="{StaticResource FontAwesomeVideo}"
+                                                   IconColor="{StaticResource AccentColor}"
+                                                   Shadow="{x:Null}"
+                                                   StrokeShape="RoundRectangle 90"
+                                                   BackgroundColor="{StaticResource PrimaryColor}"
+                                                   IconSize="25"
+                                                   WidthRequest="40"
+                                                   HeightRequest="40"
+                                                   Margin="0,0,10,0"/>
+                </StackLayout>
+
+            </Grid>
+
+            <Grid Grid.Row="1" x:Name="MessagesGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <CollectionView ItemsSource="{Binding Messages}"
+                                IsGrouped="True" Grid.Row="0"
+                                BackgroundColor="{StaticResource PrimaryColor}"
+                                x:Name="MessagesCollectionView">
+
+                    <CollectionView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Label Text="{Binding GroupHeader}"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       Margin="15"
+                                       FontFamily="{StaticResource QuickSandRegular}"
+                                       TextColor="{StaticResource SecondaryTextColor}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.GroupHeaderTemplate>
+
+                    <CollectionView.ItemTemplate>
+                        <dataTemplateSelector:ChatBubbleTemplateSelctor />
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+
+                <Grid Grid.Row="2" x:Name="WriteContainerGrid">
+                    <Grid.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS" Value="0"/>
+                        </OnPlatform>
+                    </Grid.Margin>
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Shadow="{StaticResource DefaultShadow}"
+                            StrokeShape="RoundRectangle 90"
+                                             BackgroundColor="White">
+
+                        <Border.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="10,0,0,10"/>
+                                <On Platform="iOS" Value="10,0,0,0"/>
+                            </OnPlatform>
+                        </Border.Margin>
+                        
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Border Margin="10,10,10,0" 
+                                    IsVisible="{Binding Converter={StaticResource IsNullValueConverter}}"
+                                                     BindingContext="{Binding ReplyMessage}">
+                                <Grid HeightRequest="70">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                <BoxView BackgroundColor="{StaticResource PrimaryColor}" Grid.ColumnSpan="3" />
+                                <BoxView WidthRequest="2" BackgroundColor="{StaticResource AccentColor}"/>
+
+                                <StackLayout Grid.Column="1"
+                                             Grid.ColumnSpan="2"
+                                             Margin="1">
+                                    <Label FontFamily="QuickSandBold"
+                                           LineBreakMode="TailTruncation"
+                                           Margin="0,0,0,5">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Sender.FirstName}" />
+                                                <Span Text=" " />
+                                                <Span Text="{Binding Sender.LastName}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Text="{Binding Content}"
+                                           LineBreakMode="TailTruncation"
+                                           Grid.Column="1"/>
+                                </StackLayout>
+
+                                <views:FloatingButton Grid.Column="2"
+                                                               IconSize="15"
+                                                               HeightRequest="30"
+                                                               WidthRequest="30"
+                                                               HorizontalOptions="End"
+                                                               VerticalOptions="Start"
+                                                               Shadow="{x:Null}"
+                                                               BackgroundColor="Transparent"
+                                                               PressedCommand="{Binding BindingContext.CancelReplyCommand, Source={x:Reference MessagePagecmdeio}}"
+                                                               Icon="{StaticResource FontAwesomeTimes}"
+                                                               IconColor="{StaticResource PrimaryTextColor}"/>
+                            </Grid>
+                            </Border>
+
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <messages:BorderlessEditor Placeholder="Message"
+                                        Margin="10,5,5,10"
+                                        AutoSize="TextChanges"
+                                        Text="{Binding CurrentMessage}"
+                                        VerticalOptions="Center"
+                                        FontFamily="{StaticResource QuickSandRegular}"
+                                        FontAttributes="Bold"
+                                        x:Name="TextInput"/>
+
+                                <views:FloatingButton StrokeShape="RoundRectangle 90"
+                                                      Grid.Column="1"
+                                                      HeightRequest="50"
+                                                      WidthRequest="50"
+                                                      Margin="5"
+                                                      Icon="{StaticResource FontAwesomePaperClip}"
+                                                      IconColor="{StaticResource PrimaryTextColor}"
+                                                      BackgroundColor="White"
+                                                      Shadow="{x:Null}"/>
+                            </Grid>
+
+                        </Grid>
+                    </Border>
+
+                    <views:FloatingButton Grid.Column="1" WidthRequest="60" HeightRequest="60"
+                                                   HorizontalOptions="Center" VerticalOptions="Center"
+                                                   BackgroundColor="{StaticResource AccentColor}"
+                                                   PressedCommand="{Binding SendMessageCommand}"
+                                                   Icon="{StaticResource FontAwesomePaperPlane}"
+                                                   IconColor="{StaticResource PrimaryColor}"
+                                                   Margin="5,0,10,0">
+                        <views:FloatingButton.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="iOS" Value="5,0,10,0"/>
+                                <On Platform="Android" Value="5,0,10,5"/>
+                            </OnPlatform>
+                        </views:FloatingButton.Margin>
+                    </views:FloatingButton>
+                </Grid>
+                
+            </Grid>
+
+        </Grid>
     
 </shared:BasePage>

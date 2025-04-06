@@ -79,7 +79,6 @@
                 </CollectionView>
             </Grid>
             
-            
             <ActivityIndicator IsRunning="{Binding IsBusy}"
                                IsVisible="{Binding IsBusy}"
                                Grid.RowSpan="2"
@@ -88,8 +87,6 @@
                                VerticalOptions="Center"
                                HeightRequest="50"
                                WidthRequest="50"/>
-
-            
         </Grid>
     </scenes:BaseTabbedPage.ViewContent>
 </scenes:BaseTabbedPage>
