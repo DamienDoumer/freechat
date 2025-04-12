@@ -21,7 +21,7 @@ public partial class MessageBubble : ContentView
 
         private void TextChanged(string oldText, string newText)
         {
-
+            
         }
 
         /// <summary>

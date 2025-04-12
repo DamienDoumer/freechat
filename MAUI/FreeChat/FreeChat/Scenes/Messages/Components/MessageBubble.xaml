@@ -7,8 +7,7 @@
              xmlns:models="clr-namespace:Models;assembly=Models"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="FreeChat.Scenes.Messages.Components.MessageBubble"
-             x:Name="bubble_fdasdl"
-             x:DataType="models:Message">
+             x:Name="bubble_fdasdl">
     
     <ContentView.Resources>
         <ResourceDictionary>
@@ -23,6 +22,14 @@
         Padding="5"
         Margin="0"
         Stroke="{x:Null}">
+        
+        <Border.Triggers>
+            <DataTrigger TargetType="Border"
+                         Binding="{Binding BindingContext.ISent, Source={x:Reference bubble_fdasdl}}"
+                         Value="true">
+                <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}" />
+            </DataTrigger>
+        </Border.Triggers>
 
         <Grid>
             <Grid.RowDefinitions>
@@ -30,23 +37,21 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <!-- Reply Grid -->
+            <!-- Reply section -->
             <Grid
                 IsVisible="{Binding Converter={StaticResource IsNullValueConverter}}"
                 BindingContext="{Binding ReplyTo}"
+                x:DataType="models:Message"
+                BackgroundColor="Transparent"
                 VerticalOptions="Start"
                 Margin="5">
-
-                <Grid.Behaviors>
-                    <toolkit:TouchBehavior
-                                PressedBackgroundColor="LightGray"
-                                DefaultBackgroundColor="{StaticResource PrimaryColor}"
-                                PressedScale="0.95"
-                                Command="{Binding ReplyTappedCommand, Source={x:Reference bubble_fdasdl}}" />
-                </Grid.Behaviors>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ReplyTappedCommand, Source={x:Reference bubble_fdasdl}}" 
+                                          CommandParameter="{Binding}"/>
+                </Grid.GestureRecognizers>
                 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="3" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
@@ -71,9 +76,14 @@
                                      Value="False">
                             <Setter Property="Opacity" Value="1" />
                         </DataTrigger>
+                        <DataTrigger TargetType="BoxView"
+                                     Binding="{Binding BindingContext.ISent, Source={x:Reference bubble_fdasdl}}"
+                                     Value="True">
+                            <Setter Property="Opacity" Value="0.1" />
+                        </DataTrigger>
                     </BoxView.Triggers>
                 </BoxView>
-
+                
                 <StackLayout Grid.Column="1" Margin="-5,0,0,0">
                     <Label
                         FontFamily="QuickSandBold"
@@ -113,10 +123,10 @@
                 </StackLayout>
             </Grid>
 
-            <Label
+            <Label x:Name="TextLabel"
                 Grid.Row="1"
                 Margin="10,0,10,10"
-                Text="{Binding Text, Source={x:Reference bubble_fdasdl}}"
+                Text="{Binding Text, Source={x:Reference bubble_fdasdl}, Mode=TwoWay}"
                 TextColor="{Binding TextColor, Source={x:Reference bubble_fdasdl}}"
                 FontFamily="QuickSandRegular" />
         </Grid>

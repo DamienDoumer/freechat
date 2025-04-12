@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <shared:BaseTemplate xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:shared="clr-namespace:FreeChat.Scenes.Shared"
-             xmlns:models="clr-namespace:Models;assembly=Models"
-             xmlns:components="clr-namespace:FreeChat.Scenes.Messages.Components"
-             x:Class="FreeChat.Scenes.Messages.Components.MesageISentTemplate"
-             x:Name="msgTemplate3290"
-             x:DataType="models:Message">
+                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                     xmlns:shared="clr-namespace:FreeChat.Scenes.Shared"
+                     xmlns:models="clr-namespace:Models;assembly=Models"
+                     xmlns:components="clr-namespace:FreeChat.Scenes.Messages.Components"
+                     x:Class="FreeChat.Scenes.Messages.Components.MesageISentTemplate"
+                     x:Name="msgTemplate3290">
     
   <shared:BaseTemplate.Content>
         <SwipeView  BackgroundColor="{StaticResource PrimaryColor}">
@@ -50,19 +48,18 @@
                 </SwipeItems>
             </SwipeView.RightItems>
 
-            <Grid>
+            <Grid x:DataType="models:Message">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
 
-                <components:MessageBubble Text="{Binding Content}"
-                                           Grid.Column="1"
-                                           HorizontalOptions="End"
-                                           VerticalOptions="Center"
-                                           TextColor="White"
-                                           BackgroundColor="{StaticResource AccentColor}"
-                                           ReplyTappedCommand="{Binding ParentContext.ReplyMessageSelectedCommand, Source={x:Reference msgTemplate3290}}">
+                <components:MessageBubble Text="{Binding Content, Mode=TwoWay}"
+                                          Grid.Column="1"
+                                          HorizontalOptions="End"
+                                          VerticalOptions="Center"
+                                          TextColor="White"
+                                          ReplyTappedCommand="{Binding ParentContext.ReplyMessageSelectedCommand, Source={x:Reference msgTemplate3290}}">
                     
                         <components:MessageBubble.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
