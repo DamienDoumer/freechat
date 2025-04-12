@@ -38,6 +38,7 @@ public partial class MessagesViewModel : BaseViewModel
     protected override async Task OnInitialize()
     {
         CurrentConversation = await _conversationDataStore.GetItemAsync(ConversationId);
+        _messageDataStore.Initialize(CurrentConversation);
         var messages = await _messageDataStore.GetMessagesForConversation(ConversationId);
 
         _messagesInternal.AddRange(messages);

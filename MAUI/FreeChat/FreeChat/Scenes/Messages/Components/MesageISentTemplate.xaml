@@ -6,6 +6,7 @@
              xmlns:models="clr-namespace:Models;assembly=Models"
              xmlns:components="clr-namespace:FreeChat.Scenes.Messages.Components"
              x:Class="FreeChat.Scenes.Messages.Components.MesageISentTemplate"
+             x:Name="msgTemplate3290"
              x:DataType="models:Message">
     
   <shared:BaseTemplate.Content>

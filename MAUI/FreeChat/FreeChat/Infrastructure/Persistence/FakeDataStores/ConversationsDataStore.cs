@@ -75,7 +75,8 @@ public class ConversationsDataStore : IConversationsDataStore
 
 public Task<Conversation> GetItemAsync(string id)
         {
-            return Task.FromResult(_conversations.Where(c => c.Id == id).FirstOrDefault());
+            var conversation = _conversations.Where(c => c.Id == id).FirstOrDefault();
+            return Task.FromResult(conversation);
         }
 
         public Task<IEnumerable<Conversation>> GetItemsAsync(bool forceRefresh = false)

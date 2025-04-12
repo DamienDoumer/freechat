@@ -6,6 +6,7 @@
              xmlns:components="clr-namespace:FreeChat.Scenes.Messages.Components"
              xmlns:shared="clr-namespace:FreeChat.Scenes.Shared"
              x:Class="FreeChat.Scenes.Messages.Components.MessagePeerSentTemplate"
+             x:Name="msgTemplate329ew"
              x:DataType="models:Message">
     
     <ContentView.Content>
