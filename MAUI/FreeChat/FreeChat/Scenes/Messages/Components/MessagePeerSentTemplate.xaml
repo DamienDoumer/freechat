@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<shared:BaseTemplate xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Models;assembly=Models"
+             xmlns:components="clr-namespace:FreeChat.Scenes.Messages.Components"
+             xmlns:shared="clr-namespace:FreeChat.Scenes.Shared"
+             x:Class="FreeChat.Scenes.Messages.Components.MessagePeerSentTemplate"
+             x:DataType="models:Message">
+    
+    <ContentView.Content>
+        <SwipeView BackgroundColor="{StaticResource PrimaryColor}">
+
+            <SwipeView.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="Android" Value="0,0,0,2"/>
+                    <On Platform="iOS" Value="5,2,0,5"/>
+                </OnPlatform>
+            </SwipeView.Margin>
+
+            <SwipeView.Triggers>
+                <DataTrigger TargetType="SwipeView"
+                             Binding="{Binding ISentPreviousMessage}"
+                             Value="True">
+                    <Setter Property="Margin">
+                        <Setter.Value>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="iOS" Value="5, 15, 0, 5"/>
+                                <On Platform="Android" Value="0, 10, 0, 0"/>
+                            </OnPlatform>
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
+            </SwipeView.Triggers>
+
+            <SwipeView.LeftItems>
+                <SwipeItems SwipeBehaviorOnInvoked="Close"
+                            Mode="Execute">
+                    <SwipeItemView Command="{Binding Source={x:Reference msgTemplate329ew}, Path=ParentContext.MessageSwippedCommand}"
+                                   CommandParameter="{Binding}">
+                        <Border BackgroundColor="{StaticResource PrimaryColor}">
+                            <Label Style="{StaticResource FontAwesomeLabel}"
+                               Text="{StaticResource FontAwesomeReply}"
+                               TextColor="LightGray"
+                               Margin="20"
+                               FontSize="Large"/>
+                        </Border>
+                    </SwipeItemView>
+                </SwipeItems>
+            </SwipeView.LeftItems>
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    
+                    <Image HeightRequest="40"
+                        WidthRequest="40"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        Source="{Binding Sender.ProfilePic}">
+    
+                        <Image.Clip>
+                            <EllipseGeometry
+                                Center="20,20"
+                                RadiusX="20"
+                                RadiusY="20" />
+                        </Image.Clip>
+
+                        <Image.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="7,0,0,0" />
+                                <On Platform="iOS" Value="5" />
+                            </OnPlatform>
+                        </Image.Margin>
+                    </Image>
+
+
+                    <components:MessageBubble Text="{Binding Content}"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Center"
+                                               BackgroundColor="White"
+                                               Grid.Column="1"
+                                               ReplyTappedCommand="{Binding ParentContext.ReplyMessageSelectedCommand, Source={x:Reference msgTemplate329ew}}"
+                                               >
+
+                        <components:MessageBubble.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="0,10"/>
+                                <On Platform="iOS" Value="0,2,0,10"/>
+                            </OnPlatform>
+                        </components:MessageBubble.Margin>
+
+                        <components:MessageBubble.Triggers>
+                            <DataTrigger TargetType="components:MessageBubble"
+                                     Binding="{Binding ISentPreviousMessage}"
+                                     Value="True">
+                                <Setter Property="Margin">
+                                    <Setter.Value>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS" Value="0, 10,0,5"/>
+                                            <On Platform="Android" Value="0, 5"/>
+                                        </OnPlatform>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </components:MessageBubble.Triggers>
+
+                    </components:MessageBubble>
+                </Grid>
+
+            </Grid>
+        </SwipeView>
+    </ContentView.Content>
+</shared:BaseTemplate>

@@ -6,6 +6,7 @@
                  xmlns:views="clr-namespace:FreeChat.Scenes.Messages.Views"
                  xmlns:messages="clr-namespace:FreeChat.Scenes.Messages"
                  xmlns:converters="clr-namespace:FreeChat.Scenes.Converters"
+                 xmlns:components="clr-namespace:FreeChat.Scenes.Messages.Components"
                  x:Class="FreeChat.Scenes.Messages.MessagesPage">
     
     <shared:BasePage.Resources>
@@ -36,11 +37,6 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <!--<xe:BorderView BackgroundColor="Red" xe:TouchEffect.Color="AliceBlue"
-                               xe:Commands.Tap="{Binding Source={x:Reference MessagePagecmdeio}, Path=BackCommand}">
-                    <Label Text="what !!"/>
-                </xe:BorderView>-->
-
                 <views:FloatingButton Margin="5,0,0,0"
                                                HorizontalOptions="Start"
                                                VerticalOptions="Center" 
@@ -59,19 +55,6 @@
                         </OnPlatform>
                     </views:FloatingButton.Margin>
                 </views:FloatingButton>
-
-                <!-- <dataTemplates:SimpleUserProfileTemplate BindingContext="{Binding CurrentConversation}"
-                                                         Grid.Column="1" 
-                                                         IsInTitle="True"
-                                                         IsUserTyping="{Binding BindingContext.IsTyping, Source={x:Reference MessagePagecmdeio}}">
-                    <dataTemplates:SimpleUserProfileTemplate.Margin>
-                    <OnPlatform x:TypeArguments="Thickness">
-                        <On Platform="iOS" Value="-25,0,0,0"/>
-                        <On Platform="Android" Value="-25,0,0,0"/>
-                    </OnPlatform>
-                    </dataTemplates:SimpleUserProfileTemplate.Margin>
-                </dataTemplates:SimpleUserProfileTemplate>
-                -->
 
                 <StackLayout Orientation="Horizontal" Grid.Column="2"
                              VerticalOptions="Center"
@@ -131,7 +114,7 @@
                     </CollectionView.GroupHeaderTemplate>
 
                     <CollectionView.ItemTemplate>
-                        <dataTemplateSelector:ChatBubbleTemplateSelctor />
+                        <components:ChatBubbleTemplateSelctor />
                     </CollectionView.ItemTemplate>
 
                 </CollectionView>

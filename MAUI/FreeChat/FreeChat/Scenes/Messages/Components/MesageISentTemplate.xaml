@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<shared:BaseTemplate xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:shared="clr-namespace:FreeChat.Scenes.Shared"
+             xmlns:models="clr-namespace:Models;assembly=Models"
+             xmlns:components="clr-namespace:FreeChat.Scenes.Messages.Components"
+             x:Class="FreeChat.Scenes.Messages.Components.MesageISentTemplate"
+             x:DataType="models:Message">
+    
+  <shared:BaseTemplate.Content>
+        <SwipeView  BackgroundColor="{StaticResource PrimaryColor}">
+
+            <SwipeView.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="Android" Value="0,0,10,2"/>
+                    <On Platform="iOS" Value="0,2,10,5"/>
+                </OnPlatform>
+            </SwipeView.Margin>
+            
+            <SwipeView.Triggers>
+                <DataTrigger TargetType="SwipeView"
+                             Binding="{Binding ISentPreviousMessage}"
+                             Value="False">
+                    <Setter Property="Margin">
+                        <Setter.Value>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="iOS" Value="0, 15, 10, 5"/>
+                                <On Platform="Android" Value="0, 15, 10, 0"/>
+                            </OnPlatform>
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
+            </SwipeView.Triggers>
+            
+            <SwipeView.RightItems>
+                <SwipeItems SwipeBehaviorOnInvoked="Close"
+                            Mode="Execute">
+                    <SwipeItemView Command="{Binding Source={x:Reference msgTemplate3290}, Path=ParentContext.MessageSwippedCommand}"
+                                   CommandParameter="{Binding}">
+                        <Border BackgroundColor="{StaticResource PrimaryColor}">
+                            <Label Style="{StaticResource FontAwesomeLabel}"
+                               Text="{StaticResource FontAwesomeReply}"
+                               TextColor="LightGray"
+                               Margin="20"
+                               FontSize="Large"/>
+                        </Border>
+                    </SwipeItemView>
+                </SwipeItems>
+            </SwipeView.RightItems>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <components:MessageBubble Text="{Binding Content}"
+                                           Grid.Column="1"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="Center"
+                                           TextColor="White"
+                                           BackgroundColor="{StaticResource AccentColor}"
+                                           ReplyTappedCommand="{Binding ParentContext.ReplyMessageSelectedCommand, Source={x:Reference msgTemplate3290}}">
+                    
+                        <components:MessageBubble.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="0,10"/>
+                                <On Platform="iOS" Value="0,0,0,10"/>
+                            </OnPlatform>
+                        </components:MessageBubble.Margin>
+
+                    <components:MessageBubble.Triggers>
+                        <DataTrigger TargetType="components:MessageBubble"
+                                     Binding="{Binding ISentPreviousMessage}"
+                                     Value="False">
+                            <Setter Property="Margin">
+                                <Setter.Value>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="iOS" Value="0, 10,0,0"/>
+                                        <On Platform="Android" Value="0, 5"/>
+                                    </OnPlatform>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </components:MessageBubble.Triggers>
+                </components:MessageBubble>
+                
+            </Grid>
+        </SwipeView>
+  </shared:BaseTemplate.Content>
+</shared:BaseTemplate>
