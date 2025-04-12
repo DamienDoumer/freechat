@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resources="clr-namespace:FreeChat.Resources"
+             xmlns:converters="clr-namespace:FreeChat.Scenes.Converters"
+             xmlns:models="clr-namespace:Models;assembly=Models"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="FreeChat.Scenes.Messages.Components.MessageBubble"
+             x:Name="bubble_fdasdl"
+             x:DataType="models:Message">
+    
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:IsNullConverter x:Key="IsNullValueConverter"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    
+    <Border
+        StrokeThickness="0"
+        Shadow="{StaticResource DefaultShadow}"
+        StrokeShape="RoundRectangle 15"
+        Padding="5"
+        HeightRequest="Auto"
+        Margin="0"
+        Stroke="{x:Null}">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Reply Grid -->
+            <Grid
+                IsVisible="{Binding Converter={StaticResource IsNullValueConverter}}"
+                BindingContext="{Binding ReplyTo}"
+                VerticalOptions="Start"
+                Margin="5">
+
+                <Grid.Behaviors>
+                    <toolkit:TouchBehavior
+                                PressedBackgroundColor="LightGray"
+                                DefaultBackgroundColor="{StaticResource PrimaryColor}"
+                                PressedScale="0.95"
+                                Command="{Binding ReplyTappedCommand, Source={x:Reference bubble_fdasdl}}" />
+                </Grid.Behaviors>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <BoxView WidthRequest="3" BackgroundColor="White">
+                    <BoxView.Triggers>
+                        <DataTrigger TargetType="BoxView"
+                                     Binding="{Binding BindingContext.ISent, Source={x:Reference bubble_fdasdl}}"
+                                     Value="False">
+                            <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}" />
+                        </DataTrigger>
+                    </BoxView.Triggers>
+                </BoxView>
+
+                <BoxView
+                    Grid.Column="1"
+                    Margin="-7,0,0,0"
+                    BackgroundColor="{StaticResource LightDarkWhite}"
+                    Opacity="0.1">
+                    <BoxView.Triggers>
+                        <DataTrigger TargetType="BoxView"
+                                     Binding="{Binding BindingContext.ISent, Source={x:Reference bubble_fdasdl}}"
+                                     Value="False">
+                            <Setter Property="Opacity" Value="1" />
+                        </DataTrigger>
+                    </BoxView.Triggers>
+                </BoxView>
+
+                <StackLayout Grid.Column="1" Margin="-5,0,0,0">
+                    <Label
+                        FontFamily="QuickSandBold"
+                        LineBreakMode="TailTruncation"
+                        Margin="10,3,10,5"
+                        TextColor="White">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding Sender.FirstName}" />
+                                <Span Text=" " />
+                                <Span Text="{Binding Sender.LastName}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label"
+                                         Binding="{Binding BindingContext.ISent, Source={x:Reference bubble_fdasdl}}"
+                                         Value="False">
+                                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+                                <Setter Property="Text" Value="{x:Static resources:TextResources.You}" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+
+                    <Label
+                        Text="{Binding Content}"
+                        TextColor="White"
+                        LineBreakMode="TailTruncation"
+                        Margin="10,-10,10,10">
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label"
+                                         Binding="{Binding BindingContext.ISent, Source={x:Reference bubble_fdasdl}}"
+                                         Value="False">
+                                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                </StackLayout>
+            </Grid>
+
+            <!-- Main Text -->
+            <Label
+                Grid.Row="1"
+                Margin="10,0,10,10"
+                Text="{Binding Text, Source={x:Reference bubble_fdasdl}}"
+                TextColor="{Binding TextColor, Source={x:Reference bubble_fdasdl}}"
+                FontFamily="QuickSandRegular" />
+        </Grid>
+    </Border>
+</ContentView>
