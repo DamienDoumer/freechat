@@ -89,7 +89,9 @@
 
             </Grid>
 
-            <Grid Grid.Row="1" x:Name="MessagesGrid">
+            <Grid Grid.Row="1" 
+                  x:Name="MessagesGrid"
+                  x:DataType="messages:MessagesViewModel">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition Height="Auto"/>
@@ -102,7 +104,7 @@
                                 x:Name="MessagesCollectionView">
 
                     <CollectionView.GroupHeaderTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="messages:MessagesGroup">
                             <Grid>
                                 <Label Text="{Binding GroupHeader}"
                                        HorizontalOptions="Center"
@@ -121,7 +123,8 @@
                 </CollectionView>
 
 
-                <Grid Grid.Row="2" x:Name="WriteContainerGrid">
+                <Grid Grid.Row="2" x:Name="WriteContainerGrid"
+                      x:DataType="messages:MessagesViewModel">
                     <Grid.Margin>
                         <OnPlatform x:TypeArguments="Thickness">
                             <On Platform="iOS" Value="0"/>
@@ -244,6 +247,10 @@
                 
             </Grid>
 
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                               IsRunning="{Binding IsBusy}"
+                               IsEnabled="{Binding IsBusy}"
+                               Grid.RowSpan="2"/>
         </Grid>
     
 </shared:BasePage>
