@@ -10,7 +10,6 @@ using Models;
 
 namespace FreeChat.Scenes.Messages;
 
-[QueryProperty("ConversationId", "conversation_id")]
 public partial class MessagesViewModel : BaseViewModel
 {
     [ObservableProperty]

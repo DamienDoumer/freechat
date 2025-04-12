@@ -2,6 +2,7 @@
 using FreeChat.Infrastructure.Navigation;
 using FreeChat.Infrastructure.Persistence;
 using FreeChat.Scenes;
+using FreeChat.Scenes.Messages;
 using Microsoft.Extensions.Logging;
 
 namespace FreeChat;
@@ -28,7 +29,9 @@ public static class MauiProgram
         builder.Logging.AddDebug();
 #endif
 
-        builder.Services.AddSingleton<Session>();
+        builder.Services
+                .AddSingleton<Session>()
+                .AddTransient<MessagesPage>();
         builder
             .AddPersistence()
             .AddNavitation()

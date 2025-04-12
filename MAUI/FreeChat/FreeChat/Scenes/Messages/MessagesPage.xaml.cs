@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using FreeChat.Scenes.Messages.Helpers;
 using FreeChat.Scenes.Shared;
@@ -49,6 +45,8 @@ public partial class MessagesPage : BasePage
         {
             InitializeComponent();
             BindingContext = ViewModel;
+            BackCommand = new AsyncRelayCommand(_ => 
+                AppShell.Current.Navigation.PopModalAsync());
         }
 
         private void TextInput_Focused(object sender, FocusEventArgs e)
@@ -59,6 +57,7 @@ public partial class MessagesPage : BasePage
         
         protected override void OnAppearing()
         {
+            TextInput.Focused += TextInput_Focused;
             WeakReferenceMessenger.Default.Register<MyFocusEventArgs>(this, (s, args) =>
                 IsFocusOnKeyBoardChanged(args.IsFocused));
 
@@ -84,6 +83,7 @@ public partial class MessagesPage : BasePage
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            TextInput.Focused -= TextInput_Focused;
             WeakReferenceMessenger.Default.UnregisterAll(this);
         }
 }

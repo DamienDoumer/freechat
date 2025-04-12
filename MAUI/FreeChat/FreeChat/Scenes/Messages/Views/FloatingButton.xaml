@@ -15,7 +15,7 @@
         <toolkit:TouchBehavior PressedBackgroundColor="LightGray"
                                DefaultBackgroundColor="{StaticResource PrimaryColor}"
                                PressedScale="0.95"
-                               Command="{Binding OpenConversationCommand}" />
+                               Command="{Binding PressedCommand, Source={x:Reference floatingButton}}" />
     </Border.Behaviors>
 
     <Label HorizontalOptions="Center"

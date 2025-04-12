@@ -7,7 +7,8 @@
                  xmlns:messages="clr-namespace:FreeChat.Scenes.Messages"
                  xmlns:converters="clr-namespace:FreeChat.Scenes.Converters"
                  xmlns:components="clr-namespace:FreeChat.Scenes.Messages.Components"
-                 x:Class="FreeChat.Scenes.Messages.MessagesPage">
+                 x:Class="FreeChat.Scenes.Messages.MessagesPage"
+                 x:Name="MessagePagecmdeio">
     
     <shared:BasePage.Resources>
         <ResourceDictionary>
@@ -107,7 +108,7 @@
                                        HorizontalOptions="Center"
                                        VerticalOptions="Center"
                                        Margin="15"
-                                       FontFamily="{StaticResource QuickSandRegular}"
+                                       FontFamily="QuickSandRegular"
                                        TextColor="{StaticResource SecondaryTextColor}"/>
                             </Grid>
                         </DataTemplate>
@@ -207,7 +208,7 @@
                                         AutoSize="TextChanges"
                                         Text="{Binding CurrentMessage}"
                                         VerticalOptions="Center"
-                                        FontFamily="{StaticResource QuickSandRegular}"
+                                        FontFamily="QuickSandRegular"
                                         FontAttributes="Bold"
                                         x:Name="TextInput"/>
 

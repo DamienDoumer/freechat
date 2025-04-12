@@ -31,6 +31,6 @@ public partial class ConversationItemViewModel : ObservableObject
     [RelayCommand]
     private Task OpenConversation()
     {
-        return _navigationService.GotoPage($"{Routes.MessagesRoute}?conversation_id={Conversation.Id}");
+        return _navigationService.GoToMessagesPage(Conversation.Id);
     }
 }

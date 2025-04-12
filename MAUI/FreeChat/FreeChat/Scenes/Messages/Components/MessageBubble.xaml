@@ -21,7 +21,6 @@
         Shadow="{StaticResource DefaultShadow}"
         StrokeShape="RoundRectangle 15"
         Padding="5"
-        HeightRequest="Auto"
         Margin="0"
         Stroke="{x:Null}">
 
