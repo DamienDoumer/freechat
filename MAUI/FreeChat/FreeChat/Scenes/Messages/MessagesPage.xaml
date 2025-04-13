@@ -16,26 +16,27 @@
         </ResourceDictionary>
     </shared:BasePage.Resources>
     
-        <Grid x:Name="ContainerGrid">
+        <Grid x:Name="ContainerGrid"
+              BackgroundColor="{StaticResource PrimaryColor}">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="55"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <Grid VerticalOptions="Start">
+            <Grid>
 
                 <Grid.Margin>
                     <OnPlatform x:TypeArguments="Thickness">
                         <On Platform="iOS" Value="0,0"/>
-                        <On Platform="Android" Value="0,-10 ,0,0"/>
+                        <On Platform="Android" Value="0,5 ,0,0"/>
                     </OnPlatform>
                 </Grid.Margin>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="45"/>
                     <ColumnDefinition />
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="90"/>
                 </Grid.ColumnDefinitions>
 
                 <views:FloatingButton Margin="5,0,0,0"
@@ -68,6 +69,7 @@
                     </StackLayout.Margin>
 
                     <views:FloatingButton Icon="{StaticResource FontAwesomePhone}"
+                                          Margin="3"
                                                    IconColor="{StaticResource AccentColor}"
                                                    Shadow="{x:Null}"
                                                    BackgroundColor="{StaticResource PrimaryColor}"
@@ -103,6 +105,7 @@
                                 BackgroundColor="{StaticResource PrimaryColor}"
                                 x:Name="MessagesCollectionView">
 
+                    <!----> 
                     <CollectionView.GroupHeaderTemplate>
                         <DataTemplate x:DataType="messages:MessagesGroup">
                             <Grid>
@@ -123,7 +126,7 @@
                 </CollectionView>
 
 
-                <Grid Grid.Row="2" x:Name="WriteContainerGrid"
+                <Grid Grid.Row="1" x:Name="WriteContainerGrid"
                       x:DataType="messages:MessagesViewModel">
                     <Grid.Margin>
                         <OnPlatform x:TypeArguments="Thickness">
@@ -187,16 +190,16 @@
                                 </StackLayout>
 
                                 <views:FloatingButton Grid.Column="2"
-                                                               IconSize="15"
-                                                               HeightRequest="30"
-                                                               WidthRequest="30"
-                                                               HorizontalOptions="End"
-                                                               VerticalOptions="Start"
-                                                               Shadow="{x:Null}"
-                                                               BackgroundColor="Transparent"
-                                                               PressedCommand="{Binding BindingContext.CancelReplyCommand, Source={x:Reference MessagePagecmdeio}}"
-                                                               Icon="{StaticResource FontAwesomeTimes}"
-                                                               IconColor="{StaticResource PrimaryTextColor}"/>
+                                                       IconSize="15"
+                                                       HeightRequest="30"
+                                                       WidthRequest="30"
+                                                       HorizontalOptions="End"
+                                                       VerticalOptions="Start"
+                                                       Shadow="{x:Null}"
+                                                       BackgroundColor="Transparent"
+                                                       PressedCommand="{Binding BindingContext.CancelReplyCommand, Source={x:Reference MessagePagecmdeio}}"
+                                                       Icon="{StaticResource FontAwesomeTimes}"
+                                                       IconColor="{StaticResource PrimaryTextColor}"/>
                             </Grid>
                             </Border>
 
@@ -249,6 +252,8 @@
             </Grid>
 
             <ActivityIndicator IsVisible="{Binding IsBusy}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
                                IsRunning="{Binding IsBusy}"
                                IsEnabled="{Binding IsBusy}"
                                Grid.RowSpan="2"/>

@@ -14,7 +14,8 @@
                      xmlns:views="clr-namespace:FreeChat.Scenes.Conversations.Views"
                      xmlns:models="clr-namespace:Models;assembly=Models"
                      x:Class="FreeChat.Scenes.Conversations.ConversationsPage"
-                     x:DataType="conversations:ConversationsViewModel">
+                     x:DataType="conversations:ConversationsViewModel"
+                       BackgroundColor="{StaticResource PrimaryColor}">
     
     <scenes:BaseTabbedPage.ViewContent>
         <Grid Margin="10,0"

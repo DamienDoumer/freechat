@@ -9,6 +9,9 @@ public partial class App : Application
     {
         _session = session;
         InitializeComponent();
+#if ANDROID
+        Initialize(_session);
+#endif
     }
 
     protected override Window CreateWindow(IActivationState? activationState)
@@ -19,7 +22,9 @@ public partial class App : Application
     protected override void OnStart()
     {
         base.OnStart();
+#if IOS
         Initialize(_session);
+#endif
     }
 
     private async void Initialize(Session session)
