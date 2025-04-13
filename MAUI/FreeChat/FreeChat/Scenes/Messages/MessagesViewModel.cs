@@ -81,7 +81,7 @@ public partial class MessagesViewModel : BaseViewModel
     }
 
     [RelayCommand(CanExecute = nameof(CanExecuteCommandsWhenNotBusy))]
-    void MessageSwiped(Message message)
+    void MessageSwipped(Message message)
     {
         ReplyMessage = message;
         WeakReferenceMessenger.Default.Send(new MyFocusEventArgs { IsFocused = true });
@@ -92,6 +92,12 @@ public partial class MessagesViewModel : BaseViewModel
         WeakReferenceMessenger.Default.Send(new ScrollToItemEventArgs { Item = message });
     }
 
+    [RelayCommand(CanExecute = nameof(CanExecuteCommandsWhenNotBusy))]
+    private void ReplyMessageSelected(Message message)
+    {
+        ScrollToMessage(message);
+    }
+    
     [RelayCommand(CanExecute = nameof(CanExecuteCommandsWhenNotBusy))]
     private async Task SendMessage()
     {

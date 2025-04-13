@@ -13,14 +13,12 @@ public class ChatBubbleTemplateSelctor: DataTemplateSelector
 
         if (message.ISent)
         {
-            var messageTemplate = new MesageISentTemplate();
-            messageTemplate.ParentContext = container.BindingContext;
+            var messageTemplate = new MesageISentTemplate(container.BindingContext);
             return new DataTemplate(() => messageTemplate);
         }
         else
         {
-            var messageTemplate = new MessagePeerSentTemplate();
-            messageTemplate.ParentContext = container.BindingContext;
+            var messageTemplate = new MessagePeerSentTemplate(container.BindingContext);
             return new DataTemplate(() => messageTemplate);
         }
     }

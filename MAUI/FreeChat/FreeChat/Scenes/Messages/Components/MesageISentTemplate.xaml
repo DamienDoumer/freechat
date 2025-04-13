@@ -7,6 +7,7 @@
                      x:Class="FreeChat.Scenes.Messages.Components.MesageISentTemplate"
                      x:Name="msgTemplate3290">
     
+    <!-- Removed x:DataType due to unknown bug that didn't exist in Xamarin.Forms-->
   <shared:BaseTemplate.Content>
         <SwipeView  BackgroundColor="{StaticResource PrimaryColor}">
 
@@ -55,11 +56,12 @@
                 </Grid.ColumnDefinitions>
 
                 <components:MessageBubble Text="{Binding Content, Mode=TwoWay}"
+                                          x:Name="MessageBubble1"
                                           Grid.Column="1"
                                           HorizontalOptions="End"
                                           VerticalOptions="Center"
                                           TextColor="White"
-                                          ReplyTappedCommand="{Binding ParentContext.ReplyMessageSelectedCommand, Source={x:Reference msgTemplate3290}}">
+                                          ReplyTappedCommand="{Binding ReplyTappedCommand, Source={x:Reference msgTemplate3290}}">
                     
                         <components:MessageBubble.Margin>
                             <OnPlatform x:TypeArguments="Thickness">

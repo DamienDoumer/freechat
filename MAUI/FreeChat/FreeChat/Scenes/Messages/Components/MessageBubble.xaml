@@ -9,6 +9,8 @@
              x:Class="FreeChat.Scenes.Messages.Components.MessageBubble"
              x:Name="bubble_fdasdl">
     
+    <!-- NOTE: Couldn't set the View's DataType due to MAUI bug -->
+    
     <ContentView.Resources>
         <ResourceDictionary>
             <converters:IsNullConverter x:Key="IsNullValueConverter"/>
@@ -46,8 +48,7 @@
                 VerticalOptions="Start"
                 Margin="5">
                 <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding ReplyTappedCommand, Source={x:Reference bubble_fdasdl}}" 
-                                          CommandParameter="{Binding}"/>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"/>
                 </Grid.GestureRecognizers>
                 
                 <Grid.ColumnDefinitions>
@@ -67,7 +68,6 @@
 
                 <BoxView
                     Grid.Column="1"
-                    Margin="-7,0,0,0"
                     BackgroundColor="{StaticResource LightDarkWhite}"
                     Opacity="0.1">
                     <BoxView.Triggers>
@@ -84,7 +84,7 @@
                     </BoxView.Triggers>
                 </BoxView>
                 
-                <StackLayout Grid.Column="1" Margin="-5,0,0,0">
+                <StackLayout Grid.Column="1">
                     <Label
                         FontFamily="QuickSandBold"
                         LineBreakMode="TailTruncation"

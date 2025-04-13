@@ -6,9 +6,8 @@
              xmlns:components="clr-namespace:FreeChat.Scenes.Messages.Components"
              xmlns:shared="clr-namespace:FreeChat.Scenes.Shared"
              x:Class="FreeChat.Scenes.Messages.Components.MessagePeerSentTemplate"
-             x:Name="msgTemplate329ew"
-             x:DataType="models:Message">
-    
+             x:Name="msgTemplate329ew">
+    <!-- Removed x:DataType due to unknown bug that didn't exist in Xamarin.Forms-->
     <ContentView.Content>
         <SwipeView BackgroundColor="{StaticResource PrimaryColor}">
 
@@ -58,15 +57,17 @@
 
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="53"/>
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     
-                    <Image HeightRequest="40"
-                        WidthRequest="40"
-                        HorizontalOptions="Start"
-                        VerticalOptions="Center"
-                        Source="{Binding Sender.ProfilePic}">
+                    <Image Grid.Column="0" 
+                           HeightRequest="40"
+                           WidthRequest="40"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"
+                           Aspect="Fill"
+                           Source="{Binding Sender.ProfilePic}">
     
                         <Image.Clip>
                             <EllipseGeometry
@@ -78,7 +79,7 @@
                         <Image.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="Android" Value="7,0,0,0" />
-                                <On Platform="iOS" Value="5" />
+                                <On Platform="iOS" Value="5,0,5,0" />
                             </OnPlatform>
                         </Image.Margin>
                     </Image>
@@ -90,7 +91,7 @@
                                                BackgroundColor="White"
                                                Grid.Column="1"
                                                ReplyTappedCommand="{Binding ParentContext.ReplyMessageSelectedCommand, Source={x:Reference msgTemplate329ew}}"
-                                               >
+                                              x:Name="MessageBubble1">
 
                         <components:MessageBubble.Margin>
                             <OnPlatform x:TypeArguments="Thickness">

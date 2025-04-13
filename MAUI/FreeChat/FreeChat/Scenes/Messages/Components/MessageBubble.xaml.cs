@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Models;
 
 namespace FreeChat.Scenes.Messages.Components;
 
@@ -119,5 +120,18 @@ public partial class MessageBubble : ContentView
     public MessageBubble()
     {
         InitializeComponent();
+    }
+
+    private async void TapGestureRecognizer_OnTapped(object? sender, TappedEventArgs e)
+    {
+        var view = sender as View;
+        if (view == null) return;
+        
+        await view.ScaleTo(0.95, 100, Easing.CubicIn);
+    
+        if (ReplyTappedCommand?.CanExecute(view.BindingContext as Message) ?? false) ReplyTappedCommand?.Execute(view.BindingContext as Message);
+        
+        // Animate scale back to original
+        await view.ScaleTo(1, 100, Easing.CubicOut);
     }
 }
