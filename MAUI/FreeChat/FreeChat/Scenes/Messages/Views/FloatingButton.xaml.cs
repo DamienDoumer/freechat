@@ -112,4 +112,22 @@ public partial class FloatingButton : Border
     {
         InitializeComponent();
     }
+
+    private async void TapGestureRecognizer_OnTapped(object? sender, TappedEventArgs e)
+    {
+        var view = sender as View;
+
+        if (view == null) return;
+
+        // Animate scale down
+        await view.ScaleTo(0.95, 100, Easing.CubicIn);
+    
+        if (PressedCommand?.CanExecute(null) ?? false)
+        {
+            PressedCommand.Execute(null);
+        }
+        
+        // Animate scale back to original
+        await view.ScaleTo(1, 100, Easing.CubicOut);
+    }
 }

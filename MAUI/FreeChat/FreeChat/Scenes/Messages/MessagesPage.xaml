@@ -236,6 +236,7 @@
                                                    Icon="{StaticResource FontAwesomePaperPlane}"
                                                    IconColor="{StaticResource PrimaryColor}"
                                                    Margin="5,0,10,0">
+                        
                         <views:FloatingButton.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="iOS" Value="5,0,10,0"/>

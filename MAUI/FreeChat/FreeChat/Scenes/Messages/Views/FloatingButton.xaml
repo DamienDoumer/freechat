@@ -11,12 +11,9 @@
         HeightRequest="56"
         Shadow="{StaticResource DefaultShadow}">
 
-    <Border.Behaviors>
-        <toolkit:TouchBehavior PressedBackgroundColor="LightGray"
-                               DefaultBackgroundColor="{StaticResource PrimaryColor}"
-                               PressedScale="0.95"
-                               Command="{Binding PressedCommand, Source={x:Reference floatingButton}}" />
-    </Border.Behaviors>
+    <Border.GestureRecognizers>
+        <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"/>
+    </Border.GestureRecognizers>
 
     <Label HorizontalOptions="Center"
            VerticalOptions="Center"
