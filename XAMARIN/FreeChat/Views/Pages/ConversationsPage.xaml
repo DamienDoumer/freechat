@@ -21,7 +21,7 @@
     <!--BackgroundColor="{StaticResource PrimaryColor}"-->
     <Shell.TitleView>
         <Grid>
-            <Label Text="{Binding Title, Source={x:Reference conversationsPage}}"
+            <Label Text="{Binding Title, Source={x:Reference conversationsPage}}" 
                 Style="{StaticResource PageTitleLabel}">
             </Label>
         </Grid>

@@ -23,7 +23,7 @@
                              Binding="{Binding ISentPreviousMessage}"
                              Value="False">
                     <Setter Property="Margin">
-                        <Setter.Value>
+                        <Setter.Value> 
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="iOS" Value="0, 15, 10, 5"/>
                                 <On Platform="Android" Value="0, 15, 10, 0"/>
@@ -60,10 +60,11 @@
                                           Grid.Column="1"
                                           HorizontalOptions="End"
                                           VerticalOptions="Center"
-                                          TextColor="White"
-                                          ReplyTappedCommand="{Binding ReplyTappedCommand, Source={x:Reference msgTemplate3290}}">
+                                          TextColor="White">
+                    <!-- This Doesn't work in MAUI, with strict data binding.
+                                          ReplyTappedCommand="{Binding ReplyTappedCommand, Source={x:Reference msgTemplate3290}}">-->
                     
-                        <components:MessageBubble.Margin>
+                    <components:MessageBubble.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="Android" Value="0,10"/>
                                 <On Platform="iOS" Value="0,0,0,10"/>

@@ -31,7 +31,7 @@
         
         <VerticalStackLayout Grid.Column="1" 
                              Margin="0,10,0,0"
-                             HorizontalOptions="Start"
+                             HorizontalOptions="Start" 
                              VerticalOptions="Center">
             <Label FontFamily="QuickSandBold"
                    LineBreakMode="TailTruncation">
